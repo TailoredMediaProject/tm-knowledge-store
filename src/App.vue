@@ -1,12 +1,30 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view />
+  <Header/>
+  <main class="container mt-3 mb-5">
+    <router-view />
+  </main>
+  <Footer/>
 </template>
 
+<script lang="ts">
+import { defineComponent } from "vue";
+import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
+
+export default defineComponent({
+  name: "App",
+  components: {
+    Header,
+    Footer,
+  },
+});
+</script>
+
 <style lang="scss">
+@import "./assets/bootstrap.scss";
+* {
+  box-sizing: border-box;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

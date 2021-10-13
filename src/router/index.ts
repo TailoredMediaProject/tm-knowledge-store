@@ -4,7 +4,7 @@ import Overview from "../views/Overview.vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    name: "Home",
+    name: "Overview",
     component: Overview,
   },
 ];
