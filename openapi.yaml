@@ -7,9 +7,8 @@ info:
     name: TailoredMedia Project
     url: https://github.com/TailoredMediaProject
 
-servers: 
+servers:
   - url: https://data.tmedia.redlink.io/api/v1
-
 
 tags:
   - name: Vocabulary
@@ -21,17 +20,205 @@ tags:
   - name: Linked Data
     description: Entites from the Knowledge Store as Linked Data
 
-paths: {}
+paths:
+  /vocab:
+    get:
+      operationId: listVocabularies
+      summary: List available vocabularies
+      tags: [ Vocabulary ]
+      parameters:
+        - $ref: '#/components/parameters/TextFilter'
+        - $ref: '#/components/parameters/TagTypeFilter'
+        - $ref: '#/components/parameters/CreatedSince'
+        - $ref: '#/components/parameters/ModifiedSince'
+        - $ref: '#/components/parameters/Sort'
+      responses:
+        default:
+          $ref: '#/components/responses/VocabularyListResponse'
+    post:
+      operationId: createVocabulary
+      summary: Create a new Vocabular
+      tags: [ Vocabulary ]
+      requestBody:
+        $ref: '#/components/requestBodies/VocabularyRequest'
+      responses:
+        default:
+          $ref: '#/components/responses/VocabularyResponse'
+  /vocab/{vocabularyId}:
+    parameters:
+      - $ref: '#/components/parameters/VocabularyId'
+    get:
+      operationId: getVocabulary
+      summary: Retrieve a vocabular
+      tags: [ Vocabulary ]
+      responses:
+        default:
+          $ref: '#/components/responses/VocabularyResponse'
+        404:
+          $ref: '#/components/responses/NotFoundResponse'
+    put:
+      operationId: updateVocabulary
+      summary: Update a vocabular
+      tags: [ Vocabulary ]
+      parameters:
+        - $ref: '#/components/parameters/If-Unmodified-Since'
+      requestBody:
+        $ref: '#/components/requestBodies/VocabularyRequest'
+      responses:
+        default:
+          $ref: '#/components/responses/VocabularyResponse'
+        404:
+          $ref: '#/components/responses/NotFoundResponse'
+        409:
+          $ref: '#/components/responses/ConflictResponse'
+        412:
+          $ref: '#/components/responses/PreconditionFailed'
+    delete:
+      operationId: deleteVocabulary
+      summary: Delete a vocabular
+      tags: [ Vocabulary ]
+      parameters:
+        - $ref: '#/components/parameters/If-Unmodified-Since'
+      responses:
+        default:
+          $ref: '#/components/responses/VocabularyResponse'
+        404:
+          $ref: '#/components/responses/NotFoundResponse'
+        409:
+          $ref: '#/components/responses/ConflictResponse'
+        412:
+          $ref: '#/components/responses/PreconditionFailed'
+
+  /vocab/{vocabularyId}/entities:
+    parameters:
+      - $ref: '#/components/parameters/VocabularyId'
+    get:
+      operationId: listEntities
+      summary: List entities in the vocabulary
+      tags: [ Entites ]
+      parameters:
+        - $ref: '#/components/parameters/TextFilter'
+        - $ref: '#/components/parameters/TagTypeFilter'
+        - $ref: '#/components/parameters/CreatedSince'
+        - $ref: '#/components/parameters/ModifiedSince'
+        - $ref: '#/components/parameters/Sort'
+      responses:
+        default:
+          $ref: '#/components/responses/EntityListResponse'
+    post:
+      operationId: createEntity
+      summary: Create an entities in the vocabulary
+      tags: [ Entites ]
+      requestBody:
+        $ref: '#/components/requestBodies/EntityRequest'
+      responses:
+        default:
+          $ref: '#/components/responses/EntityResponse'
+
+  /vocab/{vocabularyId}/entities/{entityId}:
+    parameters:
+      - $ref: '#/components/parameters/VocabularyId'
+      - $ref: '#/components/parameters/EntityId'
+    get:
+      summary: Retrieve an entities in the vocabulary
+      tags: [ Entites ]
+      responses:
+        default:
+          $ref: '#/components/responses/EntityResponse'
+        404:
+          $ref: '#/components/responses/NotFoundResponse'
+    put:
+      summary: Update an entities in the vocabulary
+      tags: [ Entites ]
+      requestBody:
+        $ref: '#/components/requestBodies/EntityRequest'
+      parameters:
+        - $ref: '#/components/parameters/If-Unmodified-Since'
+      responses:
+        default:
+          $ref: '#/components/responses/EntityResponse'
+        404:
+          $ref: '#/components/responses/NotFoundResponse'
+        409:
+          $ref: '#/components/responses/ConflictResponse'
+        412:
+          $ref: '#/components/responses/PreconditionFailed'
+    delete:
+      summary: Delete an entities in the vocabulary
+      tags: [ Entites ]
+      parameters:
+        - $ref: '#/components/parameters/If-Unmodified-Since'
+      responses:
+        default:
+          $ref: '#/components/responses/EntityResponse'
+        404:
+          $ref: '#/components/responses/NotFoundResponse'
+        409:
+          $ref: '#/components/responses/ConflictResponse'
+        412:
+          $ref: '#/components/responses/PreconditionFailed'
+
+  /resolve:
+    get:
+      operationId: resolveEntity
+      summary: Resolve the data of an entity
+      tags: [ Resolve ]
+      parameters:
+        - name: uri
+          in: query
+          schema:
+            type: string
+            format: uri
+          required: true
+      responses:
+        default:
+          $ref: '#/components/responses/EntityResponse'
+
+  /../../kb/{entityId):
+    parameters:
+      - $ref: '#/components/parameters/EntityId'
+    get:
+      operationId: linkedData
+      summary: Publish an entity as Linked Data
+      tags: [ Linked Data ]
+      description: '**ATTENTION**: Incorrect Baseurl, should be without the `api/v1` prefix!'
+      responses:
+        default:
+          description: ""
+          content:
+            application/ld+json: {}
+            text/turtle: {}
+            text/rdf+xml: {}
 
 components:
   schemas:
+    Id:
+      type: string
+      pattern: '[a-zA-Z\d]+'
     DateTime:
       type: string
       format: date-time
       example: "2021-11-29T16:02:17Z"
       externalDocs:
         url: https://xml2rfc.tools.ietf.org/public/rfc/html/rfc3339.html#anchor14
+    Pageable:
+      type: object
+      properties:
+        offset:
+          type: integer
+          format: int64
+          minimum: 0
+          default: 0
+        rows:
+          type: integer
+          minimum: 0
+          default: 10
+        totalItems:
+          type: integer
+          format: int64
+          minimum: 0
     TagType:
+      description: Known tag-types (entity types) in the TM environment
       type: string
       enum:
         - Person
@@ -44,7 +231,8 @@ components:
       type: object
       properties:
         id:
-          type: string
+          allOf:
+            - $ref: '#/components/schemas/Id'
           readOnly: true
         created:
           allOf:
@@ -73,10 +261,12 @@ components:
       type: object
       properties:
         id:
-          type: string
+          allOf:
+            - $ref: '#/components/schemas/Id'
           readOnly: true
         vocabulary:
-          type: string
+          allOf:
+            - $ref: '#/components/schemas/Id'
           readOnly: true
         canonicalLink:
           type: string
@@ -103,7 +293,7 @@ components:
             type: string
           minItems: 0
         sameAs:
-          description: |
+          description:
             Links/References to external knowledge-bases. Data from supported
             sources are merged into the local knowledge base.
           type: array
@@ -112,7 +302,7 @@ components:
             format: uri
           minItems: 0
         data:
-          description: |
+          description:
             Container for the augmented data merged from external resources.
             This structure will evolve over time.
           type: object
@@ -125,3 +315,130 @@ components:
         - created
         - lastModified
         - data
+  parameters:
+    VocabularyId:
+      name: vocabularyId
+      in: path
+      schema:
+        $ref: '#/components/schemas/Id'
+      required: true
+    EntityId:
+      name: entityId
+      in: path
+      schema:
+        $ref: '#/components/schemas/Id'
+      required: true
+    TextFilter:
+      name: text
+      description: Simple text-based filtering on label/description (case ignored)
+      in: query
+      schema:
+        type: string
+    TagTypeFilter:
+      name: type
+      in: query
+      schema:
+        type: array
+        items:
+          $ref: '#/components/schemas/TagType'
+      explode: true
+    CreatedSince:
+      name: createdSince
+      in: query
+      schema:
+        $ref: '#/components/schemas/DateTime'
+    ModifiedSince:
+      name: modifiedSince
+      in: query
+      schema:
+        $ref: '#/components/schemas/DateTime'
+    Sort:
+      name: sort
+      in: query
+      schema:
+        type: string
+        enum:
+          - created asc
+          - created desc
+          - modified asc
+          - modified desc
+    If-Unmodified-Since:
+      name: If-Unmodified-Since
+      in: header
+      schema:
+        type: string
+        format: date-time
+        example: 'Mon, 29 Nov 2021 14:05:52 GMT'
+        externalDocs:
+          url: https://httpwg.org/specs/rfc7232.html#header.if-unmodified-since
+      required: true
+  requestBodies:
+    VocabularyRequest:
+      description: a vocabulary
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Vocabulary'
+    EntityRequest:
+      description: a entity
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Entity'
+  responses:
+    VocabularyResponse:
+      description: the vocabulary
+      headers:
+        Location:
+          description: The uri where to find this vocabulary
+          schema:
+            type: string
+            format: uri
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Vocabulary'
+    VocabularyListResponse:
+      description: a list of vocabularies
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/Pageable'
+              - type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Vocabulary'
+    EntityResponse:
+      description: the Entity
+      headers:
+        Location:
+          description: The uri where to find this entity
+          schema:
+            type: string
+            format: uri
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Entity'
+    EntityListResponse:
+      description: a list of entities
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '#/components/schemas/Pageable'
+              - type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Entity'
+    NotFoundResponse:
+      description: Target not Found
+    ConflictResponse:
+      description: Operation failed, `If-Unmodified-Since`-Header missing!
+    PreconditionFailed:
+      description: Target has been modified since last retrieval
