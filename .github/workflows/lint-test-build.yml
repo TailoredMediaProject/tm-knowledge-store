@@ -1,7 +1,7 @@
 name: Lint, Test, and Build
 on:  [push, pull_request, workflow_dispatch]
 jobs:
-  lint:
+  Lint:
     defaults:
       run:
         working-directory: ./be
@@ -21,14 +21,13 @@ jobs:
         run: npm ci
       - name: Lint BE
         run: npm run lint
-  test:
+  Test:
     defaults:
       run:
         working-directory: ./be
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd be
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
@@ -42,7 +41,7 @@ jobs:
         run: npm ci
       - name: Test BE
         run: cd be && npm run test´
-  build:
+  Build:
     defaults:
       run:
         working-directory: ./be
@@ -62,7 +61,7 @@ jobs:
         run: npm ci
       - name: Build BE
         run: cd be && npm run build
-  fe-lint-test-build:
+  FE-Lint-Test-Build:
     defaults:
       run:
         working-directory: ./fe
