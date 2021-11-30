@@ -40,7 +40,7 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Test BE
-        run: npm run test --passWithNoTests
+        run: npm run test
   BE-Build:
     defaults:
       run:
