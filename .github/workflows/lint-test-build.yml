@@ -40,7 +40,7 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Test BE
-        run: cd be && npm run test´
+        run: npm run test´
   Build:
     defaults:
       run:
@@ -60,7 +60,7 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Build BE
-        run: cd be && npm run build
+        run: npm run build
   FE-Lint-Test-Build:
     defaults:
       run:
