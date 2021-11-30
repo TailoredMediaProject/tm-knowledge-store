@@ -13,5 +13,8 @@
     "baseUrl": "./",
     "types": ["jest"],
     "outDir": "dist/"
-  }
+  },
+  "exclude": [
+    "node_modules/"
+  ]
 }
