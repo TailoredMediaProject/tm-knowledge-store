@@ -1,0 +1,45 @@
+{
+  "name": "tm-knowledge-store",
+  "version": "1.0.0",
+  "description": "Stores entities and vocuabularies",
+  "main": "dist/src/app.js",
+  "scripts": {
+    "start": "node dist/src/app.js",
+    "debug": "DEBUG=express:* node build/app.js",
+    "test": "npx jest",
+    "lint": "npx eslint",
+    "build": "npx tsc",
+    "build:start": "npm run build && npm run start",
+    "build:ci": "npm run lint && npm run test && npx tsc src/app.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TailoredMediaProject/tm-knowledge-store.git"
+  },
+  "author": "Redlink GmbH",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TailoredMediaProject/tm-knowledge-store/issues"
+  },
+  "homepage": "https://github.com/TailoredMediaProject/tm-knowledge-store#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.11",
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "^5.5.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.1",
+    "eslint": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
+    "jest": "^27.4.0",
+    "ts-node": "^10.4.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.2"
+  }
+}

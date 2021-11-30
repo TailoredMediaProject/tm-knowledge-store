@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+  node:
+    env_file: .env
+    container_name: be
+    image: 'node:16.13.0'
+    user: 'node'
+    working_dir: /home/node/app/dist
+    environment:
+      NODE_ENV: production
+      HOST: '${BE_HOST}'
+      PORT: '${BE_PORT}'
+    volumes:
+      - ./be:/home/node/app
+    ports:
+      - '8080:8080'
+    command: 'npm run build:start'
+  db:
+    image: mongo:latest
+    container_name: db
+    hostname: db
+    volumes:
+      - ./.docker/mongodb/mongod.conf:/etc/mongod.conf
+      - ./.docker/mongodb/initdb.d/:/docker-entrypoint-initdb.d/
+      - ./.docker/mongodb/data/db/:/data/db/
+      - ./.docker/mongodb/data/log/:/var/log/mongodb/
+    env_file: .env
+    environment:
+      MONGO_ROOT_USERNAME: ${MONGO_ROOT_USERNAME}
+      MONGO_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+      MONGO_USERNAME: ${MONGO_USERNAME}
+      MONGO_PASSWORD: ${MONGO_PASSWORD}
+      MONGO_DATABASE: ${MONGO_DATABASE}
+    ports:
+      - "27017:27017"
+    command: [ "-f", "/etc/mongod.conf" ]
