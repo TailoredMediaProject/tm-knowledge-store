@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/src/app.js",
     "debug": "DEBUG=express:* node build/app.js",
-    "test": "npx jest",
+    "test": "npx jest --passWithNoTests",
     "lint": "npx eslint",
     "build": "npx tsc src/app.ts",
     "build:start": "npm run build && npm run start"
