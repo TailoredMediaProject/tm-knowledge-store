@@ -1,7 +1,7 @@
 name: Lint, Test, and Build
 on:  [push, pull_request, workflow_dispatch]
 jobs:
-  Lint:
+  BE-Lint:
     defaults:
       run:
         working-directory: ./be
@@ -21,7 +21,7 @@ jobs:
         run: npm ci
       - name: Lint BE
         run: npm run lint
-  Test:
+  BE-Test:
     defaults:
       run:
         working-directory: ./be
@@ -40,8 +40,8 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Test BE
-        run: cd be && npm run test´
-  Build:
+        run: npm run test
+  BE-Build:
     defaults:
       run:
         working-directory: ./be
@@ -60,7 +60,7 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Build BE
-        run: cd be && npm run build
+        run: npm run build
   FE-Lint-Test-Build:
     defaults:
       run:
