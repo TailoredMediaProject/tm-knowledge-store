@@ -4,7 +4,7 @@
         "es2021": true
     },
     "root": true,
-    "ignorePatterns": ["node_modules/**/*"],
+    "ignorePatterns": ["node_modules/**/*", "jest.config.ts"],
     "files": ["*.ts"],
     "extends": [
         "eslint:recommended",
