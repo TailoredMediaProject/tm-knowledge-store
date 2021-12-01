@@ -3,3 +3,4 @@ node_modules
 dist/
 coverage/
 /.docker/mongodb/data/
+fe/src/openapi
