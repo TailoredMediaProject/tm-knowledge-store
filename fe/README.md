@@ -1,23 +1,25 @@
-# Frontend
-TODO
 
-Install:
-```shell
-npm use && npm i
+# tm-entity-store-ui
+
+## Project setup
 ```
-Lint:
-```shell
-npm run lint
+npm install
 ```
-Test:
-```shell
-npm run test
+
+### Compiles and hot-reloads for development
 ```
-Build:
-```shell
-npm run build
-```
-Start:
-```shell
 npm run start
 ```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).

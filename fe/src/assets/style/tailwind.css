@@ -1,0 +1,14 @@
+@tailwind base;
+
+@tailwind components;
+@layer base {
+    @font-face {
+        font-family: 'Exo2';
+        src: local('Exo2'), url(/font/Exo2-VariableFont_wght.ttf) format('ttf');
+    }
+    @font-face {
+        font-family: 'Exo2-Italic';
+        src: local('Exo2-Italic'), url(/font/Exo2-Italic-VariableFont_wght.ttf) format('ttf');
+    }
+}
+@tailwind utilities;
