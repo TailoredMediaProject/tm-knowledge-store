@@ -5,9 +5,7 @@
         <h1 class="text-2xl font-bold text-gray-900">Entities</h1>
       </div>
     </header>
-    <main>
-
-    </main>
+    <main></main>
   </div>
 </template>
 
