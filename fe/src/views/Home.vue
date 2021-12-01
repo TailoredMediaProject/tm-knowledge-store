@@ -1,17 +1,16 @@
 <template>
-  <div class="h-full min-h-screen bg-backgroundDefault">
-    <header class="bg-white shadow">
-      <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <h1 class="text-2xl font-bold text-gray-900">Entities</h1>
-      </div>
-    </header>
-    <main></main>
+  <div class="h-full min-h-screen bg-backgroundDefault px-4 py-8">
+    <main>
+      <ListView></ListView>
+    </main>
   </div>
 </template>
 
 <script>
+import ListView from "@/components/ListView";
 export default {
   name: "Home",
+  components: { ListView },
 };
 </script>
 
