@@ -9,7 +9,8 @@
     "test": "npx jest --passWithNoTests",
     "lint": "npx eslint",
     "build": "npx tsc src/app.ts",
-    "build:start": "npm run build && npm run start"
+    "build:start": "npm run build && npm run start",
+    "cmp": "tsc src/services/persistence-service.ts\n node src/services/persistence-service.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,8 @@
   "homepage": "https://github.com/TailoredMediaProject/tm-knowledge-store#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongodb": "^4.2.0"
+    "mongodb": "^4.2.0",
+    "typescript": "^4.5.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
