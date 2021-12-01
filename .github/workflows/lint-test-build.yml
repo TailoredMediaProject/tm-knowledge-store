@@ -120,4 +120,4 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
       - name: Build FE
-        run: npm run build
+        run: npm run generate:build
