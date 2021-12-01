@@ -3,3 +3,4 @@ node_modules
 dist/
 coverage/
 /.docker/mongodb/data/
+/be/src/generated/
