@@ -11,14 +11,15 @@
     "noEmit": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "rootDir": "./",
+    "rootDir": "./src",
     "baseUrl": "./",
     "types": ["jest"],
     "outDir": "dist/"
   },
-  "include": ["*.ts"],
+  "include": ["./**/*.ts"],
   "exclude": [
     "node_modules/",
-    "jest.config.ts"
+    "jest.config.ts",
+    "src/generated"
   ]
 }
