@@ -8,10 +8,11 @@
     "debug": "DEBUG=express:* node build/app.js",
     "test": "npx jest --passWithNoTests",
     "lint": "npx eslint",
-    "generate": "npx openapi-generator-cli generate -g typescript-node -o src/generated -i ../openapi.yaml -c openapitools.json",
+    "generate": "rm -R -f src/generated/* && npx openapi-generator-cli generate --generator-key TN",
     "generate:build": "npm run generate && npm run build",
+    "generate:build:start": "npm run generate && npm run build && npm run start",
     "build": "npx tsc src/app.ts",
-    "build:start": "npm run generate:build && npm run start"
+    "build:start": "npm run build && npm run start"
   },
   "repository": {
     "type": "git",

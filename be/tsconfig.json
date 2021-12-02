@@ -1,12 +1,14 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "target": "ES6",
-    "module": "commonjs",
+    "target": "ES2021",
+    "module": "ES2021",
     "moduleResolution": "node",
-    "esModuleInterop": true,
+    "esModuleInterop": false,
     "strict": true,
     "sourceMap": false,
+    "inlineSources": false,
+    "noEmit": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "rootDir": "./",
@@ -14,6 +16,7 @@
     "types": ["jest"],
     "outDir": "dist/"
   },
+  "include": ["*.ts"],
   "exclude": [
     "node_modules/",
     "jest.config.ts"
