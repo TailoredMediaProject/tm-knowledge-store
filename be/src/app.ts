@@ -5,6 +5,7 @@ import express, {Application, Request, Response, Router} from 'express';
 import RootRouter from './controlers/root.router';
 import RestRouter from './controlers/rest.router';
 import ResolveRouter from './controlers/resolve.router';
+import PersistenceService from './services/persistence-service';
 
 const serverConfig: ServerConfig = new ServerConfig();
 const app: Application = express();
@@ -29,6 +30,10 @@ routes.forEach((router: Router) =>
     });
   }));
 
-const runningCallback = (): void => console.log(`Running on baseUrl http://${serverConfig.host}:${serverConfig.port}`);
+const runningCallback = (): void => {
+  console.log(`Running on baseUrl http://${serverConfig.host}:${serverConfig.port}`);
+  const pers = new PersistenceService();
+  pers.create();
+};
 
 app.listen(serverConfig.port, serverConfig.host, runningCallback);

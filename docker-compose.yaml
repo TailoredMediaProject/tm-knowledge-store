@@ -11,6 +11,10 @@ services:
       NODE_ENV: production
       HOST: '${BE_HOST}'
       PORT: '${BE_PORT}'
+      MONGO_URL: '${MONGO_URL}'
+      MONGO_USERNAME: '${MONGO_USERNAME}'
+      MONGO_PASSWORD: '${MONGO_PASSWORD}'
+      MONGO_DATABASE: '${MONGO_DATABASE}'
     volumes:
       - ./be:/home/node/app
     ports:
