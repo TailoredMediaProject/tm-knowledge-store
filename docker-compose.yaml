@@ -11,10 +11,8 @@ services:
       NODE_ENV: production
       HOST: '${BE_HOST}'
       PORT: '${BE_PORT}'
-      MONGO_URL: '${MONGO_URL}'
-      MONGO_USERNAME: '${MONGO_USERNAME}'
-      MONGO_PASSWORD: '${MONGO_PASSWORD}'
-      MONGO_DATABASE: '${MONGO_DATABASE}'
+      MONGO_URL: 'mongodb://db:27017'
+      MONGO_DATABASE: '${MONGO_DATABASE-tm-ks}'
     volumes:
       - ./be:/home/node/app
     ports:
@@ -22,14 +20,5 @@ services:
     command: 'npm run build:start'
   db:
     image: mongo:latest
-    container_name: db
-    hostname: db
-    env_file: .env
-    environment:
-      MONGO_ROOT_USERNAME: '${MONGO_ROOT_USERNAME}'
-      MONGO_ROOT_PASSWORD: '${MONGO_ROOT_PASSWORD}'
-      MONGO_USERNAME: '${MONGO_USERNAME}'
-      MONGO_PASSWORD: '${MONGO_PASSWORD}'
-      MONGO_DATABASE: '${MONGO_DATABASE}'
     ports:
       - "27017:27017"

@@ -5,14 +5,15 @@ import express, {Application, Request, Response, Router} from 'express';
 import RootRouter from './controlers/root.router';
 import RestRouter from './controlers/rest.router';
 import ResolveRouter from './controlers/resolve.router';
+import HealthRouter from './controlers/health.router';
 import PersistenceService from './services/persistence-service';
 
-const serverConfig: ServerConfig = new ServerConfig();
+const serverConfig: ServerConfig = {port: 8080, host: 'localhost'}
 const app: Application = express();
 
 // app.use(json);
 
-const routes: Router[] = [RootRouter, RestRouter, ResolveRouter];
+const routes: Router[] = [RootRouter, RestRouter, ResolveRouter, HealthRouter];
 
 // Add automatically all configured routes within the router
 console.log('Configured routes:')

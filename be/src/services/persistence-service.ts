@@ -1,29 +1,21 @@
-import {MongoClient} from 'mongodb';
+import {Db, MongoClient} from 'mongodb';
 
 export default class PersistenceService {
     private client: MongoClient;
+    private db: Db;
 
     constructor() {
-        console.log("MONGO DB");
         this.initClient();
-        void this.check();
+        void this.check().catch(console.error);
     }
+
 
     private initClient() {
         const MONGO_URL: string = this.errorWhenFalsy('MONGO_URL', process.env.MONGO_URL);
-        const MONGO_USERNAME: string = this.errorWhenFalsy('MONGO_USERNAME', process.env.MONGO_USERNAME);
-        const MONGO_PASSWORD: string = this.errorWhenFalsy('MONGO_PASSWORD', process.env.MONGO_PASSWORD);
-        const dashIndex = MONGO_URL.indexOf('//');
+        const MONGO_DATABASE: string = this.errorWhenFalsy('MONGO_DATABASE', process.env.MONGO_DATABASE);
 
-        if(dashIndex < 0) {
-            throw new Error(`MONGO_URL "${MONGO_URL}" invalid!`);
-        }
-
-        const URI = `mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_URL.substring(dashIndex + 2)}?retryWrites=true&w=majority`;
-
-        console.log(URI);
-
-        // this.client = new MongoClient(URI);
+        this.client = new MongoClient(MONGO_URL);
+        this.db = this.client.db(MONGO_DATABASE);
     };
 
     private errorWhenFalsy(varName: string, value: string): string {
@@ -33,16 +25,30 @@ export default class PersistenceService {
         return value;
     }
 
+    public pingDB(): boolean {
+        this.db.command()
+    }
+
     private async check() {
         try {
+            console.log("11-------!!!!!!---------------!!!!!!---------------!!!!!!--------");
+
             await this.client.connect();
+            console.log("22-------!!!!!!---------------!!!!!!---------------!!!!!!--------");
 
             const MONGO_DATABASE: string = this.errorWhenFalsy('MONGO_DATABASE', process.env.MONGO_DATABASE);
+            console.log("33-------!!!!!!---------------!!!!!!---------------!!!!!!--------");
 
             await this.client.db(MONGO_DATABASE).command({ ping: 1 });
+            console.log("44-------!!!!!!---------------!!!!!!---------------!!!!!!--------");
 
-            console.log("Connected successfully to server");
-        } finally {
+        }
+        catch (err){
+            console.log("55-------!!!!!!---------------!!!!!!---------------!!!!!!--------");
+            console.error(err)
+        }
+        finally {
+            console.log("66-------!!!!!!---------------!!!!!!---------------!!!!!!--------");
             await this.client.close();
         }
     };

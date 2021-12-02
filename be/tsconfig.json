@@ -11,7 +11,7 @@
     "sourceMap": false,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "rootDir": "./",
+    "rootDir": "./src",
     "baseUrl": "./",
     "types": ["jest"],
     "outDir": "dist/"
