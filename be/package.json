@@ -2,13 +2,13 @@
   "name": "tm-knowledge-store",
   "version": "1.0.0",
   "description": "Stores entities and vocuabularies",
-  "main": "dist/src/app.js",
+  "main": "dist/app.js",
   "scripts": {
-    "start": "node dist/src/app.js",
-    "debug": "DEBUG=express:* node build/app.js",
-    "test": "npx jest --passWithNoTests",
-    "lint": "npx eslint",
-    "build": "npx tsc src/app.ts",
+    "start": "node dist/app.js",
+    "debug": "DEBUG=express:* node dist/app.js",
+    "test": "jest --passWithNoTests",
+    "lint": "eslint",
+    "build": "tsc",
     "build:start": "npm run build && npm run start"
   },
   "repository": {
