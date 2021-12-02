@@ -2,7 +2,7 @@
 
 Install:
 ```shell
-npm use && npm i
+nvm use && npm i && npm run generate
 ```
 Lint:
 ```shell
@@ -22,8 +22,8 @@ npm run start
 ```
 
 ## Generate
-The [openapi-generator](https://openapi-generator.tech) is used for creating service side stubs, see the [general documentation](https://openapi-generator.tech/docs/configuration/) and the one for [typescript-node](
-https://openapi-generator.tech/docs/generators/typescript-node). To generate run 
+The [openapi-generator](https://openapi-generator.tech) is used for creating service side stubs, see the [general documentation](https://openapi-generator.tech/docs/configuration/) and the one for [typescript-axios](
+https://openapi-generator.tech/docs/generators/typescript-axios). To generate run 
 ```shell
 npm run generate
 ```

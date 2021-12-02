@@ -20,7 +20,6 @@
   "include": ["./**/*.ts"],
   "exclude": [
     "node_modules/",
-    "jest.config.ts",
-    "src/generated/"
+    "jest.config.ts"
   ]
 }
