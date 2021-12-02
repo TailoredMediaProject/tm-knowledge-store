@@ -6,6 +6,8 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "strict": true,
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false,
     "sourceMap": false,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -14,8 +16,10 @@
     "types": ["jest"],
     "outDir": "dist/"
   },
+  "include": ["src/**/*.ts"],
   "exclude": [
     "node_modules/",
-    "jest.config.ts"
+    "jest.config.ts",
+    "src/generated/"
   ]
 }
