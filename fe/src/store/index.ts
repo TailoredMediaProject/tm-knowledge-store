@@ -1,8 +1,8 @@
 import { createStore } from "vuex";
+import { vocabStore } from "@/store/Vocab/vocabStore";
 
 export default createStore({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+  modules: {
+    vocabStore: vocabStore,
+  },
 });
