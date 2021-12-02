@@ -20,18 +20,12 @@ services:
     image: mongo:latest
     container_name: db
     hostname: db
-    volumes:
-      - ./.docker/mongodb/mongod.conf:/etc/mongod.conf
-      - ./.docker/mongodb/initdb.d/:/docker-entrypoint-initdb.d/
-      - ./.docker/mongodb/data/db/:/data/db/
-      - ./.docker/mongodb/data/log/:/var/log/mongodb/
     env_file: .env
     environment:
-      MONGO_ROOT_USERNAME: ${MONGO_ROOT_USERNAME}
-      MONGO_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
-      MONGO_USERNAME: ${MONGO_USERNAME}
-      MONGO_PASSWORD: ${MONGO_PASSWORD}
-      MONGO_DATABASE: ${MONGO_DATABASE}
+      MONGO_ROOT_USERNAME: '${MONGO_ROOT_USERNAME}'
+      MONGO_ROOT_PASSWORD: '${MONGO_ROOT_PASSWORD}'
+      MONGO_USERNAME: '${MONGO_USERNAME}'
+      MONGO_PASSWORD: '${MONGO_PASSWORD}'
+      MONGO_DATABASE: '${MONGO_DATABASE}'
     ports:
       - "27017:27017"
-    command: [ "-f", "/etc/mongod.conf" ]

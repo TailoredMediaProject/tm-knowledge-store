@@ -28,10 +28,11 @@ paths:
       tags: [ Vocabulary ]
       parameters:
         - $ref: '#/components/parameters/TextFilter'
-        - $ref: '#/components/parameters/TagTypeFilter'
         - $ref: '#/components/parameters/CreatedSince'
         - $ref: '#/components/parameters/ModifiedSince'
         - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Offset'
+        - $ref: '#/components/parameters/Rows'
       responses:
         default:
           $ref: '#/components/responses/VocabularyListResponse'
@@ -102,6 +103,8 @@ paths:
         - $ref: '#/components/parameters/CreatedSince'
         - $ref: '#/components/parameters/ModifiedSince'
         - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Offset'
+        - $ref: '#/components/parameters/Rows'
       responses:
         default:
           $ref: '#/components/responses/EntityListResponse'
@@ -362,6 +365,21 @@ components:
           - created desc
           - modified asc
           - modified desc
+    Offset:
+      name: offset
+      in: query
+      schema:
+        type: integer
+        format: int64
+        default: 0
+        example: 0
+    Rows:
+      name: rows
+      in: query
+      schema:
+        type: integer
+        default: 10
+        example: 10
     If-Unmodified-Since:
       name: If-Unmodified-Since
       in: header

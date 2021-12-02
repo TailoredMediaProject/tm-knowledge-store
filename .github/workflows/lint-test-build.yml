@@ -61,12 +61,63 @@ jobs:
         run: npm ci
       - name: Build BE
         run: npm run build
-  FE-Lint-Test-Build:
+  FE-Lint:
     defaults:
       run:
         working-directory: ./fe
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: TODO Lint, Test, and Build FE wich caching
-        run: echo "TODO Lint, Test, and Build FE wich caching"
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Lint FE
+        run: npm run lint
+  FE-Test:
+    defaults:
+      run:
+        working-directory: ./fe
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Test FE
+        run: npm run test:unit
+  FE-Build:
+    defaults:
+      run:
+        working-directory: ./fe
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+      - name: Build FE
+        run: npm run generate:build
