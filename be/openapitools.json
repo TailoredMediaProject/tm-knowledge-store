@@ -11,9 +11,6 @@
         "additionalProperties": {
           "supportsES6": "true",
           "withInterfaces": true
-        },
-        "globalProperty": {
-          "models": "Entity:Vocabulary:TagType:Pageable:DateTime:Id"
         }
       }
     }
