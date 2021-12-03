@@ -8,7 +8,7 @@
     "debug": "DEBUG=express:* node dist/app.js",
     "test": "jest --passWithNoTests",
     "lint": "eslint",
-    "build": "tsc",
+    "build": "tsc && cp -r src/static ./dist",
     "generate": "rm -R -f src/generated/* && openapi-generator-cli generate --generator-key TN",
     "generate:build": "npm run generate && npm run build",
     "generate:build:start": "npm run generate && npm run build && npm run start",
