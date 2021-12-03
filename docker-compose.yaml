@@ -9,8 +9,8 @@ services:
     working_dir: /home/node/app/dist
     environment:
       NODE_ENV: production
-      HOST: '${BE_HOST}'
-      PORT: '${BE_PORT}'
+      BE_PORT: '${BE_PORT}'
+      BE_STATIC: '${BE_STATIC}'
     volumes:
       - ./be:/home/node/app
     ports:
@@ -22,10 +22,6 @@ services:
     hostname: db
     env_file: .env
     environment:
-      MONGO_ROOT_USERNAME: '${MONGO_ROOT_USERNAME}'
-      MONGO_ROOT_PASSWORD: '${MONGO_ROOT_PASSWORD}'
-      MONGO_USERNAME: '${MONGO_USERNAME}'
-      MONGO_PASSWORD: '${MONGO_PASSWORD}'
       MONGO_DATABASE: '${MONGO_DATABASE}'
     ports:
       - "27017:27017"
