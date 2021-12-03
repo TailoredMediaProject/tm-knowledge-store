@@ -3,21 +3,19 @@
   "compilerOptions": {
     "target": "ES2021",
     "module": "CommonJS",
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "esModuleInterop": false,
     "strict": true,
     "sourceMap": false,
     "inlineSources": false,
-    "noEmit": true,
     "noImplicitAny": false,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "rootDir": "./src",
     "baseUrl": "./",
     "types": ["jest"],
     "outDir": "dist/"
   },
-  "include": ["./**/*.ts"],
+  "include": ["src/**/*.ts", "src/**/*.js"],
   "exclude": [
     "node_modules/",
     "jest.config.ts"
