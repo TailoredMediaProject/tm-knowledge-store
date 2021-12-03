@@ -3,7 +3,7 @@ import {Request, Response, Router} from 'express';
 
 const router: Router = Router();
 
-router.get('/vocab', (req: Request, res: Response) => {
+router.get('/vocab', async (req: Request, res: Response) => {
   res.json({statusCode:200});
 });
 

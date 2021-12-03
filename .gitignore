@@ -4,3 +4,4 @@ dist/
 coverage/
 /.docker/mongodb/data/
 **/openapi
+/be/src/generated/
