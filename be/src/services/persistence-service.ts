@@ -3,11 +3,13 @@ import {Db, MongoClient} from 'mongodb';
 class PersistenceService {
     private client: MongoClient;
     private db: Db;
+    private MONGO_DATABASE: string
+
 
     constructor() {
         console.log("----------------PersistenceService")
         this.initClient();
-        void this.check().catch(console.error);
+        this.pingDB().then(r => console.log(r));
     }
 
 
@@ -15,7 +17,15 @@ class PersistenceService {
         const MONGO_URL: string = this.errorWhenFalsy('MONGO_URL', process.env.MONGO_URL);
         const MONGO_DATABASE: string = this.errorWhenFalsy('MONGO_DATABASE', process.env.MONGO_DATABASE);
 
-        this.client = new MongoClient(MONGO_URL);
+        this.client = new MongoClient(MONGO_URL, {
+            connectTimeoutMS: 5000,
+            serverSelectionTimeoutMS: 5000
+        })
+
+        this.client.connect(err => {
+            console.log('Connected to MongoDB')
+        });
+
         this.db = this.client.db(MONGO_DATABASE);
     };
 
@@ -26,34 +36,16 @@ class PersistenceService {
         return value;
     }
 
-    public pingDB(): boolean {
-        // this.db.command();
-        return false;
-    }
-
-    private async check() {
+    public async pingDB(): Promise<boolean> {
         try {
-            console.log("11-------!!!!!!---------------!!!!!!---------------!!!!!!--------");
-
-            await this.client.connect();
-            console.log("22-------!!!!!!---------------!!!!!!---------------!!!!!!--------");
-
-            const MONGO_DATABASE: string = this.errorWhenFalsy('MONGO_DATABASE', process.env.MONGO_DATABASE);
-            console.log("33-------!!!!!!---------------!!!!!!---------------!!!!!!--------");
-
-            await this.client.db(MONGO_DATABASE).command({ ping: 1 });
-            console.log("44-------!!!!!!---------------!!!!!!---------------!!!!!!--------");
-
+            const res = await this.db.command({ping: 1});
+            return res.ok === 1;
         }
         catch (err){
-            console.log("55-------!!!!!!---------------!!!!!!---------------!!!!!!--------");
             console.error(err)
         }
-        finally {
-            console.log("66-------!!!!!!---------------!!!!!!---------------!!!!!!--------");
-            await this.client.close();
-        }
-    };
+        return false;
+    }
 
     create(): void {
         console.log("create");

@@ -9,8 +9,7 @@
     "test": "jest --passWithNoTests",
     "lint": "eslint",
     "build": "tsc",
-    "build:start": "npm run build && npm run start",
-    "cmp": "tsc src/services/persistence-service.ts\n node src/services/persistence-service.js"
+    "build:start": "npm run build && npm run start"
   },
   "repository": {
     "type": "git",
