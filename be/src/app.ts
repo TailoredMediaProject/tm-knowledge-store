@@ -1,10 +1,9 @@
 'use strict';
-// @ts-ignore
-import express, {Application, Request, Response, Router} from 'express';
+import {Application, Router} from 'express';
 import RestRouter from './controlers/rest.router';
 import ResolveRouter from './controlers/resolve.router';
-import {AddressInfo} from 'net';
-
+// @ts-ignore
+const express = require('express');
 const app: Application = express();
 const routes: Router[] = [RestRouter, ResolveRouter];
 
