@@ -5,11 +5,11 @@ const router: Router = Router();
 
 router.get('/health', (req: Request, res: Response) => {
     console.log("HEALTH")
-    if (new PersistenceService().pingDB()) {
-    res.json({statusCode:200, greeting: "Hello World"});
-    } else
-res.status(500).json({statusCode:500, greeting: "Hello World"});
-
+    if (PersistenceService.pingDB()) {
+        res.json({statusCode:200, greeting: "Hello World"});
+    } else {
+        res.status(500).json({statusCode:500, greeting: "Hello World"});
+    }
 });
 
 export default router;

@@ -1,10 +1,11 @@
 import {Db, MongoClient} from 'mongodb';
 
-export default class PersistenceService {
+class PersistenceService {
     private client: MongoClient;
     private db: Db;
 
     constructor() {
+        console.log("----------------PersistenceService")
         this.initClient();
         void this.check().catch(console.error);
     }
@@ -26,7 +27,8 @@ export default class PersistenceService {
     }
 
     public pingDB(): boolean {
-        this.db.command()
+        // this.db.command();
+        return false;
     }
 
     private async check() {
@@ -57,6 +59,8 @@ export default class PersistenceService {
         console.log("create");
     }
 }
+
+export default new PersistenceService();
 
 // interface Entity {
 //     id: string
