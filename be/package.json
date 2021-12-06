@@ -9,7 +9,7 @@
     "test": "jest --passWithNoTests",
     "lint": "eslint",
     "build": "tsc",
-    "generate": "rm -R -f src/generated/* && openapi-generator-cli generate --generator-key TN",
+    "generate": "rm -R -f src/generated/* && openapi --input ../openapi.yaml --output ./src/generated",
     "generate:build": "npm run generate && npm run build",
     "generate:build:start": "npm run generate && npm run build && npm run start",
     "build:start": "npm run build && npm run start"
@@ -29,7 +29,6 @@
     "mongodb": "^4.2.0"
   },
   "devDependencies": {
-    "@openapitools/openapi-generator-cli": "^2.4.18",
     "@types/express": "^4.17.13",
     "@types/jest": "^27.0.3",
     "@types/node": "^16.11.11",
@@ -39,6 +38,7 @@
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "jest": "^27.4.0",
+    "openapi-typescript-codegen": "^0.12.5",
     "ts-node": "^10.4.0",
     "tslib": "^2.3.1",
     "typescript": "^4.1.6"
