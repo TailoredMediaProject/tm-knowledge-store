@@ -5,10 +5,9 @@ class PersistenceService {
     private db: Db;
     private MONGO_DATABASE: string
 
-
     constructor() {
         this.initClient();
-        this.pingDB().then(r => console.log(r));
+        this.pingDB().catch(error => console.error(error));
     }
 
 
@@ -22,7 +21,7 @@ class PersistenceService {
         })
 
         this.client.connect(err => {
-            console.log('Connected to MongoDB')
+            console.log('Initial connection to MongoDB successful')
         });
 
         this.db = this.client.db(MONGO_DATABASE);
