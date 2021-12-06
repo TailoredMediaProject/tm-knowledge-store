@@ -1,46 +1,43 @@
-ARG buildImage=node:16.13.0-alpine
+ARG buildImage=node:lts-alpine
+
+FROM $buildImage as base
+WORKDIR /opt/app
+RUN apk add --no-cache openjdk11
+COPY ./openapi.yaml ./
 
 # BE
-FROM $buildImage as be-build-stage
-WORKDIR /usr/src/app/
+FROM base as be-build-stage
+WORKDIR /opt/app/be
 COPY ./be/package*.json ./
 RUN npm ci
-COPY ./be .
-COPY ./openapi.yaml ../
-ENV NODE_ENV=production
-RUN apk add openjdk11
-RUN npm run generate:build
+COPY ./be ./
+RUN npm run package
 RUN npm prune
 
 # FE
-FROM $buildImage as fe-build-stage
-WORKDIR /usr/src/app/
+FROM base as fe-build-stage
+WORKDIR /opt/app/fe
 COPY ./fe/package*.json ./
 RUN npm ci
 COPY ./fe/ .
-COPY ./openapi.yaml ../
-ENV NODE_ENV=production
-RUN apk add openjdk11
 RUN npm run generate:build
 RUN npm prune
 
 # Merge BE + FE
 FROM $buildImage as production-stage
+RUN apk add --no-cache tini
 WORKDIR /app/
-COPY --from=be-build-stage /usr/src/app/dist ./dist
-COPY --from=be-build-stage /usr/src/app/node_modules ./node_modules
-COPY --from=fe-build-stage /usr/src/app/dist ./dist/static
+COPY --from=be-build-stage /opt/app/be/dist .
+COPY --from=fe-build-stage /opt/app/fe/dist ./static
 
-# BE
 ENV NODE_ENV=production
+# BE
 ENV BE_PORT='8080'
 # MongoDB
-ENV MONGO_URL=mongodb://mongodb:27017
-ENV MONGO_DATABASE=annotations
-ENV MONGO_ROOT_USERNAME=root
-ENV MONGO_ROOT_PASSWORD=root
-ENV MONGO_USERNAME=apollo
-ENV MONGO_PASSWORD=apollo
+ENV MONGO_URL=mongodb://mongo:27017
+ENV MONGO_DATABASE=knowledge
 
-EXPOSE 8080
-CMD "node" "./dist/app.js"
+USER node
+
+EXPOSE $BE_PORT
+ENTRYPOINT ["/sbin/tini", "--", "docker-entrypoint.sh", "app.js" ]

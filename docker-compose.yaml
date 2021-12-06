@@ -1,27 +1,19 @@
 version: '2'
 
 services:
-  node:
+  knowledge-store:
     env_file: .env
-    container_name: be
-    image: 'node:16.13.0'
+    image: 'node:lts-alpine'
     user: 'node'
     working_dir: /home/node/app/dist
-    environment:
-      NODE_ENV: production
-      BE_PORT: '${BE_PORT}'
-      BE_STATIC: '${BE_STATIC}'
     volumes:
       - ./be:/home/node/app
     ports:
       - '8080:8080'
     command: 'npm run build:start'
-  db:
+  mongo:
     image: mongo:latest
-    container_name: db
-    hostname: db
-    env_file: .env
     environment:
-      MONGO_DATABASE: '${MONGO_DATABASE}'
+      MONGO_DATABASE: '${MONGO_DATABASE-knowledge}'
     ports:
       - "27017:27017"

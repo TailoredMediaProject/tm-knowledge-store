@@ -12,7 +12,8 @@
     "generate": "rm -R -f src/generated/* && openapi-generator-cli generate --generator-key TN",
     "generate:build": "npm run generate && npm run build",
     "generate:build:start": "npm run generate && npm run build && npm run start",
-    "build:start": "npm run build && npm run start"
+    "build:start": "npm run build && npm run start",
+    "package": "npm run generate:build && copy-node-modules . ./dist"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "@types/node": "^16.11.11",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",
+    "copy-node-modules": "^1.1.1",
     "eslint": "^8.3.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-prefer-arrow": "^1.2.3",
