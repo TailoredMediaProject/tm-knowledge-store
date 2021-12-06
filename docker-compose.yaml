@@ -20,5 +20,6 @@ services:
     command: 'npm run build:start'
   db:
     image: mongo:latest
+    container_name: mongo
     ports:
       - "27017:27017"

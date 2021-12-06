@@ -1,10 +1,28 @@
 // @ts-ignore
 import {Request, Response, Router} from 'express';
+import ApiService from '../services/api-service';
+import PersistenceService from '../services/persistence-service';
+import {KnowledgeResponse} from '../models/response-body.model';
 
 const router: Router = Router();
 
-router.get('/vocab', async (req: Request, res: Response) => {
-  res.json({statusCode:200});
+router.get('/vocab', (req: Request, res: Response) => {
+  const queryOk: boolean = ApiService.checkQueryParams(
+    ['text', 'createdSince', 'modifiedSince', 'sort', 'offset', 'rows'],
+    req.query
+  );
+
+  if (queryOk) {
+    PersistenceService.list(req.query)
+      .then((knowledgeResponse: KnowledgeResponse) => res.json(knowledgeResponse))
+      .catch(error => res.json(error));
+  } else {
+    res.json({
+      statusCode: 400,
+      message: 'Invalid query parameters',
+      query: req.query
+    });
+  }
 });
 
 router.post('/vocab', (req: Request, res: Response) => {
