@@ -1,4 +1,0 @@
-let Entity = {
-    id: '',
-    data: ''
-}

@@ -7,7 +7,6 @@ class PersistenceService {
 
 
     constructor() {
-        console.log("----------------PersistenceService")
         this.initClient();
         this.pingDB().then(r => console.log(r));
     }
@@ -53,37 +52,3 @@ class PersistenceService {
 }
 
 export default new PersistenceService();
-
-// interface Entity {
-//     id: string
-//     vocabulary: Vocabulary
-//     canonicalLink: string
-//     created: Date
-//     lastModified: Date
-//     label: string
-//     description: string
-//     externalResources: Array<any>
-//     sameAs: Array<any>
-//     data: Array<any>}
-//
-//
-// interface Vocabulary {
-//     id: string
-//     created: Date
-//     lastModified: Date
-//     label: string
-//     description: string
-//     entityCount: number
-// }
-//
-// function create(entity: Entity): Entity {
-//     // check required properties to be valid
-//     // add new entry for entity variable in DB
-//     // Return new id (or whole entity object)
-//     mongo.add(entity)
-//
-//
-//     return entity
-// }
-//
-// console.log("hello world")
