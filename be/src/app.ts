@@ -1,11 +1,12 @@
 'use strict';
 import ServerConfig from './configs/server.config';
-// @ts-ignore
-import express, {Application, Request, Response, Router} from 'express';
+import {Application, Router} from 'express';
 import RootRouter from './controlers/root.router';
 import RestRouter from './controlers/rest.router';
 import ResolveRouter from './controlers/resolve.router';
 import HealthRouter from './controlers/health.router';
+// @ts-ignore
+const express = require('express');
 
 const serverConfig: ServerConfig = new ServerConfig();
 const app: Application = express();

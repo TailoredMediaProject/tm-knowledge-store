@@ -4,10 +4,13 @@ The TailoredMedia Knowledge Store provides CRUD operations on vocabulary consist
 
 See the README.md in the subfolders for more information.
 
+#Install
+See the `be` and `fe` folder `README.md` files.
+
 ## Run
 Use `docker-compose config` to verify that your `.yaml` is resolved correctly, then you can:
 
-```shell
+```shell 
 docker-compose up -d // start
 docker-compose down // stop
 ```

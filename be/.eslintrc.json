@@ -4,14 +4,14 @@
         "es2021": true
     },
     "root": true,
-    "ignorePatterns": ["node_modules/**/*", "jest.config.ts"],
+    "ignorePatterns": ["node_modules/**/*", "jest.config.ts", "src/generated/"],
     "files": ["*.ts"],
     "extends": [
         "eslint:recommended",
         "plugin:vue/essential",
         "plugin:import/recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
     ],
     "parserOptions": {
         "ecmaVersion": 2021,
