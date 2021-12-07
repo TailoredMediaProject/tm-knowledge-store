@@ -1,9 +1,9 @@
 version: '2'
 
 services:
-  be:
+  knowledge-store:
     env_file: .env
-    image: 'node:16.13.0'
+    image: 'node:lts-alpine'
     user: 'node'
     working_dir: /home/node/app/dist
     environment:
@@ -19,5 +19,7 @@ services:
     command: 'npm run build:start'
   mongoDB:
     image: mongo:latest
+    environment:
+      MONGO_DATABASE: '${MONGO_DATABASE-knowledge}'
     ports:
       - "27017:27017"
