@@ -6,6 +6,12 @@ services:
     image: 'node:lts-alpine'
     user: 'node'
     working_dir: /home/node/app/dist
+    environment:
+      NODE_ENV: production
+      HOST: '${BE_HOST}'
+      PORT: '${BE_PORT}'
+      MONGO_URL: 'mongodb://db:27017'
+      MONGO_DATABASE: '${MONGO_DATABASE-tm-ks}'
     volumes:
       - ./be:/home/node/app
     ports:

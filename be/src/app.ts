@@ -2,10 +2,11 @@
 import {Application, Router} from 'express';
 import RestRouter from './controlers/rest.router';
 import ResolveRouter from './controlers/resolve.router';
+import HealthRouter from './controlers/health.router';
 // @ts-ignore
 const express = require('express');
 const app: Application = express();
-const routes: Router[] = [RestRouter, ResolveRouter];
+const routes: Router[] = [RestRouter, ResolveRouter, HealthRouter];
 
 // Add automatically all configured routes within the router
 console.log('Configured routes:')
