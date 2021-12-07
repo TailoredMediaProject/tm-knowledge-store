@@ -1,4 +1,4 @@
-import {Collection, Db, Filter, FindOptions, MongoClient, WithId} from 'mongodb';
+import {Collection, Db, DeleteResult, Document, Filter, FindOptions, MongoClient, WithId} from 'mongodb';
 import {KnowledgeResponse} from '../models/response-body.model';
 import ListQueryModel from '../models/list-query.model';
 import {Vocabulary} from '../generated';
@@ -57,9 +57,32 @@ class PersistenceService {
     console.log('create');
   }
 
-  async list(query?: ListQueryModel): Promise<KnowledgeResponse> {
+  async list(query?: ListQueryModel, id?: string): Promise<KnowledgeResponse> {
+    const {options, filter} = this.transformToMongoDBFilterOption(query, id);
+
+    // @ts-ignore
+    const result: WithId<Document>[] = await this.db.collection(this.COLLECTION_VOCABULARY).find(filter, options).toArray();
+    const items: Vocabulary[] = result.map(r => {
+      delete r._id;
+      return r as unknown as Vocabulary;
+    });
+
+    return {
+      offset: options.skip ?? 0,
+      rows: items.length,
+      totalItems: 0, // TODO
+      items
+    };
+  }
+
+  private transformToMongoDBFilterOption(query?: ListQueryModel, id?: string): {options: FindOptions, filter: Filter<Vocabulary>} {
     const options: FindOptions = {};
     const filter: Filter<Vocabulary> = {};
+
+    if(!!id) {
+      // @ts-ignore
+      filter.id = id;
+    }
 
     if(!!query) {
       if (!!query?.text) {
@@ -79,39 +102,40 @@ class PersistenceService {
         ];
       }
 
-      // if(!!query?.createdSince) {
-      //   filter.created = {
-      //     $gte: new Date(query.createdSince)
-      //   };
-      // }
-      //
-      // if(!!query?.modifiedSince) {
-      //   filter.lastModified = {
-      //     $gte: new Date(query.modifiedSince)
-      //   };
-      // }
+      if(!!query?.createdSince) {
+        // @ts-ignore
+        filter.created = {
+          $gte: new Date(query.createdSince) // https://www.mongodb.com/community/forums/t/finding-data-between-two-dates-by-using-a-query-in-mongodb-charts/102506/2
+        };
+      }
 
-      options.sort = PersistenceService.map2MongoSort(query?.sort);
-      options.skip = query?.offset;
-      options.limit = query?.rows;
+      if(!!query?.modifiedSince) {
+        // @ts-ignore
+        filter.lastModified = {
+          $gte: new Date(query.modifiedSince)
+        };
+      }
+
+      if(!!query?.sort) {
+        options.sort = PersistenceService.mapToMongoSort(query?.sort);
+      }
+
+      if(!!query?.offset) {
+        options.skip = Number(query?.offset); // Without the cast, it won't work! https://mongodb.github.io/node-mongodb-native/4.2/interfaces/FindOptions.html#skip
+      }
+
+      if(!!query?.rows) {
+        options.limit = Number(query?.rows); // Without the cast, it won't work!
+      }
     }
 
-    // @ts-ignore
-    const result: WithId<Document>[] = await this.db.collection(this.COLLECTION_VOCABULARY).find(filter, options).toArray();
-    const items: Vocabulary[] = result.map(r => {
-      delete r._id;
-      return r as unknown as Vocabulary;
-    });
-
     return {
-      offset: options.skip ?? 0,
-      rows: items.length,
-      totalItems: 0, // TODO
-      items
-    } as KnowledgeResponse;
+      options,
+      filter
+    };
   }
 
-  public static map2MongoSort(sort: string): any {
+  private static mapToMongoSort(sort: string): any {
     if(!!sort && sort.includes(' ')) {
       if(sort.toLowerCase().includes('created')) {
         return {
@@ -126,19 +150,26 @@ class PersistenceService {
     return {};
   }
 
+  private async deleteAllVocabularies() {
+    const v: Collection = await this.db.collection(this.COLLECTION_VOCABULARY);
+    const dr: DeleteResult = await v.deleteMany({});
+
+    console.log(dr);
+  };
+
   private async test(): Promise<void> {
     const v: Collection = await this.db.collection(this.COLLECTION_VOCABULARY);
-
     // @ts-ignore
-    await v.insertOne(
-      {
-        id: '2783954',
-        created: new Date(Date.now()).toISOString(),
-        lastModified: new Date(Date.now()).toISOString(),
-        label: 'Schneelandschaft',
-        description: 'Eine Landschaft die mit Schnee bedeckt ist',
+    const vocabs: Vocabulary[] = Array.from({length: 10}, (x, i) => ({
+        id: `${Date.now() + i}`,
+        created: new Date(Date.now()),
+        lastModified: new Date(Date.now()),
+        label: 'Schneelandschaft ' + i,
+        description: 'Eine Landschaft die mit Schnee bedeckt ist ' + i,
         entityCount: 0
-      });
+      }));
+
+    await v.insertMany(vocabs);
   }
 }
 

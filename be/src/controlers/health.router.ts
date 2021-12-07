@@ -1,5 +1,5 @@
 import {Request, Response, Router} from 'express';
-import PersistenceService from "../services/persistence-service";
+import PersistenceService from "../services/persistence.service";
 
 const router: Router = Router();
 
