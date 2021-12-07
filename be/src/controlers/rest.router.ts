@@ -1,5 +1,6 @@
 // @ts-ignore
 import {Request, Response, Router} from 'express';
+import {vocabularyService} from "../services/vocabulary.service";
 
 const router: Router = Router();
 
@@ -8,6 +9,10 @@ router.get('/vocab', async (req: Request, res: Response) => {
 });
 
 router.post('/vocab', (req: Request, res: Response) => {
+  const body = req.body
+
+  vocabularyService.createVocab(
+
   res.json({statusCode:201});
 });
 
