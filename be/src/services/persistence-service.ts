@@ -10,7 +10,6 @@ export class PersistenceService {
         this.pingDB().catch(error => console.error(error));
     }
 
-
     get db(): Db {
         return this._db;
     }
