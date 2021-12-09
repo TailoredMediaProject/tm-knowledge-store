@@ -73,7 +73,7 @@ paths:
         409:
           $ref: '#/components/responses/ConflictResponse'
         412:
-          $ref: '#/components/responses/PreconditionFailed'
+          $ref: '#/components/responses/PreconditionFailedVocabulary'
     delete:
       operationId: deleteVocabulary
       summary: Delete a vocabular
@@ -88,7 +88,7 @@ paths:
         409:
           $ref: '#/components/responses/ConflictResponse'
         412:
-          $ref: '#/components/responses/PreconditionFailed'
+          $ref: '#/components/responses/PreconditionFailedVocabulary'
 
   /vocab/{vocabularyId}/entities:
     parameters:
@@ -145,7 +145,7 @@ paths:
         409:
           $ref: '#/components/responses/ConflictResponse'
         412:
-          $ref: '#/components/responses/PreconditionFailed'
+          $ref: '#/components/responses/PreconditionFailedEntity'
     delete:
       summary: Delete an entities in the vocabulary
       tags: [ Entites ]
@@ -159,7 +159,7 @@ paths:
         409:
           $ref: '#/components/responses/ConflictResponse'
         412:
-          $ref: '#/components/responses/PreconditionFailed'
+          $ref: '#/components/responses/PreconditionFailedEntity'
 
   /resolve:
     get:
@@ -318,6 +318,23 @@ components:
         - created
         - lastModified
         - data
+    Error:
+      description: The default error
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          minimum: 0
+          maximum: 600
+        title:
+          type: string
+        message:
+          type: string
+      required:
+        - id
+        - title
+        - message
   parameters:
     VocabularyId:
       name: vocabularyId
@@ -456,7 +473,25 @@ components:
                       $ref: '#/components/schemas/Entity'
     NotFoundResponse:
       description: Target not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     ConflictResponse:
       description: Operation failed, `If-Unmodified-Since`-Header missing!
-    PreconditionFailed:
-      description: Target has been modified since last retrieval
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    PreconditionFailedEntity:
+      description: Target has been modified since last retrieval, the modified target is returned
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Entity'
+    PreconditionFailedVocabulary:
+      description: Target has been modified since last retrieval, the modified target is returned
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Vocabulary'
