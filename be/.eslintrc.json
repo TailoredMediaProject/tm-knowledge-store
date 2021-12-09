@@ -55,6 +55,7 @@
                 "trailingUnderscore": "forbid"
             }
         ],
+        "no-unexpected-multiline": "error",
         "import/no-unresolved": "off",
         "import/named": "off",
         "prefer-arrow/prefer-arrow-functions": "error",

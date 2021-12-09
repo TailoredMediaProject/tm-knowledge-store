@@ -18,7 +18,7 @@ export default class ApiService {
     }
 
     public static checkId(id:number|string|undefined): void {
-        if(!!id) {
+        if(!id) {
             throw new Error ('Invalid ID');
         }
     }

@@ -5,23 +5,14 @@ import ApiService from '../services/api.service';
 
 const router: Router = Router();
 
-router.get('/vocab', (req: Request, res: Response) => {
-  try {
-    ApiService.checkVocabReadParams(req.query);
-    void VocabularyService.list(req.query)
-      .then(r => res.json(r));
-  } catch (e) {
-    console.error(e);
-    res.json({
-      statusCode: 400,
-      message: e
-    });
-  }
-});
+router.get('/vocab', (req: Request, res: Response) => processVocab(req, res));
+router.get('/vocab/:id', (req: Request, res: Response) => processVocab(req, res, true));
 
-router.get('/vocab/:id', (req: Request, res: Response) => {
+const processVocab = (req: Request, res: Response, validateId = false): void => {
   try {
-    ApiService.checkId(req?.params?.id);
+    if(validateId){
+      ApiService.checkId(req?.params?.id);
+    }
     ApiService.checkVocabReadParams(req.query);
     void VocabularyService.list(req.query, req.params.id)
       .then(r => res.json(r));
@@ -32,7 +23,7 @@ router.get('/vocab/:id', (req: Request, res: Response) => {
       message: e
     });
   }
-});
+};
 
 router.post('/vocab', (req: Request, res: Response) => {
   res.json({statusCode:201});

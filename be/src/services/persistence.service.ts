@@ -1,7 +1,5 @@
-import {Collection, Db, DeleteResult, Document, Filter, FindOptions, MongoClient, WithId} from 'mongodb';
-import {KnowledgeResponse} from '../models/response-body.model';
-import ListQueryModel from '../models/list-query.model';
-import {Vocabulary} from '../generated/model/vocabulary';
+import {Collection, Db, DeleteResult, Filter, FindOptions, MongoClient} from 'mongodb';
+import {VocabularyDTO} from '../models/dto.models';
 
 class PersistenceService {
   private client: MongoClient;
@@ -57,100 +55,9 @@ class PersistenceService {
     console.log('create');
   }
 
-  async list(query?: ListQueryModel, id?: string): Promise<KnowledgeResponse> {
-    const {options, filter} = this.transformToMongoDBFilterOption(query, id);
-
+  list(options: FindOptions, filter: Filter<VocabularyDTO>): Promise<VocabularyDTO[]> {
     // @ts-ignore
-    const result: WithId<Document>[] = await this.db.collection(this.COLLECTION_VOCABULARY).find(filter, options).toArray();
-    const items: Vocabulary[] = result.map(r => {
-      delete r._id;
-      return r as unknown as Vocabulary;
-    });
-
-    return {
-      offset: options.skip ?? 0,
-      rows: items.length,
-      totalItems: 0, // TODO
-      items
-    };
-  }
-
-  private transformToMongoDBFilterOption(query?: ListQueryModel, id?: string): {options: FindOptions, filter: Filter<Vocabulary>} {
-    const options: FindOptions = {};
-    const filter: Filter<Vocabulary> = {};
-
-    if(!!id) {
-      // @ts-ignore
-      filter.id = id;
-    }
-
-    if(!!query) {
-      if (!!query?.text) {
-        filter.$or = [
-          {
-            label: {
-              $regex: `${query.text}`,
-              $options: 'gi'
-            }
-          },
-          {
-            description: {
-              $regex: `${query.text}`,
-              $options: 'gi'
-            }
-          }
-        ];
-      }
-
-      if(!!query?.createdSince) {
-        // @ts-ignore
-        filter.created = {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-          $gte: new Date(query?.createdSince)
-          // https://www.mongodb.com/community/forums/t/finding-data-between-two-dates-by-using-a-query-in-mongodb-charts/102506/2
-        };
-      }
-
-      if(!!query?.modifiedSince) {
-        // @ts-ignore
-        filter.lastModified = {
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-          $gte: new Date(query.modifiedSince)
-        };
-      }
-
-      if(!!query?.sort) {
-        options.sort = PersistenceService.mapToMongoSort(query?.sort);
-      }
-
-      if(!!query?.offset) {
-        options.skip = Number(query?.offset); // Without the cast, it won't work!
-      }
-
-      if(!!query?.rows) {
-        options.limit = Number(query?.rows); // Without the cast, it won't work!
-      }
-    }
-
-    return {
-      options,
-      filter
-    };
-  }
-
-  private static mapToMongoSort(sort: string): any {
-    if(!!sort && sort.includes(' ')) {
-      if(sort.toLowerCase().includes('created')) {
-        return {
-          created: sort.toLowerCase().includes('asc') ? 1 : -1
-        };
-      } else {
-        return {
-          lastModified: sort.toLowerCase().includes('asc') ? 1 : -1
-        };
-      }
-    }
-    return {};
+    return this.db.collection(this.COLLECTION_VOCABULARY).find(filter, options).toArray() as VocabularyDTO[];
   }
 
   private async deleteAllVocabularies(): Promise<void> {
@@ -163,7 +70,7 @@ class PersistenceService {
   private async test(): Promise<void> {
     const v: Collection = this.db.collection(this.COLLECTION_VOCABULARY);
     // @ts-ignore
-    const vocabs: Vocabulary[] = Array.from({length: 10}, (x, i) => ({
+    const vocabs: VocabularyDTO[] = Array.from({length: 10}, (x, i) => ({
         id: `${Date.now() + i}`,
         created: new Date(Date.now()),
         lastModified: new Date(Date.now()),

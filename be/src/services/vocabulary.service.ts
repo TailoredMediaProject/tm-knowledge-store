@@ -1,9 +1,109 @@
 import PersistenceService from './persistence.service';
 import ListQueryModel from '../models/list-query.model';
+import {Filter, FindOptions} from 'mongodb';
+import {VocabularyDTO} from '../models/dto.models';
+import {Vocabulary} from '../generated';
 
 class VocabularyService {
-  public list(query: ListQueryModel, id?: string): Promise<any> {
-    return PersistenceService.list(query, id);
+  public async list(query: ListQueryModel, id?: string): Promise<any> {
+    const {options, filter} = this.transformToMongoDBFilterOption(query, id);
+    const vocDBOs: VocabularyDTO[] = await PersistenceService.list(options, filter);
+
+    return {
+      offset: options.skip ?? 0,
+      rows: vocDBOs.length,
+      totalItems: 0, // TODO
+      items: vocDBOs.map(v => this.vocabDbo2Dto(v))
+    };
+  }
+
+  private vocabDbo2Dto(dto: VocabularyDTO): Vocabulary {
+    return {
+      id: dto._id.toHexString(),
+      label: dto.label,
+      description: dto.description,
+      created: dto.created.toISOString(),
+      lastModified: dto.lastModified.toISOString(),
+      entityCount: -1
+    };
+  }
+
+  private transformToMongoDBFilterOption(query?: ListQueryModel, id?: string): {options: FindOptions, filter: Filter<VocabularyDTO>} {
+    const options: FindOptions = {};
+    const filter: Filter<VocabularyDTO> = {};
+
+    if(!!id) {
+      // @ts-ignore
+      filter._id = id;
+    }
+
+    if(!!query) {
+      if (!!query?.text) {
+        filter.$or = [
+          {
+            label: {
+              $regex: `${query.text}`,
+              $options: 'gi'
+            }
+          },
+          {
+            description: {
+              $regex: `${query.text}`,
+              $options: 'gi'
+            }
+          }
+        ];
+      }
+
+      if(!!query?.createdSince) {
+        // @ts-ignore
+        filter.created = {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+          $gte: new Date(query?.createdSince)
+          // https://www.mongodb.com/community/forums/t/finding-data-between-two-dates-by-using-a-query-in-mongodb-charts/102506/2
+        };
+      }
+
+      if(!!query?.modifiedSince) {
+        // @ts-ignore
+        filter.lastModified = {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+          $gte: new Date(query.modifiedSince)
+        };
+      }
+
+      if(!!query?.sort) {
+        options.sort = this.mapToMongoSort(query?.sort);
+      }
+
+      if(!!query?.offset) {
+        options.skip = Number(query?.offset); // Without the cast, it won't work!
+      }
+
+      if(!!query?.rows) {
+        options.limit = Number(query?.rows); // Without the cast, it won't work!
+      }
+    }
+
+    return {
+      options,
+      filter
+    };
+  }
+
+  private mapToMongoSort(sort: string): any {
+    if(!!sort && sort.includes(' ')) {
+      if(sort.toLowerCase().includes('created')) {
+        return {
+          created: sort.toLowerCase().includes('asc') ? 1 : -1
+        };
+      } else {
+        return {
+          lastModified: sort.toLowerCase().includes('asc') ? 1 : -1
+        };
+      }
+    }
+    return {};
   }
 }
 
