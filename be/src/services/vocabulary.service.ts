@@ -33,8 +33,10 @@ export class VocabularyService {
     public createVocab(newVocab: Vocabulary): Promise<Vocabulary> {
 
         return this.collection.insertOne({
-            label: newVocab.label,
-            description: newVocab.description
+            ...newVocab,
+            _id: null,
+            created: new Date(),
+            lastModified: new Date()
         }).then((result) => {
             return result.insertedId
         }).then(id => {
