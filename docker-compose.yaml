@@ -17,7 +17,7 @@ services:
       - ./be:/home/node/app
     ports:
       - '8080:8080'
-    command: 'npm run build:start'
+    command: 'npm run dev:start'
   db:
     image: mongo:latest
     ports:

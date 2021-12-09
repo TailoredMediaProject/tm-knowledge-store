@@ -5,6 +5,7 @@
   "main": "dist/app.js",
   "scripts": {
     "start": "node dist/app.js",
+    "dev:start": "nodemon",
     "debug": "DEBUG=express:* node dist/app.js",
     "test": "jest --passWithNoTests",
     "lint": "eslint",
@@ -39,6 +40,7 @@
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "jest": "^27.4.0",
+    "nodemon": "^2.0.15",
     "openapi-typescript-codegen": "^0.12.5",
     "ts-node": "^10.4.0",
     "tslib": "^2.3.1"
