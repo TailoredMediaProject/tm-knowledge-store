@@ -203,7 +203,7 @@ import {
   ListboxOptions,
 } from "@headlessui/vue";
 import { CheckIcon, SelectorIcon } from "@heroicons/vue/solid";
-import { TagType} from "@/openapi";
+import { TagType } from "@/openapi";
 const tagTypeKeys = Object.keys(TagType);
 const tagTypeValues = Object.values(TagType);
 export default {

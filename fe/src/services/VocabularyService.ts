@@ -6,7 +6,7 @@ import {
   VocabularyApiFp,
 } from "../openapi";
 import { ISO8601toUTC } from "@/Utility/DateUtility";
-import {extractVocabList, VocabList} from "@/Objects/VocabList";
+import { extractVocabList, VocabList } from "@/Objects/VocabList";
 
 export class VocabularyService {
   private readonly basePath: string;

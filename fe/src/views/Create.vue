@@ -30,7 +30,7 @@
           </div>
           <component
             :is="isEntity ? 'CreateEntity' : 'CreateVocab'"
-            v-bind="{vocabID: this.vID}"
+            v-bind="{ vocabID: this.vID }"
           ></component>
         </div>
       </div>

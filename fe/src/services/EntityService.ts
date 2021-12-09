@@ -8,7 +8,7 @@ import {
 import { AxiosInstance, AxiosPromise, AxiosRequestConfig } from "axios";
 import { ISO8601toUTC } from "@/Utility/DateUtility";
 import { offset } from "@popperjs/core";
-import {EntityList, extractEntityList} from "@/Objects/EntityList";
+import { EntityList, extractEntityList } from "@/Objects/EntityList";
 
 export class EntityService {
   private readonly basePath: string;

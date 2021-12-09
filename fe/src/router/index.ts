@@ -26,7 +26,7 @@ const routes: Array<RouteRecordRaw> = [
     name: "Create",
     component: Create,
     props: true,
-  }
+  },
 ];
 
 const router = createRouter({

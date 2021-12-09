@@ -246,7 +246,7 @@ export default {
     },
     createNew() {
       this.$router.push("/create");
-    }
+    },
   },
 };
 </script>
