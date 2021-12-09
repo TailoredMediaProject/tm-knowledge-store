@@ -30,9 +30,9 @@ export class VocabularyService {
         return this.persistence.db.collection(this.vocabCollection);
     }
 
-    public async createVocab(newVocab: Vocabulary): Promise<Vocabulary> {
+    public createVocab(newVocab: Vocabulary): Promise<Vocabulary> {
 
-        return await this.collection.insertOne({
+        return this.collection.insertOne({
             label: newVocab.label,
             description: newVocab.description
         }).then((result) => {
@@ -42,22 +42,26 @@ export class VocabularyService {
         });
     }
 
-    public getVocabular(id: string | ObjectId): Vocabulary {
+    public getVocabular(id: string | ObjectId): Promise<Vocabulary> {
         // TODO: How should you do this check?
         // if (typeof id !== typeof ObjectId) {
         //     id = new ObjectId(id)
         // }
-        let x = this.collection.find({_id: new ObjectId(id)})
+        // const x = await this.collection.findOne({_id: new ObjectId(id)})
 
-        const vocab: Vocabulary = new class implements Vocabulary {
-            _id: ObjectId;
-            created: Date;
-            description: string;
-            label: string;
-            lastModified: Date;
-        }
+        // const vocab: Vocabulary = new class implements Vocabulary {
+        //     _id: ObjectId;
+        //     created: Date;
+        //     description: string;
+        //     label: string;
+        //     lastModified: Date;
+        // }
+        //
+        // vocab.created = x.created
+        // vocab.description = x.description
+        // vocab._id = x._id
 
-        return vocab
+        return this.collection.findOne({_id: new ObjectId(id)}).then(x => <Vocabulary>x);
     }
 
     public readVocab(): void {
@@ -66,3 +70,5 @@ export class VocabularyService {
 }
 
 export const vocabularyService: VocabularyService = new VocabularyService()
+
+// export default new VocabularyService()

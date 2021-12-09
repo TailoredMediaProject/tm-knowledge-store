@@ -1,6 +1,7 @@
 // @ts-ignore
 import {Request, Response, Router} from 'express';
 import {vocabularyService} from "../services/vocabulary.service";
+import {Vocabulary} from "../models/dbo.models";
 
 const router: Router = Router();
 
@@ -8,12 +9,12 @@ router.get('/vocab', async (req: Request, res: Response) => {
   res.json({statusCode:200});
 });
 
-router.post('/vocab', (req: Request, res: Response) => {
+router.post('/vocab', async (req: Request, res: Response) => {
   const body = req.body
 
-  vocabularyService.createVocab(
+  const v = await vocabularyService.createVocab(body);
 
-  res.json({statusCode:201});
+  res.json(v);
 });
 
 router.put('/vocab/:id', (req: Request, res: Response) => {

@@ -1,6 +1,5 @@
 import {ObjectId} from "mongodb";
 
-
 export interface Vocabulary {
     _id: ObjectId
     label: string
