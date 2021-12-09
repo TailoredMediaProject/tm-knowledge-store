@@ -1,3 +1,4 @@
+# TODO remove
 FROM node:lts-alpine as build-stage
 
 WORKDIR /app
