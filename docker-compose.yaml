@@ -1,31 +1,25 @@
 version: '2'
 
 services:
-  node:
+  knowledge-store:
     env_file: .env
-    container_name: be
-    image: 'node:16.13.0'
+    image: 'node:lts-alpine'
     user: 'node'
     working_dir: /home/node/app/dist
     environment:
       NODE_ENV: production
       HOST: '${BE_HOST}'
       PORT: '${BE_PORT}'
+      MONGO_URL: 'mongodb://db:27017'
+      MONGO_DATABASE: '${MONGO_DATABASE-tm-ks}'
     volumes:
       - ./be:/home/node/app
     ports:
       - '8080:8080'
     command: 'npm run build:start'
-  db:
+  mongo:
     image: mongo:latest
-    container_name: db
-    hostname: db
-    env_file: .env
     environment:
-      MONGO_ROOT_USERNAME: '${MONGO_ROOT_USERNAME}'
-      MONGO_ROOT_PASSWORD: '${MONGO_ROOT_PASSWORD}'
-      MONGO_USERNAME: '${MONGO_USERNAME}'
-      MONGO_PASSWORD: '${MONGO_PASSWORD}'
-      MONGO_DATABASE: '${MONGO_DATABASE}'
+      MONGO_DATABASE: '${MONGO_DATABASE-knowledge}'
     ports:
       - "27017:27017"
