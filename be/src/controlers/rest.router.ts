@@ -1,15 +1,37 @@
 // @ts-ignore
 import {Request, Response, Router} from 'express';
 import VocabularyService from '../services/vocabulary.service';
+import ApiService from '../services/api.service';
 
 const router: Router = Router();
 
-router.get('/vocab', async (req: Request, res: Response) => {
-  res.json(await VocabularyService.list(req));
+router.get('/vocab', (req: Request, res: Response) => {
+  try {
+    ApiService.checkVocabReadParams(req.query);
+    void VocabularyService.list(req.query)
+      .then(r => res.json(r));
+  } catch (e) {
+    console.error(e);
+    res.json({
+      statusCode: 400,
+      message: e
+    });
+  }
 });
 
-router.get('/vocab/:id', async (req: Request, res: Response) => {
-  res.json(await VocabularyService.list(req));
+router.get('/vocab/:id', (req: Request, res: Response) => {
+  try {
+    ApiService.checkId(req?.params?.id);
+    ApiService.checkVocabReadParams(req.query);
+    void VocabularyService.list(req.query, req.params.id)
+      .then(r => res.json(r));
+  } catch (e) {
+    console.error(e);
+    res.json({
+      statusCode: 400,
+      message: e
+    });
+  }
 });
 
 router.post('/vocab', (req: Request, res: Response) => {
