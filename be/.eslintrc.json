@@ -5,10 +5,8 @@
     },
     "root": true,
     "ignorePatterns": ["node_modules/**/*", "jest.config.ts", "src/generated/"],
-    "files": ["*.ts"],
     "extends": [
         "eslint:recommended",
-        "plugin:vue/essential",
         "plugin:import/recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:@typescript-eslint/recommended-requiring-type-checking"
@@ -20,8 +18,12 @@
         "project": ["tsconfig.json"],
         "createDefaultProgram": true
     },
+    "overrides": [
+        {
+            "files": ["*.ts"]
+        }
+    ],
     "plugins": [
-        "vue",
         "@typescript-eslint",
         "prefer-arrow",
         "import"
@@ -62,7 +64,7 @@
         "no-empty": "error",
         "no-undef-init": "off",
         "no-underscore-dangle": "off",
-        "max-len": "error",
+        "max-len": ["error", {"code":  140}],
         "no-prototype-builtins": "error",
         "no-extra-boolean-cast": "off",
         "no-case-declarations": "error"

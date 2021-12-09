@@ -3,8 +3,9 @@ import {Application, Router} from 'express';
 import RestRouter from './controlers/rest.router';
 import ResolveRouter from './controlers/resolve.router';
 import HealthRouter from './controlers/health.router';
-// @ts-ignore
-const express = require('express');
+import express = require('express');
+import path = require('path')
+
 const app: Application = express();
 const routes: Router[] = [RestRouter, ResolveRouter, HealthRouter];
 
@@ -14,6 +15,7 @@ routes.forEach((router: Router) =>
   router.stack.forEach((routConfig: any) => {
     const configuredMethods: any = routConfig.route.methods;
 
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     Object.keys(configuredMethods).forEach((supportedHttpRequest: string) => {
       if(configuredMethods[supportedHttpRequest]) {
         // @ts-ignore
@@ -25,7 +27,7 @@ routes.forEach((router: Router) =>
 
 // Set static files
 const staticDir = process.env.BE_STATIC || 'static';
-const path = require('path')
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 app.use('/', express.static(path.join(__dirname, staticDir)))
 console.log(`static files on /`);
 
