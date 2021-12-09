@@ -3,14 +3,13 @@ import {Application, Router} from 'express';
 import RestRouter from './controlers/rest.router';
 import ResolveRouter from './controlers/resolve.router';
 import HealthRouter from './controlers/health.router';
-import * as bodyParser from "body-parser";
 import express = require('express');
 import path = require('path')
 
 
 // const serverConfig: ServerConfig = new ServerConfig();
 const app: Application = express();
-app.use(bodyParser.json())
+app.use(express.json())
 
 
 const routes: Router[] = [RestRouter, ResolveRouter, HealthRouter];
