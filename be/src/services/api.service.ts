@@ -1,5 +1,5 @@
 export default class ApiService {
-    public static checkQueryParams(allowed: string[], query: any): boolean {
+    public static checkQueryParams(allowed: string[], query: unknown): boolean {
         return Object.keys(query).every(key => allowed.includes(key));
     }
 

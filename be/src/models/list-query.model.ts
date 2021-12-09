@@ -1,9 +1,7 @@
-import {DateTime} from '../generated';
-
 export default interface ListQueryModel {
   text?: string;
-  createdSince?: DateTime;
-  modifiedSince?: DateTime;
+  createdSince?: string;
+  modifiedSince?: string;
   sort?: string;
   offset?: number;
   rows?: number

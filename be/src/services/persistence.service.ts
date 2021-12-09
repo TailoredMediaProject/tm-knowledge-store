@@ -1,13 +1,13 @@
 import {Collection, Db, DeleteResult, Document, Filter, FindOptions, MongoClient, WithId} from 'mongodb';
 import {KnowledgeResponse} from '../models/response-body.model';
 import ListQueryModel from '../models/list-query.model';
-import {Vocabulary} from '../generated';
+import {Vocabulary} from '../generated/model/vocabulary';
 
 class PersistenceService {
   private client: MongoClient;
   private db: Db;
-  private MONGO_DATABASE: string;
-  private COLLECTION_VOCABULARY = 'vocabulary';
+  private readonly MONGO_DATABASE: string;
+  private readonly COLLECTION_VOCABULARY = 'vocabulary';
 
   constructor() {
     this.initClient();
@@ -15,7 +15,7 @@ class PersistenceService {
     void this.test();
   }
 
-  private initClient() {
+  private initClient(): void {
     const MONGO_URL: string = PersistenceService.errorWhenFalsy('MONGO_URL', process.env.MONGO_URL);
     const MONGO_DATABASE: string = PersistenceService.errorWhenFalsy('MONGO_DATABASE', process.env.MONGO_DATABASE);
 
@@ -33,7 +33,7 @@ class PersistenceService {
     });
 
     this.db = this.client.db(MONGO_DATABASE);
-  };
+  }
 
   private static errorWhenFalsy(varName: string, value: string): string {
     if (!value) {
@@ -105,13 +105,16 @@ class PersistenceService {
       if(!!query?.createdSince) {
         // @ts-ignore
         filter.created = {
-          $gte: new Date(query.createdSince) // https://www.mongodb.com/community/forums/t/finding-data-between-two-dates-by-using-a-query-in-mongodb-charts/102506/2
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+          $gte: new Date(query?.createdSince)
+          // https://www.mongodb.com/community/forums/t/finding-data-between-two-dates-by-using-a-query-in-mongodb-charts/102506/2
         };
       }
 
       if(!!query?.modifiedSince) {
         // @ts-ignore
         filter.lastModified = {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
           $gte: new Date(query.modifiedSince)
         };
       }
@@ -121,7 +124,7 @@ class PersistenceService {
       }
 
       if(!!query?.offset) {
-        options.skip = Number(query?.offset); // Without the cast, it won't work! https://mongodb.github.io/node-mongodb-native/4.2/interfaces/FindOptions.html#skip
+        options.skip = Number(query?.offset); // Without the cast, it won't work!
       }
 
       if(!!query?.rows) {
@@ -150,22 +153,22 @@ class PersistenceService {
     return {};
   }
 
-  private async deleteAllVocabularies() {
-    const v: Collection = await this.db.collection(this.COLLECTION_VOCABULARY);
+  private async deleteAllVocabularies(): Promise<void> {
+    const v: Collection = this.db.collection(this.COLLECTION_VOCABULARY);
     const dr: DeleteResult = await v.deleteMany({});
 
     console.log(dr);
-  };
+  }
 
   private async test(): Promise<void> {
-    const v: Collection = await this.db.collection(this.COLLECTION_VOCABULARY);
+    const v: Collection = this.db.collection(this.COLLECTION_VOCABULARY);
     // @ts-ignore
     const vocabs: Vocabulary[] = Array.from({length: 10}, (x, i) => ({
         id: `${Date.now() + i}`,
         created: new Date(Date.now()),
         lastModified: new Date(Date.now()),
-        label: 'Schneelandschaft ' + i,
-        description: 'Eine Landschaft die mit Schnee bedeckt ist ' + i,
+        label: `Schneelandschaft ${i}`,
+        description: `Eine Landschaft die mit Schnee bedeckt ist ${i}`,
         entityCount: 0
       }));
 

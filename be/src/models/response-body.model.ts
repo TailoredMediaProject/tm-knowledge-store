@@ -1,4 +1,4 @@
-import {Vocabulary} from '../generated';
+import {Vocabulary} from '../generated/model/vocabulary';
 
 export interface KnowledgeResponse {
   offset: number;
