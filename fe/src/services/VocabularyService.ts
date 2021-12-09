@@ -6,6 +6,7 @@ import {
   VocabularyApiFp,
 } from "../openapi";
 import { ISO8601toUTC } from "@/Utility/DateUtility";
+import {extractVocabList, VocabList} from "@/Objects/VocabList";
 
 export class VocabularyService {
   private readonly basePath: string;
@@ -60,22 +61,24 @@ export class VocabularyService {
     this.apiFn = VocabularyApiFp(new Configuration({ basePath }));
   }
 
-  getVocabs(): Promise<(Pageable & Vocabulary[]) | undefined> {
-    return this.apiFn.listVocabularies().then((req) =>
-      req().then((resp) => {
-        if (resp.status !== 200) {
-          console.error(resp);
-          return;
-        }
-        const data = resp.data as Pageable & [Vocabulary];
-        console.log(data);
-        return data;
-      })
-    );
-    /* return get<Vocabulary[]>(this.apiPath).catch((error) => {
-      console.error(error);
-      return Promise.reject("Error getting vocabularies!");
-    });*/
+  async getVocabs(
+    text?: string,
+    page = 0,
+    rowCount = 10
+  ): Promise<VocabList | undefined> {
+    return this.apiFn
+      .listVocabularies(text, undefined, undefined, undefined, page, rowCount)
+      .then((req) =>
+        req().then((resp) => {
+          if (resp.status !== 200) {
+            console.error(resp);
+            return;
+          }
+          const data = resp.data as Pageable & [Vocabulary];
+          console.log(data);
+          return extractVocabList(data);
+        })
+      );
   }
 
   getVocab(objectID: string): Promise<Vocabulary | undefined> {
@@ -92,11 +95,6 @@ export class VocabularyService {
         return resp.data;
       })
     );
-    /*const url = this.apiPath + "/" + objectID.replace("/", "");
-    return get<Vocabulary>(url).catch((error) => {
-      console.error(error);
-      return Promise.reject("Error getting vocabulary!");
-    });*/
   }
 
   createVocab(
@@ -122,12 +120,6 @@ export class VocabularyService {
           return resp.data;
         })
       );
-    /* return post<Vocabulary>(this.apiPath, { label, description }).catch(
-      (error) => {
-        console.error(error);
-        return Promise.reject("Error creating vocabulary!");
-      }
-    );*/
   }
 
   updateVocab(vocab: Vocabulary): Promise<Vocabulary | undefined> {
@@ -151,12 +143,6 @@ export class VocabularyService {
           return resp.data;
         })
       );
-
-    /*const url = this.apiPath + "/" + objectID.replace("/", "");
-    return put<Vocabulary>(url, vocab).catch((error) => {
-      console.error(error);
-      return Promise.reject("Error updating vocabulary!");
-    });*/
   }
 
   deleteVocab(vocab: Vocabulary): Promise<Vocabulary | undefined> {
@@ -182,10 +168,5 @@ export class VocabularyService {
           return Promise.reject("Error deleting vocabulary!");
         })
     );
-    /*const url = this.apiPath + "/" + objectID.replace("/", "");
-    return deleteObject<Vocabulary>(url).catch((error) => {
-      console.error(error);
-      return Promise.reject("Error deleting vocabulary!");
-    });*/
   }
 }

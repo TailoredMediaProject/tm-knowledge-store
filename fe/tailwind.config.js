@@ -19,6 +19,8 @@ module.exports = {
       tmYellow: "#FFB703",
       tmBlue: "#3481b8",
       tmOrange: "#fa842b",
+      tmHoverOrange: "#d46503",
+      tmFocusOrange: "#f69241",
       tmFontColor: "#193153",
       primaryBG: colors.gray["300"],
       secondaryBG: "#C22132",
