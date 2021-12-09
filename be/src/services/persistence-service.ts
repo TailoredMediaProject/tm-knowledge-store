@@ -3,7 +3,7 @@ import {Db, MongoClient} from 'mongodb';
 class PersistenceService {
     private client: MongoClient;
     private db: Db;
-    private MONGO_DATABASE: string
+    private readonly MONGO_DATABASE: string
 
     constructor() {
         this.initClient();
@@ -11,7 +11,7 @@ class PersistenceService {
     }
 
 
-    private initClient() {
+    private initClient(): void {
         const MONGO_URL: string = this.errorWhenFalsy('MONGO_URL', process.env.MONGO_URL);
         const MONGO_DATABASE: string = this.errorWhenFalsy('MONGO_DATABASE', process.env.MONGO_DATABASE);
 
@@ -20,12 +20,12 @@ class PersistenceService {
             serverSelectionTimeoutMS: 5000
         })
 
-        this.client.connect(err => {
+        this.client.connect(() => {
             console.log('Initial connection to MongoDB successful')
         });
 
         this.db = this.client.db(MONGO_DATABASE);
-    };
+    }
 
     private errorWhenFalsy(varName: string, value: string): string {
         if(!value) {

@@ -64,7 +64,7 @@
         "no-empty": "error",
         "no-undef-init": "off",
         "no-underscore-dangle": "off",
-        "max-len": "error",
+        "max-len": ["error", {"code":  140}],
         "no-prototype-builtins": "error",
         "no-extra-boolean-cast": "off",
         "no-case-declarations": "error"
