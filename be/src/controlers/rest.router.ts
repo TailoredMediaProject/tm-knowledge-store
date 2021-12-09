@@ -1,4 +1,3 @@
-// @ts-ignore
 import {Request, Response, Router} from 'express';
 import {vocabularyService} from "../services/vocabulary.service";
 import {Vocabulary} from "../models/dbo.models";
@@ -7,14 +6,14 @@ import {Vocabulary as VocabularyDTO} from "../generated/models/Vocabulary";
 const router: Router = Router();
 
 function vocabDto2Dbo(dto: VocabularyDTO): Vocabulary {
-  // TODO(daniil)
-  return new class implements Vocabulary {
-    _id: ObjectId;
-    created: Date;
-    description: string;
-    label: string;
-    lastModified: Date;
+  const vocab: Vocabulary = {
+    _id: undefined,
+    created: undefined,
+    description: dto.description,
+    label: dto.label,
+    lastModified: undefined
   }
+  return vocab
 }
 
 function vocabDbo2Dto(dbo: Vocabulary): VocabularyDTO {
