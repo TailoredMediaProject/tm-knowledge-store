@@ -1,6 +1,6 @@
 import {ObjectId} from "mongodb";
 
-export interface VocabularyDTO {
+export interface Vocabulary {
   _id: ObjectId
   label: string
   description: string
@@ -8,7 +8,7 @@ export interface VocabularyDTO {
   lastModified: Date
 }
 
-export interface EntityDTO {
+export interface Entity {
   _id: ObjectId
   vocabulary: ObjectId
   type: string

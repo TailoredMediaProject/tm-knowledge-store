@@ -1,13 +1,13 @@
 import PersistenceService from './persistence.service';
 import ListQueryModel from '../models/list-query.model';
 import {Filter, FindOptions} from 'mongodb';
-import {VocabularyDTO} from '../models/dto.models';
-import {Vocabulary} from '../generated';
+import {Vocabulary} from '../models/dbo.models';
+import {Vocabulary as VocabularyDTO} from '../generated';
 
 class VocabularyService {
   public async list(query: ListQueryModel, id?: string): Promise<any> {
     const {options, filter} = this.transformToMongoDBFilterOption(query, id);
-    const vocDBOs: VocabularyDTO[] = await PersistenceService.list(options, filter);
+    const vocDBOs: Vocabulary[] = await PersistenceService.list(options, filter);
 
     return {
       offset: options.skip ?? 0,
@@ -17,20 +17,20 @@ class VocabularyService {
     };
   }
 
-  private vocabDbo2Dto(dto: VocabularyDTO): Vocabulary {
+  private vocabDbo2Dto(dbo: Vocabulary): VocabularyDTO {
     return {
-      id: dto._id.toHexString(),
-      label: dto.label,
-      description: dto.description,
-      created: dto.created.toISOString(),
-      lastModified: dto.lastModified.toISOString(),
+      id: dbo._id.toHexString(),
+      label: dbo.label,
+      description: dbo.description,
+      created: dbo.created.toISOString(),
+      lastModified: dbo.lastModified.toISOString(),
       entityCount: -1
     };
   }
 
-  private transformToMongoDBFilterOption(query?: ListQueryModel, id?: string): {options: FindOptions, filter: Filter<VocabularyDTO>} {
+  private transformToMongoDBFilterOption(query?: ListQueryModel, id?: string): {options: FindOptions, filter: Filter<Vocabulary>} {
     const options: FindOptions = {};
-    const filter: Filter<VocabularyDTO> = {};
+    const filter: Filter<Vocabulary> = {};
 
     if(!!id) {
       // @ts-ignore

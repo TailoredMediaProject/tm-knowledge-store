@@ -74,7 +74,7 @@
         "trailingUnderscore": "forbid"
       }
     ],
-    "import/no-unresolved": "error",
+    "import/no-unresolved": "off",
     "import/named": "error",
     "prefer-arrow/prefer-arrow-functions": "error",
     "arrow-body-style": [
@@ -88,7 +88,7 @@
     ],
     "no-empty": "error",
     "no-undef-init": "off",
-    "no-underscore-dangle": "error",
+    "no-underscore-dangle": "off",
     "max-len": [
       "error",
       {

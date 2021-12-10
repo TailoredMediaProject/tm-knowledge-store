@@ -1,5 +1,5 @@
 import {Collection, Db, DeleteResult, Filter, FindOptions, MongoClient} from 'mongodb';
-import {VocabularyDTO} from '../models/dto.models';
+import {Vocabulary} from '../models/dbo.models';
 
 class PersistenceService {
   private client: MongoClient;
@@ -55,9 +55,9 @@ class PersistenceService {
     console.log('create');
   }
 
-  list(options: FindOptions, filter: Filter<VocabularyDTO>): Promise<VocabularyDTO[]> {
+  list(options: FindOptions, filter: Filter<Vocabulary>): Promise<Vocabulary[]> {
     // @ts-ignore
-    return this.db.collection(this.COLLECTION_VOCABULARY).find(filter, options).toArray() as VocabularyDTO[];
+    return this.db.collection(this.COLLECTION_VOCABULARY).find(filter, options).toArray() as Vocabulary[];
   }
 
   private async deleteAllVocabularies(): Promise<void> {
@@ -70,7 +70,7 @@ class PersistenceService {
   private async test(): Promise<void> {
     const v: Collection = this.db.collection(this.COLLECTION_VOCABULARY);
     // @ts-ignore
-    const vocabs: VocabularyDTO[] = Array.from({length: 10}, (x, i) => ({
+    const vocabs: Vocabulary[] = Array.from({length: 10}, (x, i) => ({
         id: `${Date.now() + i}`,
         created: new Date(Date.now()),
         lastModified: new Date(Date.now()),
