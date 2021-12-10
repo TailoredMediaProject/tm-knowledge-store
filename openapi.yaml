@@ -198,7 +198,7 @@ components:
     Id:
       type: string
       pattern: '[a-zA-Z\d]+'
-    Time:
+    DateTime:
       type: string
       format: date-time
       example: "2021-11-29T16:02:17Z"

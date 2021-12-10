@@ -27,7 +27,7 @@ router.post('/vocab', (req: Request, res: Response) => {
 });
 
 router.put('/vocab/:id', (req: Request, res: Response) => {
-  res.json({ statusCode: 202 });
+  res.json({ statusCode: 205 });
 });
 
 router.delete('/vocab/:id', (req: Request, res: Response) => {
