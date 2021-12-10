@@ -1,43 +1,47 @@
-import PersistenceService from './persistence.service';
-import ListQueryModel from '../models/list-query.model';
-import {Filter, FindOptions} from 'mongodb';
+import {Collection, Filter, FindOptions, ObjectId} from 'mongodb';
 import {Vocabulary} from '../models/dbo.models';
-import {Vocabulary as VocabularyDTO} from '../generated';
+import {instance, PersistenceService} from './persistence.service';
+import ListQueryModel from '../models/list-query.model';
 
-class VocabularyService {
-  public async list(query: ListQueryModel, id?: string): Promise<any> {
-    const {options, filter} = this.transformToMongoDBFilterOption(query, id);
-    const vocDBOs: Vocabulary[] = await PersistenceService.list(options, filter);
+export class VocabularyService {
+  private readonly persistence: PersistenceService = instance;
+  private readonly vocabCollection: string = 'vocabularies';
+  private readonly collection = (): Collection => this.persistence.db().collection(this.vocabCollection);
 
-    return {
-      offset: options.skip ?? 0,
-      rows: vocDBOs.length,
-      totalItems: 0, // TODO
-      items: vocDBOs.map(v => this.vocabDbo2Dto(v))
-    };
+  public createVocab(newVocab: Vocabulary): Promise<Vocabulary> {
+
+    return this.collection().insertOne({
+      ...newVocab,
+      _id: null,
+      created: new Date(),
+      lastModified: new Date()
+    })
+      .then((result) => result.insertedId)
+      .then(id => this.getVocabulary(id));
   }
 
-  private vocabDbo2Dto(dbo: Vocabulary): VocabularyDTO {
-    return {
-      id: dbo._id.toHexString(),
-      label: dbo.label,
-      description: dbo.description,
-      created: dbo.created.toISOString(),
-      lastModified: dbo.lastModified.toISOString(),
-      entityCount: -1
-    };
+  public getVocabulary(id: string | ObjectId): Promise<Vocabulary> {
+    return this.listVocab(undefined, id)
+      .then(vocabs => vocabs.find(v => !!v));
   }
 
-  private transformToMongoDBFilterOption(query?: ListQueryModel, id?: string): {options: FindOptions, filter: Filter<Vocabulary>} {
+  public async listVocab(query: ListQueryModel, id?: string | ObjectId): Promise<Vocabulary[]> {
+    const { options, filter } = this.transformToMongoDBFilterOption(query, id);
+    // @ts-ignore
+    return await this.collection().find(filter, options).toArray() as Vocabulary[];
+  }
+
+  private transformToMongoDBFilterOption(query?: ListQueryModel, id?: string | ObjectId):
+    { options: FindOptions, filter: Filter<Vocabulary> } {
     const options: FindOptions = {};
     const filter: Filter<Vocabulary> = {};
 
-    if(!!id) {
+    if (!!id) {
       // @ts-ignore
-      filter._id = id;
+      filter._id = new ObjectId(id);
     }
 
-    if(!!query) {
+    if (!!query) {
       if (!!query?.text) {
         filter.$or = [
           {
@@ -55,7 +59,7 @@ class VocabularyService {
         ];
       }
 
-      if(!!query?.createdSince) {
+      if (!!query?.createdSince) {
         // @ts-ignore
         filter.created = {
           // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
@@ -64,7 +68,7 @@ class VocabularyService {
         };
       }
 
-      if(!!query?.modifiedSince) {
+      if (!!query?.modifiedSince) {
         // @ts-ignore
         filter.lastModified = {
           // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
@@ -72,15 +76,15 @@ class VocabularyService {
         };
       }
 
-      if(!!query?.sort) {
+      if (!!query?.sort) {
         options.sort = this.mapToMongoSort(query?.sort);
       }
 
-      if(!!query?.offset) {
+      if (!!query?.offset) {
         options.skip = Number(query?.offset); // Without the cast, it won't work!
       }
 
-      if(!!query?.rows) {
+      if (!!query?.rows) {
         options.limit = Number(query?.rows); // Without the cast, it won't work!
       }
     }
@@ -92,8 +96,8 @@ class VocabularyService {
   }
 
   private mapToMongoSort(sort: string): any {
-    if(!!sort && sort.includes(' ')) {
-      if(sort.toLowerCase().includes('created')) {
+    if (!!sort && sort.includes(' ')) {
+      if (sort.toLowerCase().includes('created')) {
         return {
           created: sort.toLowerCase().includes('asc') ? 1 : -1
         };
@@ -107,4 +111,4 @@ class VocabularyService {
   }
 }
 
-export default new VocabularyService();
+export const vocabularyService: VocabularyService = new VocabularyService();

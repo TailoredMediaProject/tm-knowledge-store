@@ -6,7 +6,12 @@ import HealthRouter from './controlers/health.router';
 import express = require('express');
 import path = require('path')
 
+
+// const serverConfig: ServerConfig = new ServerConfig();
 const app: Application = express();
+app.use(express.json())
+
+
 const routes: Router[] = [RestRouter, ResolveRouter, HealthRouter];
 
 // Add automatically all configured routes within the router

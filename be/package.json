@@ -5,6 +5,7 @@
   "main": "dist/app.js",
   "scripts": {
     "start": "node dist/app.js",
+    "dev:start": "nodemon",
     "debug": "DEBUG=express:* node dist/app.js",
     "test": "jest --passWithNoTests",
     "lint": "eslint",
