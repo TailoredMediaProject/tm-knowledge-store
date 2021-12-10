@@ -1,8 +1,8 @@
 import {Db, MongoClient} from 'mongodb';
 
-class PersistenceService {
+export class PersistenceService {
     private client: MongoClient;
-    private db: Db;
+    private _db: Db;
     private readonly MONGO_DATABASE: string
 
     constructor() {
@@ -10,6 +10,9 @@ class PersistenceService {
         this.pingDB().catch(error => console.error(error));
     }
 
+    get db(): Db {
+        return this._db;
+    }
 
     private initClient(): void {
         const MONGO_URL: string = this.errorWhenFalsy('MONGO_URL', process.env.MONGO_URL);
@@ -24,7 +27,7 @@ class PersistenceService {
             console.log('Initial connection to MongoDB successful')
         });
 
-        this.db = this.client.db(MONGO_DATABASE);
+        this._db = this.client.db(MONGO_DATABASE);
     }
 
     private errorWhenFalsy(varName: string, value: string): string {
@@ -36,7 +39,7 @@ class PersistenceService {
 
     public async pingDB(): Promise<boolean> {
         try {
-            const res = await this.db.command({ping: 1});
+            const res = await this._db.command({ping: 1});
             return res.ok === 1;
         }
         catch (err){
@@ -50,4 +53,4 @@ class PersistenceService {
     }
 }
 
-export default new PersistenceService();
+export const instance =  new PersistenceService();
