@@ -16,8 +16,8 @@ services:
       - ./be:/home/node/app
     ports:
       - '8080:8080'
-    command: 'npm run build:start'
-  mongoDB:
+    command: 'npm run dev:start'
+  mongo:
     image: mongo:latest
     environment:
       MONGO_DATABASE: '${MONGO_DATABASE-knowledge}'
