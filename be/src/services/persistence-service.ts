@@ -15,10 +15,15 @@ export class PersistenceService {
     }
 
     private initClient(): void {
-        const MONGO_URL: string = this.errorWhenFalsy('MONGO_URL', process.env.MONGO_URL);
-        const MONGO_DATABASE: string = this.errorWhenFalsy('MONGO_DATABASE', process.env.MONGO_DATABASE);
+        const username = process.env.MONGO_USERNAME;
+        const password = process.env.MONGO_PASSWORD;
+        const authPathParams = !!username && !!password ? `${username}:${password}@`: '';
+        const dbHost = process.env.MONGO_HOST || 'localhost';
+        const dbPort = +(process.env.MONGO_PORT || 27017);
+        const dbName = process.env.MONGO_DATABASE || 'knowledge';
+        const mongoUrl: string = process.env.MONGO_URL || `mongodb://${authPathParams}${dbHost}:${dbPort}`;
 
-        this.client = new MongoClient(MONGO_URL, {
+        this.client = new MongoClient(mongoUrl, {
             connectTimeoutMS: 5000,
             serverSelectionTimeoutMS: 5000
         })
@@ -27,14 +32,7 @@ export class PersistenceService {
             console.log('Initial connection to MongoDB successful')
         });
 
-        this._db = this.client.db(MONGO_DATABASE);
-    }
-
-    private errorWhenFalsy(varName: string, value: string): string {
-        if(!value) {
-            throw new Error(`${varName} "${value}" falsy!`);
-        }
-        return value;
+        this._db = this.client.db(dbName);
     }
 
     public async pingDB(): Promise<boolean> {

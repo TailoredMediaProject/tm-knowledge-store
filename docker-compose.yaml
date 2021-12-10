@@ -10,8 +10,7 @@ services:
       NODE_ENV: production
       HOST: '${BE_HOST}'
       PORT: '${BE_PORT}'
-      MONGO_URL: 'mongodb://db:27017'
-      MONGO_DATABASE: '${MONGO_DATABASE-tm-ks}'
+      MONGO_HOST: 'mongo'
     volumes:
       - ./be:/home/node/app
     ports:
@@ -19,7 +18,5 @@ services:
     command: 'npm run dev:start'
   mongo:
     image: mongo:latest
-    environment:
-      MONGO_DATABASE: '${MONGO_DATABASE-knowledge}'
     ports:
       - "27017:27017"
