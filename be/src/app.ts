@@ -17,18 +17,18 @@ const routes: Router[] = [RestRouter, ResolveRouter, HealthRouter];
 // Add automatically all configured routes within the router
 console.log('Configured routes:')
 routes.forEach((router: Router) =>
-  router.stack.forEach((routConfig: any) => {
-    const configuredMethods: any = routConfig.route.methods;
+    router.stack.forEach((routConfig: any) => {
+        const configuredMethods: any = routConfig.route.methods;
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    Object.keys(configuredMethods).forEach((supportedHttpRequest: string) => {
-      if(configuredMethods[supportedHttpRequest]) {
-        // @ts-ignore
-        app[supportedHttpRequest](routConfig.route.path, router);
-        console.log(`${supportedHttpRequest.toUpperCase()} ${routConfig.route.path}`);
-      }
-    });
-}));
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        Object.keys(configuredMethods).forEach((supportedHttpRequest: string) => {
+            if (configuredMethods[supportedHttpRequest]) {
+                // @ts-ignore
+                app[supportedHttpRequest](routConfig.route.path, router);
+                console.log(`${supportedHttpRequest.toUpperCase()} ${routConfig.route.path}`);
+            }
+        });
+    }));
 
 // Set static files
 const staticDir = process.env.BE_STATIC || 'static';
