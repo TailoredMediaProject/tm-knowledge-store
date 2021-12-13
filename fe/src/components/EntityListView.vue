@@ -203,6 +203,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { useRoute } from "vue-router";
 
 export default {
   name: "EntityListView",
@@ -212,6 +213,8 @@ export default {
     };
   },
   mounted() {
+    const route = useRoute();
+    this.vocabID = route.params.vocabID;
     this.$store.dispatch("entityStore/loadEntityList", {
       vocabID: this.vocabID,
     });
