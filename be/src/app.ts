@@ -9,23 +9,12 @@ import path = require('path')
 const app: Application = express();
 app.use(express.json())
 
-const routes: Router[] = [RestRouter, ResolveRouter, HealthRouter];
+console.log('Register Health-Check')
+app.use(HealthRouter)
 
-// Add automatically all configured routes within the router
-console.log('Configured routes:')
-routes.forEach((router: Router) =>
-  router.stack.forEach((routConfig: any) => {
-    const configuredMethods: any = routConfig.route.methods;
-
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    Object.keys(configuredMethods).forEach((supportedHttpRequest: string) => {
-      if(configuredMethods[supportedHttpRequest]) {
-        // @ts-ignore
-        app[supportedHttpRequest](routConfig.route.path, router);
-        console.log(`${supportedHttpRequest.toUpperCase()} ${routConfig.route.path}`);
-      }
-    });
-}));
+console.log('Register OpenAPI-Spec v1 endpoints')
+const apiRoutes: Router[] = [RestRouter, ResolveRouter];
+app.use("/api/v1", apiRoutes)
 
 // Set static files
 const staticDir = process.env.BE_STATIC || 'static';
