@@ -1,6 +1,6 @@
 import {Collection, Db, FindCursor, MongoClient, ObjectId, WithId} from 'mongodb';
 import {Vocabulary} from "../models/dbo.models";
-import {instance, PersistenceService} from "./persistence-service";
+import {instance, PersistenceService} from "./persistence.service";
 
 export class VocabularyService {
     private persistence: PersistenceService = instance
