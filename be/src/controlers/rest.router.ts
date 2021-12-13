@@ -6,6 +6,28 @@ import ListQueryModel from '../models/list-query.model';
 
 const router: Router = Router();
 
+function vocabDto2Dbo(dto: VocabularyDTO): Vocabulary {
+  const vocab: Vocabulary = {
+    _id: undefined,
+    created: undefined,
+    description: dto.description,
+    label: dto.label,
+    lastModified: undefined
+  }
+  return vocab
+}
+
+function vocabDbo2Dto(dbo: Vocabulary): VocabularyDTO {
+  return {
+    id: dbo._id.toHexString(),
+    label: dbo.label,
+    description: dbo.description,
+    created: dbo.created.toISOString(),
+    lastModified: dbo.lastModified.toISOString(),
+    entityCount: -1
+  };
+}
+
 router.get('/vocab', (req: Request, res: Response) => processVocab(req, res));
 
 router.get('/vocab/:id', (req: Request, res: Response) => processVocab(req, res, true));
@@ -110,22 +132,5 @@ const checkId = (id: number | string | undefined): void => {
 };
 
 const checkQueryParams = (allowed: string[], query: unknown): boolean => Object.keys(query).every(key => allowed.includes(key));
-
-const vocabDto2Dbo = (dto: VocabularyDTO): Vocabulary => ({
-  _id: undefined,
-  created: undefined,
-  description: dto.description,
-  label: dto.label,
-  lastModified: undefined
-});
-
-const vocabDbo2Dto = (dbo: Vocabulary): VocabularyDTO => ({
-  id: dbo._id.toHexString(),
-  label: dbo.label,
-  description: dbo.description,
-  created: dbo.created.toISOString(),
-  lastModified: dbo.lastModified.toISOString(),
-  entityCount: -1
-});
 
 export default router;

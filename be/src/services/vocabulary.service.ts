@@ -1,28 +1,32 @@
 import {Collection, Filter, FindOptions, ObjectId} from 'mongodb';
 import {Vocabulary} from '../models/dbo.models';
-import {instance, PersistenceService} from './persistence.service';
+import {instance, PersistenceService} from './persistence-service';
 import ListQueryModel from '../models/list-query.model';
 
 export class VocabularyService {
   private readonly persistence: PersistenceService = instance;
-  private readonly vocabCollection: string = 'vocabularies';
-  private readonly collection = (): Collection => this.persistence.db().collection(this.vocabCollection);
+  readonly vocabCollection: string = "vocabularies"
+
+  private get collection(): Collection {
+    return this.persistence.db().collection(this.vocabCollection);
+  }
 
   public createVocab(newVocab: Vocabulary): Promise<Vocabulary> {
 
-    return this.collection().insertOne({
+    return this.collection.insertOne({
       ...newVocab,
       _id: null,
       created: new Date(),
       lastModified: new Date()
-    })
-      .then((result) => result.insertedId)
-      .then(id => this.getVocabulary(id));
+    }).then((result) => {
+      return result.insertedId
+    }).then(id => {
+      return this.getVocabular(id)
+    });
   }
 
-  public getVocabulary(id: string | ObjectId): Promise<Vocabulary> {
-    return this.listVocab(undefined, id)
-      .then(vocabs => vocabs.find(v => !!v));
+  public getVocabular(id: string | ObjectId): Promise<Vocabulary> {
+    return this.collection.findOne({_id: new ObjectId(id)}).then(x => <Vocabulary>x);
   }
 
   public async listVocab(query: ListQueryModel, id?: string | ObjectId): Promise<Vocabulary[]> {
