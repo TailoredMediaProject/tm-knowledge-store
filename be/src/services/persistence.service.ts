@@ -3,7 +3,6 @@ import {Db, MongoClient} from 'mongodb';
 export class PersistenceService {
     private client: MongoClient;
     private _db: Db;
-    private readonly MONGO_DATABASE: string
 
     constructor() {
         this.initClient();

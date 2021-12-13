@@ -1,9 +1,11 @@
-import {Collection, Db, FindCursor, MongoClient, ObjectId, WithId} from 'mongodb';
-import {Vocabulary} from "../models/dbo.models";
-import {instance, PersistenceService} from "./persistence.service";
+import {Collection, Filter, FindOptions, ObjectId} from 'mongodb';
+import {Vocabulary} from '../models/dbo.models';
+import {instance, PersistenceService} from './persistence.service';
+import ListQueryModel from '../models/query-list.model';
+import {ListingResult} from '../models/listing-result.model';
 
 export class VocabularyService {
-    private persistence: PersistenceService = instance
+    private readonly persistence: PersistenceService = instance
     readonly vocabCollection: string = "vocabularies"
 
     private get collection(): Collection {
@@ -28,8 +30,100 @@ export class VocabularyService {
         return this.collection.findOne({_id: new ObjectId(id)}).then(x => <Vocabulary>x);
     }
 
-    public readVocab(): void {
-        // TODO
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+    public async listVocab(query: ListQueryModel, id?: string | ObjectId): Promise<ListingResult<Vocabulary>> {
+        const { options, filter } = this.transformToMongoDBFilterOption(query, id);
+        // @ts-ignore
+        const dbos: Vocabulary[] = await this.collection.find(filter, options).toArray() as Vocabulary[];
+        return{
+            offset: query.offset,
+            next: dbos.length,
+            totalItems: 0, // TODO
+            items: dbos
+        };
+    }
+
+    private escapeRegExp(string: string): string {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '');
+    }
+
+    private transformToMongoDBFilterOption(query?: ListQueryModel, id?: string | ObjectId):
+      { options: FindOptions, filter: Filter<Vocabulary> } {
+        const options: FindOptions = {};
+        const filter: Filter<Vocabulary> = {};
+
+        if (!!id) {
+            // @ts-ignore
+            filter._id = new ObjectId(id);
+        }
+
+        if (!!query) {
+            if (!!query?.text) {
+                filter.$or = [
+                    {
+                        label: {
+                            $regex: this.escapeRegExp(query.text),
+                            $options: 'gi'
+                        }
+                    },
+                    {
+                        description: {
+                            $regex: this.escapeRegExp(query.text),
+                            $options: 'gi'
+                        }
+                    }
+                ];
+            }
+
+            if (!!query?.createdSince) {
+                // @ts-ignore
+                filter.created = {
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+                    $gte: new Date(query?.createdSince)
+                    // https://www.mongodb.com/community/forums/t/finding-data-between-two-dates-by-using-a-query-in-mongodb-charts/102506/2
+                };
+            }
+
+            if (!!query?.modifiedSince) {
+                // @ts-ignore
+                filter.lastModified = {
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+                    $gte: new Date(query.modifiedSince)
+                };
+            }
+
+            if (!!query?.sort) {
+                options.sort = this.mapToMongoSort(query?.sort);
+            }
+
+            if (!!query?.offset) {
+                options.skip = Number(query?.offset); // Without the cast, it won't work!
+            }
+
+            if (!!query?.rows) {
+                options.limit = Number(query?.rows); // Without the cast, it won't work!
+            }
+        }
+
+        return {
+            options,
+            filter
+        };
+    }
+
+    private mapToMongoSort(sort: string): any {
+        if (!!sort && sort.includes(' ')) {
+            if (sort.toLowerCase().includes('created')) {
+                return {
+                    created: sort.toLowerCase().includes('asc') ? 1 : -1
+                };
+            } else {
+                return {
+                    lastModified: sort.toLowerCase().includes('asc') ? 1 : -1
+                };
+            }
+        }
+        return {};
     }
 }
 
