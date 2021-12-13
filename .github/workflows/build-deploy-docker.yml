@@ -1,8 +1,11 @@
 name: Build and deploy docker images
 on: 
-  push:
-    branches:
-      - main
+  workflow_run:
+      workflows: ["Lint, Test, and Build"]
+      branches: [main]
+      types:
+        - completed
+        - requested
   workflow_dispatch:
 env:
   REGISTRY: ghcr.io
