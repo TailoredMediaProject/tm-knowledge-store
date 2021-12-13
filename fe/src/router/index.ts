@@ -1,14 +1,12 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import Home from "../views/Home.vue";
 import VocabListView from "@/components/VocabListView.vue";
 import EntityListView from "@/components/EntityListView.vue";
 import Create from "@/views/Create.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/",
-    name: "Home",
-    component: Home,
+    path: "",
+    redirect: "vocab",
   },
   {
     path: "/vocab",

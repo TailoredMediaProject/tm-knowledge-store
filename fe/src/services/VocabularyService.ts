@@ -9,8 +9,6 @@ import { ISO8601toUTC } from "@/Utility/DateUtility";
 import { extractVocabList, VocabList } from "@/Objects/VocabList";
 
 export class VocabularyService {
-  private readonly basePath: string;
-  private readonly apiPath: string;
   private readonly apiFn: {
     createVocabulary(
       vocabulary?: Vocabulary,
@@ -55,10 +53,8 @@ export class VocabularyService {
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Vocabulary>
     >;
   };
-  constructor(basePath: string) {
-    this.basePath = basePath;
-    this.apiPath = basePath + "/vocab";
-    this.apiFn = VocabularyApiFp(new Configuration({ basePath }));
+  constructor() {
+    this.apiFn = VocabularyApiFp(new Configuration());
   }
 
   async getVocabs(

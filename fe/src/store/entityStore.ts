@@ -1,10 +1,9 @@
 import { EntityService } from "@/services/EntityService";
-import { BASE_PATH } from "@/openapi/base";
 import { Entity, Pageable, TagType } from "@/openapi";
 import { Module } from "vuex";
 import { EntityList } from "@/Objects/EntityList";
 
-const entityService = new EntityService(BASE_PATH);
+const entityService = new EntityService();
 const arrayToMap = (array: Entity[]): Map<string, Entity> => {
   return new Map<string, Entity>(array.map((task: Entity) => [task.id, task]));
 };

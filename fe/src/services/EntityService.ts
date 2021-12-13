@@ -11,8 +11,6 @@ import { offset } from "@popperjs/core";
 import { EntityList, extractEntityList } from "@/Objects/EntityList";
 
 export class EntityService {
-  private readonly basePath: string;
-  private readonly apiPath: string;
   private readonly apiFn: {
     createEntity(
       vocabularyId: string,
@@ -63,10 +61,8 @@ export class EntityService {
       (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Entity>
     >;
   };
-  constructor(basePath: string) {
-    this.basePath = basePath;
-    this.apiPath = basePath + "/vocab";
-    this.apiFn = EntitesApiFp(new Configuration({ basePath }));
+  constructor() {
+    this.apiFn = EntitesApiFp(new Configuration());
   }
 
   getEntities(

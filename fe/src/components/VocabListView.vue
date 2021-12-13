@@ -182,19 +182,31 @@
                 >
                   {{ vocabulary.lastModified }}
                 </td>
-                <td
-                  class="
-                    px-6
-                    py-4
-                    whitespace-nowrap
-                    text-right text-sm
-                    font-medium
-                    text-tmOrange
-                  "
-                >
-                  <router-link :to="'/vocab/' + vocabulary.id + '/entities'"
-                    >Entities</router-link
+                <td class="px-6 py-4">
+                  <div
+                    class="
+                      border border-transparent
+                      bg-tmOrange
+                      rounded-md
+                      shadow-sm
+                      text-white
+                      items-center
+                      px-3
+                      py-2
+                      text-sm
+                      font-medium
+                      inline-flex
+                      hover:bg-tmHoverOrange
+                      focus:outline-none
+                      focus:ring-2
+                      focus:ring-offset-2
+                      focus:bg-tmFocusOrange
+                    "
                   >
+                    <router-link :to="'/vocab/' + vocabulary.id + '/entities'">
+                      Go to Entities</router-link
+                    >
+                  </div>
                 </td>
               </tr>
             </tbody>

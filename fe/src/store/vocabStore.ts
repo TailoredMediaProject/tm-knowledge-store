@@ -1,10 +1,9 @@
 import { Module } from "vuex";
 import { Pageable, Vocabulary } from "@/openapi";
 import { VocabularyService } from "@/services/VocabularyService";
-import { BASE_PATH } from "@/openapi/base";
 import { VocabList } from "@/Objects/VocabList";
 
-const vocabService = new VocabularyService(BASE_PATH);
+const vocabService = new VocabularyService();
 const arrayToMap = (array: Vocabulary[]): Map<string, Vocabulary> => {
   return new Map<string, Vocabulary>(
     array.map((task: Vocabulary) => [task.id, task])
