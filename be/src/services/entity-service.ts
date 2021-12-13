@@ -7,7 +7,7 @@ export default class EntityService {
     private readonly entityCollection: string = "entities";
 
     private get collection(): Collection {
-        return this.persistence.db.collection(this.entityCollection);
+        return this.persistenceService.db.collection(this.entityCollection);
     }
 
     async createEntity(vocabID: string, entity: Entity): Promise<any> {
