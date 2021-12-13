@@ -3,7 +3,7 @@ import { Pageable, Vocabulary } from "@/openapi";
 import { VocabularyService } from "@/services/VocabularyService";
 import { VocabList } from "@/Objects/VocabList";
 
-const vocabService = new VocabularyService();
+const vocabService = new VocabularyService("./api/v1");
 const arrayToMap = (array: Vocabulary[]): Map<string, Vocabulary> => {
   return new Map<string, Vocabulary>(
     array.map((task: Vocabulary) => [task.id, task])

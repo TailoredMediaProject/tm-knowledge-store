@@ -3,7 +3,7 @@ import { Entity, Pageable, TagType } from "@/openapi";
 import { Module } from "vuex";
 import { EntityList } from "@/Objects/EntityList";
 
-const entityService = new EntityService();
+const entityService = new EntityService("./api/v1");
 const arrayToMap = (array: Entity[]): Map<string, Entity> => {
   return new Map<string, Entity>(array.map((task: Entity) => [task.id, task]));
 };

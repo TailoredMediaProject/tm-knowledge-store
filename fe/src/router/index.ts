@@ -6,7 +6,7 @@ import Create from "@/views/Create.vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "",
-    redirect: "vocab",
+    redirect: "/vocab",
   },
   {
     path: "/vocab",
