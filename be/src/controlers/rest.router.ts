@@ -14,40 +14,45 @@ router.post('/vocab', (req: Request, res: Response) => {
     const body: VocabularyDTO = <VocabularyDTO>req.body;
     const newVocab: Vocabulary = vocabDto2Dbo(body);
     let fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-    res.setHeader('Location', fullUrl);
 
     vocabularyService.createVocab(newVocab)
         .then(v => vocabDbo2Dto(v))
-        .then(v => res.json([v, {
-            statusCode: 201,
-            message: "Successful created!",
-        }]))
+        .then(v => {
+            fullUrl += v.id;
+            res.setHeader('Location', fullUrl);
+            res.status(201).json(v)
+        })
         .catch(e => {
             console.error(e);
-            res.json({
-                statusCode: 400,
+            res.status(400).json({
                 message: e
             });
         });
-    // res.setHeader('Location', fullUrl);
-    // res.json(
-    //     {
-    //         statusCode: 201,
-    //         message: "Successful created!",
-    //     }
-    // );
-
 });
 
 router.put('/vocab/:id', (req: Request, res: Response) => {
     res.json({statusCode: 205});
 });
 
-router.delete('/vocab/:id', (req: Request, res: Response) => {
+router.delete('/vocab/:id', async (req: Request, res: Response) => {
+    const header = req.header('if-unmodified-since')
+    const date: Date = new Date(header)
 
-    vocabularyService.deleteVocab(req.params.id)
-
-    res.json({statusCode: 204, message: "Deleted successful"});
+    vocabularyService.deleteVocab(req.params.id, parseDate(header)).then(result => {
+        if (result) {
+            res.status(204).end();
+        } else {
+            res.status(404).json({
+                message: "Vocabulary not found"
+            });
+        }
+    }).catch(e => {
+        console.error(e);
+        res.status(500).json({
+            statusCode: 500,
+            message: e
+        });
+    });
 });
 
 router.get('/vocab/:id/entities', (req: Request, res: Response) => {
@@ -124,6 +129,20 @@ const vocabDto2Dbo = (dto: VocabularyDTO): Vocabulary => ({
     label: dto.label,
     lastModified: undefined
 });
+
+
+function parseDate(header: string): Date {
+    try {
+        const x = new Date(header)
+        console.log('tried')
+        console.log(x)
+        console.log(typeof x)
+        return x
+    } catch (e) {
+        console.log("Date parsed incorrectly")
+        console.log(e)
+    }
+}
 
 const vocabDbo2Dto = (dbo: Vocabulary): VocabularyDTO => ({
     id: dbo._id.toHexString(),

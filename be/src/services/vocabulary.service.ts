@@ -1,4 +1,4 @@
-import {Collection, Filter, FindOptions, ObjectId} from 'mongodb';
+import {Collection, DeleteResult, Filter, FindOptions, ObjectId} from 'mongodb';
 import {Vocabulary} from '../models/dbo.models';
 import {instance, PersistenceService} from './persistence.service';
 import ListQueryModel from '../models/list-query.model';
@@ -20,9 +20,22 @@ export class VocabularyService {
             .then(id => this.getVocabulary(id));
     }
 
-    public deleteVocab(id: string | ObjectId): void{
+    public deleteVocab(id: string | ObjectId, date: Date): Promise<boolean> {
 
-        this.collection().deleteOne({_id: new ObjectId(id)});
+        try {
+            if (this.collection().findOne({_id: new ObjectId(id)})){
+                console.log('Vocab found!')
+            } else{
+                console.log("Vocab with this id does not exist")
+            }
+            return this.collection().deleteOne({_id: new ObjectId(id), lastModified: date})
+                .then(r => r.deletedCount == 1)
+        }
+        catch (e) {
+            console.log('==========================')
+            console.log(e)
+            return Promise.resolve(false)
+        }
     }
 
     public getVocab(id: string | ObjectId): Promise<Vocabulary> {
