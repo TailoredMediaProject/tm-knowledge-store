@@ -54,26 +54,36 @@ router.delete('/vocab/:id/entities/:id', (req: Request, res: Response) => {
   res.json({ statusCode: 209 });
 });
 
-const processVocab = (req: Request, res: Response, validateId = false): void => {
+const processVocab = (req: Request, res: Response, isRead = false): void => {
   try {
-    if (validateId) {
+    if (isRead) {
       checkId(req?.params?.id);
     }
     checkVocabReadParams(req.query);
     void vocabularyService.listVocab(req.query, req.params.id)
-      .then(v => v.map(dbo => vocabDbo2Dto(dbo)))
-      .then(r => res.json({
-        offset: req?.query?.offset ?? 0,
-        rows: r.length,
-        totalItems: 0, // TODO
-        items: r
-      }));
+      .then(v => v.map((dbo: Vocabulary) => vocabDbo2Dto(dbo)))
+      .then((r: VocabularyDTO[]) => res.json(createReadOrListResponse(r, req?.params?.id,
+        // @ts-ignore
+        req?.query?.offset, isRead)));
   } catch (e) {
     console.error(e);
     res.json({
       statusCode: 400,
       message: e
     });
+  }
+};
+
+const createReadOrListResponse = (items: VocabularyDTO[], id: string | undefined, offset: string | undefined, isRead: boolean): any => {
+  if (isRead) {
+    return items.find((dto: VocabularyDTO) => dto.id === id);
+  } else {
+    return {
+      offset,
+      rows: items.length,
+      totalItems: 0, // TODO
+      items
+    };
   }
 };
 
