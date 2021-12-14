@@ -45,7 +45,20 @@ router.post('/vocab', (req: Request, res: Response) => {
 });
 
 router.put('/vocab/:id', (req: Request, res: Response) => {
-  res.json({statusCode:202});
+  const headerName = 'If-Unmodified-Since';
+  const ifUnmodifiedSince: string = req.header(headerName);
+
+  if(!!ifUnmodifiedSince) {
+    if(!!req?.params?.id) {
+      vocabularyService.updateVocab(req?.params?.id, new Date(ifUnmodifiedSince), vocabDto2Dbo(req.body as VocabularyDTO))
+        .then(v => res.json(vocabDbo2Dto(v)))
+        .catch((e: unknown) => errorLogAndResponse(e, res));
+    } else {
+      errorLogAndResponse('Missing or invalid ID', res); // 400
+    }
+  } else {
+      errorLogAndResponse(`Operation failed, ${headerName}-Header missing or falsy value!`, res);  // 409
+  }
 });
 
 router.get('/vocab/:id', (req: Request, res: Response) => {
