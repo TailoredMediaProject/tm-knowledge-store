@@ -1,6 +1,6 @@
 export interface ListingResult<T> {
   offset: number
-  next: number
+  rows: number
   totalItems: number
   items: T[]
 }

@@ -19,7 +19,7 @@ app.use("/api/v1", apiRoutes)
 
 // Set static files
 const staticDir = process.env.BE_STATIC || 'static';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+// eslint-disable-rows-line @typescript-eslint/no-var-requires
 app.use('/', express.static(path.join(__dirname, staticDir)))
 console.log(`static files on /`);
 

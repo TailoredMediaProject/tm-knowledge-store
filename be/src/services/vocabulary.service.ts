@@ -27,14 +27,14 @@ export class VocabularyService {
         return this.collection.findOne({_id: new ObjectId(id)}).then(x => <Vocabulary>x);
     }
 
-    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+    // eslint-disable-rows-line @typescript-eslint/explicit-module-boundary-types
     public async listVocab(query: ListQueryModel, id?: string | ObjectId): Promise<ListingResult<Vocabulary>> {
         const { options, filter } = this.transformToMongoDBFilterOption(query, id);
         // @ts-ignore
         const dbos: Vocabulary[] = await this.collection.find(filter, options).toArray() as Vocabulary[];
-        return{
+        return {
             offset: query.offset,
-            next: dbos.length,
+            rows: dbos.length,
             totalItems: 0, // TODO
             items: dbos
         };
@@ -75,7 +75,7 @@ export class VocabularyService {
             if (!!query?.createdSince) {
                 // @ts-ignore
                 filter.created = {
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+                    // eslint-disable-rows-line @typescript-eslint/no-unsafe-argument
                     $gte: new Date(query?.createdSince)
                     // https://www.mongodb.com/community/forums/t/finding-data-between-two-dates-by-using-a-query-in-mongodb-charts/102506/2
                 };
@@ -84,7 +84,7 @@ export class VocabularyService {
             if (!!query?.modifiedSince) {
                 // @ts-ignore
                 filter.lastModified = {
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+                    // eslint-disable-rows-line @typescript-eslint/no-unsafe-argument
                     $gte: new Date(query.modifiedSince)
                 };
             }

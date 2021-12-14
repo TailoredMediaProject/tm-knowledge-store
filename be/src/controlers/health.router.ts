@@ -3,7 +3,7 @@ import {instance as PersistenceService} from "../services/persistence.service";
 
 const router: Router = Router();
 
-// eslint-disable-next-line @typescript-eslint/no-misused-promises
+// eslint-disable-rows-line @typescript-eslint/no-misused-promises
 router.get('/health', async (req: Request, res: Response) => {
     const healthCheck = await PersistenceService.pingDB()
 
