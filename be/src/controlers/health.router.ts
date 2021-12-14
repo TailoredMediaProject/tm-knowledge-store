@@ -3,26 +3,27 @@ import {instance as PersistenceService} from '../services/persistence.service';
 
 const router: Router = Router();
 
-// eslint-disable-next-line @typescript-eslint/no-misused-promises
-router.get('/health', async (req: Request, res: Response) => {
-    const healthCheck = await PersistenceService.pingDB()
-
-    if (healthCheck) {
-        res.status(200).json({
-                'status': 'OK', // or "ERROR"
-                'details': {
-                    'mongodb': 'OK' // or "ERROR"
+router.get('/health', (req: Request, res: Response): void => {
+    PersistenceService.pingDB()
+      .then((healthCheck: boolean) => {
+          if (healthCheck) {
+              res.status(200).json({
+                    'status': 'OK', // or "ERROR"
+                    'details': {
+                        'mongodb': 'OK' // or "ERROR"
+                    }
                 }
-            }
-        )
-    } else {
-        res.status(500).json({
-            'status': 'ERROR',
-            'details': {
-                'mongodb': 'ERROR'
-            }
-        });
-    }
+              )
+          } else {
+              res.status(500).json({
+                  'status': 'ERROR',
+                  'details': {
+                      'mongodb': 'ERROR'
+                  }
+              });
+          }
+      })
+      .catch((e: unknown) => res.status(500).json(e));
 });
 
 export default router;
