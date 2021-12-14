@@ -3,7 +3,6 @@ import {Db, MongoClient} from 'mongodb';
 export class PersistenceService {
     private client: MongoClient;
     private _db: Db;
-    private readonly MONGO_DATABASE: string
 
     constructor() {
         this.initClient();
@@ -14,6 +13,7 @@ export class PersistenceService {
         return this._db;
     }
 
+    /* eslint-disable no-undef */
     private initClient(): void {
         const username = process.env.MONGO_USERNAME;
         const password = process.env.MONGO_PASSWORD;

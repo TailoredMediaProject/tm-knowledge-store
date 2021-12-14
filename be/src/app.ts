@@ -1,4 +1,5 @@
 'use strict';
+/* eslint-disable no-undef */
 import {Application, Router} from 'express';
 import RestRouter from './controlers/rest.router';
 import ResolveRouter from './controlers/resolve.router';
