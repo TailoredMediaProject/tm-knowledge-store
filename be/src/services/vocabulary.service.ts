@@ -19,11 +19,8 @@ export class VocabularyService {
             _id: null,
             created: new Date(),
             lastModified: new Date()
-        }).then((result) => {
-            return result.insertedId
-        }).then(id => {
-            return this.getVocabular(id)
-        });
+        }).then((result) => result.insertedId)
+          .then(id => this.getVocabular(id));
     }
 
     public getVocabular(id: string | ObjectId): Promise<Vocabulary> {
@@ -93,6 +90,7 @@ export class VocabularyService {
             }
 
             if (!!query?.sort) {
+                // @ts-ignore
                 options.sort = this.mapToMongoSort(query?.sort);
             }
 
@@ -111,7 +109,7 @@ export class VocabularyService {
         };
     }
 
-    private mapToMongoSort(sort: string): any {
+    private mapToMongoSort(sort: string): unknown {
         if (!!sort && sort.includes(' ')) {
             if (sort.toLowerCase().includes('created')) {
                 return {

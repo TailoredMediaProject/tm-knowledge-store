@@ -13,6 +13,7 @@ export class PersistenceService {
         return this._db;
     }
 
+    /* eslint-disable no-undef */
     private initClient(): void {
         const username = process.env.MONGO_USERNAME;
         const password = process.env.MONGO_PASSWORD;
