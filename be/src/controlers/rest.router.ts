@@ -1,7 +1,7 @@
 import {Request, Response, Router} from 'express';
-import {vocabularyService} from "../services/vocabulary.service";
-import {Vocabulary} from "../models/dbo.models";
-import {Vocabulary as VocabularyDTO} from "../generated/models/Vocabulary";
+import {vocabularyService} from '../services/vocabulary.service';
+import {Vocabulary} from '../models/dbo.models';
+import {Vocabulary as VocabularyDTO} from '../generated/models/Vocabulary';
 
 const router: Router = Router();
 
