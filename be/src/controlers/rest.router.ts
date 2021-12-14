@@ -5,31 +5,34 @@ import {Vocabulary as VocabularyDTO} from "../generated/models/Vocabulary";
 
 const router: Router = Router();
 
-function vocabDto2Dbo(dto: VocabularyDTO): Vocabulary {
-  const vocab: Vocabulary = {
+const vocabDto2Dbo = (dto: VocabularyDTO): Vocabulary => ({
     _id: undefined,
     created: undefined,
     description: dto.description,
     label: dto.label,
     lastModified: undefined
-  }
-  return vocab
-}
+});
 
-function vocabDbo2Dto(dbo: Vocabulary): VocabularyDTO {
-  return {
+const vocabDbo2Dto = (dbo: Vocabulary): VocabularyDTO => ({
     id: dbo._id.toHexString(),
     label: dbo.label,
     description: dbo.description,
     created: dbo.created.toISOString(),
     lastModified: dbo.lastModified.toISOString(),
     entityCount: -1
-  };
-}
+});
 
-router.get('/vocab', async (req: Request, res: Response) => {
+router.get('/vocab', (req: Request, res: Response) => {
   res.json({statusCode:200});
 });
+
+const errorLogAndResponse = (e: unknown, res: Response): void => {
+  console.error(e);
+  res.json({
+    statusCode: 500,
+    message: e
+  });
+};
 
 router.post('/vocab', (req: Request, res: Response) => {
   const body = <VocabularyDTO>req.body
@@ -37,7 +40,8 @@ router.post('/vocab', (req: Request, res: Response) => {
 
   vocabularyService.createVocab(newVocab)
       .then(v => vocabDbo2Dto(v))
-      .then(v => res.json(v));
+      .then(v => res.json(v))
+      .catch((e: unknown) => errorLogAndResponse(e, res));
 });
 
 router.put('/vocab/:id', (req: Request, res: Response) => {
@@ -47,7 +51,8 @@ router.put('/vocab/:id', (req: Request, res: Response) => {
 router.get('/vocab/:id', (req: Request, res: Response) => {
   vocabularyService.getVocabular(req.params.id)
       .then(v => vocabDbo2Dto(v))
-      .then(v => res.json(v));
+      .then(v => res.json(v))
+      .catch((e: unknown) => errorLogAndResponse(e, res));
 });
 
 router.delete('/vocab/:id', (req: Request, res: Response) => {

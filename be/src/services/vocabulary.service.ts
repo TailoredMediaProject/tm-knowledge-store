@@ -1,9 +1,9 @@
-import {Collection, Db, FindCursor, MongoClient, ObjectId, WithId} from 'mongodb';
-import {Vocabulary} from "../models/dbo.models";
-import {instance, PersistenceService} from "./persistence.service";
+import {Collection, ObjectId} from 'mongodb';
+import {Vocabulary} from '../models/dbo.models';
+import {instance, PersistenceService} from './persistence.service';
 
 export class VocabularyService {
-    private persistence: PersistenceService = instance
+    private readonly persistence: PersistenceService = instance
     readonly vocabCollection: string = "vocabularies"
 
     private get collection(): Collection {
@@ -17,11 +17,8 @@ export class VocabularyService {
             _id: null,
             created: new Date(),
             lastModified: new Date()
-        }).then((result) => {
-            return result.insertedId
-        }).then(id => {
-            return this.getVocabular(id)
-        });
+        }).then((result) => result.insertedId)
+          .then(id => this.getVocabular(id));
     }
 
     public getVocabular(id: string | ObjectId): Promise<Vocabulary> {
