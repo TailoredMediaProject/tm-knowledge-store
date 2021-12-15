@@ -34,7 +34,7 @@ ENV NODE_ENV=production
 # BE
 ENV BE_PORT='8080'
 # MongoDB
-ENV MONGO_URL=mongodb://mongo:27017
+ENV MONGO_HOST=mongodb
 ENV MONGO_DATABASE=knowledge
 
 USER node

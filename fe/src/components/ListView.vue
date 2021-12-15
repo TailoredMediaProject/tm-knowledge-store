@@ -132,6 +132,7 @@ const people = [
 ];
 export default {
   name: "ListView",
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   setup() {
     return {
       people,

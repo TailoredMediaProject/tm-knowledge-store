@@ -1,4 +1,4 @@
-import {ObjectId} from "mongodb";
+import {ObjectId} from 'mongodb';
 
 export interface Vocabulary {
     _id: ObjectId
@@ -18,5 +18,5 @@ export interface Entity {
     lastModified: Date
     externalResources: string[]
     sameAs: string[]
-    data: any
+    data: unknown
 }

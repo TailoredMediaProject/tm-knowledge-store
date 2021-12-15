@@ -1,5 +1,11 @@
 name: Build and deploy docker images
-on: workflow_dispatch
+on: 
+  workflow_run:
+      workflows: ["Lint, Test, and Build"]
+      branches: [main]
+      types:
+        - completed
+  workflow_dispatch:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
