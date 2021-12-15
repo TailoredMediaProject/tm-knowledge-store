@@ -26,7 +26,9 @@ export class EntityService {
     // TODO remove rule when implemented
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     getEntity(vocabID: string, entityID: string): Promise<unknown> {
-        throw new KnowledgeError(501, 'Not Implemented', 'Operation not implemented');
+        throw new KnowledgeError(501, 'Not Implemented', 'Operation not implemented',
+          {id:'dummyEntityErrorPayload'}
+        );
     }
 
     // TODO remove rule when implemented

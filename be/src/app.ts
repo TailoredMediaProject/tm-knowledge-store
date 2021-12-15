@@ -4,11 +4,15 @@ import {Application, Router} from 'express';
 import RestRouter from './controlers/rest.router';
 import ResolveRouter from './controlers/resolve.router';
 import HealthRouter from './controlers/health.router';
+import {KnowledgeErrorMiddleware} from './controlers/knowledge-error.middleware';
 import express = require('express');
 import path = require('path');
 
 const app: Application = express();
 app.use(express.json())
+
+console.log('Register KnowledgeErrorMiddleware')
+app.use(KnowledgeErrorMiddleware);
 
 console.log('Register Health-Check')
 app.use(HealthRouter)

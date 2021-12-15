@@ -1,4 +1,4 @@
-import {Request, Response, Router} from 'express';
+import {NextFunction, Request, Response, Router} from 'express';
 import {vocabularyService} from '../services/vocabulary.service';
 import {Vocabulary} from '../models/dbo.models';
 import {Vocabulary as VocabularyDTO} from '../generated/models/Vocabulary';
@@ -24,57 +24,73 @@ const vocabDbo2Dto = (dbo: Vocabulary): VocabularyDTO => ({
     entityCount: -1
 });
 
-router.get('/vocab', () => {
-  throw new KnowledgeError(501, 'Not Implemented', 'GET /vocab is not implemented');
+router.get('/vocab', (req: Request, res: Response, next: NextFunction) => {
+  next(new KnowledgeError(501, 'Not Implemented', 'GET /vocab is not implemented'));
 });
 
-router.post('/vocab', (req: Request, res: Response) => {
+router.post('/vocab', (req: Request, res: Response, next: NextFunction) => {
   const body = <VocabularyDTO>req.body
   const newVocab = vocabDto2Dbo(body)
 
   vocabularyService.createVocab(newVocab)
       .then(v => vocabDbo2Dto(v))
       .then(v => res.json(v))
-      .catch((e: unknown) => {
-        throw new KnowledgeError(500, 'Internal Server Error', e.toString());
-      });
+      .catch((e: unknown) => next(new KnowledgeError(500, 'Internal Server Error', e.toString())));
 });
 
-router.put('/vocab/:id', () => {
-  throw new KnowledgeError(501, 'Not Implemented', 'PUT /vocab/:id is not implemented');
+router.put('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
+  next(new KnowledgeError(501, 'Not Implemented', 'PUT /vocab/:id is not implemented'));
 });
 
-router.get('/vocab/:id', (req: Request, res: Response) => {
+router.get('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
   vocabularyService.getVocabular(req.params.id)
       .then(v => vocabDbo2Dto(v))
       .then(v => res.json(v))
-      .catch((e: unknown) => {
-        throw new KnowledgeError(500, 'Internal Server Error', e.toString());
-      });
+      .catch((e: unknown) => next(new KnowledgeError(500, 'Internal Server Error', e.toString())));
 });
 
-router.delete('/vocab/:id', () => {
-  throw new KnowledgeError(501, 'Not Implemented', 'DELETE /vocab/:id is not implemented');
+router.delete('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
+  next(new KnowledgeError(501, 'Not Implemented', 'DELETE /vocab/:id is not implemented'));
 });
 
-router.get('/vocab/:id/entities', () => {
-  void entityServiceInstance.getEntities(undefined, undefined);
+router.get('/vocab/:id/entities', (req: Request, res: Response, next: NextFunction) => {
+  try {
+    void entityServiceInstance.getEntity(undefined, undefined);
+  } catch(e) {
+    next(e);
+  }
 });
 
-router.post('/vocab/:id/entities', () => {
-  void entityServiceInstance.getEntity(undefined, undefined);
+router.post('/vocab/:id/entities', (req: Request, res: Response, next: NextFunction) => {
+  try {
+    void entityServiceInstance.getEntity(undefined, undefined);
+  } catch(e) {
+    next(e);
+  }
 });
 
-router.get('/vocab/:id/entities/:id', () => {
-  void entityServiceInstance.getEntity(undefined, undefined);
+router.get('/vocab/:id/entities/:id', (req: Request, res: Response, next: NextFunction) => {
+  try {
+    void entityServiceInstance.getEntity(undefined, undefined);
+  } catch(e) {
+    next(e);
+  }
 });
 
-router.put('/vocab/:id/entities/:id', () => {
-  void entityServiceInstance.updateEntity(undefined, undefined, undefined, undefined);
+router.put('/vocab/:id/entities/:id', (req: Request, res: Response, next: NextFunction) => {
+  try {
+    void entityServiceInstance.getEntity(undefined, undefined);
+  } catch(e) {
+    next(e);
+  }
 });
 
-router.delete('/vocab/:id/entities/:id', () => {
-  void entityServiceInstance.deleteEntity(undefined, undefined, undefined);
+router.delete('/vocab/:id/entities/:id', (req: Request, res: Response, next: NextFunction) => {
+  try {
+    void entityServiceInstance.getEntity(undefined, undefined);
+  } catch(e) {
+    next(e);
+  }
 });
 
 export default router;
