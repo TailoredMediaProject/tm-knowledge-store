@@ -6,10 +6,9 @@ import {ListingResult} from '../models/listing-result.model';
 
 export class VocabularyService {
     private readonly persistence: PersistenceService = instance
-    readonly vocabCollection: string = "vocabularies"
 
     private get collection(): Collection {
-        return this.persistence.db.collection(this.vocabCollection);
+        return this.persistence.db.collection('vocabularies');
     }
 
     public createVocab(newVocab: Vocabulary): Promise<Vocabulary> {

@@ -26,6 +26,7 @@ const vocabDbo2Dto = (dbo: Vocabulary): VocabularyDTO => ({
 
 router.get('/vocab', (req: Request, res: Response) => processVocab(req, res));
 
+
 router.post('/vocab', (req: Request, res: Response) => {
   const body = <VocabularyDTO>req.body
   const newVocab = vocabDto2Dbo(body)

@@ -49,6 +49,7 @@
         "no-prototype-builtins": "error",
         "no-extra-boolean-cast": "off",
         "no-case-declarations": "error",
+        "quotes": [2, "single", "avoid-escape"],
         "prefer-arrow/prefer-arrow-functions": "error",
         "max-len": ["error", {"code":  140}],
         "no-undef": "error",
