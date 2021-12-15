@@ -3,7 +3,7 @@ import {instance} from "./persistence.service";
 import {Entity} from "../generated";
 import {Collection} from "mongodb";
 
-export default class EntityService {
+class EntityService {
     private readonly persistenceService = instance;
     private readonly entityCollection: string = "entities";
 
@@ -11,8 +11,8 @@ export default class EntityService {
         return this.persistenceService.db.collection(this.entityCollection);
     }
 
-    async createEntity(vocabID: string, entity: Entity): Promise<Entity> {
-        const newEntity: Entity = {
+    private createNewDBO(vocabID: string, entity: Entity): Entity {
+        return {
             id: null,
             created: new Date().toISOString(),
             lastModified: new Date().toISOString(),
@@ -25,7 +25,11 @@ export default class EntityService {
             sameAs: entity.sameAs,
             data: entity.data
         };
-        return this.collection.insertOne(newEntity).then(entityID => this.getEntity(vocabID, entityID.insertedId.toString()));
+    }
+
+    async createEntity(vocabID: string, entity: Entity): Promise<Entity> {
+        return this.collection.insertOne(this.createNewDBO(vocabID, entity))
+            .then(entityID => this.getEntity(vocabID, entityID.insertedId.toString()));
     }
 
     async getEntities(vocabID: string, filter: unknown): Promise<any> {
@@ -44,3 +48,5 @@ export default class EntityService {
         return Promise.resolve(null);
     }
 }
+
+export const entityService: EntityService = new EntityService();
