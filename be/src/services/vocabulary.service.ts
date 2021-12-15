@@ -28,7 +28,7 @@ export class VocabularyService {
 
     // eslint-disable-rows-line @typescript-eslint/explicit-module-boundary-types
     public async listVocab(query: ListQueryModel, id?: string | ObjectId): Promise<ListingResult<Vocabulary>> {
-        const { options, filter } = this.transformToMongoDBFilterOption(query, id);
+        const { options, filter } = VocabularyService.transformToMongoDBFilterOption(query, id);
         // @ts-ignore
         const dbos: Vocabulary[] = await this.collection.find(filter, options).toArray() as Vocabulary[];
         return {
@@ -39,11 +39,11 @@ export class VocabularyService {
         };
     }
 
-    private escapeRegExp(string: string): string {
+    private static escapeRegExp(string: string): string {
         return string.replace(/[.*+?^${}()|[\]\\]/g, '');
     }
 
-    private transformToMongoDBFilterOption(query?: ListQueryModel, id?: string | ObjectId):
+    private static transformToMongoDBFilterOption(query?: ListQueryModel, id?: string | ObjectId):
       { options: FindOptions, filter: Filter<Vocabulary> } {
         const options: FindOptions = {};
         const filter: Filter<Vocabulary> = {};
@@ -58,13 +58,13 @@ export class VocabularyService {
                 filter.$or = [
                     {
                         label: {
-                            $regex: this.escapeRegExp(query.text),
+                            $regex: VocabularyService.escapeRegExp(query.text),
                             $options: 'gi'
                         }
                     },
                     {
                         description: {
-                            $regex: this.escapeRegExp(query.text),
+                            $regex: VocabularyService.escapeRegExp(query.text),
                             $options: 'gi'
                         }
                     }
@@ -90,7 +90,7 @@ export class VocabularyService {
 
             if (!!query?.sort) {
                 // @ts-ignore
-                options.sort = this.mapToMongoSort(query?.sort);
+                options.sort = VocabularyService.mapToMongoSort(query?.sort);
             }
 
             if (!!query?.offset) {
@@ -108,7 +108,7 @@ export class VocabularyService {
         };
     }
 
-    private mapToMongoSort(sort: string): unknown {
+    private static mapToMongoSort(sort: string): unknown {
         if (!!sort && sort.includes(' ')) {
             if (sort.toLowerCase().includes('created')) {
                 return {

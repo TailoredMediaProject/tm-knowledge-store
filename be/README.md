@@ -4,7 +4,7 @@ This are the commands available for docker and the build pipeline, you should ru
 
 Install:
 ```shell
-nvm use && npm i && npm run generate
+nvm use && npm i && npm run prepaire && npm run generate
 ```
 Lint:
 ```shell
