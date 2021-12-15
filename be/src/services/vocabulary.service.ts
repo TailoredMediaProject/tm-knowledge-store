@@ -1,7 +1,8 @@
-import {Collection, DeleteResult, Filter, FindOptions, ObjectId} from 'mongodb';
+import {Collection, Filter, FindOptions, ObjectId} from 'mongodb';
 import {Vocabulary} from '../models/dbo.models';
 import {instance, PersistenceService} from './persistence.service';
-import ListQueryModel from '../models/list-query.model';
+import ListQueryModel from '../models/query-list.model';
+import {ListingResult} from '../models/listing-result.model';
 
 export class VocabularyService {
     private readonly persistence: PersistenceService = instance;
@@ -17,7 +18,11 @@ export class VocabularyService {
             lastModified: new Date()
         })
             .then((result) => result.insertedId)
-            .then(id => this.getVocabulary(id));
+            .then(id => this.getVocabular(id));
+    }
+
+    public getVocabular(id: string | ObjectId): Promise<Vocabulary> {
+        return this.collection().findOne({_id: new ObjectId(id)}).then(x => <Vocabulary>x);
     }
 
     // public deleteVocab(id: string | ObjectId, date: Date): Promise<boolean> {
@@ -54,7 +59,6 @@ export class VocabularyService {
     //         return Promise.resolve(false)
     //     }
     // }
-
 
     public async deleteVocab(id: string | ObjectId, date: Date): Promise<number> {
 
@@ -99,19 +103,22 @@ export class VocabularyService {
         }
     }
 
-    public getVocab(id: string | ObjectId): Promise<Vocabulary> {
-        return this.collection().findOne({_id: new ObjectId(id)}).then(x => <Vocabulary>x);
-    }
 
-    getVocabulary(id: string | ObjectId): Promise<Vocabulary> {
-        return this.listVocab(undefined, id)
-            .then(vocabs => vocabs.find(v => !!v));
-    }
-
-    public async listVocab(query: ListQueryModel, id?: string | ObjectId): Promise<Vocabulary[]> {
-        const {options, filter} = this.transformToMongoDBFilterOption(query, id);
+    // eslint-disable-rows-line @typescript-eslint/explicit-module-boundary-types
+    public async listVocab(query: ListQueryModel, id?: string | ObjectId): Promise<ListingResult<Vocabulary>> {
+        const { options, filter } = this.transformToMongoDBFilterOption(query, id);
         // @ts-ignore
-        return await this.collection().find(filter, options).toArray() as Vocabulary[];
+        const dbos: Vocabulary[] = await this.collection.find(filter, options).toArray() as Vocabulary[];
+        return {
+            offset: query.offset,
+            rows: dbos.length,
+            totalItems: 0, // TODO
+            items: dbos
+        };
+    }
+
+    private escapeRegExp(string: string): string {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '');
     }
 
     private transformToMongoDBFilterOption(query?: ListQueryModel, id?: string | ObjectId):
@@ -129,13 +136,13 @@ export class VocabularyService {
                 filter.$or = [
                     {
                         label: {
-                            $regex: `${query.text}`,
+                            $regex: this.escapeRegExp(query.text),
                             $options: 'gi'
                         }
                     },
                     {
                         description: {
-                            $regex: `${query.text}`,
+                            $regex: this.escapeRegExp(query.text),
                             $options: 'gi'
                         }
                     }
@@ -145,7 +152,7 @@ export class VocabularyService {
             if (!!query?.createdSince) {
                 // @ts-ignore
                 filter.created = {
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+                    // eslint-disable-rows-line @typescript-eslint/no-unsafe-argument
                     $gte: new Date(query?.createdSince)
                     // https://www.mongodb.com/community/forums/t/finding-data-between-two-dates-by-using-a-query-in-mongodb-charts/102506/2
                 };
@@ -154,12 +161,13 @@ export class VocabularyService {
             if (!!query?.modifiedSince) {
                 // @ts-ignore
                 filter.lastModified = {
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+                    // eslint-disable-rows-line @typescript-eslint/no-unsafe-argument
                     $gte: new Date(query.modifiedSince)
                 };
             }
 
             if (!!query?.sort) {
+                // @ts-ignore
                 options.sort = this.mapToMongoSort(query?.sort);
             }
 
@@ -178,7 +186,7 @@ export class VocabularyService {
         };
     }
 
-    private mapToMongoSort(sort: string): any {
+    private mapToMongoSort(sort: string): unknown {
         if (!!sort && sort.includes(' ')) {
             if (sort.toLowerCase().includes('created')) {
                 return {
