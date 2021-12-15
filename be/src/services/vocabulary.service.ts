@@ -28,74 +28,31 @@ export class VocabularyService {
         return this.collection.findOne({_id: new ObjectId(id)}).then(x => <Vocabulary>x);
     }
 
-    // public deleteVocab(id: string | ObjectId, date: Date): Promise<boolean> {
-    //
-    //     try {
-    //         if (isNaN(date.getDate())) {
-    //             console.log("Date is not valid")
-    //             return Promise.resolve(false)
-    //         }
-    //
-    //         this.collection().findOne({_id: new ObjectId(id)}).then(result => {
-    //             if (result) {
-    //                 console.log(`Successfully found document: ${result}.`);
-    //             } else {
-    //                 console.log("No document matches the provided ID.");
-    //                 return false
-    //             }
-    //         })
-    //             .catch(err => console.error(`Failed to find document: ${err}`))
-    //
-    //         return this.collection().deleteOne({_id: new ObjectId(id), lastModified: date})
-    //             .then(r => {
-    //                 if (r.deletedCount == 1) {
-    //                     console.log(`Successfully deleted Vocabulary.`)
-    //                     return true
-    //                 } else {
-    //                     console.log(`Vocabulary with matching params not found.`)
-    //                     return false
-    //                 }
-    //             })
-    //     } catch (e) {
-    //         console.log('=============ERROR=============')
-    //         console.log(`Failed to delete Vocabulary: ${e}`)
-    //         return Promise.resolve(false)
-    //     }
-    // }
-
     public async deleteVocab(id: string | ObjectId, date: Date): Promise<boolean> {
 
         if (isNaN(date.getDate())) {
-            console.log("Date is not valid")
             throw new KnowledgeError(404, "Date", "Date is not valid")
         }
 
         if (!ObjectId.isValid(id)) {
-            console.log("Provided id is not valid")
             throw new KnowledgeError(404, "ID", "ID is not valid")
         }
 
-        this.collection.findOne({_id: new ObjectId(id)}).then(result => {
-            if (result) {
-                console.log(`Successfully found document: ${result}.`);
-            } else {
-                console.log("No document matches the provided ID.");
-                throw new KnowledgeError(404, "Document", "No document matches the provided ID.")
-            }
-        })
+        const result = await this.collection.findOne({_id: new ObjectId(id)})
+
+        if (!result) {
+            throw new KnowledgeError(404, "Document", "No document matches the provided ID.")
+        }
 
         return this.collection.deleteOne({_id: new ObjectId(id), lastModified: date})
             .then(r => {
                 if (r.deletedCount == 1) {
-                    console.log(`Successfully deleted Vocabulary.`)
                     return true
                 } else {
-                    console.log(`Vocabulary with matching params not found.`)
-                    throw new KnowledgeError(404, "Vocabulary", "Vocabulary with matching params not found. Failed to delete Vocabulary.")
+                    throw new KnowledgeError(404, "Vocabulary", "Vocabulary with matching params not found.")
                 }
             })
     }
-
 
     // eslint-disable-rows-line @typescript-eslint/explicit-module-boundary-types
     public async listVocab(query: ListQueryModel, id?: string | ObjectId): Promise<ListingResult<Vocabulary>> {

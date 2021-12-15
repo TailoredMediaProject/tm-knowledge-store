@@ -78,13 +78,6 @@ router.delete('/vocab/:id', async (req: Request, res: Response, next: NextFuncti
   vocabularyService.deleteVocab(req.params.id, date).then(result => {
     if (result) {
       res.status(204).end();
-    } else {
-      res.status(404).json({
-        message: "Vocabulary not found"
-      });
-      // router.delete('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
-      //     next(new KnowledgeError(501, 'Not Implemented', 'DELETE /vocab/:id is not implemented'));
-      // });
     }
   }).catch(next);
 });
