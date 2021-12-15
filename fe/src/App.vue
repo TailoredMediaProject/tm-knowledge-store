@@ -1,7 +1,11 @@
 <template>
   <div class="flex flex-col h-screen">
     <Header />
-    <router-view />
+    <div class="h-full min-h-screen bg-backgroundDefault px-4 py-8">
+      <main>
+        <router-view />
+      </main>
+    </div>
   </div>
 </template>
 

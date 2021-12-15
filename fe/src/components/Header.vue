@@ -40,7 +40,7 @@
 import { defineComponent } from "vue";
 
 const navigationButtons = [
-  { name: "Create Task", href: "/create", current: false },
+  { name: "Vocabularies", href: "/vocab", current: false },
 ];
 
 export default defineComponent({
