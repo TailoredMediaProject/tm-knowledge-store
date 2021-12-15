@@ -1,10 +1,10 @@
 'use strict';
 /* eslint-disable no-undef */
 import {Application, Router} from 'express';
-import RestRouter from './controlers/rest.router';
-import ResolveRouter from './controlers/resolve.router';
-import HealthRouter from './controlers/health.router';
-import {KnowledgeErrorMiddleware} from './controlers/knowledge-error.middleware';
+import RestRouter from './controllers/rest.router';
+import ResolveRouter from './controllers/resolve.router';
+import HealthRouter from './controllers/health.router';
+import {KnowledgeErrorMiddleware} from './controllers/knowledge-error.middleware';
 import express = require('express');
 import path = require('path');
 
