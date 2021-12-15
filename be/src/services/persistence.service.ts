@@ -47,7 +47,7 @@ export class PersistenceService {
     }
 
     create(): void {
-        console.log("create");
+        console.log('create');
     }
 }
 
