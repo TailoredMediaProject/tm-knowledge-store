@@ -20,21 +20,82 @@ export class VocabularyService {
             .then(id => this.getVocabulary(id));
     }
 
-    public deleteVocab(id: string | ObjectId, date: Date): Promise<boolean> {
+    // public deleteVocab(id: string | ObjectId, date: Date): Promise<boolean> {
+    //
+    //     try {
+    //         if (isNaN(date.getDate())) {
+    //             console.log("Date is not valid")
+    //             return Promise.resolve(false)
+    //         }
+    //
+    //         this.collection().findOne({_id: new ObjectId(id)}).then(result => {
+    //             if (result) {
+    //                 console.log(`Successfully found document: ${result}.`);
+    //             } else {
+    //                 console.log("No document matches the provided ID.");
+    //                 return false
+    //             }
+    //         })
+    //             .catch(err => console.error(`Failed to find document: ${err}`))
+    //
+    //         return this.collection().deleteOne({_id: new ObjectId(id), lastModified: date})
+    //             .then(r => {
+    //                 if (r.deletedCount == 1) {
+    //                     console.log(`Successfully deleted Vocabulary.`)
+    //                     return true
+    //                 } else {
+    //                     console.log(`Vocabulary with matching params not found.`)
+    //                     return false
+    //                 }
+    //             })
+    //     } catch (e) {
+    //         console.log('=============ERROR=============')
+    //         console.log(`Failed to delete Vocabulary: ${e}`)
+    //         return Promise.resolve(false)
+    //     }
+    // }
+
+
+    public async deleteVocab(id: string | ObjectId, date: Date): Promise<number> {
+
+        let res = -1;
 
         try {
-            if (this.collection().findOne({_id: new ObjectId(id)})){
-                console.log('Vocab found!')
-            } else{
-                console.log("Vocab with this id does not exist")
+            if (isNaN(date.getDate())) {
+                console.log("Date is not valid")
+                return res + 1
+                // throw new Error(404, Error, "Date is not valid")
             }
+
+            if (!ObjectId.isValid(id)){
+                console.log("Provided id is not valid")
+                return res + 5
+            }
+
+            this.collection().findOne({_id: new ObjectId(id)}).then(result => {
+                if (result) {
+                    console.log(`Successfully found document: ${result}.`);
+                } else {
+                    console.log("No document matches the provided ID.");
+                    return res + 2
+                }
+            })
+                .catch(err => console.error(`Failed to find document: ${err}`))
+
             return this.collection().deleteOne({_id: new ObjectId(id), lastModified: date})
-                .then(r => r.deletedCount == 1)
-        }
-        catch (e) {
-            console.log('==========================')
-            console.log(e)
-            return Promise.resolve(false)
+                .then(r => {
+                    if (r.deletedCount == 1) {
+                        console.log(`Successfully deleted Vocabulary.`)
+                        return res
+                    } else {
+                        console.log(`Vocabulary with matching params not found.`)
+                        return res + 3
+                    }
+                })
+        } catch (e) {
+            console.log('=============ERROR=============')
+            console.log(`Failed to delete Vocabulary: ${e}`)
+            return Promise.resolve(res + 4)
         }
     }
 

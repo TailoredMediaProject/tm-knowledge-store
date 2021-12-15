@@ -3,6 +3,7 @@ import {vocabularyService} from '../services/vocabulary.service';
 import {Vocabulary} from '../models/dbo.models';
 import {Vocabulary as VocabularyDTO} from '../generated/models/Vocabulary';
 import ListQueryModel from '../models/list-query.model';
+import {BSONType} from "mongodb";
 
 const router: Router = Router();
 
@@ -38,13 +39,45 @@ router.delete('/vocab/:id', async (req: Request, res: Response) => {
     const header = req.header('if-unmodified-since')
     const date: Date = new Date(header)
 
-    vocabularyService.deleteVocab(req.params.id, parseDate(header)).then(result => {
-        if (result) {
+    vocabularyService.deleteVocab(req.params.id, date).then(result => {
+        if (result == -1) {
             res.status(204).end();
         } else {
-            res.status(404).json({
-                message: "Vocabulary not found"
-            });
+            switch (result){
+                case 0: {
+                    res.status(404).json({
+                        message: "Date is not valid"
+                    });
+                    break
+                }
+                case 1: {
+                    res.status(404).json({
+                        message: "No document matches the provided ID."
+                    })
+                    break
+                }
+                case 2: {
+                    res.status(404).json({
+                        message: "Vocabulary with matching params not found."
+                    })
+                    break
+                }
+                case 3: {
+                    res.status(404).json({
+                        message: "Failed to delete Vocabulary."
+                    })
+                    break;
+                }
+                case 4: {
+                    res.status(404).json({
+                        message: "Provided id is not valid."
+                    })
+                    break;
+                }
+            }
+            // res.status(404).json({
+            //     message: "Vocabulary not found"
+            // });
         }
     }).catch(e => {
         console.error(e);
@@ -130,19 +163,6 @@ const vocabDto2Dbo = (dto: VocabularyDTO): Vocabulary => ({
     lastModified: undefined
 });
 
-
-function parseDate(header: string): Date {
-    try {
-        const x = new Date(header)
-        console.log('tried')
-        console.log(x)
-        console.log(typeof x)
-        return x
-    } catch (e) {
-        console.log("Date parsed incorrectly")
-        console.log(e)
-    }
-}
 
 const vocabDbo2Dto = (dbo: Vocabulary): VocabularyDTO => ({
     id: dbo._id.toHexString(),
