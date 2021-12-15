@@ -3,15 +3,18 @@ import {Vocabulary} from '../models/dbo.models';
 import {instance, PersistenceService} from './persistence.service';
 import ListQueryModel from '../models/query-list.model';
 import {ListingResult} from '../models/listing-result.model';
+import {KnowledgeError} from "../models/knowledge-error.model";
 
 export class VocabularyService {
-    private readonly persistence: PersistenceService = instance;
-    private readonly vocabCollection: string = 'vocabularies';
-    private readonly collection = (): Collection => this.persistence.db().collection(this.vocabCollection);
+    private readonly persistence: PersistenceService = instance
+
+    private get collection(): Collection {
+        return this.persistence.db.collection('vocabularies');
+    }
 
     public createVocab(newVocab: Vocabulary): Promise<Vocabulary> {
 
-        return this.collection().insertOne({
+        return this.collection.insertOne({
             ...newVocab,
             _id: null,
             created: new Date(),
@@ -22,7 +25,7 @@ export class VocabularyService {
     }
 
     public getVocabular(id: string | ObjectId): Promise<Vocabulary> {
-        return this.collection().findOne({_id: new ObjectId(id)}).then(x => <Vocabulary>x);
+        return this.collection.findOne({_id: new ObjectId(id)}).then(x => <Vocabulary>x);
     }
 
     // public deleteVocab(id: string | ObjectId, date: Date): Promise<boolean> {
@@ -60,53 +63,43 @@ export class VocabularyService {
     //     }
     // }
 
-    public async deleteVocab(id: string | ObjectId, date: Date): Promise<number> {
+    public async deleteVocab(id: string | ObjectId, date: Date): Promise<boolean> {
 
-        let res = -1;
+        if (isNaN(date.getDate())) {
+            console.log("Date is not valid")
+            throw new KnowledgeError(404, "Date", "Date is not valid")
+        }
 
-        try {
-            if (isNaN(date.getDate())) {
-                console.log("Date is not valid")
-                return res + 1
-                // throw new Error(404, Error, "Date is not valid")
+        if (!ObjectId.isValid(id)) {
+            console.log("Provided id is not valid")
+            throw new KnowledgeError(404, "ID", "ID is not valid")
+        }
+
+        this.collection.findOne({_id: new ObjectId(id)}).then(result => {
+            if (result) {
+                console.log(`Successfully found document: ${result}.`);
+            } else {
+                console.log("No document matches the provided ID.");
+                throw new KnowledgeError(404, "Document", "No document matches the provided ID.")
             }
+        })
 
-            if (!ObjectId.isValid(id)){
-                console.log("Provided id is not valid")
-                return res + 5
-            }
-
-            this.collection().findOne({_id: new ObjectId(id)}).then(result => {
-                if (result) {
-                    console.log(`Successfully found document: ${result}.`);
+        return this.collection.deleteOne({_id: new ObjectId(id), lastModified: date})
+            .then(r => {
+                if (r.deletedCount == 1) {
+                    console.log(`Successfully deleted Vocabulary.`)
+                    return true
                 } else {
-                    console.log("No document matches the provided ID.");
-                    return res + 2
+                    console.log(`Vocabulary with matching params not found.`)
+                    throw new KnowledgeError(404, "Vocabulary", "Vocabulary with matching params not found. Failed to delete Vocabulary.")
                 }
             })
-                .catch(err => console.error(`Failed to find document: ${err}`))
-
-            return this.collection().deleteOne({_id: new ObjectId(id), lastModified: date})
-                .then(r => {
-                    if (r.deletedCount == 1) {
-                        console.log(`Successfully deleted Vocabulary.`)
-                        return res
-                    } else {
-                        console.log(`Vocabulary with matching params not found.`)
-                        return res + 3
-                    }
-                })
-        } catch (e) {
-            console.log('=============ERROR=============')
-            console.log(`Failed to delete Vocabulary: ${e}`)
-            return Promise.resolve(res + 4)
-        }
     }
 
 
     // eslint-disable-rows-line @typescript-eslint/explicit-module-boundary-types
     public async listVocab(query: ListQueryModel, id?: string | ObjectId): Promise<ListingResult<Vocabulary>> {
-        const { options, filter } = this.transformToMongoDBFilterOption(query, id);
+        const {options, filter} = this.transformToMongoDBFilterOption(query, id);
         // @ts-ignore
         const dbos: Vocabulary[] = await this.collection.find(filter, options).toArray() as Vocabulary[];
         return {
