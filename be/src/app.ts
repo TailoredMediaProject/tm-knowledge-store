@@ -5,7 +5,7 @@ import RestRouter from './controlers/rest.router';
 import ResolveRouter from './controlers/resolve.router';
 import HealthRouter from './controlers/health.router';
 import express = require('express');
-import path = require('path')
+import path = require('path');
 
 const app: Application = express();
 app.use(express.json())
