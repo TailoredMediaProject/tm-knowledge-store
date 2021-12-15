@@ -1,7 +1,7 @@
 import {Collection, Filter, ObjectId, UpdateFilter, UpdateResult} from 'mongodb';
 import {Vocabulary} from '../models/dbo.models';
 import {instance, PersistenceService} from './persistence.service';
-import {Error} from '../generated';
+import {KnowledgeError} from '../models/knowledge-error.model';
 
 export class VocabularyService {
     private readonly persistence: PersistenceService = instance
@@ -53,15 +53,17 @@ export class VocabularyService {
                                     created: dbo.created
                                 };
                             } else {
-                                throw new Error('Target not found'); // 404
+                                throw new KnowledgeError(404,'Not found', `Target vocabulary with id '${id}' not found`);
                             }
                         });
                   } else {
-                      // throw new Error('Target has been modified since last retrieval, the modified target is returned'); // 412
-                      return dbo;
+                      throw new KnowledgeError(412,
+                        'Precondition Failed',
+                        'Target has been modified since last retrieval, the modified target is returned',
+                        dbo);
                   }
               } else {
-                  throw new Error('Target not found'); // 404
+                  throw new KnowledgeError(404,'Not found', `Target vocabulary with id '${id}' not found`);
               }
           });
     }

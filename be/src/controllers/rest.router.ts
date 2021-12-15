@@ -35,11 +35,24 @@ router.post('/vocab', (req: Request, res: Response, next: NextFunction) => {
   vocabularyService.createVocab(newVocab)
       .then(v => vocabDbo2Dto(v))
       .then(v => res.json(v))
-      .catch((e: unknown) => next(new KnowledgeError(500, 'Internal Server Error', e.toString())));
+      .catch(next);
 });
 
 router.put('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
-  next(new KnowledgeError(501, 'Not Implemented', 'PUT /vocab/:id is not implemented'));
+  const headerName = 'If-Unmodified-Since';
+  const ifUnmodifiedSince: string = req.header(headerName);
+
+  if(!!ifUnmodifiedSince) {
+    if(!!req?.params?.id) {
+      vocabularyService.updateVocab(req?.params?.id, new Date(ifUnmodifiedSince), vocabDto2Dbo(req.body as VocabularyDTO))
+        .then((v: Vocabulary) => res.json(vocabDbo2Dto(v)))
+        .catch(next);
+    } else {
+      next(new KnowledgeError(400, 'Bad Request', 'Missing or invalid ID'));
+    }
+  } else {
+    next(new KnowledgeError(409, 'Conflict', `Operation failed, ${headerName}-Header missing or falsy value!`));
+  }
 });
 
 router.get('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
