@@ -4,6 +4,7 @@ import {Application, Router} from 'express';
 import RestRouter from './controlers/rest.router';
 import ResolveRouter from './controlers/resolve.router';
 import HealthRouter from './controlers/health.router';
+import {KnowledgeErrorMiddleware} from './controlers/knowledge-error.middleware';
 import express = require('express');
 import path = require('path');
 
@@ -22,6 +23,9 @@ const staticDir = process.env.BE_STATIC || 'static';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 app.use('/', express.static(path.join(__dirname, staticDir)))
 console.log('static files on /');
+
+console.log('Register KnowledgeErrorMiddleware')
+app.use(KnowledgeErrorMiddleware);
 
 // Listen on port
 const port: number = parseInt(process.env.BE_PORT || '8080', 10);
