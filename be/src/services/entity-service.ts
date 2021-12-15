@@ -11,8 +11,21 @@ export default class EntityService {
         return this.persistenceService.db.collection(this.entityCollection);
     }
 
-    async createEntity(vocabID: string, entity: Entity): Promise<any> {
-        return Promise.resolve(null);
+    async createEntity(vocabID: string, entity: Entity): Promise<Entity> {
+        const newEntity: Entity = {
+            id: null,
+            created: new Date().toISOString(),
+            lastModified: new Date().toISOString(),
+            vocabulary: vocabID,
+            label: entity.label,
+            description: entity.description,
+            externalResources: entity.externalResources,
+            type: entity.type,
+            canonicalLink: entity.canonicalLink,
+            sameAs: entity.sameAs,
+            data: entity.data
+        };
+        return this.collection.insertOne(newEntity).then(entityID => this.getEntity(vocabID, entityID.insertedId.toString()));
     }
 
     async getEntities(vocabID: string, filter: unknown): Promise<any> {
