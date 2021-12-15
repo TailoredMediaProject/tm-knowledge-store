@@ -4,7 +4,7 @@ This are the commands available for docker and the build pipeline, you should ru
 
 Install:
 ```shell
-nvm use && npm i && npm run generate
+nvm use && npm i && npm run prepaire && npm run generate
 ```
 Lint:
 ```shell
@@ -22,6 +22,10 @@ Start:
 ```shell
 npm run start
 ```
+
+## Development
+
+Please install the [IntelliJ Prettier Plugin](https://plugins.jetbrains.com/plugin/10456-prettier) and enable it with `Run on save for files` set in its settings of IntelliJ.
 
 ## Generate
 The [openapi-generator](https://openapi-generator.tech) is used for creating service side stubs, see the [general documentation](https://openapi-generator.tech/docs/configuration/) and the one for [typescript-axios](
