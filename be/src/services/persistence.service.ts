@@ -41,7 +41,7 @@ export class PersistenceService {
             return res.ok === 1;
         }
         catch (err){
-            console.error(err)
+            console.error(err);
         }
         return false;
     }
