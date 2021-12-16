@@ -70,7 +70,7 @@ export class VocabularyService {
       .listVocabularies(text, undefined, undefined, undefined, page, rowCount)
       .then((req) =>
         req().then((resp) => {
-          if (resp.status !== 200) {
+          if (resp.status >= 400) {
             console.error(resp);
             return;
           }
@@ -87,7 +87,7 @@ export class VocabularyService {
     }
     return this.apiFn.getVocabulary(objectID).then((req) =>
       req().then((resp) => {
-        if (resp.status !== 200) {
+        if (resp.status >= 400) {
           console.error(resp);
           return;
         }
@@ -112,7 +112,7 @@ export class VocabularyService {
       })
       .then((req) =>
         req().then((resp) => {
-          if (resp.status !== 200) {
+          if (resp.status >= 400) {
             console.error(resp);
             return;
           }
@@ -135,7 +135,7 @@ export class VocabularyService {
       .updateVocabulary(objectID, lastModified, vocab)
       .then((req) =>
         req().then((resp) => {
-          if (resp.status !== 200) {
+          if (resp.status >= 400) {
             console.error(resp);
             return;
           }
@@ -156,7 +156,7 @@ export class VocabularyService {
     return this.apiFn.deleteVocabulary(objectID, lastModified).then((req) =>
       req()
         .then((resp) => {
-          if (resp.status !== 200) {
+          if (resp.status >= 400) {
             console.error(resp);
             return undefined;
           }
