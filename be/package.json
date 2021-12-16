@@ -14,8 +14,7 @@
     "generate:build": "npm run generate && npm run build",
     "generate:build:start": "npm run generate && npm run build && npm run start",
     "build:start": "npm run build && npm run start",
-    "package": "npm run generate:build && copy-node-modules . ./dist",
-    "prepare": "cd ../ && husky install be/.husky"
+    "package": "npm run generate:build && copy-node-modules . ./dist"
   },
   "repository": {
     "type": "git",
@@ -43,9 +42,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-prefer-arrow": "^1.2.3",
-    "husky": "^7.0.4",
     "jest": "^27.4.0",
-    "lint-staged": "^12.1.2",
     "nodemon": "^2.0.15",
     "openapi-typescript-codegen": "^0.12.5",
     "prettier": "^2.5.1",
@@ -61,10 +58,8 @@
   "prettier": {
     "trailingComma": "es5",
     "tabWidth": 4,
+    "printWidth": 140,
     "semi": true,
     "singleQuote": true
-  },
-  "lint-staged": {
-    "*.ts": "npm run lint"
   }
 }
