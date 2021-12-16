@@ -71,15 +71,27 @@ router.get('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
       .catch(next);
 });
 
-router.delete('/vocab/:id', async (req: Request, res: Response, next: NextFunction) => {
+router.delete('/vocab/:id',  (req: Request, res: Response, next: NextFunction) => {
   const header = req.header('if-unmodified-since')
-  const date: Date = new Date(header)
 
-  vocabularyService.deleteVocab(req.params.id, date).then(result => {
-    if (result) {
-      res.status(204).end();
-    }
-  }).catch(next);
+  if (header === undefined){
+    res.status(428).json({
+      title: 'Header',
+      message: 'If-Unmodified-Since-Header missing'
+    })
+  } else {
+    const date: Date = new Date(header)
+
+    vocabularyService.deleteVocab(req.params.id, date).then(result => {
+      if (result) {
+        res.status(204).end();
+      } else {
+        res.status(404).json({
+          message: 'Vocabulary not found'
+        });
+      }
+    }).catch(next);
+  }
 });
 
 router.get('/vocab/:id/entities', (req: Request, res: Response, next: NextFunction) => {

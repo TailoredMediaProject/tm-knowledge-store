@@ -3,7 +3,7 @@ import {Vocabulary} from '../models/dbo.models';
 import {instance, PersistenceService} from './persistence.service';
 import ListQueryModel from '../models/query-list.model';
 import {ListingResult} from '../models/listing-result.model';
-import {KnowledgeError} from "../models/knowledge-error.model";
+import {KnowledgeError} from '../models/knowledge-error.model';
 
 export class VocabularyService {
     private readonly persistence: PersistenceService = instance
@@ -30,18 +30,18 @@ export class VocabularyService {
 
     public async deleteVocab(id: string | ObjectId, date: Date): Promise<boolean> {
 
-        if (isNaN(date.getDate())) {
-            throw new KnowledgeError(404, "Date", "Date is not valid")
+        if (isNaN(date.getTime())) {
+            throw new KnowledgeError(400, 'Date', 'Date is not valid')
         }
 
         if (!ObjectId.isValid(id)) {
-            throw new KnowledgeError(404, "ID", "ID is not valid")
+            throw new KnowledgeError(400, 'ID', 'ID is not valid')
         }
 
         const result = await this.collection.findOne({_id: new ObjectId(id)})
 
         if (!result) {
-            throw new KnowledgeError(404, "Document", "No document matches the provided ID.")
+            throw new KnowledgeError(404, 'Document', 'No document matches the provided ID.')
         }
 
         return this.collection.deleteOne({_id: new ObjectId(id), lastModified: date})
@@ -49,7 +49,7 @@ export class VocabularyService {
                 if (r.deletedCount == 1) {
                     return true
                 } else {
-                    throw new KnowledgeError(404, "Vocabulary", "Vocabulary with matching params not found.")
+                    throw new KnowledgeError(412, 'Header', 'Header does not match!')
                 }
             })
     }
