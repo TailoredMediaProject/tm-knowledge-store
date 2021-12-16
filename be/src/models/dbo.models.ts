@@ -19,4 +19,5 @@ export interface Entity {
     externalResources: string[]
     sameAs: string[]
     data: unknown
+    canonicalLink: string
 }

@@ -1,11 +1,12 @@
 import {NextFunction, Request, Response, Router} from 'express';
 import {vocabularyService} from '../services/vocabulary.service';
-import {Vocabulary} from '../models/dbo.models';
+import {Entity, Vocabulary} from '../models/dbo.models';
 import {Vocabulary as VocabularyDTO} from '../generated/models/Vocabulary';
 import {entityServiceInstance} from '../services/entity.service';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import {ListingResult} from '../models/listing-result.model';
 import ListQueryModel from '../models/query-list.model';
+import {Entity as EntityDTO, TagType} from '../generated';
 
 const router: Router = Router();
 
@@ -25,6 +26,21 @@ const vocabDbo2Dto = (dbo: Vocabulary): VocabularyDTO => ({
   created: dbo.created.toISOString(),
   lastModified: dbo.lastModified.toISOString(),
   entityCount: -1
+});
+
+const entityDBOToDTO = (entity: Entity): EntityDTO => ({
+  id: entity._id.toHexString(),
+  vocabulary: entity.vocabulary.toHexString(),
+  label: entity.label,
+  description: entity.description,
+  created: entity.created.toISOString(),
+  lastModified: entity.lastModified.toISOString(),
+  sameAs: entity.sameAs,
+  // @ts-ignore
+  type: TagType[entity.type],
+  externalResources: entity.externalResources,
+  data: entity.data,
+  canonicalLink: entity.canonicalLink
 });
 
 router.get('/vocab', (req: Request, res: Response, next: NextFunction) => {
@@ -88,9 +104,28 @@ router.delete('/vocab/:id',  (req: Request, res: Response, next: NextFunction) =
     }).catch(next);
 });
 
-router.get('/vocab/:id/entities', (req: Request, res: Response, next: NextFunction) => {
+router.get('/vocab/:vocabID/entities', (req: Request, res: Response, next: NextFunction) => {
   try {
-    void entityServiceInstance.getEntity(undefined, undefined);
+    if (!checkQueryParams(['text', 'type', 'createdSince', 'modifiedSince', 'sort', 'offset', 'rows'], req?.query)) {
+      next(new KnowledgeError(400, 'Bad Request', 'Invalid query parameters'));
+    } else {
+      const queryListModel: ListQueryModel = {
+        ...req?.query,
+        modifiedSince: !!req?.query?.modifiedSince ? new Date(`${req?.query.modifiedSince}`) : undefined,
+        createdSince: !!req?.query?.createdSince ? new Date(`${req?.query.createdSince}`) : undefined
+      };
+      const vocabID = req.params.vocabID;
+      entityServiceInstance.getEntities(vocabID, queryListModel, req.params.id)
+          .then((result: ListingResult<Entity>) =>
+              res.json({
+                ...result,
+                items: result.items
+                    .map((entity: Entity) =>
+                        entityDBOToDTO(entity)
+                    )
+              })
+          ).catch(next);
+    }
   } catch (e) {
     next(e);
   }
@@ -104,9 +139,13 @@ router.post('/vocab/:id/entities', (req: Request, res: Response, next: NextFunct
   }
 });
 
-router.get('/vocab/:id/entities/:id', (req: Request, res: Response, next: NextFunction) => {
+router.get('/vocab/:vocabID/entities/:entityID', (req: Request, res: Response, next: NextFunction) => {
   try {
-    void entityServiceInstance.getEntity(undefined, undefined);
+    const vocabID = req.params.vocabID;
+    const entityID = req.params.entityID;
+    entityServiceInstance.getEntity(vocabID, entityID)
+        .then((entity: Entity) => res.json(entityDBOToDTO(entity)))
+        .catch(next);
   } catch (e) {
     next(e);
   }
