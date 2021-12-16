@@ -1,10 +1,11 @@
-import {instance} from "./persistence.service";
-import {Collection} from "mongodb";
-import {Entity} from "../models/dbo.models";
+import {instance} from './persistence.service';
+import {Entity} from '../generated';
+import {Collection} from 'mongodb';
+import {KnowledgeError} from '../models/knowledge-error.model';
 
-export default class EntityService {
+export class EntityService {
     private readonly persistenceService = instance;
-    private readonly entityCollection: string = "entities";
+    private readonly entityCollection: string = 'entities';
 
     private get collection(): Collection {
         return this.persistenceService.db.collection(this.entityCollection);

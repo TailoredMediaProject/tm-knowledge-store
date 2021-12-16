@@ -29,3 +29,9 @@ https://openapi-generator.tech/docs/generators/typescript-axios). To generate ru
 ```shell
 npm run generate
 ```
+
+## Docker
+
+```shell
+docker exec -it <container_id_or_name> mongo # mongo mongo works as the container name is mongo
+```
