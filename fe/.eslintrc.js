@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-
+  ignorePatterns: ["node_modules/**/*", "**/*.config.js"],
   env: {
     node: true,
   },
