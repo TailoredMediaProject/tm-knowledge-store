@@ -1,7 +1,7 @@
 export default interface ListQueryModel {
   text?: string;
-  createdSince?: string;
-  modifiedSince?: string;
+  createdSince?: Date;
+  modifiedSince?: Date;
   sort?: string;
   offset?: number;
   rows?: number
