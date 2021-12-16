@@ -72,14 +72,9 @@ router.get('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
 });
 
 router.delete('/vocab/:id',  (req: Request, res: Response, next: NextFunction) => {
-  const header = req.header('if-unmodified-since')
-
-  if (header === undefined){
-    res.status(428).json({
-      title: 'Header',
-      message: 'If-Unmodified-Since-Header missing'
-    })
-  } else {
+    const header = req.header('if-unmodified-since')
+    checkIfUnmodifiedHeader(header, next)
+    checkDateIfValid(header, next)
     const date: Date = new Date(header)
 
     vocabularyService.deleteVocab(req.params.id, date).then(result => {
@@ -91,7 +86,6 @@ router.delete('/vocab/:id',  (req: Request, res: Response, next: NextFunction) =
         });
       }
     }).catch(next);
-  }
 });
 
 router.get('/vocab/:id/entities', (req: Request, res: Response, next: NextFunction) => {
@@ -135,5 +129,17 @@ router.delete('/vocab/:id/entities/:id', (req: Request, res: Response, next: Nex
 });
 
 const checkQueryParams = (allowed: string[], query: unknown): boolean => Object.keys(query).every(key => allowed.includes(key));
+
+const checkIfUnmodifiedHeader = (header: string, next: NextFunction): void => {
+  if (!header){
+    next(new KnowledgeError(428,'Header', 'If-Unmodified-Since-Header missing'))}
+}
+
+const checkDateIfValid = (header: string, next: NextFunction): void => {
+  const date: Date = new Date(header)
+  if (isNaN(date.getTime())) {
+    next(new KnowledgeError(400, 'Date', 'Date is not valid'))
+  }
+}
 
 export default router;
