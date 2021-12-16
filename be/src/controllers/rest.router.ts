@@ -1,11 +1,13 @@
 import {NextFunction, Request, Response, Router} from 'express';
 import {vocabularyService} from '../services/vocabulary.service';
-import {Vocabulary} from '../models/dbo.models';
+import {Entity, Vocabulary} from '../models/dbo.models';
 import {Vocabulary as VocabularyDTO} from '../generated/models/Vocabulary';
+import {Entity as EntityDTO} from '../generated/models/Entity';
 import {entityServiceInstance} from '../services/entity.service';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import {ListingResult} from '../models/listing-result.model';
 import ListQueryModel from '../models/query-list.model';
+import {ObjectId} from 'mongodb';
 
 const router: Router = Router();
 
@@ -24,6 +26,33 @@ const vocabDbo2Dto = (dbo: Vocabulary): VocabularyDTO => ({
   created: dbo.created.toISOString(),
   lastModified: dbo.lastModified.toISOString(),
   entityCount: -1
+});
+
+const entityDto2Dbo = (dto: EntityDTO): Entity => ({
+  _id: undefined,
+  vocabulary: new ObjectId(checkVocabId(dto?.vocabulary)),
+  type: dto?.type,
+  label: dto?.label,
+  description: dto.description,
+  created: !!dto?.created ? new Date(dto.created) : new Date(),
+  lastModified: !!dto?.lastModified ?  new Date(dto.lastModified) : new Date(),
+  externalResources: dto.externalResources,
+  sameAs: dto.sameAs,
+  data: dto.data
+});
+
+const entityDbo2Dto = (dbo: Entity): EntityDTO => ({
+  id: dbo._id.toHexString(),
+  vocabulary: dbo.vocabulary.toHexString(),
+  // @ts-ignore
+  type: dbo.type.toUpperCase(),
+  label: dbo.label,
+  description: dbo.description,
+  created: dbo.created.toISOString(),
+  lastModified: dbo.lastModified.toISOString(),
+  externalResources: dbo.externalResources,
+  sameAs: dbo.sameAs,
+  data: dbo.data
 });
 
 router.get('/vocab', (req: Request, res: Response, next: NextFunction) => {
@@ -98,12 +127,35 @@ router.get('/vocab/:id/entities/:id', (req: Request, res: Response, next: NextFu
   }
 });
 
-router.put('/vocab/:id/entities/:id', (req: Request, res: Response, next: NextFunction) => {
-  try {
-    void entityServiceInstance.getEntity(undefined, undefined);
-  } catch (e) {
-    next(e);
+router.put('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: NextFunction) => {
+  const headerName = 'If-Unmodified-Since';
+  const ifUnmodifiedSinceString: string = req.header(headerName);
+
+  if(!ifUnmodifiedSinceString) {
+    next(new KnowledgeError(428, 'Precondition Required', `Operation failed, ${headerName}-Header missing or falsy value!`));
   }
+
+  const ifUnmodifiedSince: Date = new Date(ifUnmodifiedSinceString);
+
+  if(isNaN(ifUnmodifiedSince.getTime())) {
+    next(new KnowledgeError(422, 'Unprocessable Entity', `The ${headerName}-Header has an invalid date format!`));
+  }
+
+  if(!req?.params?.vId) {
+    next(new KnowledgeError(400, 'Bad Request', 'Missing or invalid vocabulary ID'));
+  }
+
+  if(!req?.params?.eId) {
+    next(new KnowledgeError(400, 'Bad Request', 'Missing or invalid entity ID'));
+  }
+
+  if(!req?.body || !checkQueryParams(['type', 'label', 'description', 'externalResources', 'sameAs'], req.body)) {
+    next(new KnowledgeError(400, 'Bad Request', 'Missing body or invalid body properties'));
+  }
+
+  entityServiceInstance.updateEntity(req.params.vId, req.params.eId, ifUnmodifiedSince, entityDto2Dbo(req.body as EntityDTO))
+    .then((e: Entity) => res.json(entityDbo2Dto(e)))
+    .catch(next);
 });
 
 router.delete('/vocab/:id/entities/:id', (req: Request, res: Response, next: NextFunction) => {
@@ -115,5 +167,13 @@ router.delete('/vocab/:id/entities/:id', (req: Request, res: Response, next: Nex
 });
 
 const checkQueryParams = (allowed: string[], query: unknown): boolean => Object.keys(query).every(key => allowed.includes(key));
+
+const checkVocabId = (id: string): string => {
+  if(!!id) {
+    return id;
+  }
+
+  throw new KnowledgeError(428, 'Precondition Required', 'Invalid vocabulary ID');
+};
 
 export default router;

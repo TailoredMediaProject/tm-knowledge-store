@@ -70,10 +70,10 @@ paths:
           $ref: '#/components/responses/VocabularyResponse'
         404:
           $ref: '#/components/responses/NotFoundResponse'
-        409:
-          $ref: '#/components/responses/ConflictResponse'
         412:
           $ref: '#/components/responses/PreconditionFailedVocabulary'
+        428:
+          $ref: '#/components/responses/PreconditionRequiredResponse'
     delete:
       operationId: deleteVocabulary
       summary: Delete a vocabular
@@ -85,11 +85,10 @@ paths:
           $ref: '#/components/responses/VocabularyResponse'
         404:
           $ref: '#/components/responses/NotFoundResponse'
-        409:
-          $ref: '#/components/responses/ConflictResponse'
         412:
           $ref: '#/components/responses/PreconditionFailedVocabulary'
-
+        428:
+          $ref: '#/components/responses/PreconditionRequiredResponse'
   /vocab/{vocabularyId}/entities:
     parameters:
       - $ref: '#/components/parameters/VocabularyId'
@@ -142,10 +141,10 @@ paths:
           $ref: '#/components/responses/EntityResponse'
         404:
           $ref: '#/components/responses/NotFoundResponse'
-        409:
-          $ref: '#/components/responses/ConflictResponse'
         412:
           $ref: '#/components/responses/PreconditionFailedEntity'
+        428:
+          $ref: '#/components/responses/PreconditionRequiredResponse'
     delete:
       summary: Delete an entities in the vocabulary
       tags: [ Entites ]
@@ -156,11 +155,10 @@ paths:
           $ref: '#/components/responses/EntityResponse'
         404:
           $ref: '#/components/responses/NotFoundResponse'
-        409:
-          $ref: '#/components/responses/ConflictResponse'
         412:
           $ref: '#/components/responses/PreconditionFailedEntity'
-
+        428:
+          $ref: '#/components/responses/PreconditionRequiredResponse'
   /resolve:
     get:
       operationId: resolveEntity
@@ -477,7 +475,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    ConflictResponse:
+    PreconditionRequiredResponse:
       description: Operation failed, `If-Unmodified-Since`-Header missing!
       content:
         application/json:
