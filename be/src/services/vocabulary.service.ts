@@ -30,10 +30,6 @@ export class VocabularyService {
 
     public async deleteVocab(id: string | ObjectId, date: Date): Promise<boolean> {
 
-        if (isNaN(date.getTime())) {
-            throw new KnowledgeError(400, 'Date', 'Date is not valid')
-        }
-
         if (!ObjectId.isValid(id)) {
             throw new KnowledgeError(400, 'ID', 'ID is not valid')
         }
