@@ -187,9 +187,9 @@ paths:
         default:
           description: ""
           content:
-            application/ld+json: {}
-            text/turtle: {}
-            text/rdf+xml: {}
+            application/ld+json: { }
+            text/turtle: { }
+            text/rdf+xml: { }
 
 components:
   schemas:

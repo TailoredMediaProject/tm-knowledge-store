@@ -35,7 +35,7 @@ const entityDto2Dbo = (dto: EntityDTO): Entity => ({
   label: dto?.label,
   description: dto.description,
   created: !!dto?.created ? new Date(dto.created) : new Date(),
-  lastModified: !!dto?.lastModified ?  new Date(dto.lastModified) : new Date(),
+  lastModified: !!dto?.lastModified ? new Date(dto.lastModified) : new Date(),
   externalResources: dto.externalResources,
   sameAs: dto.sameAs,
   data: dto.data
@@ -100,7 +100,20 @@ router.get('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
 });
 
 router.delete('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
-  next(new KnowledgeError(501, 'Not Implemented', 'DELETE /vocab/:id is not implemented'));
+  const header = req.header('if-unmodified-since');
+  checkIfUnmodifiedHeader(header, next);
+  checkDateIfValid(header, next);
+  const date: Date = new Date(header);
+
+  vocabularyService.deleteVocab(req.params.id, date).then(result => {
+    if (result) {
+      res.status(204).end();
+    } else {
+      res.status(404).json({
+        message: 'Vocabulary not found'
+      });
+    }
+  }).catch(next);
 });
 
 router.get('/vocab/:id/entities', (req: Request, res: Response, next: NextFunction) => {
@@ -131,25 +144,24 @@ router.put('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: Next
   const headerName = 'If-Unmodified-Since';
   const ifUnmodifiedSinceString: string = req.header(headerName);
 
-  if(!ifUnmodifiedSinceString) {
-    next(new KnowledgeError(428, 'Precondition Required', `Operation failed, ${headerName}-Header missing or falsy value!`));
-  }
+  checkIfUnmodifiedHeader(ifUnmodifiedSinceString, next);
+  checkDateIfValid(ifUnmodifiedSinceString, next);
 
   const ifUnmodifiedSince: Date = new Date(ifUnmodifiedSinceString);
 
-  if(isNaN(ifUnmodifiedSince.getTime())) {
+  if (isNaN(ifUnmodifiedSince.getTime())) {
     next(new KnowledgeError(422, 'Unprocessable Entity', `The ${headerName}-Header has an invalid date format!`));
   }
 
-  if(!req?.params?.vId) {
+  if (!req?.params?.vId) {
     next(new KnowledgeError(400, 'Bad Request', 'Missing or invalid vocabulary ID'));
   }
 
-  if(!req?.params?.eId) {
+  if (!req?.params?.eId) {
     next(new KnowledgeError(400, 'Bad Request', 'Missing or invalid entity ID'));
   }
 
-  if(!req?.body || !checkQueryParams(['type', 'label', 'description', 'externalResources', 'sameAs'], req.body)) {
+  if (!req?.body || !checkQueryParams(['type', 'label', 'description', 'externalResources', 'sameAs'], req.body)) {
     next(new KnowledgeError(400, 'Bad Request', 'Missing body or invalid body properties'));
   }
 
@@ -168,8 +180,21 @@ router.delete('/vocab/:id/entities/:id', (req: Request, res: Response, next: Nex
 
 const checkQueryParams = (allowed: string[], query: unknown): boolean => Object.keys(query).every(key => allowed.includes(key));
 
+const checkIfUnmodifiedHeader = (header: string, next: NextFunction): void => {
+  if (!header) {
+    next(new KnowledgeError(428, 'Precondition Required', 'If-Unmodified-Since-Header missing'));
+  }
+};
+
+const checkDateIfValid = (header: string, next: NextFunction): void => {
+  const date: Date = new Date(header);
+  if (isNaN(date.getTime())) {
+    next(new KnowledgeError(400, 'Bad Request', 'Date is not valid'));
+  }
+};
+
 const checkVocabId = (id: string): string => {
-  if(!!id) {
+  if (!!id) {
     return id;
   }
 
