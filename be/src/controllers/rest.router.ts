@@ -121,8 +121,13 @@ router.put('/vocab/:id/entities/:id', (req: Request, res: Response, next: NextFu
 });
 
 router.delete('/vocab/:id/entities/:id', (req: Request, res: Response, next: NextFunction) => {
+  const header = req.header('if-unmodified-since')
+  checkIfUnmodifiedHeader(header, next)
+  checkDateIfValid(header, next)
+  const date: Date = new Date(header)
+
   try {
-    void entityServiceInstance.getEntity(undefined, undefined);
+    void entityServiceInstance.deleteEntity(undefined, undefined, date);
   } catch (e) {
     next(e);
   }

@@ -39,7 +39,10 @@ export class EntityService {
 
     // TODO remove rule when implemented
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    deleteEntity(vocabID: string, entityID: string, lastModified: string): Promise<unknown> {
+    deleteEntity(vocabID: string, entityID: string, lastModified: Date): Promise<unknown> {
+
+        // TODO write delete func
+
         throw new KnowledgeError(501, 'Not Implemented', 'Operation not implemented');
     }
 }
