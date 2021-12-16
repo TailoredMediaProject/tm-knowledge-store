@@ -40,7 +40,7 @@ const entityDBOToDTO = (entity: Entity): EntityDTO => ({
   type: TagType[entity.type],
   externalResources: entity.externalResources,
   data: entity.data,
-  canonicalLink: entity.canonicalLink
+  canonicalLink: undefined
 });
 
 router.get('/vocab', (req: Request, res: Response, next: NextFunction) => {
