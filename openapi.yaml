@@ -83,12 +83,17 @@ paths:
       responses:
         default:
           $ref: '#/components/responses/VocabularyResponse'
+        400:
+          $ref: '#/components/responses/BadRequestResponse'
         404:
           $ref: '#/components/responses/NotFoundResponse'
         409:
           $ref: '#/components/responses/ConflictResponse'
         412:
           $ref: '#/components/responses/PreconditionFailedVocabulary'
+        428:
+          $ref: '#/components/responses/PreconditionRequiredResponse'
+
 
   /vocab/{vocabularyId}/entities:
     parameters:
@@ -471,6 +476,12 @@ components:
                     type: array
                     items:
                       $ref: '#/components/schemas/Entity'
+    BadRequestResponse:
+      description: Header not parsable
+      content:
+        application/json:
+          schema:
+            $ref: #/components/schemas/Vocabulary'
     NotFoundResponse:
       description: Target not Found
       content:
@@ -491,6 +502,12 @@ components:
             $ref: '#/components/schemas/Entity'
     PreconditionFailedVocabulary:
       description: Target has been modified since last retrieval, the modified target is returned
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Vocabulary'
+    PreconditionRequiredResponse:
+      description: Header is missing
       content:
         application/json:
           schema:
