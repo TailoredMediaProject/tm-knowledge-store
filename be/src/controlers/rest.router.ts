@@ -2,9 +2,9 @@ import {Request, Response, Router} from 'express';
 import {vocabularyService} from "../services/vocabulary.service";
 import {Entity, Vocabulary} from "../models/dbo.models";
 import {Vocabulary as VocabularyDTO} from "../generated/models/Vocabulary";
-import {entityService} from "../services/entity-service";
 import {Entity as EntityDTO, TagType} from "../generated";
 import {ObjectId} from "mongodb";
+import {entityServiceInstance} from "../services/entity.service";
 
 
 const router: Router = Router();
@@ -36,8 +36,7 @@ const createNewEntityDBO = (vocabID: string | ObjectId, entity: EntityDTO): Enti
     type: entity.type,
     externalResources: entity.externalResources,
     sameAs: entity.sameAs,
-    data: entity.data,
-    canonicalLink: entity.canonicalLink
+    data: undefined,
 });
 
 router.get('/vocab', (req: Request, res: Response) => {
@@ -83,10 +82,14 @@ router.get('/vocab/:id/entities', (req: Request, res: Response) => {
 
 router.post('/vocab/:id/entities', (req: Request, res: Response) => {
     const vocabID: string = req.params.id;
-    const entity: Entity = createNewEntityDBO(vocabID, req.body as EntityDTO);
-    entityService.createEntity(vocabID, entity)
-        .then(entity => res.json(entity))
-        .catch((error: unknown) => errorLogAndResponse(error, res));
+    try {
+        const entity: Entity = createNewEntityDBO(vocabID, req.body as EntityDTO);
+        entityServiceInstance.createEntity(vocabID, entity)
+            .then(entity => res.status(201).json(entity))
+            .catch((error: unknown) => errorLogAndResponse(error, res));
+    } catch (e) {
+        errorLogAndResponse(e, res);
+    }
 });
 
 router.get('/vocab/:id/entities/:id', (req: Request, res: Response) => {

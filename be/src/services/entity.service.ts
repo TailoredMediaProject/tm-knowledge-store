@@ -1,6 +1,6 @@
 import {instance} from "./persistence.service";
-import {Entity} from "../generated";
 import {Collection} from "mongodb";
+import {Entity} from "../models/dbo.models";
 
 export default class EntityService {
     private readonly persistenceService = instance;
@@ -10,10 +10,10 @@ export default class EntityService {
         return this.persistenceService.db.collection(this.entityCollection);
     }
 
-    // TODO remove rule when implemented
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    async createEntity(vocabID: string, entity: Entity): Promise<unknown> {
-        return Promise.resolve(null);
+    async createEntity(vocabID: string, entity: Entity): Promise<Entity> {
+        // @ts-ignore
+        return this.collection.insertOne(entity)
+            .then(entityID => this.getEntity(vocabID, entityID.insertedId.toString()));
     }
 
     // TODO remove rule when implemented
@@ -40,3 +40,5 @@ export default class EntityService {
         return Promise.resolve(null);
     }
 }
+
+export const entityServiceInstance =  new EntityService();
