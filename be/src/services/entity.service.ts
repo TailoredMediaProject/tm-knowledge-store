@@ -1,7 +1,6 @@
 import {instance} from './persistence.service';
-import {Entity} from '../generated';
 import {Collection} from 'mongodb';
-import {KnowledgeError} from '../models/knowledge-error.model';
+import {Entity} from '../models/dbo.models';
 
 export class EntityService {
     private readonly persistenceService = instance;
