@@ -12,6 +12,10 @@ export class VocabularyService {
         return this.persistence.db.collection('vocabularies');
     }
 
+    private countCollectionItems(): Promise<number> {
+        return this.collection.countDocuments();
+    }
+
     public createVocab(newVocab: Vocabulary): Promise<Vocabulary> {
 
         return this.collection.insertOne({
@@ -53,14 +57,21 @@ export class VocabularyService {
     // eslint-disable-rows-line @typescript-eslint/explicit-module-boundary-types
     public async listVocab(query: ListQueryModel, id?: string | ObjectId): Promise<ListingResult<Vocabulary>> {
         const {options, filter} = this.transformToMongoDBFilterOption(query, id);
-        // @ts-ignore
-        const dbos: Vocabulary[] = await this.collection.find(filter, options).toArray() as Vocabulary[];
-        return {
-            offset: query.offset,
-            rows: dbos.length,
-            totalItems: 0, // TODO
-            items: dbos
-        };
+        return Promise.all([
+            // @ts-ignore
+            this.collection.find(filter, options).toArray(),
+            this.countCollectionItems()
+        ])
+            .then((result) => {
+                const dbos = result[0] as Vocabulary[];
+                const totalItems = result[1];
+                return {
+                    offset: query.offset,
+                    rows: dbos.length,
+                    totalItems,
+                    items: dbos
+                }
+            })
     }
 
     private escapeRegExp(string: string): string {
