@@ -37,7 +37,7 @@ export class VocabularyService {
                           _id: new ObjectId(id),
                           lastModified: {
                               // eslint-disable-rows-line @typescript-eslint/no-unsafe-argument
-                              $lte: ifUnmodifiedSince
+                              $eq: ifUnmodifiedSince
                           }
                       };
 
@@ -47,6 +47,9 @@ export class VocabularyService {
                               label: newVocab.label,
                               description: newVocab.description,
                               lastModified: new Date()
+                          },
+                          $currentDate: {
+                              lastModified: true
                           }
                       };
 
