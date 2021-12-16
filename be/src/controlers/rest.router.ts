@@ -1,9 +1,10 @@
 import {Request, Response, Router} from 'express';
 import {vocabularyService} from "../services/vocabulary.service";
-import {Vocabulary} from "../models/dbo.models";
+import {Entity, Vocabulary} from "../models/dbo.models";
 import {Vocabulary as VocabularyDTO} from "../generated/models/Vocabulary";
 import {entityService} from "../services/entity-service";
-import {Entity} from "../generated";
+import {Entity as EntityDTO, TagType} from "../generated";
+import {ObjectId} from "mongodb";
 
 
 const router: Router = Router();
@@ -23,6 +24,20 @@ const vocabDbo2Dto = (dbo: Vocabulary): VocabularyDTO => ({
     created: dbo.created.toISOString(),
     lastModified: dbo.lastModified.toISOString(),
     entityCount: -1
+});
+
+const createNewEntityDBO = (vocabID: string | ObjectId, entity: EntityDTO): Entity => ({
+    _id: undefined,
+    created: new Date(),
+    lastModified: new Date(),
+    vocabulary: new ObjectId(vocabID),
+    label: entity.label,
+    description: entity.description,
+    type: entity.type,
+    externalResources: entity.externalResources,
+    sameAs: entity.sameAs,
+    data: entity.data,
+    canonicalLink: entity.canonicalLink
 });
 
 router.get('/vocab', (req: Request, res: Response) => {
@@ -68,7 +83,7 @@ router.get('/vocab/:id/entities', (req: Request, res: Response) => {
 
 router.post('/vocab/:id/entities', (req: Request, res: Response) => {
     const vocabID: string = req.params.id;
-    const entity: Entity = req.body;
+    const entity: Entity = createNewEntityDBO(vocabID, req.body as EntityDTO);
     entityService.createEntity(vocabID, entity)
         .then(entity => res.json(entity))
         .catch((error: unknown) => errorLogAndResponse(error, res));

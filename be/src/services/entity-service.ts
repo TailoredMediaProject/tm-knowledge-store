@@ -1,34 +1,19 @@
 /* es-lint-disable file */
 import {instance} from "./persistence.service";
-import {Entity} from "../generated";
 import {Collection} from "mongodb";
+import {Entity} from "../models/dbo.models";
 
 class EntityService {
     private readonly persistenceService = instance;
     private readonly entityCollection: string = "entities";
 
+    // @ts-ignore
     private get collection(): Collection {
         return this.persistenceService.db.collection(this.entityCollection);
     }
 
-    private createNewDBO(vocabID: string, entity: Entity): Entity {
-        return {
-            id: null,
-            created: new Date().toISOString(),
-            lastModified: new Date().toISOString(),
-            vocabulary: vocabID,
-            label: entity.label,
-            description: entity.description,
-            externalResources: entity.externalResources,
-            type: entity.type,
-            canonicalLink: entity.canonicalLink,
-            sameAs: entity.sameAs,
-            data: entity.data
-        };
-    }
-
     async createEntity(vocabID: string, entity: Entity): Promise<Entity> {
-        return this.collection.insertOne(this.createNewDBO(vocabID, entity))
+        return this.collection.insertOne(entity)
             .then(entityID => this.getEntity(vocabID, entityID.insertedId.toString()));
     }
 
