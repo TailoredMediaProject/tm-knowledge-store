@@ -1,17 +1,29 @@
 import {instance as persistenceService} from './persistence.service';
-import {Collection, Filter, UpdateFilter, UpdateResult} from 'mongodb';
+import {Collection, Filter, ObjectId, UpdateFilter, UpdateResult} from 'mongodb';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import {Entity} from '../models/dbo.models';
+import {vocabularyService} from './vocabulary.service';
 
 export class EntityService {
     private static collection(): Collection {
         return persistenceService.db().collection('entities');
     }
 
-    async createEntity(vocabID: string, entity: Entity): Promise<Entity> {
+    public async createEntity(vocabID: string, entity: Entity): Promise<Entity> {
+
+        await vocabularyService.getVocabular(vocabID).then(r => console.log(r))
+
         // @ts-ignore
-        return this.collection.insertOne(entity)
-            .then(entityID => this.getEntity(vocabID, entityID.insertedId.toString()));
+        return EntityService.collection()
+            .insertOne({
+                ...entity,
+                _id: null,
+                vocabulary: new ObjectId(vocabID),
+                created: new Date(),
+                lastModified: new Date()
+            })
+            .then((result) => result.insertedId)
+            .then((id) => this.getEntity(vocabID, id))
     }
 
     // TODO remove rule when implemented
@@ -22,8 +34,17 @@ export class EntityService {
 
     // TODO remove rule when implemented
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    getEntity(vocabID: string, entityID: string): Promise<Entity> {
-        throw new KnowledgeError(501, 'Not Implemented', 'Operation not implemented', {id: 'dummyEntityErrorPayload'});
+    public async getEntity(vocabID: string | ObjectId, entityID: string | ObjectId): Promise<Entity> {
+
+        const entity = <Entity>await EntityService.collection().findOne({_id: new ObjectId(entityID)})
+
+        if (!entity) {
+            throw new KnowledgeError(404, 'Entity', 'Entity not found!')
+        }
+
+        return EntityService.collection()
+            .findOne({_id: new ObjectId(entityID)})
+            .then((x) => <Entity>x);
     }
 
     updateEntity(vocabID: string, entityID: string, ifUnmodifiedSince: Date, entity: Entity): Promise<Entity> {

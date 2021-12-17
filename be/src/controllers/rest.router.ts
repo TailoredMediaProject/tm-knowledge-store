@@ -1,11 +1,11 @@
-import { NextFunction, Request, Response, Router } from 'express';
-import { vocabularyService } from '../services/vocabulary.service';
-import { Entity, Vocabulary } from '../models/dbo.models';
-import { Vocabulary as VocabularyDTO } from '../generated/models/Vocabulary';
-import { Entity as EntityDTO } from '../generated/models/Entity';
-import { entityServiceInstance } from '../services/entity.service';
-import { KnowledgeError } from '../models/knowledge-error.model';
-import { ListingResult } from '../models/listing-result.model';
+import {NextFunction, Request, Response, Router} from 'express';
+import {vocabularyService} from '../services/vocabulary.service';
+import {Entity, Vocabulary} from '../models/dbo.models';
+import {Vocabulary as VocabularyDTO} from '../generated/models/Vocabulary';
+import {Entity as EntityDTO} from '../generated/models/Entity';
+import {entityServiceInstance} from '../services/entity.service';
+import {KnowledgeError} from '../models/knowledge-error.model';
+import {ListingResult} from '../models/listing-result.model';
 import ListQueryModel from '../models/query-list.model';
 import {ObjectId} from 'mongodb';
 
@@ -31,16 +31,14 @@ const vocabDbo2Dto = (dbo: Vocabulary): VocabularyDTO => ({
 const entityDto2Dbo = (dto: EntityDTO): Entity => ({
     _id: undefined,
     vocabulary: undefined,
-    type: dto?.type,
-    label: dto?.label,
+    type: dto.type,
+    label: dto.label,
     description: dto.description,
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    created: !!dto?.created ? new Date(dto.created) : new Date(),
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    lastModified: !!dto?.lastModified ? new Date(dto.lastModified) : new Date(),
+    created: undefined,
+    lastModified: undefined,
     externalResources: dto.externalResources,
     sameAs: dto.sameAs,
-    data: dto.data
+    data: dto.data  // How we should handle the required fields in DTO Request?
 });
 
 const entityDbo2Dto = (dbo: Entity): EntityDTO => ({
@@ -54,7 +52,8 @@ const entityDbo2Dto = (dbo: Entity): EntityDTO => ({
     lastModified: dbo.lastModified.toISOString(),
     externalResources: dbo.externalResources,
     sameAs: dbo.sameAs,
-    data: dbo.data
+    data: dbo.data,
+    canonicalLink: '12345' // What should be canonicalLink?
 });
 
 router.get('/vocab', (req: Request, res: Response, next: NextFunction) => {
@@ -69,7 +68,7 @@ router.get('/vocab', (req: Request, res: Response, next: NextFunction) => {
 
         vocabularyService
             .listVocab(queryListModel, req.params.id)
-            .then((r: ListingResult<Vocabulary>) => ({ ...r, items: r.items.map((v: Vocabulary) => vocabDbo2Dto(v)) }))
+            .then((r: ListingResult<Vocabulary>) => ({...r, items: r.items.map((v: Vocabulary) => vocabDbo2Dto(v))}))
             .then((r: ListingResult<VocabularyDTO>) => res.json(r))
             .catch(next);
     }
@@ -129,15 +128,21 @@ router.get('/vocab/:id/entities', (req: Request, res: Response, next: NextFuncti
 });
 
 router.post('/vocab/:id/entities', (req: Request, res: Response, next: NextFunction) => {
-  const vocabID: string = req.params.id;
-  try {
-    const entity: Entity = createNewEntityDBO(vocabID, req.body as EntityDTO);
-    entityServiceInstance.createEntity(vocabID, entity)
-        .then(entity => res.status(201).json(entity))
+    const vocabID: string = req.params.id;
+    const body = <EntityDTO>req.body;
+    const entity: Entity = entityDto2Dbo(body);
+    checkId(vocabID, 'entity', next)
+
+    entityServiceInstance
+        .createEntity(vocabID, entity)
+        .then(entity => entityDbo2Dto(entity))
+        .then(ent => {
+            const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}/${ent.id}`;
+
+            res.setHeader('Location', fullUrl);
+            res.status(201).json(ent)
+        })
         .catch(next);
-  } catch (e) {
-    next(e);
-  }
 });
 
 router.get('/vocab/:id/entities/:id', (req: Request, res: Response, next: NextFunction) => {
@@ -187,7 +192,7 @@ const checkIfUnmodifiedHeader = (req: Request, next: NextFunction): Date => {
 };
 
 const checkId = (id: string, idName: string, next: NextFunction): string => {
-    if (!!id) {
+    if (!!id && ObjectId.isValid(id) == true) {
         return id;
     }
 
