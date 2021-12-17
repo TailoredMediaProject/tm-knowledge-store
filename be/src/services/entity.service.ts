@@ -59,7 +59,7 @@ export class EntityService {
             const update: UpdateFilter<Entity> = {$set: updateValue};
 
             // @ts-ignore
-            return EntityService.collection.updateOne(filter, update, {upsert: false}).then((result: UpdateResult) => {
+            return EntityService.collection().updateOne(filter, update, {upsert: false}).then((result: UpdateResult) => {
                 if (result.modifiedCount === 1) {
                     return {
                         ...updateValue,
