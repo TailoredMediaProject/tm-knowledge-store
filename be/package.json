@@ -57,7 +57,10 @@
   },
   "prettier": {
     "trailingComma": "none",
+    "endOfLine": "lf",
     "tabWidth": 4,
+    "useTabs": false,
+    "bracketSpacing": false,
     "printWidth": 140,
     "semi": true,
     "singleQuote": true
