@@ -1,87 +1,110 @@
 import {Collection, Filter, FindOptions, ObjectId, UpdateFilter, UpdateResult} from 'mongodb';
 import {Vocabulary} from '../models/dbo.models';
-import {instance, PersistenceService} from './persistence.service';
+import {instance as persistenceService} from './persistence.service';
 import ListQueryModel from '../models/query-list.model';
 import {ListingResult} from '../models/listing-result.model';
 import {KnowledgeError} from '../models/knowledge-error.model';
 
 export class VocabularyService {
-    private readonly persistence: PersistenceService = instance
-
-    private get collection(): Collection {
-        return this.persistence.db.collection('vocabularies');
+    private static collection(): Collection {
+        return persistenceService.db.collection('vocabularies');
     }
 
     public createVocab(newVocab: Vocabulary): Promise<Vocabulary> {
-
-        return this.collection.insertOne({
-            ...newVocab,
-            _id: null,
-            created: new Date(),
-            lastModified: new Date()
-        }).then((result) => result.insertedId)
-          .then(id => this.getVocabular(id));
+        return VocabularyService.collection()
+            .insertOne({
+                ...newVocab,
+                _id: null,
+                created: new Date(),
+                lastModified: new Date()
+            })
+            .then((result) => result.insertedId)
+            .then((id) => this.getVocabular(id));
     }
 
     public getVocabular(id: string | ObjectId): Promise<Vocabulary> {
-        return this.collection.findOne({_id: new ObjectId(id)}).then(x => <Vocabulary>x);
+        return VocabularyService.collection()
+            .findOne({_id: new ObjectId(id)})
+            .then((x) => <Vocabulary>x);
+    }
+
+    public async deleteVocab(id: string | ObjectId, date: Date): Promise<boolean> {
+        if (!ObjectId.isValid(id)) {
+            throw new KnowledgeError(400, 'ID', 'ID is not valid');
+        }
+
+        const result = await VocabularyService.collection().findOne({_id: new ObjectId(id)});
+
+        if (!result) {
+            throw new KnowledgeError(404, 'Document', 'No document matches the provided ID.');
+        }
+
+        return VocabularyService.collection()
+            .deleteOne({_id: new ObjectId(id), lastModified: date})
+            .then((r) => {
+                if (r.deletedCount == 1) {
+                    return true;
+                } else {
+                    throw new KnowledgeError(412, 'Header', 'Header does not match!');
+                }
+            });
     }
 
     public updateVocab(id: string, ifUnmodifiedSince: Date, newVocab: Vocabulary): Promise<Vocabulary> {
         // @ts-ignore
-        return this.getVocabular(id)
-          .then((dbo: Vocabulary) => {
-              if(!!dbo) {
-                  if(dbo.lastModified.getTime() <= ifUnmodifiedSince.getTime()) {
-                      const filter: Filter<Vocabulary> = {
-                          _id: new ObjectId(id),
-                          lastModified: {
-                              // eslint-disable-rows-line @typescript-eslint/no-unsafe-argument
-                              $eq: ifUnmodifiedSince
-                          }
-                      };
+        return this.getVocabular(id).then((dbo: Vocabulary) => {
+            if (!!dbo) {
+                if (dbo.lastModified.getTime() <= ifUnmodifiedSince.getTime()) {
+                    const filter: Filter<Vocabulary> = {
+                        _id: new ObjectId(id),
+                        lastModified: {
+                            // eslint-disable-rows-line @typescript-eslint/no-unsafe-argument
+                            $eq: ifUnmodifiedSince
+                        }
+                    };
 
-                      const update: UpdateFilter<Vocabulary> = {
-                          $set: {
-                              _id: new ObjectId(id),
-                              label: newVocab.label,
-                              description: newVocab.description,
-                              lastModified: new Date()
-                          },
-                          $currentDate: {
-                              lastModified: true
-                          }
-                      };
+                    const update: UpdateFilter<Vocabulary> = {
+                        $set: {
+                            _id: new ObjectId(id),
+                            label: newVocab.label,
+                            description: newVocab.description,
+                            lastModified: new Date()
+                        },
+                        $currentDate: {
+                            lastModified: true
+                        }
+                    };
 
-                      // @ts-ignore
-                      return this.collection.updateOne(filter, update, {upsert: false})
-                        .then((result: UpdateResult) => {
-                            if(result.modifiedCount === 1) {
-                                return {
-                                    ...update.$set,
-                                    created: dbo.created
-                                };
-                            } else {
-                                throw new KnowledgeError(404,'Not found', `Target vocabulary with id '${id}' not found`);
-                            }
-                        });
-                  } else {
-                      throw new KnowledgeError(412,
+                    // @ts-ignore
+                    return this.collection.updateOne(filter, update, {upsert: false}).then((result: UpdateResult) => {
+                        if (result.modifiedCount === 1) {
+                            return {
+                                ...update.$set,
+                                created: dbo.created
+                            };
+                        } else {
+                            throw new KnowledgeError(404, 'Not found', `Target vocabulary with id '${id}' not found`);
+                        }
+                    });
+                } else {
+                    throw new KnowledgeError(
+                        412,
                         'Precondition Failed',
                         'Target has been modified since last retrieval, the modified target is returned',
-                        dbo);
-                  }
-              } else {
-                  throw new KnowledgeError(404,'Not found', `Target vocabulary with id '${id}' not found`);
-              }
-          });
+                        dbo
+                    );
+                }
+            } else {
+                throw new KnowledgeError(404, 'Not found', `Target vocabulary with id '${id}' not found`);
+            }
+        });
     }
 
     // eslint-disable-rows-line @typescript-eslint/explicit-module-boundary-types
     public async listVocab(query: ListQueryModel, id?: string | ObjectId): Promise<ListingResult<Vocabulary>> {
-        const { options, filter } = this.transformToMongoDBFilterOption(query, id);
+        const {options, filter} = this.transformToMongoDBFilterOption(query, id);
         // @ts-ignore
-        const dbos: Vocabulary[] = await this.collection.find(filter, options).toArray() as Vocabulary[];
+        const dbos: Vocabulary[] = (await VocabularyService.collection.find(filter, options).toArray()) as Vocabulary[];
         return {
             offset: query.offset,
             rows: dbos.length,
@@ -94,8 +117,10 @@ export class VocabularyService {
         return string.replace(/[.*+?^${}()|[\]\\]/g, '');
     }
 
-    private transformToMongoDBFilterOption(query?: ListQueryModel, id?: string | ObjectId):
-      { options: FindOptions, filter: Filter<Vocabulary> } {
+    private transformToMongoDBFilterOption(
+        query?: ListQueryModel,
+        id?: string | ObjectId
+    ): {options: FindOptions; filter: Filter<Vocabulary>} {
         const options: FindOptions = {};
         const filter: Filter<Vocabulary> = {};
 
@@ -175,4 +200,4 @@ export class VocabularyService {
     }
 }
 
-export const vocabularyService: VocabularyService = new VocabularyService()
+export const vocabularyService: VocabularyService = new VocabularyService();

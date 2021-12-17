@@ -88,7 +88,7 @@ export class EntityService {
       )
       .then((req) =>
         req().then((resp) => {
-          if (resp.status !== 200) {
+          if (resp.status >= 400) {
             console.error(resp);
             return;
           }
@@ -104,8 +104,9 @@ export class EntityService {
       .vocabVocabularyIdEntitiesEntityIdGet(vocabID, entityID)
       .then((req) =>
         req().then((resp) => {
-          if (resp.status !== 200) {
+          if (resp.status >= 400) {
             console.error(resp);
+            return;
           }
           console.log(resp.data);
           return resp.data;
@@ -116,7 +117,7 @@ export class EntityService {
   createEntity(vocabID: string, entity: Entity): Promise<Entity | undefined> {
     return this.apiFn.createEntity(vocabID, entity).then((req) =>
       req().then((resp) => {
-        if (resp.status !== 200) {
+        if (resp.status >= 400) {
           console.error(resp);
           return;
         }
@@ -140,7 +141,7 @@ export class EntityService {
       )
       .then((req) =>
         req().then((resp) => {
-          if (resp.status !== 200) {
+          if (resp.status >= 400) {
             console.error(resp);
             return;
           }
@@ -163,7 +164,7 @@ export class EntityService {
       )
       .then((req) =>
         req().then((resp) => {
-          if (resp.status !== 200) {
+          if (resp.status >= 400) {
             console.error(resp);
             return;
           }
