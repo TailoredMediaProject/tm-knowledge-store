@@ -1,11 +1,11 @@
-import { NextFunction, Request, Response, Router } from 'express';
-import { vocabularyService } from '../services/vocabulary.service';
-import { Entity, Vocabulary } from '../models/dbo.models';
-import { Vocabulary as VocabularyDTO } from '../generated/models/Vocabulary';
-import { Entity as EntityDTO } from '../generated/models/Entity';
-import { entityServiceInstance } from '../services/entity.service';
-import { KnowledgeError } from '../models/knowledge-error.model';
-import { ListingResult } from '../models/listing-result.model';
+import {NextFunction, Request, Response, Router} from 'express';
+import {vocabularyService} from '../services/vocabulary.service';
+import {Entity, Vocabulary} from '../models/dbo.models';
+import {Vocabulary as VocabularyDTO} from '../generated/models/Vocabulary';
+import {Entity as EntityDTO} from '../generated/models/Entity';
+import {entityServiceInstance} from '../services/entity.service';
+import {KnowledgeError} from '../models/knowledge-error.model';
+import {ListingResult} from '../models/listing-result.model';
 import ListQueryModel from '../models/query-list.model';
 
 const router: Router = Router();
@@ -68,7 +68,7 @@ router.get('/vocab', (req: Request, res: Response, next: NextFunction) => {
 
         vocabularyService
             .listVocab(queryListModel, req.params.id)
-            .then((r: ListingResult<Vocabulary>) => ({ ...r, items: r.items.map((v: Vocabulary) => vocabDbo2Dto(v)) }))
+            .then((r: ListingResult<Vocabulary>) => ({...r, items: r.items.map((v: Vocabulary) => vocabDbo2Dto(v))}))
             .then((r: ListingResult<VocabularyDTO>) => res.json(r))
             .catch(next);
     }
@@ -91,20 +91,21 @@ router.post('/vocab', (req: Request, res: Response, next: NextFunction) => {
 });
 
 router.put('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
-  const headerName = 'If-Unmodified-Since';
-  const ifUnmodifiedSince: string = req.header(headerName);
+    const headerName = 'If-Unmodified-Since';
+    const ifUnmodifiedSince: string = req.header(headerName);
 
-  if(!!ifUnmodifiedSince) {
-    if(!!req?.params?.id) {
-      vocabularyService.updateVocab(req?.params?.id, new Date(ifUnmodifiedSince), vocabDto2Dbo(req.body as VocabularyDTO))
-        .then((v: Vocabulary) => res.json(vocabDbo2Dto(v)))
-        .catch(next);
+    if (!!ifUnmodifiedSince) {
+        if (!!req?.params?.id) {
+            vocabularyService
+                .updateVocab(req?.params?.id, new Date(ifUnmodifiedSince), vocabDto2Dbo(req.body as VocabularyDTO))
+                .then((v: Vocabulary) => res.json(vocabDbo2Dto(v)))
+                .catch(next);
+        } else {
+            next(new KnowledgeError(400, 'Bad Request', 'Missing or invalid ID'));
+        }
     } else {
-      next(new KnowledgeError(400, 'Bad Request', 'Missing or invalid ID'));
+        next(new KnowledgeError(409, 'Conflict', `Operation failed, ${headerName}-Header missing or falsy value!`));
     }
-  } else {
-    next(new KnowledgeError(409, 'Conflict', `Operation failed, ${headerName}-Header missing or falsy value!`));
-  }
 });
 
 router.get('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {

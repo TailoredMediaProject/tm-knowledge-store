@@ -67,8 +67,7 @@ export class VocabularyService {
                         $set: {
                             _id: new ObjectId(id),
                             label: newVocab.label,
-                            description: newVocab.description,
-                            lastModified: new Date()
+                            description: newVocab.description
                         },
                         $currentDate: {
                             lastModified: true
