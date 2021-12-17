@@ -56,7 +56,7 @@
     "coverageProvider": "v8"
   },
   "prettier": {
-    "trailingComma": "es5",
+    "trailingComma": "none",
     "tabWidth": 4,
     "printWidth": 140,
     "semi": true,
