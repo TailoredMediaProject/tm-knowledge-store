@@ -83,12 +83,14 @@ export const vocabStore: Module<any, any> = {
         }
       });
     },
-    DELETEVOCAB(state, payload: { vocab: Vocabulary }) {
-      vocabService.deleteVocab(payload.vocab).then((vocab) => {
-        if (vocab) {
-          state.vocabularies.delete(vocab.id);
-        }
-      });
+    DELETEVOCAB(state, payload: { vocabulary: Vocabulary }) {
+      vocabService
+        .deleteVocab(payload.vocabulary)
+        .then((vocab: Vocabulary | undefined) => {
+          if (vocab) {
+            state.vocabularies.delete(vocab.id);
+          }
+        });
     },
   },
   actions: {
