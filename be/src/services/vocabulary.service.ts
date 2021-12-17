@@ -54,7 +54,7 @@ export class VocabularyService {
     public async listVocab(query: ListQueryModel, id?: string | ObjectId): Promise<ListingResult<Vocabulary>> {
         const {options, filter} = this.transformToMongoDBFilterOption(query, id);
         // @ts-ignore
-        const dbos: Vocabulary[] = (await VocabularyService.collection.find(filter, options).toArray()) as Vocabulary[];
+        const dbos: Vocabulary[] = (await VocabularyService.collection().find(filter, options).toArray()) as Vocabulary[];
         return {
             offset: query.offset,
             rows: dbos.length,
