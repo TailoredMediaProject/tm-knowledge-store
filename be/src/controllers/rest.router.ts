@@ -17,6 +17,7 @@ const vocabDto2Dbo = (dto: VocabularyDTO): Vocabulary => ({
   lastModified: undefined
 });
 
+
 const vocabDbo2Dto = (dbo: Vocabulary): VocabularyDTO => ({
   id: dbo._id.toHexString(),
   label: dbo.label,
@@ -37,9 +38,9 @@ router.get('/vocab', (req: Request, res: Response, next: NextFunction) => {
     };
 
     vocabularyService.listVocab(queryListModel, req.params.id)
-      .then((r: ListingResult<Vocabulary>) => ({ ...r, items: r.items.map((v: Vocabulary) => vocabDbo2Dto(v)) }))
-      .then((r: ListingResult<VocabularyDTO>) => res.json(r))
-      .catch(next);
+        .then((r: ListingResult<Vocabulary>) => ({ ...r, items: r.items.map((v: Vocabulary) => vocabDbo2Dto(v)) }))
+        .then((r: ListingResult<VocabularyDTO>) => res.json(r))
+        .catch(next);
   }
 });
 
@@ -49,14 +50,14 @@ router.post('/vocab', (req: Request, res: Response, next: NextFunction) => {
 
 
   vocabularyService.createVocab(newVocab)
-    .then(v => vocabDbo2Dto(v))
-    .then(v => {
-      const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}/${v.id}`;
+      .then(v => vocabDbo2Dto(v))
+      .then(v => {
+        const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}/${v.id}`;
 
-      res.setHeader('Location', fullUrl);
-      res.status(201).json(v);
-    })
-    .catch(next);
+        res.setHeader('Location', fullUrl);
+        res.status(201).json(v);
+      })
+      .catch(next);
 });
 
 router.put('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
@@ -65,13 +66,26 @@ router.put('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
 
 router.get('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
   vocabularyService.getVocabular(req.params.id)
-    .then(v => vocabDbo2Dto(v))
-    .then(v => res.json(v))
-    .catch(next);
+      .then(v => vocabDbo2Dto(v))
+      .then(v => res.json(v))
+      .catch(next);
 });
 
-router.delete('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
-  next(new KnowledgeError(501, 'Not Implemented', 'DELETE /vocab/:id is not implemented'));
+router.delete('/vocab/:id',  (req: Request, res: Response, next: NextFunction) => {
+    const header = req.header('if-unmodified-since')
+    checkIfUnmodifiedHeader(header, next)
+    checkDateIfValid(header, next)
+    const date: Date = new Date(header)
+
+    vocabularyService.deleteVocab(req.params.id, date).then(result => {
+      if (result) {
+        res.status(204).end();
+      } else {
+        res.status(404).json({
+          message: 'Vocabulary not found'
+        });
+      }
+    }).catch(next);
 });
 
 router.get('/vocab/:id/entities', (req: Request, res: Response, next: NextFunction) => {
@@ -115,5 +129,17 @@ router.delete('/vocab/:id/entities/:id', (req: Request, res: Response, next: Nex
 });
 
 const checkQueryParams = (allowed: string[], query: unknown): boolean => Object.keys(query).every(key => allowed.includes(key));
+
+const checkIfUnmodifiedHeader = (header: string, next: NextFunction): void => {
+  if (!header){
+    next(new KnowledgeError(428,'Header', 'If-Unmodified-Since-Header missing'))}
+}
+
+const checkDateIfValid = (header: string, next: NextFunction): void => {
+  const date: Date = new Date(header)
+  if (isNaN(date.getTime())) {
+    next(new KnowledgeError(400, 'Date', 'Date is not valid'))
+  }
+}
 
 export default router;

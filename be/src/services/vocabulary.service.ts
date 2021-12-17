@@ -1,8 +1,9 @@
-import { Collection, Filter, FindOptions, ObjectId } from 'mongodb';
-import { Vocabulary } from '../models/dbo.models';
-import { instance, PersistenceService } from './persistence.service';
+import {Collection, Filter, FindOptions, ObjectId} from 'mongodb';
+import {Vocabulary} from '../models/dbo.models';
+import {instance, PersistenceService} from './persistence.service';
 import ListQueryModel from '../models/query-list.model';
-import { ListingResult } from '../models/listing-result.model';
+import {ListingResult} from '../models/listing-result.model';
+import {KnowledgeError} from '../models/knowledge-error.model';
 
 export class VocabularyService {
     private readonly persistence: PersistenceService = instance;
@@ -12,31 +13,53 @@ export class VocabularyService {
     }
 
     public createVocab(newVocab: Vocabulary): Promise<Vocabulary> {
-        return this.collection
-            .insertOne({
-                ...newVocab,
-                _id: null,
-                created: new Date(),
-                lastModified: new Date(),
-            })
+
+        return this.collection.insertOne({
+            ...newVocab,
+            _id: null,
+            created: new Date(),
+            lastModified: new Date()
+        })
             .then((result) => result.insertedId)
-            .then((id) => this.getVocabular(id));
+            .then(id => this.getVocabular(id));
     }
 
     public getVocabular(id: string | ObjectId): Promise<Vocabulary> {
-        return this.collection.findOne({ _id: new ObjectId(id) }).then((x) => <Vocabulary>x);
+        return this.collection.findOne({_id: new ObjectId(id)}).then(x => <Vocabulary>x);
+    }
+
+    public async deleteVocab(id: string | ObjectId, date: Date): Promise<boolean> {
+
+        if (!ObjectId.isValid(id)) {
+            throw new KnowledgeError(400, 'ID', 'ID is not valid')
+        }
+
+        const result = await this.collection.findOne({_id: new ObjectId(id)})
+
+        if (!result) {
+            throw new KnowledgeError(404, 'Document', 'No document matches the provided ID.')
+        }
+
+        return this.collection.deleteOne({_id: new ObjectId(id), lastModified: date})
+            .then(r => {
+                if (r.deletedCount == 1) {
+                    return true
+                } else {
+                    throw new KnowledgeError(412, 'Header', 'Header does not match!')
+                }
+            })
     }
 
     // eslint-disable-rows-line @typescript-eslint/explicit-module-boundary-types
     public async listVocab(query: ListQueryModel, id?: string | ObjectId): Promise<ListingResult<Vocabulary>> {
-        const { options, filter } = this.transformToMongoDBFilterOption(query, id);
+        const {options, filter} = this.transformToMongoDBFilterOption(query, id);
         // @ts-ignore
-        const dbos: Vocabulary[] = (await this.collection.find(filter, options).toArray()) as Vocabulary[];
+        const dbos: Vocabulary[] = await this.collection.find(filter, options).toArray() as Vocabulary[];
         return {
             offset: query.offset,
             rows: dbos.length,
             totalItems: 0, // TODO
-            items: dbos,
+            items: dbos
         };
     }
 
@@ -44,10 +67,8 @@ export class VocabularyService {
         return string.replace(/[.*+?^${}()|[\]\\]/g, '');
     }
 
-    private transformToMongoDBFilterOption(
-        query?: ListQueryModel,
-        id?: string | ObjectId
-    ): { options: FindOptions; filter: Filter<Vocabulary> } {
+    private transformToMongoDBFilterOption(query?: ListQueryModel, id?: string | ObjectId):
+        { options: FindOptions, filter: Filter<Vocabulary> } {
         const options: FindOptions = {};
         const filter: Filter<Vocabulary> = {};
 
@@ -62,15 +83,15 @@ export class VocabularyService {
                     {
                         label: {
                             $regex: this.escapeRegExp(query.text),
-                            $options: 'gi',
-                        },
+                            $options: 'gi'
+                        }
                     },
                     {
                         description: {
                             $regex: this.escapeRegExp(query.text),
-                            $options: 'gi',
-                        },
-                    },
+                            $options: 'gi'
+                        }
+                    }
                 ];
             }
 
@@ -78,7 +99,7 @@ export class VocabularyService {
                 // @ts-ignore
                 filter.created = {
                     // eslint-disable-rows-line @typescript-eslint/no-unsafe-argument
-                    $gte: new Date(query?.createdSince),
+                    $gte: new Date(query?.createdSince)
                     // https://www.mongodb.com/community/forums/t/finding-data-between-two-dates-by-using-a-query-in-mongodb-charts/102506/2
                 };
             }
@@ -87,7 +108,7 @@ export class VocabularyService {
                 // @ts-ignore
                 filter.lastModified = {
                     // eslint-disable-rows-line @typescript-eslint/no-unsafe-argument
-                    $gte: new Date(query.modifiedSince),
+                    $gte: new Date(query.modifiedSince)
                 };
             }
 
@@ -107,7 +128,7 @@ export class VocabularyService {
 
         return {
             options,
-            filter,
+            filter
         };
     }
 
@@ -115,11 +136,11 @@ export class VocabularyService {
         if (!!sort && sort.includes(' ')) {
             if (sort.toLowerCase().includes('created')) {
                 return {
-                    created: sort.toLowerCase().includes('asc') ? 1 : -1,
+                    created: sort.toLowerCase().includes('asc') ? 1 : -1
                 };
             } else {
                 return {
-                    lastModified: sort.toLowerCase().includes('asc') ? 1 : -1,
+                    lastModified: sort.toLowerCase().includes('asc') ? 1 : -1
                 };
             }
         }
