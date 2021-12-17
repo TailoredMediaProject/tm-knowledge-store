@@ -1,14 +1,11 @@
-import {instance} from './persistence.service';
-import {Entity} from '../generated';
-import {Collection} from 'mongodb';
-import {KnowledgeError} from '../models/knowledge-error.model';
+import { instance as persistenceService } from './persistence.service';
+import { Entity } from '../generated';
+import { Collection } from 'mongodb';
+import { KnowledgeError } from '../models/knowledge-error.model';
 
 export class EntityService {
-    private readonly persistenceService = instance;
-    private readonly entityCollection: string = 'entities';
-
-    private get collection(): Collection {
-        return this.persistenceService.db.collection(this.entityCollection);
+    private static collection(): Collection {
+        return persistenceService.db.collection('entities');
     }
 
     // TODO remove rule when implemented
@@ -26,9 +23,7 @@ export class EntityService {
     // TODO remove rule when implemented
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     getEntity(vocabID: string, entityID: string): Promise<unknown> {
-        throw new KnowledgeError(501, 'Not Implemented', 'Operation not implemented',
-          {id:'dummyEntityErrorPayload'}
-        );
+        throw new KnowledgeError(501, 'Not Implemented', 'Operation not implemented', { id: 'dummyEntityErrorPayload' });
     }
 
     // TODO remove rule when implemented
@@ -44,4 +39,4 @@ export class EntityService {
     }
 }
 
-export const entityServiceInstance =  new EntityService();
+export const entityServiceInstance = new EntityService();
