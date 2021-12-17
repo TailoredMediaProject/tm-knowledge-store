@@ -7,4 +7,4 @@ coverage/
 /.docker/mongodb/data/
 **/openapi
 /be/src/generated/
-/be/src/.eslintcache
+**/*.eslintcache
