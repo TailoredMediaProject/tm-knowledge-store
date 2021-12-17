@@ -95,7 +95,7 @@ export class EntityService {
             throw new KnowledgeError(404, 'Entity', 'No entity matches the provided ID.')
         }
 
-        return this.collection.deleteOne({_id: new ObjectId(entityID), lastModified: lastModified})
+        return EntityService.collection().deleteOne({_id: new ObjectId(entityID), lastModified: lastModified})
             .then(r => {
                 if (r.deletedCount == 1) {
                     return true

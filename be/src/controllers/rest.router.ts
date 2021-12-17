@@ -1,11 +1,11 @@
-import { NextFunction, Request, Response, Router } from 'express';
-import { vocabularyService } from '../services/vocabulary.service';
-import { Entity, Vocabulary } from '../models/dbo.models';
-import { Vocabulary as VocabularyDTO } from '../generated/models/Vocabulary';
-import { Entity as EntityDTO } from '../generated/models/Entity';
-import { entityServiceInstance } from '../services/entity.service';
-import { KnowledgeError } from '../models/knowledge-error.model';
-import { ListingResult } from '../models/listing-result.model';
+import {NextFunction, Request, Response, Router} from 'express';
+import {vocabularyService} from '../services/vocabulary.service';
+import {Entity, Vocabulary} from '../models/dbo.models';
+import {Vocabulary as VocabularyDTO} from '../generated/models/Vocabulary';
+import {Entity as EntityDTO} from '../generated/models/Entity';
+import {entityServiceInstance} from '../services/entity.service';
+import {KnowledgeError} from '../models/knowledge-error.model';
+import {ListingResult} from '../models/listing-result.model';
 import ListQueryModel from '../models/query-list.model';
 
 const router: Router = Router();
@@ -68,7 +68,7 @@ router.get('/vocab', (req: Request, res: Response, next: NextFunction) => {
 
         vocabularyService
             .listVocab(queryListModel, req.params.id)
-            .then((r: ListingResult<Vocabulary>) => ({ ...r, items: r.items.map((v: Vocabulary) => vocabDbo2Dto(v)) }))
+            .then((r: ListingResult<Vocabulary>) => ({...r, items: r.items.map((v: Vocabulary) => vocabDbo2Dto(v))}))
             .then((r: ListingResult<VocabularyDTO>) => res.json(r))
             .catch(next);
     }
@@ -155,24 +155,18 @@ router.put('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: Next
 });
 
 router.delete('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: NextFunction) => {
-  const header = req.header('if-unmodified-since')
-  checkIfUnmodifiedHeader(header, next)
-  checkDateIfValid(header, next)
+    const date = checkIfUnmodifiedHeader(req, next)
+    const vId = checkId(req?.params?.vId, 'vocabulary', next);
+    const eId = checkId(req?.params?.eId, 'entity', next);
 
-
-  // other check-methods
-
-
-  const date: Date = new Date(header)
-
-    entityServiceInstance.deleteEntity(req.params.vId, req.params.eId, date).then(result =>{
-      if (result){
-        res.status(204).end();
-      } else {
-        res.status(404).json({
-          message: 'Entity not found'
-        });
-      }
+    entityServiceInstance.deleteEntity(vId, eId, date).then(result => {
+        if (result) {
+            res.status(204).end();
+        } else {
+            res.status(404).json({
+                message: 'Entity not found'
+            });
+        }
     }).catch(next)
 
 });
