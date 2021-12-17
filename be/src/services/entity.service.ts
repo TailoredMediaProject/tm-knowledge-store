@@ -1,7 +1,8 @@
 import {instance} from './persistence.service';
 import {Entity} from '../generated';
-import {Collection} from 'mongodb';
+import {Collection, ObjectId} from 'mongodb';
 import {KnowledgeError} from '../models/knowledge-error.model';
+import {vocabularyService} from './vocabulary.service';
 
 export class EntityService {
     private readonly persistenceService = instance;
@@ -27,7 +28,7 @@ export class EntityService {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     getEntity(vocabID: string, entityID: string): Promise<unknown> {
         throw new KnowledgeError(501, 'Not Implemented', 'Operation not implemented',
-          {id:'dummyEntityErrorPayload'}
+            {id: 'dummyEntityErrorPayload'}
         );
     }
 
@@ -39,12 +40,33 @@ export class EntityService {
 
     // TODO remove rule when implemented
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    deleteEntity(vocabID: string, entityID: string, lastModified: Date): Promise<unknown> {
+    public async deleteEntity(vocabID: string, entityID: string, lastModified: Date): Promise<boolean> {
 
-        // TODO write delete func
+        if (!ObjectId.isValid(vocabID)) {
+            throw new KnowledgeError(400, 'VocabID', 'VocabID is not valid')
+        }
 
-        throw new KnowledgeError(501, 'Not Implemented', 'Operation not implemented');
+        if (!ObjectId.isValid(vocabID)) {
+            throw new KnowledgeError(400, 'EntityID', 'EntityID is not valid')
+        }
+
+        if (!await vocabularyService.getVocabular(vocabID)) {
+            throw new KnowledgeError(404, 'Vocabulary', 'No vocabulary matches the provided ID.')
+        }
+
+        if (!await this.getEntity(vocabID, entityID)) {
+            throw new KnowledgeError(404, 'Entity', 'No entity matches the provided ID.')
+        }
+
+        return this.collection.deleteOne({_id: new ObjectId(entityID), lastModified: lastModified})
+            .then(r => {
+                if (r.deletedCount == 1) {
+                    return true
+                } else {
+                    throw new KnowledgeError(412, 'Header', 'Header does not match!')
+                }
+            })
     }
 }
 
-export const entityServiceInstance =  new EntityService();
+export const entityServiceInstance = new EntityService();

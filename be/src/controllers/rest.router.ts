@@ -120,17 +120,27 @@ router.put('/vocab/:id/entities/:id', (req: Request, res: Response, next: NextFu
   }
 });
 
-router.delete('/vocab/:id/entities/:id', (req: Request, res: Response, next: NextFunction) => {
+router.delete('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: NextFunction) => {
   const header = req.header('if-unmodified-since')
   checkIfUnmodifiedHeader(header, next)
   checkDateIfValid(header, next)
+
+
+  // other check-methods
+
+
   const date: Date = new Date(header)
 
-  try {
-    void entityServiceInstance.deleteEntity(undefined, undefined, date);
-  } catch (e) {
-    next(e);
-  }
+    entityServiceInstance.deleteEntity(req.params.vId, req.params.eId, date).then(result =>{
+      if (result){
+        res.status(204).end();
+      } else {
+        res.status(404).json({
+          message: 'Entity not found'
+        });
+      }
+    }).catch(next)
+
 });
 
 const checkQueryParams = (allowed: string[], query: unknown): boolean => Object.keys(query).every(key => allowed.includes(key));
