@@ -1,9 +1,9 @@
-import { Collection, Filter, FindOptions, ObjectId } from 'mongodb';
-import { Vocabulary } from '../models/dbo.models';
-import { instance as persistenceService } from './persistence.service';
+import {Collection, Filter, FindOptions, ObjectId} from 'mongodb';
+import {Vocabulary} from '../models/dbo.models';
+import {instance as persistenceService} from './persistence.service';
 import ListQueryModel from '../models/query-list.model';
-import { ListingResult } from '../models/listing-result.model';
-import { KnowledgeError } from '../models/knowledge-error.model';
+import {ListingResult} from '../models/listing-result.model';
+import {KnowledgeError} from '../models/knowledge-error.model';
 
 export class VocabularyService {
     private static collection(): Collection {
@@ -24,7 +24,7 @@ export class VocabularyService {
 
     public getVocabular(id: string | ObjectId): Promise<Vocabulary> {
         return VocabularyService.collection()
-            .findOne({ _id: new ObjectId(id) })
+            .findOne({_id: new ObjectId(id)})
             .then((x) => <Vocabulary>x);
     }
 
@@ -33,14 +33,14 @@ export class VocabularyService {
             throw new KnowledgeError(400, 'ID', 'ID is not valid');
         }
 
-        const result = await VocabularyService.collection().findOne({ _id: new ObjectId(id) });
+        const result = await VocabularyService.collection().findOne({_id: new ObjectId(id)});
 
         if (!result) {
             throw new KnowledgeError(404, 'Document', 'No document matches the provided ID.');
         }
 
         return VocabularyService.collection()
-            .deleteOne({ _id: new ObjectId(id), lastModified: date })
+            .deleteOne({_id: new ObjectId(id), lastModified: date})
             .then((r) => {
                 if (r.deletedCount == 1) {
                     return true;
@@ -52,7 +52,7 @@ export class VocabularyService {
 
     // eslint-disable-rows-line @typescript-eslint/explicit-module-boundary-types
     public async listVocab(query: ListQueryModel, id?: string | ObjectId): Promise<ListingResult<Vocabulary>> {
-        const { options, filter } = this.transformToMongoDBFilterOption(query, id);
+        const {options, filter} = this.transformToMongoDBFilterOption(query, id);
         // @ts-ignore
         const dbos: Vocabulary[] = (await VocabularyService.collection.find(filter, options).toArray()) as Vocabulary[];
         return {
@@ -70,7 +70,7 @@ export class VocabularyService {
     private transformToMongoDBFilterOption(
         query?: ListQueryModel,
         id?: string | ObjectId
-    ): { options: FindOptions; filter: Filter<Vocabulary> } {
+    ): {options: FindOptions; filter: Filter<Vocabulary>} {
         const options: FindOptions = {};
         const filter: Filter<Vocabulary> = {};
 
