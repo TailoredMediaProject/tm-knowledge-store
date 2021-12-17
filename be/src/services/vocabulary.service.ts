@@ -7,7 +7,7 @@ import {KnowledgeError} from '../models/knowledge-error.model';
 
 export class VocabularyService {
     private static collection(): Collection {
-        return persistenceService.db.collection('vocabularies');
+        return persistenceService.db().collection('vocabularies');
     }
 
     public createVocab(newVocab: Vocabulary): Promise<Vocabulary> {

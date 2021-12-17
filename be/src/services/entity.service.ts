@@ -6,7 +6,7 @@ import {vocabularyService} from './vocabulary.service';
 
 export class EntityService {
     private static collection(): Collection {
-        return persistenceService.db.collection('entities');
+        return persistenceService.db().collection('entities');
     }
 
     // TODO remove rule when implemented
