@@ -6,7 +6,7 @@ import {ListingResult} from '../models/listing-result.model';
 import {KnowledgeError} from '../models/knowledge-error.model';
 
 export class VocabularyService {
-    private readonly persistence: PersistenceService = instance
+    private readonly persistence: PersistenceService = instance;
 
     private get collection(): Collection {
         return this.persistence.db.collection('vocabularies');
