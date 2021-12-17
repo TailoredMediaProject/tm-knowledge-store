@@ -23,6 +23,10 @@ Start:
 npm run start
 ```
 
+## Development
+
+Please install the [IntelliJ Prettier Plugin](https://plugins.jetbrains.com/plugin/10456-prettier) and enable it with `Run on save for files` set in its settings of IntelliJ.
+
 ## Generate
 The [openapi-generator](https://openapi-generator.tech) is used for creating service side stubs, see the [general documentation](https://openapi-generator.tech/docs/configuration/) and the one for [typescript-axios](
 https://openapi-generator.tech/docs/generators/typescript-axios). To generate run 
