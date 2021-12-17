@@ -6,10 +6,10 @@ export class PersistenceService {
 
     constructor() {
         this.initClient();
-        this.pingDB().catch(error => console.error(error));
+        this.pingDB().catch((error) => console.error(error));
     }
 
-    get db(): Db {
+    db(): Db {
         return this._db;
     }
 
@@ -17,7 +17,7 @@ export class PersistenceService {
     private initClient(): void {
         const username = process.env.MONGO_USERNAME;
         const password = process.env.MONGO_PASSWORD;
-        const authPathParams = !!username && !!password ? `${username}:${password}@`: '';
+        const authPathParams = !!username && !!password ? `${username}:${password}@` : '';
         const dbHost = process.env.MONGO_HOST || 'localhost';
         const dbPort = +(process.env.MONGO_PORT || 27017);
         const dbName = process.env.MONGO_DATABASE || 'knowledge';
@@ -26,10 +26,10 @@ export class PersistenceService {
         this.client = new MongoClient(mongoUrl, {
             connectTimeoutMS: 5000,
             serverSelectionTimeoutMS: 5000
-        })
+        });
 
         this.client.connect(() => {
-            console.log('Initial connection to MongoDB successful')
+            console.log('Initial connection to MongoDB successful');
         });
 
         this._db = this.client.db(dbName);
@@ -39,8 +39,7 @@ export class PersistenceService {
         try {
             const res = await this._db.command({ping: 1});
             return res.ok === 1;
-        }
-        catch (err){
+        } catch (err) {
             console.error(err);
         }
         return false;
@@ -51,4 +50,4 @@ export class PersistenceService {
     }
 }
 
-export const instance =  new PersistenceService();
+export const instance = new PersistenceService();
