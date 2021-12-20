@@ -7,7 +7,7 @@ import {KnowledgeError} from '../models/knowledge-error.model';
 
 export class VocabularyService {
     private static collection(): Collection {
-        return persistenceService.db.collection('vocabularies');
+        return persistenceService.db().collection('vocabularies');
     }
 
     public createVocab(newVocab: Vocabulary): Promise<Vocabulary> {
@@ -103,7 +103,7 @@ export class VocabularyService {
     public async listVocab(query: ListQueryModel, id?: string | ObjectId): Promise<ListingResult<Vocabulary>> {
         const {options, filter} = this.transformToMongoDBFilterOption(query, id);
         // @ts-ignore
-        const dbos: Vocabulary[] = (await VocabularyService.collection.find(filter, options).toArray()) as Vocabulary[];
+        const dbos: Vocabulary[] = (await VocabularyService.collection().find(filter, options).toArray()) as Vocabulary[];
         return {
             offset: query.offset,
             rows: dbos.length,
