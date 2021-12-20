@@ -60,7 +60,7 @@
       <div class="flow-root px-2 py-3 bg-gray-50 text-center">
         <button
           type="button"
-          @click="$router.back()"
+          @click="cancel"
           class="
             inline-flex
             justify-center
@@ -113,19 +113,43 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+
 export default {
   name: "CreateVocab",
-  data() {
-    return {
-      label: "",
-      description: "",
-    };
+  computed: {
+    ...mapGetters("vocabStore", ["vocabulary"]),
+    label: {
+      get: function () {
+        return this.vocabulary?.label;
+      },
+      set: function (label) {
+        this.vocabulary.label = label;
+      },
+    },
+    description: {
+      get: function () {
+        return this.vocabulary?.description;
+      },
+      set: function (description) {
+        this.vocabulary.description = description;
+      },
+    },
   },
   methods: {
     saveVocab() {
-      this.$store.dispatch("vocabStore/createVocab", {
-        label: this.label,
-        description: this.description,
+      this.$store.dispatch(
+        `vocabStore/${this.vocabulary.id ? "updateVocab" : "createVocab"}`,
+        {
+          label: this.label,
+          description: this.description,
+        }
+      );
+      this.cancel();
+    },
+    cancel() {
+      this.$store.dispatch("vocabStore/editVocab", {
+        vocabulary: undefined,
       });
       this.$router.push("/vocab");
     },

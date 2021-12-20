@@ -16,6 +16,7 @@ export const vocabStore: Module<any, any> = {
     vocabularies: new Map<string, Vocabulary>(),
     pageable: <Pageable>{ offset: 0, totalItems: 0, rows: 0 },
     searchText: "",
+    vocabulary: undefined,
   }),
   mutations: {
     LOADVOCABLIST(
@@ -76,12 +77,17 @@ export const vocabStore: Module<any, any> = {
           }
         });
     },
-    UPDATEVOCAB(state, payload: { vocab: Vocabulary }) {
-      vocabService.updateVocab(payload.vocab).then((vocab) => {
-        if (vocab) {
-          state.vocabularies.set(vocab.id, vocab);
-        }
-      });
+    EDITVOCAB(state, payload: { vocabulary?: Vocabulary }) {
+      state.vocabulary = payload.vocabulary;
+    },
+    UPDATEVOCAB(state) {
+      vocabService
+        .updateVocab(state.vocabulary)
+        .then((vocab: Vocabulary | undefined) => {
+          if (vocab) {
+            state.vocabularies.set(vocab.id, vocab);
+          }
+        });
     },
     DELETEVOCAB(state, payload: { vocabulary: Vocabulary }) {
       vocabService
@@ -106,6 +112,9 @@ export const vocabStore: Module<any, any> = {
     createVocab({ commit }, payload) {
       commit("CREATEVOCAB", payload);
     },
+    editVocab({ commit }, payload) {
+      commit("EDITVOCAB", payload);
+    },
     updateVocab({ commit }, payload) {
       commit("UPDATEVOCAB", payload);
     },
@@ -119,5 +128,6 @@ export const vocabStore: Module<any, any> = {
         (t1: Vocabulary, t2: Vocabulary) =>
           Date.parse(t1.created) - Date.parse(t2.created)
       ),
+    vocabulary: (state) => state.vocabulary,
   },
 };

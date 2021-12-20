@@ -12,20 +12,21 @@ export const entityStore: Module<any, any> = {
   namespaced: true,
   state: () => ({
     entities: new Map<string, Entity>(),
+    entity: undefined,
     pageable: <Pageable>{ offset: 0, totalItems: 0, rows: 0 },
     searchText: "",
-    vocabID: "",
+    vocabId: "",
     tagType: [],
   }),
   mutations: {
     LOADENTITYLIST(
       state,
       payload: {
-        vocabID: string;
         searchText?: string;
         tagType?: Array<TagType>;
         page?: number;
         rowCount?: number;
+        vocabID: string;
       }
     ) {
       entityService
@@ -120,6 +121,24 @@ export const entityStore: Module<any, any> = {
         }
       });
     },
+    EDITENTITY(
+      state,
+      payload: {
+        vocabID: string;
+        entity: {
+          tagType: TagType;
+          label: string;
+          description: string;
+          externalResources: string[];
+          sameAs: string[];
+        };
+      }
+    ) {
+      state.entity = {
+        vocabulary: payload.vocabID,
+        ...payload.entity,
+      };
+    },
     UPDATEENTITY(state, payload: { vocabID: string; entity: Entity }) {
       entityService
         .updateEntity(payload.vocabID, payload.entity)
@@ -150,6 +169,9 @@ export const entityStore: Module<any, any> = {
     createEntity({ commit }, payload) {
       commit("CREATEENTITY", payload);
     },
+    editEntity({ commit }, payload) {
+      commit("EDITENTITY", payload);
+    },
     updateEntity({ commit }, payload) {
       commit("UPDATEENTITY", payload);
     },
@@ -163,5 +185,6 @@ export const entityStore: Module<any, any> = {
         (t1: Entity, t2: Entity) =>
           Date.parse(t1.created) - Date.parse(t2.created)
       ),
+    entity: (state) => state.entity,
   },
 };

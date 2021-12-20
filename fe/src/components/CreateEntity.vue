@@ -56,7 +56,7 @@
             </div>
           </div>
         </div>
-        <div class="grid grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 gap-6">
           <Listbox as="div" v-model="selected">
             <ListboxLabel class="block text-sm font-medium text-gray-700">
               Entity Type
@@ -163,36 +163,10 @@
           </Listbox>
         </div>
       </div>
-      <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-        <button
-          type="button"
-          @click="$router.back()"
-          class="
-            inline-flex
-            justify-center
-            py-2
-            px-4
-            border border-transparent
-            shadow-sm
-            text-sm
-            font-medium
-            rounded-md
-            text-white
-            bg-tmOrange
-            hover:bg-tmHoverOrange
-            focus:outline-none
-            focus:ring-2
-            focus:ring-offset-2
-            focus:ring-tmFocusOrange
-          "
-        >
-          Cancel
-        </button>
-      </div>
       <div class="flow-root px-2 py-3 bg-gray-50 text-center">
         <button
           type="button"
-          @click="$router.back()"
+          @click="cancel"
           class="
             inline-flex
             justify-center
@@ -249,6 +223,7 @@ import {ref} from 'vue';
 import {Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions} from '@headlessui/vue';
 import {CheckIcon, SelectorIcon} from '@heroicons/vue/solid';
 import {TagType} from '@/openapi';
+import {mapGetters} from 'vuex';
 
 const tagTypeKeys = Object.keys(TagType);
 const tagTypeValues = Object.values(TagType);
@@ -263,8 +238,27 @@ export default {
     CheckIcon,
     SelectorIcon,
   },
-  props: {
-    vocabID: String,
+  computed: {
+    ...mapGetters("entityStore", ["entity"]),
+    label: {
+      get: function () {
+        return this.entity?.label;
+      },
+      set: function (label) {
+        this.entity.label = label;
+      },
+    },
+    description: {
+      get: function () {
+        return this.entity?.description;
+      },
+      set: function (description) {
+        this.entity.description = description;
+      },
+    },
+    vocabID() {
+      return this.$route.params.vocabID;
+    },
   },
   setup() {
     const selected = ref("Select...");
@@ -274,27 +268,28 @@ export default {
       selected,
     };
   },
-  data() {
-    return {
-      label: "",
-      description: "",
-    };
-  },
   methods: {
     createEntity() {
       if (this.selected === "Select...") {
-        console.error("Please select type!");
-        return;
+        alert("Please select an Entity Type");
+      } else {
+        this.$store.dispatch("entityStore/createEntity", {
+          vocabID: this.vocabID,
+          entity: {
+            tagType: TagType[TagType[this.selected]],
+            label: this.label,
+            description: this.description,
+            externalResources: [],
+            sameAs: [],
+          },
+        });
+        this.cancel();
       }
-      this.$store.dispatch("entityStore/createEntity", {
+    },
+    cancel() {
+      this.$store.dispatch("enitiyStore/editVocab", {
         vocabID: this.vocabID,
-        entity: {
-          tagType: TagType[TagType[this.selected]],
-          label: this.label,
-          description: this.description,
-          externalResources: [],
-          sameAs: [],
-        },
+        entity: undefined,
       });
       this.$router.push("/vocab/" + this.vocabID + "/entities");
     },

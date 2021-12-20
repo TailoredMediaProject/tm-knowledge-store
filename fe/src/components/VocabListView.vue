@@ -31,7 +31,7 @@
               <div class="ml-4 mt-2 flex-shrink-0">
                 <button
                   type="button"
-                  @click="createNew"
+                  @click="editVocab($event)"
                   class="
                     relative
                     inline-flex
@@ -196,6 +196,7 @@
                       inline-flex
                       hover:bg-tmHoverOrange
                     "
+                    @click="editVocab($event, vocabulary)"
                   >
                     <svg
                       class="fill-current w-4 h-4"
@@ -225,9 +226,7 @@
                       inline-flex
                       hover:bg-tmHoverOrange
                     "
-                    @click="
-                      $router.push('/vocab/' + vocabulary.id + '/entities')
-                    "
+                    @click="navigateToEntities(vocabulary)"
                   >
                     E
                   </button>
@@ -311,8 +310,21 @@ export default {
     loadMore() {
       this.$store.dispatch("vocabStore/loadNextPage");
     },
-    createNew() {
-      this.$router.push("/create");
+    editVocab(event, vocabulary) {
+      if (!vocabulary) {
+        vocabulary = {};
+      }
+      this.$store.dispatch("vocabStore/editVocab", {
+        vocabulary,
+      });
+      const suffix = vocabulary?.id ? `/${vocabulary.id}` : "";
+      this.$router.push(`/create${suffix}`);
+    },
+    navigateToEntities(vocabulary) {
+      this.$store.dispatch("vocabStore/editVocab", {
+        vocabulary,
+      });
+      this.$router.push("/vocab/" + vocabulary.id + "/entities");
     },
     formatDate(date) {
       return formatDate(date);

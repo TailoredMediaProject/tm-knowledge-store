@@ -58,7 +58,9 @@ export class VocabularyService {
   constructor(basePath: string) {
     this.basePath = basePath;
     this.apiPath = basePath + "/vocab";
-    this.apiFn = VocabularyApiFp(new Configuration({basePath: this.basePath}));
+    this.apiFn = VocabularyApiFp(
+      new Configuration({ basePath: this.basePath })
+    );
   }
 
   async getVocabs(
@@ -148,11 +150,13 @@ export class VocabularyService {
   deleteVocab(vocab: Vocabulary): Promise<Vocabulary | undefined> {
     const objectID = vocab.id;
     const lastModified = ISO8601toUTC(vocab.lastModified);
+
     if (!objectID || objectID === "") {
       return Promise.reject("No vocabulary ID set");
     } else if (lastModified === null) {
       return Promise.reject("Invalid date!");
     }
+
     return this.apiFn.deleteVocabulary(objectID, lastModified).then((req) =>
       req()
         .then((resp) => {

@@ -25,7 +25,7 @@
             >
               <div class="ml-4 mt-2">
                 <h3 class="text-lg leading-6 font-medium text-gray-900">
-                  Entities
+                  Vocabulary {{ vocabID }} / Entities
                 </h3>
               </div>
               <div class="ml-4 mt-2 flex-shrink-0">
@@ -57,7 +57,7 @@
                 </button>
                 <button
                   type="button"
-                  @click="createNew"
+                  @click="editEntity($event)"
                   class="
                     relative
                     inline-flex
@@ -255,8 +255,15 @@ export default {
     loadMore() {
       this.$store.dispatch("entityStore/loadNextPage");
     },
-    createNew() {
-      this.$router.push("/create/" + this.vocabID);
+    editEntity($event, entity) {
+      if (!entity) {
+        entity = {};
+      }
+      this.$store.dispatch("entityStore/editEntity", {
+        vocabId: this.vocabID,
+        entity,
+      });
+      this.$router.push(`/create/${this.vocabID}`);
     },
     formatDate(date) {
       return formatDate(date);
