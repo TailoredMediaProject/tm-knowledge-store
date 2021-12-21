@@ -104,7 +104,7 @@ router.put('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
             next(new KnowledgeError(400, 'Bad Request', 'Missing or invalid ID'));
         }
     } else {
-        next(new KnowledgeError(409, 'Conflict', `Operation failed, ${headerName}-Header missing or falsy value!`));
+        next(new KnowledgeError(428, 'Precondition Required', `Operation failed, ${headerName}-Header missing or falsy value!`));
     }
 });
 
