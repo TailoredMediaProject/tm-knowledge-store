@@ -2,6 +2,7 @@ import {NextFunction, Request, Response, Router} from 'express';
 import {vocabularyService} from '../services/vocabulary.service';
 import {Entity, Vocabulary} from '../models/dbo.models';
 import {Vocabulary as VocabularyDTO} from '../generated/models/Vocabulary';
+import {TagType} from '../generated/models/TagType';
 import {Entity as EntityDTO} from '../generated/models/Entity';
 import {entityServiceInstance} from '../services/entity.service';
 import {KnowledgeError} from '../models/knowledge-error.model';
@@ -28,9 +29,18 @@ const vocabDbo2Dto = (dbo: Vocabulary): VocabularyDTO => ({
     entityCount: -1
 });
 
-const entityDto2Dbo = (dto: EntityDTO): Entity => ({
-    _id: undefined,
-    vocabulary: undefined,
+
+const entityDto2Dbo = (dto: EntityDTO, next: NextFunction): Entity => ({
+    /* eslint-disable */
+    _id: !!dto?.id ? new ObjectId(checkId(
+      // @ts-ignore
+      dto?.id, 'entity',
+      next)) : undefined,
+    vocabulary: new ObjectId(checkId(
+      // @ts-ignore
+      dto?.vocabulary, 'vocabulary',
+      next)),
+    /* eslint-enable */
     type: dto.type,
     label: dto.label,
     description: dto.description,
@@ -38,14 +48,14 @@ const entityDto2Dbo = (dto: EntityDTO): Entity => ({
     lastModified: undefined,
     externalResources: dto.externalResources,
     sameAs: dto.sameAs,
-    data: dto.data  // How we should handle the required fields in DTO Request?
+    data: undefined
 });
 
 const entityDbo2Dto = (dbo: Entity): EntityDTO => ({
     id: dbo._id.toHexString(),
     vocabulary: dbo.vocabulary.toHexString(),
     // @ts-ignore
-    type: dbo.type.toUpperCase(),
+    type: TagType[dbo.type.toUpperCase()],
     label: dbo.label,
     description: dbo.description,
     created: dbo.created.toISOString(),
@@ -53,7 +63,7 @@ const entityDbo2Dto = (dbo: Entity): EntityDTO => ({
     externalResources: dbo.externalResources,
     sameAs: dbo.sameAs,
     data: dbo.data,
-    canonicalLink: '12345' // What should be canonicalLink?
+    canonicalLink: undefined
 });
 
 router.get('/vocab', (req: Request, res: Response, next: NextFunction) => {
@@ -130,8 +140,8 @@ router.get('/vocab/:id/entities', (req: Request, res: Response, next: NextFuncti
 router.post('/vocab/:id/entities', (req: Request, res: Response, next: NextFunction) => {
     const vocabID: string = req.params.id;
     const body = <EntityDTO>req.body;
-    const entity: Entity = entityDto2Dbo(body);
-    checkId(vocabID, 'entity', next)
+    const entity: Entity = entityDto2Dbo(body, next);
+    checkId(vocabID, 'vocabulary', next)
 
     entityServiceInstance
         .createEntity(vocabID, entity)
@@ -159,7 +169,7 @@ router.put('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: Next
     const eId = checkId(req?.params?.eId, 'entity', next);
 
     entityServiceInstance
-        .updateEntity(vId, eId, ifUnmodifiedSince, entityDto2Dbo(req.body as EntityDTO))
+        .updateEntity(vId, eId, ifUnmodifiedSince, entityDto2Dbo(req.body as EntityDTO,  next))
         .then((e: Entity) => res.json(entityDbo2Dto(e)))
         .catch(next);
 });
@@ -192,7 +202,7 @@ const checkIfUnmodifiedHeader = (req: Request, next: NextFunction): Date => {
 };
 
 const checkId = (id: string, idName: string, next: NextFunction): string => {
-    if (!!id && ObjectId.isValid(id) == true) {
+    if (ObjectId.isValid(id)) {
         return id;
     }
 

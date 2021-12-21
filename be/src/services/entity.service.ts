@@ -1,5 +1,5 @@
 import {instance as persistenceService} from './persistence.service';
-import {Collection, Filter, ObjectId, UpdateFilter, UpdateResult} from 'mongodb';
+import {Collection, Filter, InsertOneResult, ObjectId, UpdateFilter, UpdateResult} from 'mongodb';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import {Entity} from '../models/dbo.models';
 import {vocabularyService} from './vocabulary.service';
@@ -9,21 +9,16 @@ export class EntityService {
         return persistenceService.db().collection('entities');
     }
 
-    public async createEntity(vocabID: string, entity: Entity): Promise<Entity> {
-
-        await vocabularyService.getVocabular(vocabID).then(r => console.log(r))
-
-        // @ts-ignore
-        return EntityService.collection()
-            .insertOne({
-                ...entity,
-                _id: null,
-                vocabulary: new ObjectId(vocabID),
-                created: new Date(),
-                lastModified: new Date()
-            })
-            .then((result) => result.insertedId)
-            .then((id) => this.getEntity(vocabID, id))
+    public createEntity(vocabID: string, entity: Entity): Promise<Entity> {
+        return vocabularyService.getVocabular(vocabID).then(() =>
+          EntityService.collection()
+          .insertOne({
+              ...entity,
+              _id: undefined,
+              created: new Date(),
+              lastModified: new Date()
+          })
+          .then((result: InsertOneResult) => this.getEntity(vocabID, result.insertedId)))
     }
 
     // TODO remove rule when implemented
@@ -32,19 +27,17 @@ export class EntityService {
         return Promise.resolve(null);
     }
 
-    // TODO remove rule when implemented
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    public async getEntity(vocabID: string | ObjectId, entityID: string | ObjectId): Promise<Entity> {
-
-        const entity = <Entity>await EntityService.collection().findOne({_id: new ObjectId(entityID)})
-
-        if (!entity) {
-            throw new KnowledgeError(404, 'Entity', 'Entity not found!')
-        }
-
+    public getEntity(vocabID: string | ObjectId, entityID: string | ObjectId): Promise<Entity> {
         return EntityService.collection()
-            .findOne({_id: new ObjectId(entityID)})
-            .then((x) => <Entity>x);
+          .findOne({_id: new ObjectId(entityID)})
+          .then(result => {
+              if(!!result?._id) {
+                return result as Entity;
+              }
+              throw new KnowledgeError(404,
+                'Not found',
+                `Target entity with id '${entityID}' on vocabulary '${vocabID}' not found`);
+          })
     }
 
     updateEntity(vocabID: string, entityID: string, ifUnmodifiedSince: Date, entity: Entity): Promise<Entity> {
