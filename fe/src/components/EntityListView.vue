@@ -83,7 +83,7 @@
               </div>
             </div>
           </div>
-          <table class="min-w-full divide-y divide-gray-200">
+          <table class="min-w-full max-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
               <tr>
                 <th
@@ -152,6 +152,7 @@
                     py-4
                     whitespace-nowrap
                     text-sm
+                    text-center
                     font-medium
                     text-gray-900
                   "
@@ -164,6 +165,7 @@
                     py-4
                     whitespace-nowrap
                     text-sm
+                    text-center
                     font-medium
                     text-gray-900
                   "
@@ -176,6 +178,7 @@
                     py-4
                     whitespace-nowrap
                     text-sm
+                    text-center
                     font-medium
                     text-gray-900
                   "
@@ -188,6 +191,7 @@
                     py-4
                     whitespace-nowrap
                     text-sm
+                    text-center
                     font-medium
                     text-gray-900
                   "

@@ -240,6 +240,7 @@ export default {
   },
   computed: {
     ...mapGetters("entityStore", ["entity"]),
+    ...mapGetters("vocabStore", ["vocabulary"]),
     label: {
       get: function () {
         return this.entity?.label;
@@ -257,7 +258,7 @@ export default {
       },
     },
     vocabID() {
-      return this.$route.params.vocabID;
+      return this.$route?.params?.vocabID || this.vocabulary?.id;
     },
   },
   setup() {

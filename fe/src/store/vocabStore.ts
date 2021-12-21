@@ -1,7 +1,7 @@
-import { Module } from "vuex";
-import { Pageable, Vocabulary } from "@/openapi";
-import { VocabularyService } from "@/services/VocabularyService";
-import { VocabList } from "@/Objects/VocabList";
+import {Module} from 'vuex';
+import {Pageable, Vocabulary} from '@/openapi';
+import {VocabularyService} from '@/services/VocabularyService';
+import {VocabList} from '@/Objects/VocabList';
 
 const vocabService = new VocabularyService("./api/v1");
 const arrayToMap = (array: Vocabulary[]): Map<string, Vocabulary> => {
@@ -80,7 +80,9 @@ export const vocabStore: Module<any, any> = {
     EDITVOCAB(state, payload: { vocabulary?: Vocabulary }) {
       state.vocabulary = payload.vocabulary;
     },
-    UPDATEVOCAB(state) {
+    UPDATEVOCAB(state, payload: { label?: string; description?: string }) {
+      state.vocabulary.label = payload.label;
+      state.vocabulary.description = payload.description;
       vocabService
         .updateVocab(state.vocabulary)
         .then((vocab: Vocabulary | undefined) => {

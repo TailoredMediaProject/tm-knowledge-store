@@ -57,7 +57,7 @@
               </div>
             </div>
           </div>
-          <table class="max-w-full divide-y divide-gray-200">
+          <table class="min-w-full max-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
               <tr>
                 <th
@@ -79,7 +79,8 @@
                   class="
                     px-6
                     py-3
-                    text-center text-xs
+                    text-center
+                    text-xs
                     font-medium
                     text-gray-500
                     uppercase
@@ -140,13 +141,14 @@
                     py-4
                     whitespace-nowrap
                     text-sm
+                    text-center
                     font-medium
                     text-gray-900
                   "
                 >
                   {{ vocabulary.label }}
                 </td>
-                <td class="px-6 py-4 text-sm font-medium text-gray-900">
+                <td class="px-6 py-4 text-sm text-center font-medium text-gray-900">
                   {{ vocabulary.description }}
                 </td>
                 <td
@@ -155,6 +157,7 @@
                     py-4
                     whitespace-nowrap
                     text-sm
+                    text-center
                     font-medium
                     text-gray-900
                   "
@@ -167,6 +170,7 @@
                     py-4
                     whitespace-nowrap
                     text-sm
+                    text-center
                     font-medium
                     text-gray-900
                   "
@@ -333,7 +337,7 @@ export default {
       this.$store.dispatch("vocabStore/deleteVocab", {
         vocabulary,
       });
-      this.$router.push("/vocab");
+      this.$router.go(0);
     },
   },
 };

@@ -1,12 +1,7 @@
-import { AxiosInstance, AxiosPromise, AxiosRequestConfig } from "axios";
-import {
-  Configuration,
-  Pageable,
-  Vocabulary,
-  VocabularyApiFp,
-} from "../openapi";
-import { ISO8601toUTC } from "@/Utility/DateUtility";
-import { extractVocabList, VocabList } from "@/Objects/VocabList";
+import {AxiosInstance, AxiosPromise, AxiosRequestConfig} from 'axios';
+import {Configuration, Pageable, Vocabulary, VocabularyApiFp} from '../openapi';
+import {ISO8601toUTC} from '@/Utility/DateUtility';
+import {extractVocabList, VocabList} from '@/Objects/VocabList';
 
 export class VocabularyService {
   private readonly basePath: string;
@@ -151,9 +146,9 @@ export class VocabularyService {
     const objectID = vocab.id;
     const lastModified = ISO8601toUTC(vocab.lastModified);
 
-    if (!objectID || objectID === "") {
+    if (!objectID) {
       return Promise.reject("No vocabulary ID set");
-    } else if (lastModified === null) {
+    } else if (!lastModified) {
       return Promise.reject("Invalid date!");
     }
 
