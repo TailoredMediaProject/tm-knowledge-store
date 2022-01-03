@@ -18,5 +18,5 @@ export interface Entity {
     lastModified: Date
     externalResources: string[]
     sameAs: string[]
-    data: unknown
+    data: unknown,
 }
