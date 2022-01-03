@@ -129,9 +129,15 @@ router.delete('/vocab/:id', (req: Request, res: Response, next: NextFunction) =>
         .catch(next);
 });
 
-router.get('/vocab/:id/entities', (req: Request, res: Response, next: NextFunction) => {
+router.get('/vocab/:vId/entities', (req: Request, res: Response, next: NextFunction) => {
+    const vId = checkId(req?.params?.vId, 'vocabulary', next);
+
     try {
-        void entityServiceInstance.getEntity(undefined, undefined);
+        entityServiceInstance.getEntities(vId)
+          .then((entities: Entity[]) => entities.map((dbo: Entity) => entityDbo2Dto(dbo)))
+            // TODO check return format and check whole code flow
+          .then((dtos: EntityDTO[]) => res.json(dtos))
+          .catch(next);
     } catch (e) {
         next(e);
     }
@@ -157,9 +163,12 @@ router.post('/vocab/:id/entities', (req: Request, res: Response, next: NextFunct
         .catch(next);
 });
 
-router.get('/vocab/:id/entities/:id', (req: Request, res: Response, next: NextFunction) => {
+router.get('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: NextFunction) => {
+    const vId = checkId(req?.params?.vId, 'vocabulary', next);
+    const eId = checkId(req?.params?.eId, 'entity', next);
+
     try {
-        void entityServiceInstance.getEntity(undefined, undefined);
+        void entityServiceInstance.getEntity(vId, eId);
     } catch (e) {
         next(e);
     }

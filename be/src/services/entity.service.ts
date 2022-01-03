@@ -21,15 +21,12 @@ export class EntityService {
           .then((result: InsertOneResult) => this.getEntity(entity.vocabulary, result.insertedId)))
     }
 
-    // TODO remove rule when implemented
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    async getEntities(vocabID: string, filter: unknown): Promise<unknown> {
-        return Promise.resolve(null);
-    }
-
     public getEntity(vocabID: string | ObjectId, entityID: string | ObjectId): Promise<Entity> {
-        return EntityService.collection()
-          .findOne({_id: new ObjectId(entityID)})
+        return vocabularyService.getVocabular(vocabID).then(() => EntityService.collection()
+          .findOne({
+              _id: new ObjectId(entityID),
+              vocabulary: new ObjectId(vocabID),
+          })
           .then(result => {
               if(!!result?._id) {
                 return result as Entity;
@@ -37,7 +34,17 @@ export class EntityService {
               throw new KnowledgeError(404,
                 'Not found',
                 `Target entity with id '${entityID}' in vocabulary '${vocabID}' not found`);
-          })
+          }));
+    }
+
+    public async getEntities(vocabID: string | ObjectId): Promise<Entity[]> {
+        await vocabularyService.getVocabular(vocabID).catch(() => {
+            throw new KnowledgeError(404,
+              'Not found',
+              `Target vocabulary '${vocabID}' not found`);
+        });
+
+        return await EntityService.collection().find({ vocabulary: new ObjectId(vocabID) }).toArray() as Entity[];
     }
 
     updateEntity(vocabID: string, entityID: string, ifUnmodifiedSince: Date, entity: Entity): Promise<Entity> {
