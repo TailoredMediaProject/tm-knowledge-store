@@ -39,13 +39,9 @@ export class VocabularyService {
             throw new KnowledgeError(404, 'Document', 'No document matches the provided ID.');
         }
 
-        console.log(result);
-
         return VocabularyService.collection()
             .deleteOne({_id: new ObjectId(id), lastModified: date})
             .then((r: DeleteResult) => {
-                console.log(date);
-                console.log(r);
                 if (r.deletedCount === 1) {
                     return true;
                 } else {
