@@ -20,3 +20,17 @@ services:
     image: mongo:latest
     ports:
       - "27017:27017"
+  vuejs:
+    env_file: .env
+    image: 'node:lts-alpine'
+    user: 'node'
+    working_dir: /app
+    environment:
+      HOST: '${BE_HOST}'
+      PORT: '${BE_PORT}'
+      MONGO_HOST: 'mongo'
+    volumes:
+      - ./fe:/app
+    ports:
+      - '4200:4200'
+    command: 'npm run docker:start'

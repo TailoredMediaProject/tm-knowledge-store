@@ -1,29 +1,43 @@
 import {instance as persistenceService} from './persistence.service';
-import {Collection, Filter, UpdateFilter, UpdateResult} from 'mongodb';
+import {Collection, Filter, InsertOneResult, ObjectId, UpdateFilter, UpdateResult} from 'mongodb';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import {Entity} from '../models/dbo.models';
+import {vocabularyService} from './vocabulary.service';
 
 export class EntityService {
     private static collection(): Collection {
         return persistenceService.db().collection('entities');
     }
 
-    // TODO remove rule when implemented
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    createEntity(vocabID: string, entity: Entity): Promise<unknown> {
-        throw new KnowledgeError(501, 'Not Implemented', 'Operation not implemented');
+    public createEntity(entity: Entity): Promise<Entity> {
+        return vocabularyService.getVocabular(entity.vocabulary).then(() =>
+          EntityService.collection()
+          .insertOne({
+              ...entity,
+              _id: undefined,
+              created: new Date(),
+              lastModified: new Date()
+          })
+          .then((result: InsertOneResult) => this.getEntity(entity.vocabulary, result.insertedId)))
     }
 
     // TODO remove rule when implemented
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    getEntities(vocabID: string, filter: unknown): Promise<unknown> {
-        throw new KnowledgeError(501, 'Not Implemented', 'Operation not implemented');
+    async getEntities(vocabID: string, filter: unknown): Promise<unknown> {
+        return Promise.resolve(null);
     }
 
-    // TODO remove rule when implemented
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    getEntity(vocabID: string, entityID: string): Promise<Entity> {
-        throw new KnowledgeError(501, 'Not Implemented', 'Operation not implemented', {id: 'dummyEntityErrorPayload'});
+    public getEntity(vocabID: string | ObjectId, entityID: string | ObjectId): Promise<Entity> {
+        return EntityService.collection()
+          .findOne({_id: new ObjectId(entityID)})
+          .then(result => {
+              if(!!result?._id) {
+                return result as Entity;
+              }
+              throw new KnowledgeError(404,
+                'Not found',
+                `Target entity with id '${entityID}' in vocabulary '${vocabID}' not found`);
+          })
     }
 
     updateEntity(vocabID: string, entityID: string, ifUnmodifiedSince: Date, entity: Entity): Promise<Entity> {
@@ -76,8 +90,8 @@ export class EntityService {
 
     // TODO remove rule when implemented
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    deleteEntity(vocabID: string, entityID: string, lastModified: string): Promise<unknown> {
-        throw new KnowledgeError(501, 'Not Implemented', 'Operation not implemented');
+    async deleteEntity(vocabID: string, entityID: string, lastModified: string): Promise<unknown> {
+        return Promise.resolve(null);
     }
 }
 
