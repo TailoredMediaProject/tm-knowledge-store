@@ -1,4 +1,4 @@
-import {Collection, Filter, FindOptions, ObjectId} from 'mongodb';
+import {Collection, DeleteResult, Filter, FindOptions, ObjectId} from 'mongodb';
 import {Vocabulary} from '../models/dbo.models';
 import {instance as persistenceService} from './persistence.service';
 import ListQueryModel from '../models/query-list.model';
@@ -48,8 +48,8 @@ export class VocabularyService {
 
         return VocabularyService.collection()
             .deleteOne({_id: new ObjectId(id), lastModified: date})
-            .then((r) => {
-                if (r.deletedCount == 1) {
+            .then((r: DeleteResult) => {
+                if (r.deletedCount === 1) {
                     return true;
                 } else {
                     throw new KnowledgeError(412, 'Header', 'Header does not match!');
