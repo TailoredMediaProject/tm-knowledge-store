@@ -26,7 +26,6 @@ services:
     user: 'node'
     working_dir: /app
     environment:
-      NODE_ENV: production
       HOST: '${BE_HOST}'
       PORT: '${BE_PORT}'
       MONGO_HOST: 'mongo'
