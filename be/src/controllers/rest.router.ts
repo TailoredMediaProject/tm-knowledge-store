@@ -139,12 +139,14 @@ router.get('/vocab/:id/entities', (req: Request, res: Response, next: NextFuncti
 
 router.post('/vocab/:id/entities', (req: Request, res: Response, next: NextFunction) => {
     const vocabID: string = req.params.id;
+    checkId(vocabID, 'vocabulary', next)
+    req.body.vocabulary = vocabID;
+
     const body = <EntityDTO>req.body;
     const entity: Entity = entityDto2Dbo(body, next);
-    checkId(vocabID, 'vocabulary', next)
 
     entityServiceInstance
-        .createEntity(vocabID, entity)
+        .createEntity(entity)
         .then(entity => entityDbo2Dto(entity))
         .then(ent => {
             const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}/${ent.id}`;

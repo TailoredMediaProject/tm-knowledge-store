@@ -9,8 +9,8 @@ export class EntityService {
         return persistenceService.db().collection('entities');
     }
 
-    public createEntity(vocabID: string, entity: Entity): Promise<Entity> {
-        return vocabularyService.getVocabular(vocabID).then(() =>
+    public createEntity(entity: Entity): Promise<Entity> {
+        return vocabularyService.getVocabular(entity.vocabulary).then(() =>
           EntityService.collection()
           .insertOne({
               ...entity,
@@ -18,7 +18,7 @@ export class EntityService {
               created: new Date(),
               lastModified: new Date()
           })
-          .then((result: InsertOneResult) => this.getEntity(vocabID, result.insertedId)))
+          .then((result: InsertOneResult) => this.getEntity(entity.vocabulary, result.insertedId)))
     }
 
     // TODO remove rule when implemented
@@ -36,7 +36,7 @@ export class EntityService {
               }
               throw new KnowledgeError(404,
                 'Not found',
-                `Target entity with id '${entityID}' on vocabulary '${vocabID}' not found`);
+                `Target entity with id '${entityID}' in vocabulary '${vocabID}' not found`);
           })
     }
 
