@@ -24,6 +24,7 @@
                   border border-gray-300
                   rounded-md
                 "
+                autofocus="autofocus"
                 placeholder="Label"
               />
             </div>

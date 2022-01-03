@@ -25,6 +25,7 @@
                   rounded-md
                 "
                 placeholder="Label"
+                autofocus="autofocus"
               />
             </div>
           </div>
