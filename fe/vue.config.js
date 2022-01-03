@@ -1,11 +1,13 @@
 module.exports = {
   devServer: {
+    port: 4200,
     proxy: {
-      "/api/v1/": {
-        target: "http://localhost:4000/api/v1/",
+      "/api/v1": {
+        target: `http://${process.env.NODE_ENV === 'production' ? 'localhost' : 'knowledge-store'}:8080`,
         ws: true,
-        secure: true,
+        secure: false,
         changeOrigin: true,
+        logLevel: "debug",
       },
     },
   },

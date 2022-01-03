@@ -1,7 +1,7 @@
-import { Module } from "vuex";
-import { Pageable, Vocabulary } from "@/openapi";
-import { VocabularyService } from "@/services/VocabularyService";
-import { VocabList } from "@/Objects/VocabList";
+import {Module} from 'vuex';
+import {Pageable, Vocabulary} from '@/openapi';
+import {VocabularyService} from '@/services/VocabularyService';
+import {VocabList} from '@/Objects/VocabList';
 
 const vocabService = new VocabularyService("./api/v1");
 const arrayToMap = (array: Vocabulary[]): Map<string, Vocabulary> => {
@@ -16,6 +16,7 @@ export const vocabStore: Module<any, any> = {
     vocabularies: new Map<string, Vocabulary>(),
     pageable: <Pageable>{ offset: 0, totalItems: 0, rows: 0 },
     searchText: "",
+    vocabulary: undefined,
   }),
   mutations: {
     LOADVOCABLIST(
@@ -76,19 +77,28 @@ export const vocabStore: Module<any, any> = {
           }
         });
     },
-    UPDATEVOCAB(state, payload: { vocab: Vocabulary }) {
-      vocabService.updateVocab(payload.vocab).then((vocab) => {
-        if (vocab) {
-          state.vocabularies.set(vocab.id, vocab);
-        }
-      });
+    EDITVOCAB(state, payload: { vocabulary?: Vocabulary }) {
+      state.vocabulary = payload.vocabulary;
     },
-    DELETEVOCAB(state, payload: { vocab: Vocabulary }) {
-      vocabService.deleteVocab(payload.vocab).then((vocab) => {
-        if (vocab) {
-          state.vocabularies.delete(vocab.id);
-        }
-      });
+    UPDATEVOCAB(state, payload: { label?: string; description?: string }) {
+      state.vocabulary.label = payload.label;
+      state.vocabulary.description = payload.description;
+      vocabService
+        .updateVocab(state.vocabulary)
+        .then((vocab: Vocabulary | undefined) => {
+          if (vocab) {
+            state.vocabularies.set(vocab.id, vocab);
+          }
+        });
+    },
+    DELETEVOCAB(state, payload: { vocabulary: Vocabulary }) {
+      vocabService
+        .deleteVocab(payload.vocabulary)
+        .then((vocab: Vocabulary | undefined) => {
+          if (vocab) {
+            state.vocabularies.delete(vocab.id);
+          }
+        });
     },
   },
   actions: {
@@ -104,6 +114,9 @@ export const vocabStore: Module<any, any> = {
     createVocab({ commit }, payload) {
       commit("CREATEVOCAB", payload);
     },
+    editVocab({ commit }, payload) {
+      commit("EDITVOCAB", payload);
+    },
     updateVocab({ commit }, payload) {
       commit("UPDATEVOCAB", payload);
     },
@@ -117,5 +130,6 @@ export const vocabStore: Module<any, any> = {
         (t1: Vocabulary, t2: Vocabulary) =>
           Date.parse(t1.created) - Date.parse(t2.created)
       ),
+    vocabulary: (state) => state.vocabulary,
   },
 };
