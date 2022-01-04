@@ -57,5 +57,15 @@
     "vue-cli-plugin-tailwind": "~2.2.17",
     "vue-jest": "^5.0.0-0",
     "vue-svg-loader": "^0.16.0"
+  },
+  "prettier": {
+    "trailingComma": "none",
+    "endOfLine": "lf",
+    "tabWidth": 4,
+    "useTabs": false,
+    "bracketSpacing": false,
+    "printWidth": 140,
+    "semi": true,
+    "singleQuote": true
   }
 }

@@ -1,13 +1,7 @@
-import {
-  Configuration,
-  EntitesApiFp,
-  Entity,
-  Pageable,
-  TagType,
-} from "../openapi";
-import { AxiosInstance, AxiosPromise, AxiosRequestConfig } from "axios";
-import { ISO8601toUTC } from "@/Utility/DateUtility";
-import { EntityList, extractEntityList } from "@/Objects/EntityList";
+import {Configuration, EntitesApiFp, Entity, Pageable, TagType} from '../openapi';
+import {AxiosInstance, AxiosPromise, AxiosRequestConfig, AxiosResponse} from 'axios';
+import {ISO8601toUTC} from '@/Utility/DateUtility';
+import {EntityList, extractEntityList} from '@/Objects/EntityList';
 
 export class EntityService {
   private readonly basePath: string;
@@ -88,13 +82,11 @@ export class EntityService {
       )
       .then((req) =>
         req().then((resp) => {
-          if (resp.status >= 400) {
-            console.error(resp);
-            return;
+          if (this.noStatusError(resp.status, resp)) {
+            console.log(resp.data); // TODO resp.data.type not contained, but in insomnia it is there
+            const data = resp.data as Pageable & [Entity];
+            return extractEntityList(data);
           }
-          const data = resp.data as Pageable & [Entity];
-          console.log(data);
-          return extractEntityList(data);
         })
       );
   }
@@ -104,12 +96,9 @@ export class EntityService {
       .vocabVocabularyIdEntitiesEntityIdGet(vocabID, entityID)
       .then((req) =>
         req().then((resp) => {
-          if (resp.status >= 400) {
-            console.error(resp);
-            return;
+          if (this.noStatusError(resp.status, resp)) {
+            return resp.data;
           }
-          console.log(resp.data);
-          return resp.data;
         })
       );
   }
@@ -117,44 +106,38 @@ export class EntityService {
   createEntity(vocabID: string, entity: Entity): Promise<Entity | undefined> {
     return this.apiFn.createEntity(vocabID, entity).then((req) =>
       req().then((resp) => {
-        if (resp.status >= 400) {
-          console.error(resp);
-          return;
+        if (this.noStatusError(resp.status, resp)) {
+          return resp.data;
         }
-        console.log(resp.data);
-        return resp.data;
       })
     );
   }
 
-  updateEntity(vocabID: string, entity: Entity): Promise<Entity | undefined> {
+  updateEntity(entity: Entity): Promise<Entity | undefined> {
     const lastModified = ISO8601toUTC(entity.lastModified);
-    if (lastModified === null) {
-      return Promise.reject("Date format not valid!");
+    if (!lastModified) {
+      return Promise.reject("Date format invalid!");
     }
     return this.apiFn
       .vocabVocabularyIdEntitiesEntityIdPut(
-        vocabID,
+        entity.vocabulary,
         entity.id,
         lastModified,
         entity
       )
       .then((req) =>
         req().then((resp) => {
-          if (resp.status >= 400) {
-            console.error(resp);
-            return;
+          if (this.noStatusError(resp.status, resp)) {
+            return resp.data;
           }
-          console.log(resp.data);
-          return resp.data;
         })
       );
   }
 
   deleteEntity(entity: Entity): Promise<Entity | undefined> {
     const lastModified = ISO8601toUTC(entity.lastModified);
-    if (lastModified === null) {
-      return Promise.reject("Date format not valid!");
+    if (!lastModified) {
+      return Promise.reject("Date format invalid!");
     }
     return this.apiFn
       .vocabVocabularyIdEntitiesEntityIdDelete(
@@ -164,13 +147,21 @@ export class EntityService {
       )
       .then((req) =>
         req().then((resp) => {
-          if (resp.status >= 400) {
-            console.error(resp);
-            return;
+          if (this.noStatusError(resp.status, resp)) {
+            return resp.data;
           }
-          console.log(resp.data);
-          return resp.data;
         })
       );
   }
+
+  private readonly noStatusError = (
+    statusCode: number,
+    resp: AxiosResponse<unknown>
+  ): boolean => {
+    if (statusCode >= 400) {
+      console.error(resp);
+      return false;
+    }
+    return true;
+  };
 }

@@ -1,5 +1,5 @@
 import {instance as persistenceService} from './persistence.service';
-import {Collection, Filter, InsertOneResult, UpdateFilter, UpdateResult, ObjectId} from 'mongodb';
+import {Collection, Filter, InsertOneResult, ObjectId, UpdateFilter, UpdateResult} from 'mongodb';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import {Entity, Vocabulary} from '../models/dbo.models';
 import {vocabularyService} from './vocabulary.service';

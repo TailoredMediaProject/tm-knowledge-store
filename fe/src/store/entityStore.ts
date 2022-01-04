@@ -1,7 +1,7 @@
-import { EntityService } from "@/services/EntityService";
-import { Entity, Pageable, TagType } from "@/openapi";
-import { Module } from "vuex";
-import { EntityList } from "@/Objects/EntityList";
+import {EntityService} from '@/services/EntityService';
+import {Entity, Pageable, TagType} from '@/openapi';
+import {Module} from 'vuex';
+import {EntityList} from '@/Objects/EntityList';
 
 const entityService = new EntityService("./api/v1");
 const arrayToMap = (array: Entity[]): Map<string, Entity> => {
@@ -16,14 +16,14 @@ export const entityStore: Module<any, any> = {
     pageable: <Pageable>{ offset: 0, totalItems: 0, rows: 0 },
     searchText: "",
     vocabId: "",
-    tagType: [],
+    type: "",
   }),
   mutations: {
     LOADENTITYLIST(
       state,
       payload: {
         searchText?: string;
-        tagType?: Array<TagType>;
+        type?: Array<TagType>;
         page?: number;
         rowCount?: number;
         vocabID: string;
@@ -33,7 +33,7 @@ export const entityStore: Module<any, any> = {
         .getEntities(
           payload.vocabID,
           payload.searchText,
-          payload.tagType,
+          payload.type,
           payload.page,
           payload.rowCount
         )
@@ -43,7 +43,7 @@ export const entityStore: Module<any, any> = {
             state.pageable = list.pageable;
             state.searchText = payload.searchText;
             state.vocabID = payload.vocabID;
-            state.tagType = payload.tagType;
+            state.tagType = payload.type;
           }
         });
     },
@@ -91,11 +91,11 @@ export const entityStore: Module<any, any> = {
     CREATEENTITY(
       state,
       payload: {
-        vocabID: string;
         entity: {
-          tagType: TagType;
+          type: TagType;
           label: string;
           description: string;
+          vocabulary: string;
           externalResources: string[];
           sameAs: string[];
         };
@@ -105,17 +105,16 @@ export const entityStore: Module<any, any> = {
         id: "",
         created: "",
         lastModified: "",
-        vocabulary: payload.vocabID,
+        vocabulary: payload.entity.vocabulary,
         canonicalLink: "",
-        type: payload.entity.tagType,
+        type: payload.entity.type,
         label: payload.entity.label,
         description: payload.entity.description,
         sameAs: payload.entity.sameAs,
         externalResources: payload.entity.externalResources,
         data: {},
       };
-      console.log(entity);
-      entityService.createEntity(payload.vocabID, entity).then((entity) => {
+      entityService.createEntity(entity.vocabulary, entity).then((entity) => {
         if (entity) {
           state.entities.set(entity.id, entity);
         }
@@ -126,7 +125,7 @@ export const entityStore: Module<any, any> = {
       payload: {
         vocabID: string;
         entity: {
-          tagType: TagType;
+          type: TagType;
           label: string;
           description: string;
           externalResources: string[];
@@ -139,11 +138,11 @@ export const entityStore: Module<any, any> = {
         ...payload.entity,
       };
     },
-    UPDATEENTITY(state, payload: { vocabID: string; entity: Entity }) {
+    UPDATEENTITY(state, payload: { entity: Entity }) {
       entityService
-        .updateEntity(payload.vocabID, payload.entity)
+        .updateEntity(payload.entity)
         .then((entity) => {
-          if (entity) {
+          if (entity?.id) {
             state.entities.set(entity.id, entity);
           }
         });

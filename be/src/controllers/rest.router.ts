@@ -53,10 +53,8 @@ const entityDto2Dbo = (dto: EntityDTO, next: NextFunction): Entity => ({
 const entityDbo2Dto = (dbo: Entity): EntityDTO => ({
     id: dbo._id.toHexString(),
     vocabulary: dbo.vocabulary.toHexString(),
-    /* eslint-disable */
     // @ts-ignore
-    type: TagType[dbo.type.toUpperCase()],
-    /* eslint-enable */
+    type: dbo?.type?.toUpperCase(),
     label: dbo.label,
     description: dbo.description,
     created: dbo.created.toISOString(),
@@ -150,12 +148,13 @@ router.get('/vocab/:vId/entities', (req: Request, res: Response, next: NextFunct
     try {
         entityServiceInstance.getEntities(vId)
           .then((entities: Entity[]) => entities.map((dbo: Entity) => entityDbo2Dto(dbo)))
-          .then((dtos: EntityDTO[]) => res.json({
-              offset: 0,
-              rows: 0,
-              totalItems: dtos.length,
-              items: dtos
-          }))
+          .then((dtos: EntityDTO[]) =>
+              res.json({
+                  offset: 0,
+                  rows: 0,
+                  totalItems: dtos.length,
+                  items: dtos
+              }))
           .catch(next);
     } catch (e) {
         next(e);

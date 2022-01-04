@@ -220,14 +220,13 @@
 </template>
 
 <script>
-import {ref} from 'vue';
 import {Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions} from '@headlessui/vue';
 import {CheckIcon, SelectorIcon} from '@heroicons/vue/solid';
 import {TagType} from '@/openapi';
 import {mapGetters} from 'vuex';
 
-const tagTypeKeys = Object.keys(TagType);
-const tagTypeValues = Object.values(TagType);
+const noSelection = "Select...";
+
 export default {
   name: "CreateEntity",
   components: {
@@ -258,16 +257,24 @@ export default {
         this.entity.description = description;
       },
     },
+    selected: {
+      get: function () {
+        console.log('get');
+        console.log(this.entity);
+        return this.entity?.type ? this.entity.type : "Select...";
+      },
+      set: function (value) {
+        this.entity.type = value && value !== noSelection ? TagType[TagType[value]] : noSelection;
+      },
+    },
     vocabID() {
       return this.$route?.params?.vocabID || this.vocabulary?.id;
     },
   },
   setup() {
-    const selected = ref("Select...");
     return {
-      tagTypeKeys,
-      tagTypeValues,
-      selected,
+      tagTypeKeys: Object.keys(TagType),
+      tagTypeValues: Object.values(TagType)
     };
   },
   methods: {
@@ -275,11 +282,12 @@ export default {
       if (this.selected === "Select...") {
         alert("Please select an Entity Type");
       } else {
-        this.$store.dispatch("entityStore/createEntity", {
-          vocabID: this.vocabID,
+        this.$store.dispatch(`entityStore/${this.entity.id ? "updateEntity" : "createEntity"}`, {
           entity: {
-            tagType: TagType[TagType[this.selected]],
+            ...this.entity,
+            type: this.selected === noSelection ? undefined : this.selected,
             label: this.label,
+            vocabulary: this.vocabID,
             description: this.description,
             externalResources: [],
             sameAs: [],
@@ -289,7 +297,7 @@ export default {
       }
     },
     cancel() {
-      this.$store.dispatch("entityStore/editVocab", {
+      this.$store.dispatch("vocabStore/editVocab", {
         vocabID: this.vocabID,
         entity: undefined,
       });
