@@ -206,12 +206,21 @@ router.put('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: Next
         .catch(next);
 });
 
-router.delete('/vocab/:id/entities/:id', (req: Request, res: Response, next: NextFunction) => {
-    try {
-        void entityServiceInstance.getEntity(undefined, undefined);
-    } catch (e) {
-        next(e);
-    }
+router.delete('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: NextFunction) => {
+    const date = checkIfUnmodifiedHeader(req, next)
+    const vId = checkId(req?.params?.vId, 'vocabulary', next);
+    const eId = checkId(req?.params?.eId, 'entity', next);
+
+    entityServiceInstance.deleteEntity(vId, eId, date).then(result => {
+        if (result) {
+            res.status(204).end();
+        } else {
+            res.status(404).json({
+                message: 'Entity not found'
+            });
+        }
+    }).catch(next)
+
 });
 
 const checkQueryParams = (allowed: string[], query: unknown): boolean => Object.keys(query).every((key) => allowed.includes(key));
