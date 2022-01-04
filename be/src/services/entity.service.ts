@@ -111,14 +111,6 @@ export class EntityService {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     public async deleteEntity(vocabID: string, entityID: string, lastModified: Date): Promise<boolean> {
 
-        if (!ObjectId.isValid(vocabID)) {
-            throw new KnowledgeError(400, 'VocabID', 'VocabID is not valid')
-        }
-
-        if (!ObjectId.isValid(vocabID)) {
-            throw new KnowledgeError(400, 'EntityID', 'EntityID is not valid')
-        }
-
         if (!await vocabularyService.getVocabular(vocabID)) {
             throw new KnowledgeError(404, 'Vocabulary', 'No vocabulary matches the provided ID.')
         }
