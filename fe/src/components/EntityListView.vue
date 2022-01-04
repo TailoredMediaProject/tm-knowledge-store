@@ -11,7 +11,7 @@
             sm:rounded-lg
           "
         >
-          <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
+          <div class="bg-white px-4 py-5 sm:px-6">
             <div
               class="
                 -ml-4
@@ -83,8 +83,8 @@
               </div>
             </div>
           </div>
-          <table class="min-w-full max-w-full divide-y divide-gray-200">
-            <thead class="bg-gray-50">
+          <table class="min-w-full max-w-full">
+            <thead class="bg-tmBlueLight ">
               <tr>
                 <th
                   scope="col"
@@ -160,7 +160,7 @@
             </thead>
             <tbody>
               <tr
-                class="odd:bg-gray-100"
+                class=""
                 v-for="entity in entities"
                 :key="entity.id"
               >
@@ -362,4 +362,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+table tr:nth-of-type(even) {
+  background-color: rgba(250, 132, 43, 0.15);
+}
+</style>

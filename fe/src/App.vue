@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col h-screen">
     <Header />
-    <div class="h-full min-h-screen px-4 py-8">
+    <div class="h-full min-h-screen px-4 py-4">
       <main>
         <router-view />
       </main>
@@ -20,5 +20,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="scss"></style>
