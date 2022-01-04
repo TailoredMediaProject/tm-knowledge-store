@@ -11,7 +11,7 @@
             overflow-y-visible
           "
         >
-          <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
+          <div class="bg-white px-4 py-5 border-b border-tmBlue sm:px-6">
             <div
               class="
                 -ml-4
@@ -49,10 +49,10 @@ export default {
     ...mapGetters("vocabStore", ["vocabulary"]),
     ...mapGetters("entityStore", ["entity"]),
     isUpdate() {
-      return this.isEntity ? !!this.entity?._id : !!this.vocabulary?.id;
+      return this.isEntity ? !!this.entity?.id : !!this.vocabulary?.id;
     },
     isEntity() {
-      return this.entity;
+      return !!this.entity;
     },
     heading() {
       const begin = this.isUpdate ? "Update " : "Create ";
@@ -61,7 +61,7 @@ export default {
 
       if (this.isUpdate) {
         id = ` ${
-          this.isEntity ? this.entity._id.toHexString() : this.vocabulary.id
+          this.isEntity ? this.entity.id : this.vocabulary.id
         }`;
       }
 
@@ -70,5 +70,3 @@ export default {
   },
 };
 </script>
-
-<style scoped></style>

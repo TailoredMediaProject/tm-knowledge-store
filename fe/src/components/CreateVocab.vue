@@ -21,7 +21,7 @@
                   block
                   w-full
                   sm:text-sm
-                  border border-gray-300
+                  border border-tmOrange
                   rounded-md
                 "
                 autofocus="autofocus"
@@ -49,7 +49,7 @@
                   block
                   w-full
                   sm:text-sm
-                  border border-gray-300
+                  border border-tmOrange
                   rounded-md
                 "
                 placeholder="Description"

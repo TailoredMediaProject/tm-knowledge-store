@@ -83,7 +83,6 @@ export class EntityService {
       .then((req) =>
         req().then((resp) => {
           if (this.noStatusError(resp.status, resp)) {
-            console.log(resp.data); // TODO resp.data.type not contained, but in insomnia it is there
             const data = resp.data as Pageable & [Entity];
             return extractEntityList(data);
           }

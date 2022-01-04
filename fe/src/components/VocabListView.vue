@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="py-2 align-middle inline-block min-w-full sm:px-3 lg:px-8">
         <div
           class="
             shadow
@@ -11,7 +11,7 @@
             sm:rounded-lg
           "
         >
-          <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
+          <div class="bg-white px-4 py-5 sm:px-3">
             <div
               class="
                 -ml-4
@@ -57,13 +57,13 @@
               </div>
             </div>
           </div>
-          <table class="min-w-full max-w-full divide-y divide-gray-200">
-            <thead class="bg-gray-50">
+          <table class="min-w-full max-w-full">
+            <thead class="bg-tmBlueLight ">
               <tr>
                 <th
                   scope="col"
                   class="
-                    px-6
+                    px-3
                     py-3
                     text-center text-xs
                     font-medium
@@ -77,10 +77,9 @@
                 <th
                   scope="col"
                   class="
-                    px-6
+                    px-3
                     py-3
-                    text-center
-                    text-xs
+                    text-center text-xs
                     font-medium
                     text-gray-500
                     uppercase
@@ -92,7 +91,7 @@
                 <th
                   scope="col"
                   class="
-                    px-6
+                    px-3
                     py-3
                     text-center text-xs
                     font-medium
@@ -106,7 +105,7 @@
                 <th
                   scope="col"
                   class="
-                    px-6
+                    px-3
                     py-3
                     text-center text-xs
                     font-medium
@@ -120,7 +119,7 @@
                 <th
                   scope="col"
                   class="
-                    px-6
+                    px-3
                     py-3
                     text-center text-xs
                     font-medium
@@ -137,27 +136,33 @@
               <tr v-for="vocabulary in vocabularies" :key="vocabulary.id">
                 <td
                   class="
-                    px-6
-                    py-4
+                    px-3
+                    py-3
                     whitespace-nowrap
-                    text-sm
-                    text-center
+                    text-sm text-center
                     font-medium
                     text-gray-900
                   "
                 >
                   {{ vocabulary.label }}
                 </td>
-                <td class="px-6 py-4 text-sm text-center font-medium text-gray-900">
+                <td
+                  class="
+                    px-3
+                    py-3
+                    text-sm text-center
+                    font-medium
+                    text-gray-900
+                  "
+                >
                   {{ vocabulary.description }}
                 </td>
                 <td
                   class="
-                    px-6
-                    py-4
+                    px-3
+                    py-3
                     whitespace-nowrap
-                    text-sm
-                    text-center
+                    text-sm text-center
                     font-medium
                     text-gray-900
                   "
@@ -166,11 +171,10 @@
                 </td>
                 <td
                   class="
-                    px-6
-                    py-4
+                    px-3
+                    py-3
                     whitespace-nowrap
-                    text-sm
-                    text-center
+                    text-sm text-center
                     font-medium
                     text-gray-900
                   "
@@ -182,8 +186,8 @@
                     flex flex-row flex-nowrap
                     items-center
                     justify-center
-                    px-6
-                    py-4
+                    px-3
+                    py-3
                   "
                 >
                   <button
@@ -343,4 +347,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+table tr:nth-of-type(even) {
+  background-color: rgba(250, 132, 43, 0.15);
+}
+</style>
