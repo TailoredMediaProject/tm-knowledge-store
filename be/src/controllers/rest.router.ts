@@ -7,6 +7,7 @@ import {entityServiceInstance} from '../services/entity.service';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import {ListingResult} from '../models/listing-result.model';
 import ListQueryModel from '../models/query-list.model';
+import {ObjectId} from 'mongodb';
 
 const router: Router = Router();
 
@@ -52,8 +53,10 @@ const entityDto2Dbo = (dto: EntityDTO, next: NextFunction): Entity => ({
 const entityDbo2Dto = (dbo: Entity): EntityDTO => ({
     id: dbo._id.toHexString(),
     vocabulary: dbo.vocabulary.toHexString(),
+    /* eslint-disable */
     // @ts-ignore
     type: TagType[dbo.type.toUpperCase()],
+    /* eslint-enable */
     label: dbo.label,
     description: dbo.description,
     created: dbo.created.toISOString(),

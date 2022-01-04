@@ -1,4 +1,4 @@
-import {Collection, Filter, FindOptions, ObjectId} from 'mongodb';
+import {Collection, DeleteResult, Filter, FindOptions, ModifyResult, ObjectId, UpdateFilter} from 'mongodb';
 import {Vocabulary} from '../models/dbo.models';
 import {instance as persistenceService} from './persistence.service';
 import {KnowledgeError} from '../models/knowledge-error.model';
@@ -58,7 +58,7 @@ export class VocabularyService {
     }
 
     public updateVocab(id: string, ifUnmodifiedSince: Date, newVocab: Vocabulary): Promise<Vocabulary> {
-        const filter: Filter<Vocabulary> = {
+        const query: Filter<Vocabulary> = {
             _id: new ObjectId(id),
             lastModified: {
                 // eslint-disable-rows-line @typescript-eslint/no-unsafe-argument
@@ -79,13 +79,12 @@ export class VocabularyService {
 
         return VocabularyService.collection()
                 // @ts-ignore
-                .findOneAndUpdate(filter, update, {new: true})
+                .findOneAndUpdate(query, update, {returnDocument: 'after'})
                 // @ts-ignore
                 .then((result: ModifyResult<Vocabulary>) => {
-                    console.log(result);
                     // @ts-ignore
                     if (result?.lastErrorObject?.updatedExisting === false || !result.value) {
-                        return this.updateVocabNotFoundError(filter);
+                        return this.updateVocabNotFoundError(query);
                     } else {
                         return result.value;
                     }
