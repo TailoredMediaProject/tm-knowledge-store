@@ -112,7 +112,7 @@ export class EntityService {
     public async deleteEntity(vocabID: string, entityID: string, lastModified: Date): Promise<boolean> {
 
         if (!await vocabularyService.getVocabular(vocabID)) {
-            throw new KnowledgeError(404, 'Vocabulary', 'No vocabulary matches the provided ID.')
+            throw new KnowledgeError(404, 'Vocabulary', `No vocabulary matches the provided ID '${vocabID}'.`)
         }
 
         if (!await this.getEntity(vocabID, entityID)) {
