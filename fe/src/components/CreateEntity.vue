@@ -289,7 +289,7 @@ export default {
       }
     },
     cancel() {
-      this.$store.dispatch("enitiyStore/editVocab", {
+      this.$store.dispatch("entityStore/editVocab", {
         vocabID: this.vocabID,
         entity: undefined,
       });
