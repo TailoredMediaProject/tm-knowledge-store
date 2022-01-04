@@ -107,8 +107,6 @@ export class EntityService {
     });
   }
 
-    // TODO remove rule when implemented
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     public async deleteEntity(vocabID: string, entityID: string, lastModified: Date): Promise<boolean> {
 
         if (!await vocabularyService.getVocabular(vocabID)) {
