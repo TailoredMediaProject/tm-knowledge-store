@@ -2,7 +2,6 @@ import {NextFunction, Request, Response, Router} from 'express';
 import {vocabularyService} from '../services/vocabulary.service';
 import {Entity, Vocabulary} from '../models/dbo.models';
 import {Vocabulary as VocabularyDTO} from '../generated/models/Vocabulary';
-import {TagType} from '../generated/models/TagType';
 import {Entity as EntityDTO} from '../generated/models/Entity';
 import {entityServiceInstance} from '../services/entity.service';
 import {KnowledgeError} from '../models/knowledge-error.model';
@@ -54,8 +53,10 @@ const entityDto2Dbo = (dto: EntityDTO, next: NextFunction): Entity => ({
 const entityDbo2Dto = (dbo: Entity): EntityDTO => ({
     id: dbo._id.toHexString(),
     vocabulary: dbo.vocabulary.toHexString(),
+    /* eslint-disable */
     // @ts-ignore
     type: TagType[dbo.type.toUpperCase()],
+    /* eslint-enable */
     label: dbo.label,
     description: dbo.description,
     created: dbo.created.toISOString(),
@@ -101,7 +102,21 @@ router.post('/vocab', (req: Request, res: Response, next: NextFunction) => {
 });
 
 router.put('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
-    next(new KnowledgeError(501, 'Not Implemented', 'PUT /vocab/:id is not implemented'));
+    const headerName = 'If-Unmodified-Since';
+    const ifUnmodifiedSince: string = req.header(headerName);
+
+    if (!!ifUnmodifiedSince) {
+        if (!!req?.params?.id) {
+            vocabularyService
+                .updateVocab(req?.params?.id, new Date(ifUnmodifiedSince), vocabDto2Dbo(req.body as VocabularyDTO))
+                .then((v: Vocabulary) => res.json(vocabDbo2Dto(v)))
+                .catch(next);
+        } else {
+            next(new KnowledgeError(400, 'Bad Request', 'Missing or invalid ID'));
+        }
+    } else {
+        next(new KnowledgeError(428, 'Precondition Required', `Operation failed, ${headerName}-Header missing or falsy value!`));
+    }
 });
 
 router.get('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {

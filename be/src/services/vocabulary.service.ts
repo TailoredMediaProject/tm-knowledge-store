@@ -1,9 +1,9 @@
-import {Collection, DeleteResult, Filter, FindOptions, ObjectId} from 'mongodb';
+import {Collection, DeleteResult, Filter, FindOptions, ModifyResult, ObjectId, UpdateFilter} from 'mongodb';
 import {Vocabulary} from '../models/dbo.models';
 import {instance as persistenceService} from './persistence.service';
-import ListQueryModel from '../models/query-list.model';
-import {ListingResult} from '../models/listing-result.model';
 import {KnowledgeError} from '../models/knowledge-error.model';
+import ListQueryModel from '../models/list-query.model';
+import {ListingResult} from '../models/listing-result.model';
 
 export class VocabularyService {
     private static collection(): Collection {
@@ -53,6 +53,60 @@ export class VocabularyService {
                     return true;
                 } else {
                     throw new KnowledgeError(412, 'Header', 'Header does not match!');
+                }
+            });
+    }
+
+    public updateVocab(id: string, ifUnmodifiedSince: Date, newVocab: Vocabulary): Promise<Vocabulary> {
+        const query: Filter<Vocabulary> = {
+            _id: new ObjectId(id),
+            lastModified: {
+                // eslint-disable-rows-line @typescript-eslint/no-unsafe-argument
+                $eq: ifUnmodifiedSince
+            }
+        };
+
+        const update: UpdateFilter<Vocabulary> = {
+            $set: {
+                _id: new ObjectId(id),
+                label: newVocab.label,
+                description: newVocab.description
+            },
+            $currentDate: {
+                lastModified: true
+            }
+        };
+
+        return VocabularyService.collection()
+                // @ts-ignore
+                .findOneAndUpdate(query, update, {returnDocument: 'after'})
+                // @ts-ignore
+                .then((result: ModifyResult<Vocabulary>) => {
+                    // @ts-ignore
+                    if (result?.lastErrorObject?.updatedExisting === false || !result.value) {
+                        return this.updateVocabNotFoundError(query);
+                    } else {
+                        return result.value;
+                    }
+                });
+    }
+
+    private updateVocabNotFoundError(filter: Filter<Vocabulary>): Promise<Vocabulary> {
+        delete filter.lastModified;
+        return VocabularyService.collection()
+            // @ts-ignore
+            .findOne(filter)
+            // @ts-ignore
+            .then((v: Vocabulary) => {
+                if (v._id.toHexString() === filter._id.toHexString()) {
+                    throw new KnowledgeError(
+                        412,
+                        'Precondition Failed',
+                        'Target has been modified since last retrieval, the modified target is returned',
+                        v
+                    );
+                } else {
+                    throw new KnowledgeError(404, 'Not found', "Target vocabulary with id '$ {id}' not found");
                 }
             });
     }
