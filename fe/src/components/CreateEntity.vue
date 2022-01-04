@@ -2,8 +2,8 @@
   <div class="mt-5 md:mt-0">
     <div class="shadow sm:rounded-md">
       <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
-        <div class="grid grid-cols-3 gap-6">
-          <div class="col-span-3 sm:col-span-2">
+        <div class="grid grid-cols-2 gap-6">
+          <div class="col-span-2 sm:col-span-2">
             <label class="block text-sm font-bold text-gray-700">
               Entity Label
             </label>
@@ -25,12 +25,13 @@
                   rounded-md
                 "
                 placeholder="Label"
+                autofocus="autofocus"
               />
             </div>
           </div>
         </div>
-        <div class="grid grid-cols-3 gap-6">
-          <div class="col-span-3 sm:col-span-2">
+        <div class="grid grid-cols-2 gap-6">
+          <div class="col-span-2 sm:col-span-2">
             <label class="block text-sm font-bold text-gray-700">
               Entity Description
             </label>
@@ -56,7 +57,7 @@
             </div>
           </div>
         </div>
-        <div class="grid grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 gap-6">
           <Listbox as="div" v-model="selected">
             <ListboxLabel class="block text-sm font-medium text-gray-700">
               Entity Type
@@ -163,7 +164,32 @@
           </Listbox>
         </div>
       </div>
-      <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+      <div class="flow-root px-2 py-3 bg-gray-50 text-center">
+        <button
+          type="button"
+          @click="cancel"
+          class="
+            inline-flex
+            justify-center
+            py-2
+            px-4
+            border border-transparent
+            shadow-sm
+            text-sm
+            font-medium
+            rounded-md
+            text-white
+            bg-tmOrange
+            hover:bg-tmHoverOrange
+            focus:outline-none
+            focus:ring-2
+            focus:ring-offset-2
+            focus:ring-tmFocusOrange
+            mr-2
+          "
+        >
+          Cancel
+        </button>
         <button
           type="button"
           @click="createEntity"
@@ -194,16 +220,12 @@
 </template>
 
 <script>
-import { ref } from "vue";
-import {
-  Listbox,
-  ListboxButton,
-  ListboxLabel,
-  ListboxOption,
-  ListboxOptions,
-} from "@headlessui/vue";
-import { CheckIcon, SelectorIcon } from "@heroicons/vue/solid";
-import { TagType } from "@/openapi";
+import {ref} from 'vue';
+import {Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions} from '@headlessui/vue';
+import {CheckIcon, SelectorIcon} from '@heroicons/vue/solid';
+import {TagType} from '@/openapi';
+import {mapGetters} from 'vuex';
+
 const tagTypeKeys = Object.keys(TagType);
 const tagTypeValues = Object.values(TagType);
 export default {
@@ -217,8 +239,28 @@ export default {
     CheckIcon,
     SelectorIcon,
   },
-  props: {
-    vocabID: String,
+  computed: {
+    ...mapGetters("entityStore", ["entity"]),
+    ...mapGetters("vocabStore", ["vocabulary"]),
+    label: {
+      get: function () {
+        return this.entity?.label;
+      },
+      set: function (label) {
+        this.entity.label = label;
+      },
+    },
+    description: {
+      get: function () {
+        return this.entity?.description;
+      },
+      set: function (description) {
+        this.entity.description = description;
+      },
+    },
+    vocabID() {
+      return this.$route?.params?.vocabID || this.vocabulary?.id;
+    },
   },
   setup() {
     const selected = ref("Select...");
@@ -228,27 +270,28 @@ export default {
       selected,
     };
   },
-  data() {
-    return {
-      label: "",
-      description: "",
-    };
-  },
   methods: {
     createEntity() {
       if (this.selected === "Select...") {
-        console.error("Please select type!");
-        return;
+        alert("Please select an Entity Type");
+      } else {
+        this.$store.dispatch("entityStore/createEntity", {
+          vocabID: this.vocabID,
+          entity: {
+            tagType: TagType[TagType[this.selected]],
+            label: this.label,
+            description: this.description,
+            externalResources: [],
+            sameAs: [],
+          },
+        });
+        this.cancel();
       }
-      this.$store.dispatch("entityStore/createEntity", {
+    },
+    cancel() {
+      this.$store.dispatch("entityStore/editVocab", {
         vocabID: this.vocabID,
-        entity: {
-          tagType: TagType[TagType[this.selected]],
-          label: this.label,
-          description: this.description,
-          externalResources: [],
-          sameAs: [],
-        },
+        entity: undefined,
       });
       this.$router.push("/vocab/" + this.vocabID + "/entities");
     },

@@ -24,13 +24,12 @@
               "
             >
               <h3 class="text-lg leading-6 font-medium text-gray-900">
-                Create {{ isEntity ? "Entity" : "Vocabulary" }}
+                {{ heading }}
               </h3>
             </div>
           </div>
           <component
             :is="isEntity ? 'CreateEntity' : 'CreateVocab'"
-            v-bind="{ vocabID: this.vID }"
           ></component>
         </div>
       </div>
@@ -39,28 +38,35 @@
 </template>
 
 <script>
-import CreateVocab from "@/components/CreateVocab";
-import CreateEntity from "@/components/CreateEntity";
+import CreateVocab from '@/components/CreateVocab';
+import CreateEntity from '@/components/CreateEntity';
+import {mapGetters} from 'vuex';
+
 export default {
   name: "Create",
   components: { CreateVocab, CreateEntity },
-  props: {
-    vocabID: String,
-  },
-  data() {
-    return {
-      isEntity: false,
-      vID: String,
-    };
-  },
-  mounted() {
-    this.vID = this.vocabID;
-    this.isEntity = this.vID !== "";
-  },
-  beforeRouteUpdate(to, from, next) {
-    this.vID = to.params.vocabID;
-    this.isEntity = this.vID !== "";
-    next();
+  computed: {
+    ...mapGetters("vocabStore", ["vocabulary"]),
+    ...mapGetters("entityStore", ["entity"]),
+    isUpdate() {
+      return this.isEntity ? !!this.entity?._id : !!this.vocabulary?.id;
+    },
+    isEntity() {
+      return this.entity;
+    },
+    heading() {
+      const begin = this.isUpdate ? "Update " : "Create ";
+      const end = this.isEntity ? "Entity" : "Vocabulary";
+      let id = "";
+
+      if (this.isUpdate) {
+        id = ` ${
+          this.isEntity ? this.entity._id.toHexString() : this.vocabulary.id
+        }`;
+      }
+
+      return begin + end + id;
+    },
   },
 };
 </script>
