@@ -147,18 +147,21 @@ router.delete('/vocab/:id', (req: Request, res: Response, next: NextFunction) =>
 router.get('/vocab/:vId/entities', (req: Request, res: Response, next: NextFunction) => {
     const vId = checkId(req?.params?.vId, 'vocabulary', next);
 
-    try {
-        entityServiceInstance.getEntities(vId)
-          .then((entities: Entity[]) => entities.map((dbo: Entity) => entityDbo2Dto(dbo)))
-          .then((dtos: EntityDTO[]) => res.json({
-              offset: 0,
-              rows: 0,
-              totalItems: dtos.length,
-              items: dtos
-          }))
-          .catch(next);
-    } catch (e) {
-        next(e);
+
+    if (!checkQueryParams(['text', 'createdSince', 'modifiedSince', 'sort', 'offset', 'rows'], req?.query)) {
+        next(new KnowledgeError(400, 'Bad Request', 'Invalid query parameters'));
+    } else {
+        const queryListModel: ListQueryModel = {
+            ...req?.query,
+            modifiedSince: !!req?.query?.modifiedSince ? new Date(`${req?.query.modifiedSince}`) : undefined,
+            createdSince: !!req?.query?.createdSince ? new Date(`${req?.query.createdSince}`) : undefined
+        };
+
+        entityServiceInstance
+            .listEntities(queryListModel, vId)
+            .then((r: ListingResult<Entity>) => ({...r, items: r.items.map((v: Entity) => entityDbo2Dto(v))}))
+            .then((r: ListingResult<EntityDTO>) => res.json(r))
+            .catch(next);
     }
 });
 
