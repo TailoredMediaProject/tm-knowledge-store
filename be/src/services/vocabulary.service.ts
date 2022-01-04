@@ -1,4 +1,4 @@
-import {Collection, Filter, FindOptions, ModifyResult, ObjectId, UpdateFilter} from 'mongodb';
+import {Collection, Filter, FindOptions, ObjectId} from 'mongodb';
 import {Vocabulary} from '../models/dbo.models';
 import {instance as persistenceService} from './persistence.service';
 import {KnowledgeError} from '../models/knowledge-error.model';
@@ -22,7 +22,14 @@ export class VocabularyService {
             .then((id) => this.getVocabular(id));
     }
 
-    public getVocabular(id: string | ObjectId): Promise<Vocabulary> {
+    public async getVocabular(id: string | ObjectId): Promise<Vocabulary> {
+
+        const vocab = <Vocabulary>await VocabularyService.collection().findOne({_id: new ObjectId(id)})
+
+        if (!vocab){
+            throw new KnowledgeError(404, 'Vocabulary', 'Vocabulary not found!')
+        }
+
         return VocabularyService.collection()
             .findOne({_id: new ObjectId(id)})
             .then((x) => <Vocabulary>x);
@@ -41,8 +48,8 @@ export class VocabularyService {
 
         return VocabularyService.collection()
             .deleteOne({_id: new ObjectId(id), lastModified: date})
-            .then((r) => {
-                if (r.deletedCount == 1) {
+            .then((r: DeleteResult) => {
+                if (r.deletedCount === 1) {
                     return true;
                 } else {
                     throw new KnowledgeError(412, 'Header', 'Header does not match!');
