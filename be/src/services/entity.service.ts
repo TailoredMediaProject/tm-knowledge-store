@@ -1,7 +1,7 @@
 import {instance as persistenceService} from './persistence.service';
 import {Collection, Filter, InsertOneResult, ObjectId, UpdateFilter, UpdateResult} from 'mongodb';
 import {KnowledgeError} from '../models/knowledge-error.model';
-import {Entity} from '../models/dbo.models';
+import {Entity, Vocabulary} from '../models/dbo.models';
 import {vocabularyService} from './vocabulary.service';
 
 export class EntityService {
@@ -37,14 +37,25 @@ export class EntityService {
           }));
     }
 
-    public async getEntities(vocabID: string | ObjectId): Promise<Entity[]> {
-        await vocabularyService.getVocabular(vocabID).catch(() => {
+    public getEntities(vocabID: string | ObjectId): Promise<Entity[]> {
+        // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+        const vocabNotFound = () => {
             throw new KnowledgeError(404,
               'Not found',
               `Target vocabulary '${vocabID}' not found`);
-        });
+        };
 
-        return await EntityService.collection().find({ vocabulary: new ObjectId(vocabID) }).toArray() as Entity[];
+        return vocabularyService.getVocabular(vocabID)
+          .then((vocab: Vocabulary) => {
+             if (!!vocab?._id) {
+                 return EntityService.collection()
+                   .find({ vocabulary: new ObjectId(vocabID) })
+                   .toArray()
+                   .then(e => e as Entity[]);
+             }
+             vocabNotFound();
+            })
+          .catch(vocabNotFound);
     }
 
     updateEntity(vocabID: string, entityID: string, ifUnmodifiedSince: Date, entity: Entity): Promise<Entity> {
