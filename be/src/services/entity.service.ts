@@ -121,7 +121,7 @@ export class EntityService {
 
         return EntityService.collection().deleteOne({_id: new ObjectId(entityID), lastModified: lastModified})
             .then(r => {
-                if (r.deletedCount == 1) {
+                if (r.deletedCount === 1) {
                     return true
                 } else {
                     throw new KnowledgeError(412, 'Header', 'Header does not match!')
