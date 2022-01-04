@@ -116,7 +116,7 @@ export class EntityService {
         }
 
         if (!await this.getEntity(vocabID, entityID)) {
-            throw new KnowledgeError(404, 'Entity', 'No entity matches the provided ID.')
+            throw new KnowledgeError(404, 'Entity', `No entity matches the provided ID '${vocabID}'.`)
         }
 
         return EntityService.collection().deleteOne({_id: new ObjectId(entityID), lastModified: lastModified})
