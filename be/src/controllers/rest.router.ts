@@ -40,7 +40,7 @@ const entityDto2Dbo = (dto: EntityDTO, next: NextFunction): Entity => ({
     dto?.vocabulary, 'vocabulary',
     next)),
   /* eslint-enable */
-  type: dto.type,
+  type: dto?.type?.toUpperCase(),
   label: dto.label,
   description: dto.description,
   created: undefined,
@@ -54,7 +54,7 @@ const entityDbo2Dto = (dbo: Entity): EntityDTO => ({
   id: dbo._id.toHexString(),
   vocabulary: dbo.vocabulary.toHexString(),
   // @ts-ignore
-  type: dbo.type.toUpperCase(),
+  type: dbo?.type?.toUpperCase(),
   label: dbo.label,
   description: dbo.description,
   created: dbo.created.toISOString(),
