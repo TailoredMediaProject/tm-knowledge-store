@@ -5,6 +5,7 @@ import {Entity, Vocabulary} from '../models/dbo.models';
 import {vocabularyService} from './vocabulary.service';
 import ListQueryModel from '../models/list-query.model';
 import {ListingResult} from '../models/listing-result.model';
+import {TagType} from '../generated';
 
 export class EntityService {
   private static collection(): Collection {
@@ -156,7 +157,12 @@ export class EntityService {
         }
 
         if (!!query?.type){
-            filter.type = query.type
+            // @ts-ignore
+            if (Object.values(TagType).includes(query.type)){
+                filter.type = query.type
+            } else{
+                throw new KnowledgeError(404, 'Bad Request', "Invalid Parameter of type 'type'!")
+            }
         }
 
         if (!!query) {
