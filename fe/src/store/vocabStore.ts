@@ -3,7 +3,7 @@ import {Pageable, Vocabulary} from '@/openapi';
 import {VocabularyService} from '@/services/VocabularyService';
 import {VocabList} from '@/Objects/VocabList';
 
-const vocabService = new VocabularyService("./api/v1");
+const vocabService = new VocabularyService('./api/v1');
 const arrayToMap = (array: Vocabulary[]): Map<string, Vocabulary> => {
   return new Map<string, Vocabulary>(
     array.map((task: Vocabulary) => [task.id, task])
@@ -14,9 +14,9 @@ export const vocabStore: Module<any, any> = {
   namespaced: true,
   state: () => ({
     vocabularies: new Map<string, Vocabulary>(),
-    pageable: <Pageable>{ offset: 0, totalItems: 0, rows: 0 },
-    searchText: "",
-    vocabulary: undefined,
+    pageable: <Pageable> { offset: 0, totalItems: 0, rows: 0 },
+    searchText: '',
+    vocabulary: undefined
   }),
   mutations: {
     LOADVOCABLIST(
@@ -43,7 +43,7 @@ export const vocabStore: Module<any, any> = {
         const nextRowCount =
           range > state.pageable.rows ? state.pageable.rows : range;
         const searchText =
-          state.searchText && state.searchText !== ""
+          state.searchText && state.searchText !== ''
             ? state.searchText
             : undefined;
         vocabService
@@ -58,7 +58,7 @@ export const vocabStore: Module<any, any> = {
             }
           });
       } else {
-        console.log("Last Page");
+        console.log('Last Page');
       }
     },
     GETSPECIFICVOCAB(state, payload: { objectID: string }) {
@@ -99,30 +99,30 @@ export const vocabStore: Module<any, any> = {
             state.vocabularies.delete(vocab.id);
           }
         });
-    },
+    }
   },
   actions: {
     loadVocabList({ commit }, payload) {
-      commit("LOADVOCABLIST", payload);
+      commit('LOADVOCABLIST', payload);
     },
     loadNextPage({ commit }) {
-      commit("LOADNEXTVOCABPAGE");
+      commit('LOADNEXTVOCABPAGE');
     },
     getVocab({ commit }, payload) {
-      commit("GETSPECIFICVOCAB", payload);
+      commit('GETSPECIFICVOCAB', payload);
     },
     createVocab({ commit }, payload) {
-      commit("CREATEVOCAB", payload);
+      commit('CREATEVOCAB', payload);
     },
     editVocab({ commit }, payload) {
-      commit("EDITVOCAB", payload);
+      commit('EDITVOCAB', payload);
     },
     updateVocab({ commit }, payload) {
-      commit("UPDATEVOCAB", payload);
+      commit('UPDATEVOCAB', payload);
     },
     deleteVocab({ commit }, payload) {
-      commit("DELETEVOCAB", payload);
-    },
+      commit('DELETEVOCAB', payload);
+    }
   },
   getters: {
     vocabularies: (state) =>
@@ -130,6 +130,6 @@ export const vocabStore: Module<any, any> = {
         (t1: Vocabulary, t2: Vocabulary) =>
           Date.parse(t1.created) - Date.parse(t2.created)
       ),
-    vocabulary: (state) => state.vocabulary,
-  },
+    vocabulary: (state) => state.vocabulary
+  }
 };

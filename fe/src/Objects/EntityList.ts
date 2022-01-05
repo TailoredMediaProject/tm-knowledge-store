@@ -1,4 +1,4 @@
-import { Entity, Pageable } from "@/openapi";
+import {Entity, Pageable} from '@/openapi';
 
 export interface EntityList {
   pageable: Pageable;
@@ -9,7 +9,7 @@ export const extractEntityList = (object: any): EntityList => {
   const pageable: Pageable = {
     offset: object.offset,
     totalItems: object.totalItems,
-    rows: object.rows,
+    rows: object.rows
   };
   const entities: Entity[] = object.items;
   return { pageable, entities };

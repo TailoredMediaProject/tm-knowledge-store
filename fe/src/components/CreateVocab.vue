@@ -9,11 +9,11 @@
             </label>
             <div class="mt-2 flex rounded-md shadow-sm">
               <input
-                type="text"
-                v-model="label"
-                name="label"
-                id="label"
-                class="
+                  type="text"
+                  v-model="label"
+                  name="label"
+                  id="label"
+                  class="
                   px-2
                   py-2
                   shadow-sm
@@ -24,8 +24,8 @@
                   border border-tmOrange
                   rounded-md
                 "
-                autofocus="autofocus"
-                placeholder="Label"
+                  autofocus="autofocus"
+                  placeholder="Label"
               />
             </div>
           </div>
@@ -37,11 +37,11 @@
             </label>
             <div class="mt-2 flex rounded-md shadow-sm">
               <input
-                type="text"
-                v-model="description"
-                name="description"
-                id="description"
-                class="
+                  type="text"
+                  v-model="description"
+                  name="description"
+                  id="description"
+                  class="
                   px-2
                   py-2
                   shadow-sm
@@ -52,7 +52,7 @@
                   border border-tmOrange
                   rounded-md
                 "
-                placeholder="Description"
+                  placeholder="Description"
               />
             </div>
           </div>
@@ -60,9 +60,9 @@
       </div>
       <div class="flow-root px-2 py-3 bg-gray-50 text-center">
         <button
-          type="button"
-          @click="cancel"
-          class="
+            type="button"
+            @click="cancel"
+            class="
             inline-flex
             justify-center
             py-2
@@ -85,9 +85,9 @@
           Cancel
         </button>
         <button
-          type="button"
-          @click="saveVocab"
-          class="
+            type="button"
+            @click="saveVocab"
+            class="
             inline-flex
             justify-center
             py-2
@@ -117,44 +117,33 @@
 import {mapGetters} from 'vuex';
 
 export default {
-  name: "CreateVocab",
-  computed: {
-    ...mapGetters("vocabStore", ["vocabulary"]),
-    label: {
-      get: function () {
+  name: 'CreateVocab', computed: {
+    ...mapGetters('vocabStore', ['vocabulary']), label: {
+      get: function() {
         return this.vocabulary?.label;
-      },
-      set: function (label) {
+      }, set: function(label) {
         this.vocabulary.label = label;
-      },
-    },
-    description: {
-      get: function () {
+      }
+    }, description: {
+      get: function() {
         return this.vocabulary?.description;
-      },
-      set: function (description) {
+      }, set: function(description) {
         this.vocabulary.description = description;
-      },
-    },
-  },
-  methods: {
+      }
+    }
+  }, methods: {
     saveVocab() {
-      this.$store.dispatch(
-        `vocabStore/${this.vocabulary.id ? "updateVocab" : "createVocab"}`,
-        {
-          label: this.label,
-          description: this.description,
-        }
-      );
-      this.cancel();
-    },
-    cancel() {
-      this.$store.dispatch("vocabStore/editVocab", {
-        vocabulary: undefined,
+      this.$store.dispatch(`vocabStore/${this.vocabulary.id ? 'updateVocab' : 'createVocab'}`, {
+        label: this.label, description: this.description
       });
-      this.$router.push("/vocab");
-    },
-  },
+      this.cancel();
+    }, cancel() {
+      this.$store.dispatch('vocabStore/editVocab', {
+        vocabulary: undefined
+      });
+      this.$router.push('/vocab');
+    }
+  }
 };
 </script>
 

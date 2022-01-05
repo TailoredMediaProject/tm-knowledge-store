@@ -3,7 +3,7 @@
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="py-2 align-middle inline-block min-w-full sm:px-3 lg:px-8">
         <div
-          class="
+            class="
             shadow
             items-center
             overflow-hidden
@@ -13,7 +13,7 @@
         >
           <div class="bg-white px-4 py-5 sm:px-3">
             <div
-              class="
+                class="
                 -ml-4
                 -mt-2
                 flex
@@ -30,9 +30,9 @@
               </div>
               <div class="ml-4 mt-2 flex-shrink-0">
                 <button
-                  type="button"
-                  @click="goBackToVocabs()"
-                  class="
+                    type="button"
+                    @click="goBackToVocabs()"
+                    class="
                     relative
                     inline-flex
                     items-center
@@ -56,9 +56,9 @@
                   Back
                 </button>
                 <button
-                  type="button"
-                  @click="editEntity($event)"
-                  class="
+                    type="button"
+                    @click="editEntity($event)"
+                    class="
                     relative
                     inline-flex
                     items-center
@@ -85,8 +85,8 @@
           </div>
           <table class="min-w-full max-w-full">
             <thead class="bg-tmBlueLight ">
-              <tr>
-                <th
+            <tr>
+              <th
                   scope="col"
                   class="
                     px-3
@@ -97,10 +97,10 @@
                     uppercase
                     tracking-wider
                   "
-                >
-                  Label
-                </th>
-                <th
+              >
+                Label
+              </th>
+              <th
                   scope="col"
                   class="
                     px-3
@@ -111,10 +111,10 @@
                     uppercase
                     tracking-wider
                   "
-                >
-                  Description
-                </th>
-                <th
+              >
+                Description
+              </th>
+              <th
                   scope="col"
                   class="
                     px-3
@@ -125,10 +125,10 @@
                     uppercase
                     tracking-wider
                   "
-                >
-                  Created
-                </th>
-                <th
+              >
+                Created
+              </th>
+              <th
                   scope="col"
                   class="
                     px-3
@@ -139,10 +139,10 @@
                     uppercase
                     tracking-wider
                   "
-                >
-                  Modified
-                </th>
-                <th
+              >
+                Modified
+              </th>
+              <th
                   scope="col"
                   class="
                     px-3
@@ -153,18 +153,29 @@
                     uppercase
                     tracking-wider
                   "
-                >
-                  Actions
-                </th>
-              </tr>
+              >
+                Actions
+              </th>
+            </tr>
             </thead>
             <tbody>
-              <tr
+            <tr
                 class=""
                 v-for="entity in entities"
                 :key="entity.id"
+            >
+              <td
+                  class="
+                    px-3
+                    py-3
+                    text-sm text-center
+                    font-medium
+                    text-gray-900
+                  "
               >
-                <td
+                {{ entity.label }}
+              </td>
+              <td
                   class="
                     px-3
                     py-3
@@ -172,21 +183,10 @@
                     font-medium
                     text-gray-900
                   "
-                >
-                  {{ entity.label }}
-                </td>
-                <td
-                  class="
-                    px-3
-                    py-3
-                    text-sm text-center
-                    font-medium
-                    text-gray-900
-                  "
-                >
-                  {{ entity.description }}
-                </td>
-                <td
+              >
+                {{ entity.description }}
+              </td>
+              <td
                   class="
                     px-3
                     py-3
@@ -196,10 +196,10 @@
                     font-medium
                     text-gray-900
                   "
-                >
-                  {{ formatDate(entity.created) }}
-                </td>
-                <td
+              >
+                {{ formatDate(entity.created) }}
+              </td>
+              <td
                   class="
                     px-3
                     py-3
@@ -208,10 +208,10 @@
                     font-medium
                     text-gray-900
                   "
-                >
-                  {{ formatDate(entity.lastModified) }}
-                </td>
-                <td
+              >
+                {{ formatDate(entity.lastModified) }}
+              </td>
+              <td
                   class="
                     flex flex-row flex-nowrap
                     items-center
@@ -219,8 +219,8 @@
                     px-3
                     py-3
                   "
-                >
-                  <button
+              >
+                <button
                     class="
                       border border-transparent
                       bg-tmOrange
@@ -235,20 +235,20 @@
                       hover:bg-tmHoverOrange
                     "
                     @click="editEntity($event, entity)"
-                  >
-                    <svg
+                >
+                  <svg
                       class="fill-current w-4 h-4"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
                       width="20"
                       height="20"
-                    >
-                      <path
+                  >
+                    <path
                         d="M16.77 8l1.94-2a1 1 0 0 0 0-1.41l-3.34-3.3a1 1 0 0 0-1.41 0L12 3.23zm-5.81-3.71L1 14.25V19h4.75l9.96-9.96-4.75-4.75z"
-                      />
-                    </svg>
-                  </button>
-                  <button
+                    />
+                  </svg>
+                </button>
+                <button
                     class="
                       border border-transparent
                       bg-tmOrange
@@ -264,27 +264,27 @@
                       hover:bg-tmHoverOrange
                     "
                     @click="deleteEntity(entity)"
-                  >
-                    <svg
+                >
+                  <svg
                       class="fill-current w-4 h-4"
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 1000 1000"
                       width="24"
                       height="24"
-                    >
-                      <path
+                  >
+                    <path
                         d="M632.2,500l330.4-330.5c36.5-36.5,36.5-95.8,0-132.2c-36.4-36.5-95.7-36.5-132.2,0L500,367.8L169.6,37.4C133,0.9,73.9,0.9,37.4,37.4C0.9,73.8,0.9,133,37.4,169.6L367.9,500L37.4,830.4c-36.5,36.5-36.5,95.7,0,132.2c36.5,36.5,95.7,36.5,132.2,0L500,632.2l330.4,330.4c36.5,36.5,95.7,36.5,132.2,0c36.5-36.5,36.5-95.7,0-132.2L632.2,500z"
-                      />
-                    </svg>
-                  </button>
-                </td>
-              </tr>
+                    />
+                  </svg>
+                </button>
+              </td>
+            </tr>
             </tbody>
           </table>
           <div class="flow-root px-2 py-3 bg-gray-50 text-center">
             <button
-              type="button"
-              class="
+                type="button"
+                class="
                 inline-flex
                 items-center
                 px-4
@@ -302,7 +302,7 @@
                 focus:ring-offset-2
                 focus:ring-tmFocusOrange
               "
-              @click="loadMore"
+                @click="loadMore"
             >
               Load More
             </button>
@@ -319,53 +319,43 @@ import {useRoute} from 'vue-router';
 import {formatDate} from '@/Utility/DateUtility';
 
 export default {
-  name: "EntityListView",
-  data() {
+  name: 'EntityListView', data() {
     return {
-      vocabID: String,
+      vocabID: String
     };
-  },
-  mounted() {
+  }, mounted() {
     const route = useRoute();
     this.vocabID = route.params.vocabID;
-    this.$store.dispatch("entityStore/loadEntityList", {
-      vocabID: this.vocabID,
+    this.$store.dispatch('entityStore/loadEntityList', {
+      vocabID: this.vocabID
     });
-  },
-  computed: {
-    ...mapGetters("entityStore", ["entities"]),
-  },
-  methods: {
+  }, computed: {
+    ...mapGetters('entityStore', ['entities'])
+  }, methods: {
     loadMore() {
-      this.$store.dispatch("entityStore/loadNextPage");
-    },
-    editEntity($event, entity) {
+      this.$store.dispatch('entityStore/loadNextPage');
+    }, editEntity($event, entity) {
       if (!entity) {
         entity = {};
       }
-      this.$store.dispatch("entityStore/editEntity", {
-        vocabId: this.vocabID,
-        entity,
+      this.$store.dispatch('entityStore/editEntity', {
+        vocabId: this.vocabID, entity
       });
       this.$router.push(`/create/${this.vocabID}`);
-    },
-    deleteEntity(entity) {
-      this.$store.dispatch("entityStore/deleteEntity", {
-        entity,
+    }, deleteEntity(entity) {
+      this.$store.dispatch('entityStore/deleteEntity', {
+        entity
       });
       this.$router.go(0);
-    },
-    formatDate(date) {
+    }, formatDate(date) {
       return formatDate(date);
-    },
-    goBackToVocabs() {
-      this.$store.dispatch("entityStore/clear", {
-        vocabId: undefined,
-        entity: undefined
+    }, goBackToVocabs() {
+      this.$store.dispatch('entityStore/clear', {
+        vocabId: undefined, entity: undefined
       });
       this.$router.push('/vocab');
     }
-  },
+  }
 };
 </script>
 

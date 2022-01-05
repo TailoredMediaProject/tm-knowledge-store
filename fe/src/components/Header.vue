@@ -5,9 +5,9 @@
         <div class="flex-shrink-0">
           <router-link to="/">
             <img
-              src="@/assets/Tailored_Media_Logo_Final.png"
-              alt="Tailored Media Logo"
-              class="d-inline-block align-text-top max-h-10"
+                src="@/assets/Tailored_Media_Logo_Final.png"
+                alt="Tailored Media Logo"
+                class="d-inline-block align-text-top max-h-10"
             />
           </router-link>
         </div>
@@ -19,6 +19,6 @@
 import {defineComponent} from 'vue';
 
 export default defineComponent({
-  name: "Header",
+  name: 'Header'
 });
 </script>

@@ -5,5 +5,5 @@ export default interface ListQueryModel {
   modifiedSince?: Date;
   sort?: string;
   offset?: number;
-  rows?: number
+  rows?: number;
 }

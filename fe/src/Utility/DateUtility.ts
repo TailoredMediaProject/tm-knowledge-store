@@ -1,7 +1,7 @@
 import moment from 'moment';
 
 export const ISO8601toUTC = (dateString: string): string | null => {
-  if (dateString === "" || isNaN(Date.parse(dateString))) {
+  if (dateString === '' || isNaN(Date.parse(dateString))) {
     return null;
   }
   const date = new Date(dateString);
@@ -10,5 +10,5 @@ export const ISO8601toUTC = (dateString: string): string | null => {
 };
 
 export const formatDate = (date: Date) => {
-  return moment(date).format("hh:mm:ss DD.MM.YYYY");
+  return moment(date).format('hh:mm:ss DD.MM.YYYY');
 };

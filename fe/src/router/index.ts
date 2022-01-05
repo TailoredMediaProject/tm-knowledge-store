@@ -1,35 +1,35 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import VocabListView from "@/components/VocabListView.vue";
-import EntityListView from "@/components/EntityListView.vue";
-import Create from "@/views/Create.vue";
+import {createRouter, createWebHashHistory, RouteRecordRaw} from 'vue-router';
+import VocabListView from '@/components/VocabListView.vue';
+import EntityListView from '@/components/EntityListView.vue';
+import Create from '@/views/Create.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "",
-    redirect: "/vocab",
+    path: '',
+    redirect: '/vocab'
   },
   {
-    path: "/vocab",
-    name: "VocabListView",
-    component: VocabListView,
+    path: '/vocab',
+    name: 'VocabListView',
+    component: VocabListView
   },
   {
-    path: "/vocab/:vocabID/entities",
-    name: "EntityListView",
+    path: '/vocab/:vocabID/entities',
+    name: 'EntityListView',
     component: EntityListView,
-    props: true,
+    props: true
   },
   {
-    path: "/create/:vocabID?",
-    name: "Create",
+    path: '/create/:vocabID?',
+    name: 'Create',
     component: Create,
-    props: true,
-  },
+    props: true
+  }
 ];
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes,
+  routes
 });
 
 export default router;

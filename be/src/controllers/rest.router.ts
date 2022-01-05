@@ -8,6 +8,7 @@ import {KnowledgeError} from '../models/knowledge-error.model';
 import {ListingResult} from '../models/listing-result.model';
 import ListQueryModel from '../models/query-list.model';
 import {ObjectId} from 'mongodb';
+import {UtilService} from '../services/util.service';
 
 const router: Router = Router();
 
@@ -31,11 +32,11 @@ const vocabDbo2Dto = (dbo: Vocabulary): VocabularyDTO => ({
 
 const entityDto2Dbo = (dto: EntityDTO, next: NextFunction): Entity => ({
   /* eslint-disable */
-  _id: !!dto?.id ? new ObjectId(checkId(
+  _id: !!dto?.id ? new ObjectId(UtilService.checkId(
     // @ts-ignore
     dto?.id, 'entity',
     next)) : undefined,
-  vocabulary: new ObjectId(checkId(
+  vocabulary: new ObjectId(UtilService.checkId(
     // @ts-ignore
     dto?.vocabulary, 'vocabulary',
     next)),
@@ -66,7 +67,7 @@ const entityDbo2Dto = (dbo: Entity): EntityDTO => ({
 });
 
 router.get('/vocab', (req: Request, res: Response, next: NextFunction) => {
-  if (!checkQueryParams(['text', 'createdSince', 'modifiedSince', 'sort', 'offset', 'rows'], req?.query)) {
+  if (!UtilService.checkQueryParams(['text', 'createdSince', 'modifiedSince', 'sort', 'offset', 'rows'], req?.query)) {
     next(new KnowledgeError(400, 'Bad Request', 'Invalid query parameters'));
   } else {
     const queryListModel: ListQueryModel = {
@@ -75,12 +76,12 @@ router.get('/vocab', (req: Request, res: Response, next: NextFunction) => {
       createdSince: !!req?.query?.createdSince ? new Date(`${req?.query.createdSince}`) : undefined
     };
 
-        vocabularyService
-            .listVocab(queryListModel)
-            .then((r: ListingResult<Vocabulary>) => ({...r, items: r.items.map((v: Vocabulary) => vocabDbo2Dto(v))}))
-            .then((r: ListingResult<VocabularyDTO>) => res.json(r))
-            .catch(next);
-    }
+    vocabularyService
+      .listVocab(queryListModel)
+      .then((r: ListingResult<Vocabulary>) => ({ ...r, items: r.items.map((v: Vocabulary) => vocabDbo2Dto(v)) }))
+      .then((r: ListingResult<VocabularyDTO>) => res.json(r))
+      .catch(next);
+  }
 });
 
 router.post('/vocab', (req: Request, res: Response, next: NextFunction) => {
@@ -126,7 +127,7 @@ router.get('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
 });
 
 router.delete('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
-  const date: Date = checkIfUnmodifiedHeader(req, next);
+  const date: Date = UtilService.checkIfUnmodifiedHeader(req, next);
 
   vocabularyService
     .deleteVocab(req.params.id, date)
@@ -143,28 +144,28 @@ router.delete('/vocab/:id', (req: Request, res: Response, next: NextFunction) =>
 });
 
 router.get('/vocab/:vId/entities', (req: Request, res: Response, next: NextFunction) => {
-  const vId = checkId(req?.params?.vId, 'vocabulary', next);
+  const vId = UtilService.checkId(req?.params?.vId, 'vocabulary', next);
 
-  if (!checkQueryParams(['text', 'createdSince', 'modifiedSince', 'sort', 'offset', 'rows', 'type'], req?.query)) {
-        next(new KnowledgeError(400, 'Bad Request', 'Invalid query parameters'));
-    } else {
-        const queryListModel: ListQueryModel = {
-            ...req?.query,
-            modifiedSince: !!req?.query?.modifiedSince ? new Date(`${req?.query.modifiedSince}`) : undefined,
-            createdSince: !!req?.query?.createdSince ? new Date(`${req?.query.createdSince}`) : undefined
-        };
+  if (!UtilService.checkQueryParams(['text', 'createdSince', 'modifiedSince', 'sort', 'offset', 'rows', 'type'], req?.query)) {
+    next(new KnowledgeError(400, 'Bad Request', 'Invalid query parameters'));
+  } else {
+    const queryListModel: ListQueryModel = {
+      ...req?.query,
+      modifiedSince: !!req?.query?.modifiedSince ? new Date(`${req?.query.modifiedSince}`) : undefined,
+      createdSince: !!req?.query?.createdSince ? new Date(`${req?.query.createdSince}`) : undefined
+    };
 
-        entityServiceInstance
-            .listEntities(queryListModel, vId)
-            .then((r: ListingResult<Entity>) => ({...r, items: r.items.map((v: Entity) => entityDbo2Dto(v))}))
-            .then((r: ListingResult<EntityDTO>) => res.json(r))
-            .catch(next);
+    entityServiceInstance
+      .listEntities(queryListModel, vId)
+      .then((r: ListingResult<Entity>) => ({ ...r, items: r.items.map((v: Entity) => entityDbo2Dto(v)) }))
+      .then((r: ListingResult<EntityDTO>) => res.json(r))
+      .catch(next);
   }
 });
 
 router.get('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: NextFunction) => {
-  const vId = checkId(req?.params?.vId, 'vocabulary', next);
-  const eId = checkId(req?.params?.eId, 'entity', next);
+  const vId = UtilService.checkId(req?.params?.vId, 'vocabulary', next);
+  const eId = UtilService.checkId(req?.params?.eId, 'entity', next);
 
   try {
     entityServiceInstance.getEntity(vId, eId)
@@ -177,7 +178,7 @@ router.get('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: Next
 
 router.post('/vocab/:id/entities', (req: Request, res: Response, next: NextFunction) => {
   const vocabID: string = req.params.id;
-  checkId(vocabID, 'vocabulary', next);
+  UtilService.checkId(vocabID, 'vocabulary', next);
   req.body.vocabulary = vocabID;
 
   const body = <EntityDTO> req.body;
@@ -196,9 +197,9 @@ router.post('/vocab/:id/entities', (req: Request, res: Response, next: NextFunct
 });
 
 router.put('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: NextFunction) => {
-  const ifUnmodifiedSince: Date = checkIfUnmodifiedHeader(req, next);
-  const vId = checkId(req?.params?.vId, 'vocabulary', next);
-  const eId = checkId(req?.params?.eId, 'entity', next);
+  const ifUnmodifiedSince: Date = UtilService.checkIfUnmodifiedHeader(req, next);
+  const vId = UtilService.checkId(req?.params?.vId, 'vocabulary', next);
+  const eId = UtilService.checkId(req?.params?.eId, 'entity', next);
 
   req.body.vocabulary = vId;
 
@@ -209,9 +210,9 @@ router.put('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: Next
 });
 
 router.delete('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: NextFunction) => {
-  const date = checkIfUnmodifiedHeader(req, next);
-  const vId = checkId(req?.params?.vId, 'vocabulary', next);
-  const eId = checkId(req?.params?.eId, 'entity', next);
+  const date = UtilService.checkIfUnmodifiedHeader(req, next);
+  const vId = UtilService.checkId(req?.params?.vId, 'vocabulary', next);
+  const eId = UtilService.checkId(req?.params?.eId, 'entity', next);
 
   entityServiceInstance.deleteEntity(vId, eId, date).then(result => {
     if (result) {
@@ -223,34 +224,5 @@ router.delete('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: N
     }
   }).catch(next);
 });
-
-const checkQueryParams = (allowed: string[], query: unknown): boolean => Object.keys(query).every((key) => allowed.includes(key));
-
-const checkIfUnmodifiedHeader = (req: Request, next: NextFunction): Date => {
-  const headerName = 'If-Unmodified-Since';
-  const ifUnmodifiedSince: string = req.header(headerName);
-
-  if (!ifUnmodifiedSince) {
-    next(new KnowledgeError(428, 'Precondition Required', 'If-Unmodified-Since-Header missing'));
-    return undefined;
-  }
-
-  const date: Date = new Date(ifUnmodifiedSince);
-
-  if (isNaN(date.getTime())) {
-    next(new KnowledgeError(422, 'Unprocessable Entity', `The ${headerName}-Header has an invalid date format!`));
-    return undefined;
-  }
-
-  return date;
-};
-
-const checkId = (id: string, idName: string, next: NextFunction): string => {
-  if (ObjectId.isValid(id)) {
-    return id;
-  }
-
-  next(new KnowledgeError(428, 'Precondition Required', `Invalid ${idName} ID '${id}'`));
-};
 
 export default router;
