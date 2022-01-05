@@ -55,7 +55,7 @@ const entityDbo2Dto = (dbo: Entity): EntityDTO => ({
     vocabulary: dbo.vocabulary.toHexString(),
     /* eslint-disable */
     // @ts-ignore
-    type: TagType[dbo.type.toUpperCase()],
+    type: dbo.type.toUpperCase(),
     /* eslint-enable */
     label: dbo.label,
     description: dbo.description,
