@@ -1,5 +1,5 @@
 import {instance as persistenceService} from './persistence.service';
-import {Collection, Filter, InsertOneResult, ModifyResult, ObjectId, UpdateFilter, FindOptions} from 'mongodb';
+import {Collection, Filter, FindOptions, InsertOneResult, ModifyResult, ObjectId, UpdateFilter} from 'mongodb';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import {Entity, Vocabulary} from '../models/dbo.models';
 import {vocabularyService} from './vocabulary.service';
@@ -78,6 +78,7 @@ export class EntityService {
           label: entity.label,
           description: entity.description,
           externalResources: entity.externalResources,
+          type: entity.type,
           sameAs: entity.sameAs
         },
         $currentDate: {
