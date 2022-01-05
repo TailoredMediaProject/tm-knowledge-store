@@ -151,9 +151,8 @@ export class EntityService {
         }
 
         if (!!query?.type){
-            // @ts-ignore
+            /* eslint-disable */
             if (Object.values(TagType).includes(query.type as TagType)){
-                // @ts-ignore
                 filter.type = query.type
             } else{
                 throw new KnowledgeError(404, 'Bad Request', "Invalid Parameter of type 'type'!")
