@@ -72,7 +72,6 @@ export class VocabularyService {
             return;
           }
           const data = resp.data as Pageable & [Vocabulary];
-          console.log(data);
           return extractVocabList(data);
         })
       );
@@ -88,7 +87,6 @@ export class VocabularyService {
           console.error(resp);
           return;
         }
-        console.log(resp.data);
         return resp.data;
       })
     );
@@ -113,7 +111,6 @@ export class VocabularyService {
             console.error(resp);
             return;
           }
-          console.log(resp.data);
           return resp.data;
         })
       );
@@ -136,7 +133,6 @@ export class VocabularyService {
             console.error(resp);
             return;
           }
-          console.log(resp.data);
           return resp.data;
         })
       );
@@ -159,7 +155,6 @@ export class VocabularyService {
             console.error(resp);
             return undefined;
           }
-          console.log(resp.data);
           return resp.data;
         })
         .catch((error) => {

@@ -18,6 +18,7 @@ module.exports = {
       current: "currentColor",
       tmYellow: "#FFB703",
       tmBlue: "#3481b8",
+      tmBlueLight: "rgba(52,129,184,0.25)",
       tmOrange: "#fa842b",
       tmHoverOrange: "#d46503",
       tmFocusOrange: "#f69241",
@@ -871,7 +872,8 @@ module.exports = {
     backgroundClip: ["responsive"],
     backgroundColor: [
       "responsive",
-      "dark",
+      "odd",
+      "even",
       "group-hover",
       "focus-within",
       "hover",

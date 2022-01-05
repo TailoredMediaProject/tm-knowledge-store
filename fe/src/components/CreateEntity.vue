@@ -21,7 +21,7 @@
                   block
                   w-full
                   sm:text-sm
-                  border border-gray-300
+                  border border-tmOrange
                   rounded-md
                 "
                 placeholder="Label"
@@ -49,7 +49,7 @@
                   block
                   w-full
                   sm:text-sm
-                  border border-gray-300
+                  border border-tmOrange
                   rounded-md
                 "
                 placeholder="Description"
@@ -68,7 +68,7 @@
                   bg-white
                   relative
                   w-full
-                  border border-gray-300
+                  border border-tmOrange
                   rounded-md
                   shadow-sm
                   pl-3
@@ -83,7 +83,7 @@
                   sm:text-sm
                 "
               >
-                <span class="block truncate">{{ selected }}</span>
+                <span class="block truncate">{{selected}}</span>
                 <span
                   class="
                     absolute
@@ -220,14 +220,13 @@
 </template>
 
 <script>
-import {ref} from 'vue';
 import {Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions} from '@headlessui/vue';
 import {CheckIcon, SelectorIcon} from '@heroicons/vue/solid';
 import {TagType} from '@/openapi';
 import {mapGetters} from 'vuex';
 
-const tagTypeKeys = Object.keys(TagType);
-const tagTypeValues = Object.values(TagType);
+const noSelection = "Select...";
+
 export default {
   name: "CreateEntity",
   components: {
@@ -258,16 +257,22 @@ export default {
         this.entity.description = description;
       },
     },
+    selected: {
+      get: function () {
+        return this.entity?.type ? this.entity?.type : noSelection;
+      },
+      set: function (value) {
+        this.entity.type = value && value !== noSelection ? TagType[value] : undefined;
+      },
+    },
     vocabID() {
       return this.$route?.params?.vocabID || this.vocabulary?.id;
     },
   },
   setup() {
-    const selected = ref("Select...");
     return {
-      tagTypeKeys,
-      tagTypeValues,
-      selected,
+      tagTypeKeys: Object.keys(TagType),
+      tagTypeValues: Object.values(TagType)
     };
   },
   methods: {
@@ -275,11 +280,12 @@ export default {
       if (this.selected === "Select...") {
         alert("Please select an Entity Type");
       } else {
-        this.$store.dispatch("entityStore/createEntity", {
-          vocabID: this.vocabID,
+        this.$store.dispatch(`entityStore/${this.entity.id ? "updateEntity" : "createEntity"}`, {
           entity: {
-            tagType: TagType[TagType[this.selected]],
+            ...this.entity,
+            type: !this.selected || this.selected === noSelection ? undefined : this.selected.toUpperCase(),
             label: this.label,
+            vocabulary: this.vocabID,
             description: this.description,
             externalResources: [],
             sameAs: [],
@@ -289,14 +295,12 @@ export default {
       }
     },
     cancel() {
-      this.$store.dispatch("entityStore/editVocab", {
+      this.$store.dispatch("vocabStore/editVocab", {
         vocabID: this.vocabID,
         entity: undefined,
       });
       this.$router.push("/vocab/" + this.vocabID + "/entities");
-    },
+    }
   },
 };
 </script>
-
-<style scoped></style>

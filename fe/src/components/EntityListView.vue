@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col">
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="py-2 align-middle inline-block min-w-full sm:px-3 lg:px-8">
         <div
           class="
             shadow
@@ -11,7 +11,7 @@
             sm:rounded-lg
           "
         >
-          <div class="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
+          <div class="bg-white px-4 py-5 sm:px-3">
             <div
               class="
                 -ml-4
@@ -31,7 +31,7 @@
               <div class="ml-4 mt-2 flex-shrink-0">
                 <button
                   type="button"
-                  @click="$router.push('/vocab')"
+                  @click="goBackToVocabs()"
                   class="
                     relative
                     inline-flex
@@ -83,13 +83,13 @@
               </div>
             </div>
           </div>
-          <table class="min-w-full max-w-full divide-y divide-gray-200">
-            <thead class="bg-gray-50">
+          <table class="min-w-full max-w-full">
+            <thead class="bg-tmBlueLight ">
               <tr>
                 <th
                   scope="col"
                   class="
-                    px-6
+                    px-3
                     py-3
                     text-center text-xs
                     font-medium
@@ -103,7 +103,7 @@
                 <th
                   scope="col"
                   class="
-                    px-6
+                    px-3
                     py-3
                     text-center text-xs
                     font-medium
@@ -117,7 +117,7 @@
                 <th
                   scope="col"
                   class="
-                    px-6
+                    px-3
                     py-3
                     text-center text-xs
                     font-medium
@@ -131,7 +131,7 @@
                 <th
                   scope="col"
                   class="
-                    px-6
+                    px-3
                     py-3
                     text-center text-xs
                     font-medium
@@ -142,17 +142,33 @@
                 >
                   Modified
                 </th>
+                <th
+                  scope="col"
+                  class="
+                    px-3
+                    py-3
+                    text-center text-xs
+                    font-medium
+                    text-gray-500
+                    uppercase
+                    tracking-wider
+                  "
+                >
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="entity in entities" :key="entity.id">
+              <tr
+                class=""
+                v-for="entity in entities"
+                :key="entity.id"
+              >
                 <td
                   class="
-                    px-6
-                    py-4
-                    whitespace-nowrap
-                    text-sm
-                    text-center
+                    px-3
+                    py-3
+                    text-sm text-center
                     font-medium
                     text-gray-900
                   "
@@ -161,11 +177,9 @@
                 </td>
                 <td
                   class="
-                    px-6
-                    py-4
-                    whitespace-nowrap
-                    text-sm
-                    text-center
+                    px-3
+                    py-3
+                    text-sm text-center
                     font-medium
                     text-gray-900
                   "
@@ -174,10 +188,10 @@
                 </td>
                 <td
                   class="
-                    px-6
-                    py-4
-                    whitespace-nowrap
+                    px-3
+                    py-3
                     text-sm
+                    whitespace-nowrap
                     text-center
                     font-medium
                     text-gray-900
@@ -187,16 +201,82 @@
                 </td>
                 <td
                   class="
-                    px-6
-                    py-4
+                    px-3
+                    py-3
                     whitespace-nowrap
-                    text-sm
-                    text-center
+                    text-sm text-center
                     font-medium
                     text-gray-900
                   "
                 >
                   {{ formatDate(entity.lastModified) }}
+                </td>
+                <td
+                  class="
+                    flex flex-row flex-nowrap
+                    items-center
+                    justify-center
+                    px-3
+                    py-3
+                  "
+                >
+                  <button
+                    class="
+                      border border-transparent
+                      bg-tmOrange
+                      rounded-md
+                      text-white
+                      items-center
+                      px-3.5
+                      py-2.5
+                      text-sm
+                      font-medium
+                      inline-flex
+                      hover:bg-tmHoverOrange
+                    "
+                    @click="editEntity($event, entity)"
+                  >
+                    <svg
+                      class="fill-current w-4 h-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      width="20"
+                      height="20"
+                    >
+                      <path
+                        d="M16.77 8l1.94-2a1 1 0 0 0 0-1.41l-3.34-3.3a1 1 0 0 0-1.41 0L12 3.23zm-5.81-3.71L1 14.25V19h4.75l9.96-9.96-4.75-4.75z"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    class="
+                      border border-transparent
+                      bg-tmOrange
+                      rounded-md
+                      text-white
+                      items-center
+                      ml-3
+                      px-3.5
+                      py-2.5
+                      text-sm
+                      font-medium
+                      inline-flex
+                      hover:bg-tmHoverOrange
+                    "
+                    @click="deleteEntity(entity)"
+                  >
+                    <svg
+                      class="fill-current w-4 h-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 1000 1000"
+                      width="24"
+                      height="24"
+                    >
+                      <path
+                        d="M632.2,500l330.4-330.5c36.5-36.5,36.5-95.8,0-132.2c-36.4-36.5-95.7-36.5-132.2,0L500,367.8L169.6,37.4C133,0.9,73.9,0.9,37.4,37.4C0.9,73.8,0.9,133,37.4,169.6L367.9,500L37.4,830.4c-36.5,36.5-36.5,95.7,0,132.2c36.5,36.5,95.7,36.5,132.2,0L500,632.2l330.4,330.4c36.5,36.5,95.7,36.5,132.2,0c36.5-36.5,36.5-95.7,0-132.2L632.2,500z"
+                      />
+                    </svg>
+                  </button>
                 </td>
               </tr>
             </tbody>
@@ -269,11 +349,28 @@ export default {
       });
       this.$router.push(`/create/${this.vocabID}`);
     },
+    deleteEntity(entity) {
+      this.$store.dispatch("entityStore/deleteEntity", {
+        entity,
+      });
+      this.$router.go(0);
+    },
     formatDate(date) {
       return formatDate(date);
     },
+    goBackToVocabs() {
+      this.$store.dispatch("entityStore/clear", {
+        vocabId: undefined,
+        entity: undefined
+      });
+      this.$router.push('/vocab');
+    }
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+table tr:nth-of-type(even) {
+  background-color: rgba(250, 132, 43, 0.15);
+}
+</style>
