@@ -52,7 +52,7 @@ const entityDto2Dbo = (dto: EntityDTO, next: NextFunction): Entity => ({
 
 const entityDbo2Dto = (dbo: Entity): EntityDTO => ({
     id: dbo._id.toHexString(),
-    vocabulary: dbo.vocabulary.toHexString(),
+    vocabulary: dbo?.vocabulary?.toHexString(),
     // @ts-ignore
     type: dbo?.type?.toUpperCase(),
     label: dbo.label,
