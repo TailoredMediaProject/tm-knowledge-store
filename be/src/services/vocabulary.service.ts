@@ -112,8 +112,8 @@ export class VocabularyService {
     }
 
     // eslint-disable-rows-line @typescript-eslint/explicit-module-boundary-types
-    public async listVocab(query: ListQueryModel, id?: string | ObjectId): Promise<ListingResult<Vocabulary>> {
-        const {options, filter} = this.transformToMongoDBFilterOption(query, id);
+    public async listVocab(query: ListQueryModel): Promise<ListingResult<Vocabulary>> {
+        const {options, filter} = this.transformToMongoDBFilterOption(query);
         // @ts-ignore
         const dbos: Vocabulary[] = (await VocabularyService.collection().find(filter, options).toArray()) as Vocabulary[];
         return {
@@ -128,17 +128,10 @@ export class VocabularyService {
         return string.replace(/[.*+?^${}()|[\]\\]/g, '');
     }
 
-    private transformToMongoDBFilterOption(
-        query?: ListQueryModel,
-        id?: string | ObjectId
-    ): {options: FindOptions; filter: Filter<Vocabulary>} {
+    // eslint-disable-next-line max-len
+    private transformToMongoDBFilterOption(query?: ListQueryModel): {options: FindOptions; filter: Filter<Vocabulary>} {
         const options: FindOptions = {};
         const filter: Filter<Vocabulary> = {};
-
-        if (!!id) {
-            // @ts-ignore
-            filter._id = new ObjectId(id);
-        }
 
         if (!!query) {
             if (!!query?.text) {
