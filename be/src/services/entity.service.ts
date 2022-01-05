@@ -158,6 +158,7 @@ export class EntityService {
                 throw new KnowledgeError(404, 'Bad Request', "Invalid Parameter of type 'type'!")
             }
         }
+        /* eslint-enable */
 
         if (!!query) {
             if (!!query?.text) {
