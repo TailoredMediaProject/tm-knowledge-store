@@ -1,5 +1,5 @@
 import {instance as persistenceService} from './persistence.service';
-import {Collection, Filter, InsertOneResult, UpdateFilter, UpdateResult, ObjectId, FindOptions} from 'mongodb';
+import {Collection, Filter, InsertOneResult, ModifyResult, ObjectId, UpdateFilter, FindOptions} from 'mongodb';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import {Entity, Vocabulary} from '../models/dbo.models';
 import {vocabularyService} from './vocabulary.service';
@@ -65,71 +65,65 @@ export class EntityService {
   updateEntity(vocabID: string, entityID: string, ifUnmodifiedSince: Date, entity: Entity): Promise<Entity> {
     // get Entity throws errors if vocab or entity cannot be found
     return this.getEntity(vocabID, entityID).then((dbo: Entity) => {
-      if (dbo.lastModified.getTime() > ifUnmodifiedSince.getTime()) {
-        throw new KnowledgeError(
-          412,
-          'Precondition Failed',
-          'Target has been modified since last retrieval, the modified target is returned',
-          dbo
-        );
-      }
-
       const filter: Filter<Entity> = {
         _id: dbo._id,
         lastModified: {
           // eslint-disable-rows-line @typescript-eslint/no-unsafe-argument
-          $lte: ifUnmodifiedSince
+          $eq: ifUnmodifiedSince
         }
       };
 
-      const updateValue = {
-        _id: entity._id,
-        label: entity.label,
-        description: entity.description,
-        externalResources: entity.externalResources,
-        sameAs: entity.sameAs,
-        lastModified: new Date()
+      const update: UpdateFilter<Entity> = {
+        $set: {
+          label: entity.label,
+          description: entity.description,
+          externalResources: entity.externalResources,
+          sameAs: entity.sameAs
+        },
+        $currentDate: {
+          lastModified: true
+        }
       };
-
-      const update: UpdateFilter<Entity> = { $set: updateValue };
 
       // @ts-ignore
-      return EntityService.collection().updateOne(filter, update, { upsert: false }).then((result: UpdateResult) => {
-        if (result.modifiedCount === 1) {
-          return {
-            ...updateValue,
-            type: dbo.type,
-            created: dbo.created,
-            data: dbo.data,
-            vocabulary: dbo.vocabulary
-          };
-        } else {
-          throw new KnowledgeError(404, 'Not found', `Target entity with id '${entityID}' not found`);
-        }
-      });
+      return EntityService.collection()
+        // @ts-ignore
+        .findOneAndUpdate(filter, update, { returnDocument: 'after' })
+        // @ts-ignore
+        .then((result: ModifyResult<Entity>) => {
+          if (result?.lastErrorObject?.updatedExisting === false || !result.value) {
+            throw new KnowledgeError(
+              412,
+              'Precondition Failed',
+              'Target has been modified since last retrieval, the modified target is returned',
+              dbo
+            );
+          } else {
+            return result.value;
+          }
+        });
     });
   }
 
-    public async deleteEntity(vocabID: string, entityID: string, lastModified: Date): Promise<boolean> {
+  public async deleteEntity(vocabID: string, entityID: string, lastModified: Date): Promise<boolean> {
 
-        if (!await vocabularyService.getVocabular(vocabID)) {
-            throw new KnowledgeError(404, 'Vocabulary', `No vocabulary matches the provided ID '${vocabID}'.`)
-        }
-
-        if (!await this.getEntity(vocabID, entityID)) {
-            throw new KnowledgeError(404, 'Entity', `No entity matches the provided ID '${vocabID}'.`)
-        }
-
-        return EntityService.collection().deleteOne({_id: new ObjectId(entityID), lastModified: lastModified})
-            .then(r => {
-                if (r.deletedCount === 1) {
-                    return true
-                } else {
-                    throw new KnowledgeError(412, 'Header', 'Header does not match!')
-                }
-            })
+    if (!await vocabularyService.getVocabular(vocabID)) {
+      throw new KnowledgeError(404, 'Vocabulary', `No vocabulary matches the provided ID '${vocabID}'.`);
     }
 
+    if (!await this.getEntity(vocabID, entityID)) {
+      throw new KnowledgeError(404, 'Entity', `No entity matches the provided ID '${vocabID}'.`);
+    }
+
+    return EntityService.collection().deleteOne({ _id: new ObjectId(entityID), lastModified: lastModified })
+      .then(r => {
+        if (r.deletedCount === 1) {
+          return true;
+        } else {
+          throw new KnowledgeError(412, 'Header', 'Header does not match!');
+        }
+      });
+  }
     public async listEntities(query: ListQueryModel, id?: string | ObjectId): Promise<ListingResult<Entity>> {
         const {options, filter} = this.transformToMongoDBFilterOption(query, id);
         // @ts-ignore
