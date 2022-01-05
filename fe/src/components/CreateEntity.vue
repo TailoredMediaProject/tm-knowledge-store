@@ -283,7 +283,7 @@ export default {
         this.$store.dispatch(`entityStore/${this.entity.id ? "updateEntity" : "createEntity"}`, {
           entity: {
             ...this.entity,
-            type: !this.selected || this.selected === noSelection ? undefined : this.selected,
+            type: !this.selected || this.selected === noSelection ? undefined : this.selected.toUpperCase(),
             label: this.label,
             vocabulary: this.vocabID,
             description: this.description,

@@ -114,7 +114,6 @@ export const entityStore: Module<any, any> = {
         },
         UPDATEENTITY(state, payload: {entity: Entity}) {
             entityService.updateEntity(payload.entity).then((entity) => {
-                console.log(entity);
                 if (entity?.id) {
                     state.entities.set(entity.id, entity);
                 }
