@@ -131,9 +131,6 @@ export class EntityService {
 
     public async listEntities(query: ListQueryModel, id?: string | ObjectId): Promise<ListingResult<Entity>> {
         const {options, filter} = this.transformToMongoDBFilterOption(query, id);
-        console.log('Query', query)
-        console.log('Options',options)
-        console.log('Filter',filter)
         // @ts-ignore
         const dbos: Entity[] = (await EntityService.collection().find(filter, options).toArray()) as Entity[];
         return {
@@ -155,7 +152,11 @@ export class EntityService {
 
         if (!!id) {
             // @ts-ignore
-            filter._id = new ObjectId(id);
+            filter.vocabulary = new ObjectId(id);
+        }
+
+        if (!!query?.type){
+            filter.type = query.type
         }
 
         if (!!query) {

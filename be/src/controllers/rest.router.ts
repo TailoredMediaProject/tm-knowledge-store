@@ -78,7 +78,7 @@ router.get('/vocab', (req: Request, res: Response, next: NextFunction) => {
         };
 
         vocabularyService
-            .listVocab(queryListModel, req.params.id)
+            .listVocab(queryListModel)
             .then((r: ListingResult<Vocabulary>) => ({...r, items: r.items.map((v: Vocabulary) => vocabDbo2Dto(v))}))
             .then((r: ListingResult<VocabularyDTO>) => res.json(r))
             .catch(next);
@@ -147,8 +147,7 @@ router.delete('/vocab/:id', (req: Request, res: Response, next: NextFunction) =>
 router.get('/vocab/:vId/entities', (req: Request, res: Response, next: NextFunction) => {
     const vId = checkId(req?.params?.vId, 'vocabulary', next);
 
-
-    if (!checkQueryParams(['text', 'createdSince', 'modifiedSince', 'sort', 'offset', 'rows'], req?.query)) {
+    if (!checkQueryParams(['text', 'createdSince', 'modifiedSince', 'sort', 'offset', 'rows', 'type'], req?.query)) {
         next(new KnowledgeError(400, 'Bad Request', 'Invalid query parameters'));
     } else {
         const queryListModel: ListQueryModel = {
