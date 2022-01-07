@@ -130,10 +130,11 @@ export class EntityService {
     const { options, filter } = this.transformToMongoDBFilterOption(query, id);
     // @ts-ignore
     const dbos: Entity[] = (await EntityService.collection().find(filter, options).toArray()) as Entity[];
+    const size = dbos.length
     return {
       offset: query.offset,
       rows: dbos.length,
-      totalItems: 0, // TODO
+      totalItems: size, // TODO
       items: dbos
     };
   }

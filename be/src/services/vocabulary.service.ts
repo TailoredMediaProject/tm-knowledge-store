@@ -116,10 +116,11 @@ export class VocabularyService {
     const { options, filter } = this.transformToMongoDBFilterOption(query);
     // @ts-ignore
     const dbos: Vocabulary[] = (await VocabularyService.collection().find(filter, options).toArray()) as Vocabulary[];
+    const size = dbos.length
     return {
       offset: query.offset,
       rows: dbos.length,
-      totalItems: 0, // TODO
+      totalItems: size, // TODO
       items: dbos
     };
   }
