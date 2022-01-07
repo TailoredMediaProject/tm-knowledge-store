@@ -1,4 +1,4 @@
-import { Pageable, Vocabulary } from "@/openapi";
+import {Pageable, Vocabulary} from '@/openapi';
 
 export interface VocabList {
   pageable: Pageable;
@@ -9,7 +9,7 @@ export const extractVocabList = (object: any): VocabList => {
   const pageable: Pageable = {
     offset: object.offset,
     rows: object.rows,
-    totalItems: object.totalItems,
+    totalItems: object.totalItems
   };
   const vocabs: Vocabulary[] = object.items;
   return { pageable, vocabs };

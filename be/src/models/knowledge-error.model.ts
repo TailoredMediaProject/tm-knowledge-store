@@ -4,6 +4,6 @@ export class KnowledgeError extends Error {
     public readonly title: string,
     public readonly message: string,
     public readonly data?: unknown) {
-      super(message);
+    super(message);
   }
 }

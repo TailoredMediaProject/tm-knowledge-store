@@ -9,7 +9,8 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "start": "vue-cli-service serve"
+    "start": "vue-cli-service serve --open",
+    "docker:start": "vue-cli-service serve --port 4200"
   },
   "dependencies": {
     "@headlessui/vue": "^1.4.2",
@@ -19,6 +20,7 @@
     "autoprefixer": "^9",
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
+    "moment": "^2.29.1",
     "postcss": "^7",
     "register-service-worker": "^1.7.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
@@ -55,5 +57,15 @@
     "vue-cli-plugin-tailwind": "~2.2.17",
     "vue-jest": "^5.0.0-0",
     "vue-svg-loader": "^0.16.0"
+  },
+  "prettier": {
+    "trailingComma": "none",
+    "endOfLine": "lf",
+    "tabWidth": 2,
+    "useTabs": false,
+    "bracketSpacing": false,
+    "printWidth": 140,
+    "semi": true,
+    "singleQuote": true
   }
 }

@@ -1,12 +1,7 @@
-import { AxiosInstance, AxiosPromise, AxiosRequestConfig } from "axios";
-import {
-  Configuration,
-  Pageable,
-  Vocabulary,
-  VocabularyApiFp,
-} from "../openapi";
-import { ISO8601toUTC } from "@/Utility/DateUtility";
-import { extractVocabList, VocabList } from "@/Objects/VocabList";
+import {AxiosInstance, AxiosPromise, AxiosRequestConfig} from 'axios';
+import {Configuration, Pageable, Vocabulary, VocabularyApiFp} from '../openapi';
+import {ISO8601toUTC} from '@/Utility/DateUtility';
+import {extractVocabList, VocabList} from '@/Objects/VocabList';
 
 export class VocabularyService {
   private readonly basePath: string;
@@ -15,50 +10,43 @@ export class VocabularyService {
     createVocabulary(
       vocabulary?: Vocabulary,
       options?: AxiosRequestConfig
-    ): Promise<
-      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Vocabulary>
-    >;
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Vocabulary>>;
     deleteVocabulary(
       vocabularyId: string,
       ifUnmodifiedSince: string,
       options?: AxiosRequestConfig
-    ): Promise<
-      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Vocabulary>
-    >;
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Vocabulary>>;
     getVocabulary(
       vocabularyId: string,
       options?: AxiosRequestConfig
-    ): Promise<
-      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Vocabulary>
-    >;
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Vocabulary>>;
     listVocabularies(
       text?: string,
       createdSince?: string,
       modifiedSince?: string,
-      sort?: "created asc" | "created desc" | "modified asc" | "modified desc",
+      sort?: 'created asc' | 'created desc' | 'modified asc' | 'modified desc',
       offset?: number,
       rows?: number,
       options?: AxiosRequestConfig
-    ): Promise<
-      (
-        axios?: AxiosInstance,
-        basePath?: string
-        // eslint-disable-next-line @typescript-eslint/ban-types
-      ) => AxiosPromise<Pageable & object>
-    >;
+    ): Promise<(
+      axios?: AxiosInstance,
+      basePath?: string
+      // eslint-disable-next-line @typescript-eslint/ban-types
+    ) => AxiosPromise<Pageable & object>>;
     updateVocabulary(
       vocabularyId: string,
       ifUnmodifiedSince: string,
       vocabulary?: Vocabulary,
       options?: AxiosRequestConfig
-    ): Promise<
-      (axios?: AxiosInstance, basePath?: string) => AxiosPromise<Vocabulary>
-    >;
+    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Vocabulary>>;
   };
+
   constructor(basePath: string) {
     this.basePath = basePath;
-    this.apiPath = basePath + "/vocab";
-    this.apiFn = VocabularyApiFp(new Configuration({basePath: this.basePath}));
+    this.apiPath = basePath + '/vocab';
+    this.apiFn = VocabularyApiFp(
+      new Configuration({ basePath: this.basePath })
+    );
   }
 
   async getVocabs(
@@ -75,15 +63,14 @@ export class VocabularyService {
             return;
           }
           const data = resp.data as Pageable & [Vocabulary];
-          console.log(data);
           return extractVocabList(data);
         })
       );
   }
 
   getVocab(objectID: string): Promise<Vocabulary | undefined> {
-    if (!objectID || objectID === "") {
-      return Promise.reject("No vocabulary ID set!");
+    if (!objectID || objectID === '') {
+      return Promise.reject('No vocabulary ID set!');
     }
     return this.apiFn.getVocabulary(objectID).then((req) =>
       req().then((resp) => {
@@ -91,7 +78,6 @@ export class VocabularyService {
           console.error(resp);
           return;
         }
-        console.log(resp.data);
         return resp.data;
       })
     );
@@ -103,12 +89,12 @@ export class VocabularyService {
   ): Promise<Vocabulary | undefined> {
     return this.apiFn
       .createVocabulary({
-        created: "",
+        created: '',
         entityCount: 0,
-        id: "",
-        lastModified: "",
+        id: '',
+        lastModified: '',
         label: label,
-        description: description,
+        description: description
       })
       .then((req) =>
         req().then((resp) => {
@@ -116,7 +102,6 @@ export class VocabularyService {
             console.error(resp);
             return;
           }
-          console.log(resp.data);
           return resp.data;
         })
       );
@@ -125,10 +110,10 @@ export class VocabularyService {
   updateVocab(vocab: Vocabulary): Promise<Vocabulary | undefined> {
     const objectID = vocab.id;
     const lastModified = ISO8601toUTC(vocab.lastModified);
-    if (!objectID || objectID === "") {
-      return Promise.reject("No vocabulary ID set");
+    if (!objectID || objectID === '') {
+      return Promise.reject('No vocabulary ID set');
     } else if (lastModified === null) {
-      return Promise.reject("Invalid date!");
+      return Promise.reject('Invalid date!');
     }
 
     return this.apiFn
@@ -139,7 +124,6 @@ export class VocabularyService {
             console.error(resp);
             return;
           }
-          console.log(resp.data);
           return resp.data;
         })
       );
@@ -148,11 +132,13 @@ export class VocabularyService {
   deleteVocab(vocab: Vocabulary): Promise<Vocabulary | undefined> {
     const objectID = vocab.id;
     const lastModified = ISO8601toUTC(vocab.lastModified);
-    if (!objectID || objectID === "") {
-      return Promise.reject("No vocabulary ID set");
-    } else if (lastModified === null) {
-      return Promise.reject("Invalid date!");
+
+    if (!objectID) {
+      return Promise.reject('No vocabulary ID set');
+    } else if (!lastModified) {
+      return Promise.reject('Invalid date!');
     }
+
     return this.apiFn.deleteVocabulary(objectID, lastModified).then((req) =>
       req()
         .then((resp) => {
@@ -160,12 +146,11 @@ export class VocabularyService {
             console.error(resp);
             return undefined;
           }
-          console.log(resp.data);
           return resp.data;
         })
         .catch((error) => {
           console.error(error);
-          return Promise.reject("Error deleting vocabulary!");
+          return Promise.reject('Error deleting vocabulary!');
         })
     );
   }

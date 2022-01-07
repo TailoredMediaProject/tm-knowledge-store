@@ -9,7 +9,8 @@
         "eslint:recommended",
         "plugin:import/recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "prettier"
     ],
     "parserOptions": {
         "ecmaVersion": 2021,
@@ -53,6 +54,7 @@
         "prefer-arrow/prefer-arrow-functions": "error",
         "max-len": ["error", {"code":  140}],
         "no-undef": "error",
+        "indent": ["error", 2],
         "arrow-body-style": ["error", "as-needed"],
         "@typescript-eslint/prefer-readonly": "error",
         "@typescript-eslint/no-empty-function": "error",
