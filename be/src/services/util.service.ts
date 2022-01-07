@@ -1,6 +1,9 @@
 import {NextFunction, Request} from 'express';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import {ObjectId} from 'mongodb';
+import {Entity, Vocabulary} from '../models/dbo.models';
+import {Vocabulary as VocabularyDTO} from '../generated/models/Vocabulary';
+import {Entity as EntityDTO} from '../generated/models/Entity';
 
 export class UtilService {
   public static readonly checkQueryParams = (allowed: string[], query: unknown): boolean =>
@@ -46,4 +49,57 @@ export class UtilService {
       throw new KnowledgeError(400, 'Bad Request', `The URL '${url}' is malformed`);
     }
   };
+
+  public static readonly entityDto2Dbo = (dto: EntityDTO, next: NextFunction): Entity => ({
+    /* eslint-disable */
+    _id: !!dto?.id ? new ObjectId(UtilService.checkId(
+      // @ts-ignore
+      dto?.id, 'entity',
+      next)) : undefined,
+    vocabulary: new ObjectId(UtilService.checkId(
+      // @ts-ignore
+      dto?.vocabulary, 'vocabulary',
+      next)),
+    /* eslint-enable */
+    type: dto?.type?.toUpperCase(),
+    label: dto.label,
+    description: dto.description,
+    created: undefined,
+    lastModified: undefined,
+    externalResources: dto.externalResources,
+    sameAs: dto.sameAs,
+    data: undefined
+  });
+
+  public static readonly entityDbo2Dto = (dbo: Entity): EntityDTO => ({
+    id: dbo._id.toHexString(),
+    vocabulary: dbo.vocabulary.toHexString(),
+    // @ts-ignore
+    type: dbo?.type?.toUpperCase(),
+    label: dbo.label,
+    description: dbo.description,
+    created: dbo.created.toISOString(),
+    lastModified: dbo.lastModified.toISOString(),
+    externalResources: dbo.externalResources,
+    sameAs: dbo.sameAs,
+    data: dbo.data,
+    canonicalLink: undefined
+  });
+
+  public static readonly vocabDto2Dbo = (dto: VocabularyDTO): Vocabulary => ({
+    _id: undefined,
+    created: undefined,
+    description: dto.description,
+    label: dto.label,
+    lastModified: undefined
+  });
+
+  public static readonly vocabDbo2Dto = (dbo: Vocabulary): VocabularyDTO => ({
+    id: dbo._id.toHexString(),
+    label: dbo.label,
+    description: dbo.description,
+    created: dbo.created.toISOString(),
+    lastModified: dbo.lastModified.toISOString(),
+    entityCount: -1
+  });
 }
