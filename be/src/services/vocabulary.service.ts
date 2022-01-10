@@ -4,6 +4,7 @@ import {instance as persistenceService} from './persistence.service';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import ListQueryModel from '../models/list-query.model';
 import {ListingResult} from '../models/listing-result.model';
+import {entityServiceInstance} from './entity.service';
 
 export class VocabularyService {
   private static collection(): Collection {
@@ -50,7 +51,7 @@ export class VocabularyService {
       .deleteOne({ _id: new ObjectId(id), lastModified: date })
       .then((r: DeleteResult) => {
         if (r.deletedCount === 1) {
-          return true;
+          return entityServiceInstance.deleteMultipleEntities({vocabulary: new ObjectId(id)});
         } else {
           throw new KnowledgeError(412, 'Precondition Failed', 'If-Unmodified-Since has changed in the meantime!');
         }
