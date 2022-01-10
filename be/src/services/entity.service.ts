@@ -1,13 +1,11 @@
 import {instance as persistenceService} from './persistence.service';
 import {Collection,
-  Document,
   Filter,
   FindOptions,
   InsertOneResult,
   ModifyResult,
   ObjectId,
   UpdateFilter,
-  WithId
 } from 'mongodb';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import {Entity, Vocabulary} from '../models/dbo.models';
@@ -21,8 +19,9 @@ export class EntityService {
     return persistenceService.db().collection('entities');
   }
 
-  private static countCollectionItems(filter: Filter<WithId<Document>>): Promise<number> {
-    return this.collection().find(filter).count();
+  private static countCollectionItems(filter: Filter<Entity>): Promise<number> {
+    // @ts-ignore
+    return this.collection().countDocuments(filter);
   }
 
   public createEntity(entity: Entity): Promise<Entity> {
@@ -143,7 +142,6 @@ export class EntityService {
     const { options, filter } = this.transformToMongoDBFilterOption(query, id);
     // @ts-ignore
     const dbos: Entity[] = (await EntityService.collection().find(filter, options).toArray()) as Entity[];
-    // @ts-ignore
     const totalItems: number = await EntityService.countCollectionItems(filter);
     return {
       offset: query.offset,
