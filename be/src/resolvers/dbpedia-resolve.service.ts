@@ -1,5 +1,4 @@
 import {ResolveService} from '../models/resolve-service.interface';
-import {KnowledgeError} from '../models/knowledge-error.model';
 
 export default class DbpediaResolveService implements ResolveService {
   private readonly host = 'dbpedia.org';
@@ -18,6 +17,6 @@ export default class DbpediaResolveService implements ResolveService {
     }
 
     // TODO TM-89, use DBpedia adapter here
-    return Promise.reject("Not (yet) implemented");
+    return Promise.reject('Not (yet) implemented');
   }
 }
