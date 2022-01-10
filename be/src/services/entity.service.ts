@@ -108,20 +108,17 @@ export class EntityService {
 
   public async deleteEntity(vocabID: string, entityID: string, lastModified: Date): Promise<boolean> {
 
-    if (!await vocabularyService.getVocabular(vocabID)) {
-      throw new KnowledgeError(404, 'Vocabulary', `No vocabulary matches the provided ID '${vocabID}'.`);
-    }
-
-    if (!await this.getEntity(vocabID, entityID)) {
-      throw new KnowledgeError(404, 'Entity', `No entity matches the provided ID '${vocabID}'.`);
-    }
-
-    return EntityService.collection().deleteOne({ _id: new ObjectId(entityID), lastModified: lastModified })
+    return EntityService.collection()
+        .deleteOne({ _id: new ObjectId(entityID), vocabulary: new ObjectId(vocabID), lastModified: lastModified })
       .then(r => {
         if (r.deletedCount === 1) {
           return true;
         } else {
-          throw new KnowledgeError(412, 'Header', 'Header does not match!');
+          if (!!this.getEntity(vocabID, entityID)) {
+            throw new KnowledgeError(412, 'Header', 'Entity has been modified since last refresh');
+          } else {
+            throw new KnowledgeError(404, 'Entity', `No entity found for ID '${vocabID}/${entityID}'.`);
+          }
         }
       });
   }
