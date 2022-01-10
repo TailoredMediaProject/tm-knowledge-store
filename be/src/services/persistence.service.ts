@@ -1,4 +1,4 @@
-import {Db, MongoClient} from 'mongodb';
+import {Db, MongoClient, MongoError} from 'mongodb';
 
 export class PersistenceService {
   private client: MongoClient;
@@ -28,8 +28,12 @@ export class PersistenceService {
       serverSelectionTimeoutMS: 5000
     });
 
-    this.client.connect(() => {
-      console.log('Initial connection to MongoDB successful');
+    this.client.connect((error: MongoError | Error) => {
+      if (error) {
+        console.error('Connection to MongoDB failed!');
+      } else {
+        console.log('Initial connection to MongoDB successful');
+      }
     });
 
     this._db = this.client.db(dbName);
