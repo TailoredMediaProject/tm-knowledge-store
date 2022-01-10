@@ -7,44 +7,53 @@ export default class KnowledgeResolveService implements ResolveService {
   private readonly host = 'data.tmedia.redlink.io';
   private readonly subPathVocabs = '/vocab';
   private readonly subPathEntities = '/entities';
-  private processUrl: URL;
 
-  accept(url: URL): boolean {
-    if (this.host === url.host) {
-      this.processUrl = url;
-      return true;
-    }
+  private readonly baseUri: string[];
 
-    return false;
+  constructor(baseUri: string[]) {
+    this.baseUri = baseUri
+  }
+
+  accept(uri: URL): boolean {
+    return !!this.baseUri.find(base => uri.toString().startsWith(base))
   }
 
   priority(): number {
     return 10;
   }
 
-  resolve(): Promise<unknown> {
-    if(!!this.processUrl) {
-      const vocabId = this.getSubPath(true);
-      const entityId = this.getSubPath(false);
+  resolve(uri: URL): Promise<unknown> {
+    /* How-To:
+       - strip baseUri from uri
+       - all what is left is the entity-id
+     */
+
+
+    if(!!this.accept(uri)) {
+      const vocabId = this.getSubPath(uri, true);
+      const entityId = this.getSubPath(uri, false);
 
       return entityServiceInstance
         .getEntity(vocabId, entityId)
         .then((v) => UtilService.vocabDbo2Dto(v))
         .catch((e: unknown) => {
+          // TODO: use Promise.reject()
           throw new KnowledgeError(501, 'Internal Server Error', e.toString());
         });
     }
+    // TODO: use Promise.reject()
     throw new KnowledgeError(501, 'Internal Server Error', 'URL to resolve is falsy');
   }
 
-  private getSubPath(vocab: boolean): string {
-    const path = this.processUrl.pathname;
+  private getSubPath(uri: URL, vocab: boolean): string {
+    const path = uri.pathname;
     const subPath = vocab ? this.subPathVocabs : this.subPathEntities;
 
-    if(!this.processUrl.pathname.includes(subPath)) {
+    if(!uri.pathname.includes(subPath)) {
+
       throw new KnowledgeError(400,
         'Bad Request',
-        `The URL to resolve '${this.processUrl}' does not contain the correct '${subPath}' path`
+        `The URL to resolve '${uri}' does not contain the correct '${subPath}' path`
       );
     }
 
