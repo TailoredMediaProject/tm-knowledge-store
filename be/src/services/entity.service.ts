@@ -109,11 +109,12 @@ export class EntityService {
   public async deleteEntity(vocabID: string, entityID: string, lastModified: Date): Promise<boolean> {
 
     return EntityService.collection()
-        .deleteOne({ _id: new ObjectId(entityID), vocabulary: new ObjectId(vocabID), lastModified: lastModified })
+      .deleteOne({ _id: new ObjectId(entityID), vocabulary: new ObjectId(vocabID), lastModified: lastModified })
       .then(r => {
         if (r.deletedCount === 1) {
           return true;
         } else {
+          // eslint-disable-next-line @typescript-eslint/no-misused-promises
           if (!!this.getEntity(vocabID, entityID)) {
             throw new KnowledgeError(412, 'Header', 'Entity has been modified since last refresh');
           } else {
@@ -126,7 +127,7 @@ export class EntityService {
   public async listEntities(query: ListQueryModel, id?: string | ObjectId): Promise<ListingResult<Entity>> {
     const { options, filter } = this.transformToMongoDBFilterOption(query, id);
     // @ts-ignore
-    const dbos: Entity[] = (await EntityService.collection().find(filter, options).toArray()) as Entity[];
+    const dbos: Entity[] = await EntityService.collection().find(filter, options).toArray() as Entity[];
     return {
       offset: query.offset,
       rows: dbos.length,
@@ -151,13 +152,15 @@ export class EntityService {
 
     if (!!query?.type) {
       /* eslint-disable */
-      if (Object.values(TagType).includes(query.type as TagType)) {
-        filter.type = query.type;
+      const capitalType: TagType = query.type.toUpperCase() as TagType;
+
+      if (Object.keys(TagType).includes(capitalType)) {
+        filter.type = capitalType;
       } else {
         throw new KnowledgeError(404, 'Bad Request', 'Invalid Parameter of type \'type\'!');
       }
+      /* eslint-disable */
     }
-    /* eslint-enable */
 
     if (!!query) {
       if (!!query?.text) {
