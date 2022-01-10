@@ -12,6 +12,10 @@ export class EntityService {
     return persistenceService.db().collection('entities');
   }
 
+  static countCollectionItems(): Promise<number> {
+    return this.collection().countDocuments();
+  }
+
   public createEntity(entity: Entity): Promise<Entity> {
     return vocabularyService.getVocabular(entity.vocabulary).then(() =>
       EntityService.collection()
@@ -130,10 +134,11 @@ export class EntityService {
     const { options, filter } = this.transformToMongoDBFilterOption(query, id);
     // @ts-ignore
     const dbos: Entity[] = (await EntityService.collection().find(filter, options).toArray()) as Entity[];
+    const totalItems: number = await EntityService.countCollectionItems();
     return {
       offset: query.offset,
       rows: dbos.length,
-      totalItems: 0, // TODO
+      totalItems,
       items: dbos
     };
   }
