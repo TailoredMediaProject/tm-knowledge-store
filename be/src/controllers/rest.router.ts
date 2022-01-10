@@ -31,7 +31,7 @@ router.get('/vocab', (req: Request, res: Response, next: NextFunction) => {
 
 router.post('/vocab', (req: Request, res: Response, next: NextFunction) => {
   const body = <VocabularyDTO> req.body;
-  const newVocab = UtilService.vocabDto2Dbo(body);
+  const newVocab: Vocabulary = UtilService.vocabDto2Dbo(body);
 
   vocabularyService
     .createVocab(newVocab)
