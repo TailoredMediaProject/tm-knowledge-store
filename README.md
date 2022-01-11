@@ -25,6 +25,7 @@ Build, view, run locally
 docker build . -t $(whoami)/tm-knowledge-store # Build
 docker images # View build, available images
 docker run -p 8080:8080 -d $(whoami)/tm-knowledge-store # Run image
+docker run -it --entrypoint sh $(whoami)/tm-knowledge-store # To observe image contents
 docker ps # View running containers
 docker logs <container_id> # Print container logs
 docker stop <container_id> # Stop container

@@ -28,7 +28,7 @@ FROM $buildImage as production-stage
 RUN apk add --no-cache tini
 WORKDIR /app/
 COPY --from=be-build-stage /opt/app/be/dist .
-COPY --from=fe-build-stage /opt/app/fe/dist ./static
+COPY --from=fe-build-stage /opt/app/fe/dist ./node_modules/tm-entity-store-ui/dist
 
 ENV NODE_ENV=production
 # BE

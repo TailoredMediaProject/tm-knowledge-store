@@ -9,8 +9,7 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "start": "vue-cli-service serve --open",
-    "docker:start": "vue-cli-service serve --port 4200"
+    "start": "vue-cli-service serve --open"
   },
   "dependencies": {
     "@headlessui/vue": "^1.4.2",

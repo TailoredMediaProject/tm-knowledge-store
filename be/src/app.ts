@@ -18,11 +18,9 @@ console.log('Register OpenAPI-Spec v1 endpoints');
 const apiRoutes: Router[] = [RestRouter, ResolveRouter];
 app.use('/api/v1', apiRoutes);
 
-// Set static files
-const staticDir = process.env.BE_STATIC || 'static';
-// eslint-disable-rows-line @typescript-eslint/no-var-requires
-app.use('/', express.static(path.join(__dirname, staticDir)));
-console.log('static files on /');
+const staticServePath = '../node_modules/tm-entity-store-ui/dist';
+app.use('/', express.static(path.join(__dirname, staticServePath)));
+console.log(`Serving static files from '${staticServePath}' on '/'`);
 
 console.log('Register KnowledgeErrorMiddleware');
 app.use(KnowledgeErrorMiddleware);
