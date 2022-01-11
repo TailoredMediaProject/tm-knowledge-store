@@ -3,7 +3,7 @@ import {vocabularyService} from '../services/vocabulary.service';
 import {Entity, Vocabulary} from '../models/dbo.models';
 import {Vocabulary as VocabularyDTO} from '../generated/models/Vocabulary';
 import {Entity as EntityDTO} from '../generated/models/Entity';
-import {entityServiceInstance} from '../services/entity.service';
+import {EntityService, entityServiceInstance} from '../services/entity.service';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import {ListingResult} from '../models/listing-result.model';
 import ListQueryModel from '../models/query-list.model';

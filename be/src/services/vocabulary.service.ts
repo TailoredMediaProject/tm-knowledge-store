@@ -24,15 +24,14 @@ export class VocabularyService {
 
   public async getVocabular(id: string | ObjectId): Promise<Vocabulary> {
 
-    const vocab = <Vocabulary> await VocabularyService.collection().findOne({ _id: new ObjectId(id) });
+    //const vocab = <Vocabulary> await VocabularyService.collection().findOne({ _id: new ObjectId(id) });
+    const vocab = <Vocabulary> await
 
     if (!vocab) {
       throw new KnowledgeError(404, 'Vocabulary', 'Vocabulary not found!');
     }
 
-    return VocabularyService.collection()
-      .findOne({ _id: new ObjectId(id) })
-      .then((x) => <Vocabulary> x);
+    return Promise.resolve(vocab);
   }
 
   public async deleteVocab(id: string | ObjectId, date: Date): Promise<boolean> {
