@@ -1,12 +1,5 @@
 import {instance as persistenceService} from './persistence.service';
-import {Collection,
-  Filter,
-  FindOptions,
-  InsertOneResult,
-  ModifyResult,
-  ObjectId,
-  UpdateFilter,
-} from 'mongodb';
+import {Collection, Filter, FindOptions, InsertOneResult, ModifyResult, ObjectId, UpdateFilter} from 'mongodb';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import {Entity, Vocabulary} from '../models/dbo.models';
 import {vocabularyService} from './vocabulary.service';
@@ -126,6 +119,7 @@ export class EntityService {
         if (r.deletedCount === 1) {
           return true;
         } else {
+          // eslint-disable-next-line @typescript-eslint/no-misused-promises
           if (!!this.getEntity(vocabID, entityID)) {
             throw new KnowledgeError(412, 'Header', 'Entity has been modified since last refresh');
           } else {
