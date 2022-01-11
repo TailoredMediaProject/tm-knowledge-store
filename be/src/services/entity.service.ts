@@ -1,11 +1,12 @@
 import {instance as persistenceService} from './persistence.service';
 import {Collection, Filter, FindOptions, InsertOneResult, ModifyResult, ObjectId, UpdateFilter} from 'mongodb';
 import {KnowledgeError} from '../models/knowledge-error.model';
-import {Entity} from '../models/dbo.models';
+import {Entity, Vocabulary} from '../models/dbo.models';
 import {VocabularyService, vocabularyService} from './vocabulary.service';
 import ListQueryModel from '../models/list-query.model';
 import {ListingResult} from '../models/listing-result.model';
 import {TagType} from '../generated';
+import {UtilService} from './util.service';
 
 export class EntityService {
   private static collection(): Collection {
@@ -158,10 +159,6 @@ export class EntityService {
       });
   }
 
-  private escapeRegExp(string: string): string {
-    return string.replace(/[.*+?^${}()|[\]\\]/g, '');
-  }
-
   // eslint-disable-next-line max-len
   private transformToMongoDBFilterOption(query?: ListQueryModel, id?: string | ObjectId): { options: FindOptions; filter: Filter<Entity> } {
     const options: FindOptions = {};
@@ -189,13 +186,13 @@ export class EntityService {
         filter.$or = [
           {
             label: {
-              $regex: this.escapeRegExp(query.text),
+              $regex: UtilService.escapeRegExp(query.text),
               $options: 'gi'
             }
           },
           {
             description: {
-              $regex: this.escapeRegExp(query.text),
+              $regex: UtilService.escapeRegExp(query.text),
               $options: 'gi'
             }
           }
