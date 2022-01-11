@@ -2,10 +2,11 @@ import {instance as persistenceService} from './persistence.service';
 import {Collection, Filter, FindOptions, InsertOneResult, ModifyResult, ObjectId, UpdateFilter} from 'mongodb';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import {Entity, Vocabulary} from '../models/dbo.models';
-import {vocabularyService} from './vocabulary.service';
+import {VocabularyService, vocabularyService} from './vocabulary.service';
 import ListQueryModel from '../models/list-query.model';
 import {ListingResult} from '../models/listing-result.model';
 import {TagType} from '../generated';
+import {UtilService} from './util.service';
 
 export class EntityService {
   private static collection(): Collection {
@@ -83,82 +84,87 @@ export class EntityService {
   }
 
   updateEntity(vocabID: string, entityID: string, ifUnmodifiedSince: Date, entity: Entity): Promise<Entity> {
-    // get Entity throws errors if vocab or entity cannot be found
-    return this.getEntity(vocabID, entityID).then((dbo: Entity) => {
-      const filter: Filter<Entity> = {
-        _id: dbo._id,
-        lastModified: {
-          // eslint-disable-rows-line @typescript-eslint/no-unsafe-argument
-          $eq: ifUnmodifiedSince
-        }
-      };
+    const filter: Filter<Entity> = {
+      _id: new ObjectId(entityID),
+      lastModified: {
+        // eslint-disable-rows-line @typescript-eslint/no-unsafe-argument
+        $eq: ifUnmodifiedSince
+      }
+    };
 
-      const update: UpdateFilter<Entity> = {
-        $set: {
-          label: entity.label,
-          description: entity.description,
-          externalResources: entity.externalResources,
-          type: entity.type,
-          sameAs: entity.sameAs
-        },
-        $currentDate: {
-          lastModified: true
-        }
-      };
-
-      // @ts-ignore
-      return EntityService.collection()
-        // @ts-ignore
-        .findOneAndUpdate(filter, update, { returnDocument: 'after' })
-        // @ts-ignore
-        .then((result: ModifyResult<Entity>) => {
-          if (result?.lastErrorObject?.updatedExisting === false || !result.value) {
-            throw new KnowledgeError(
-              412,
-              'Precondition Failed',
-              'Target has been modified since last retrieval, the modified target is returned',
-              dbo
-            );
-          } else {
-            return result.value;
-          }
-        });
-    });
-  }
-
-  public async deleteEntity(vocabID: string, entityID: string, lastModified: Date): Promise<boolean> {
+    const update: UpdateFilter<Entity> = {
+      $set: {
+        label: entity.label,
+        description: entity.description,
+        externalResources: entity.externalResources,
+        type: entity.type,
+        sameAs: entity.sameAs
+      },
+      $currentDate: {
+        lastModified: true
+      }
+    };
 
     return EntityService.collection()
-      .deleteOne({ _id: new ObjectId(entityID), vocabulary: new ObjectId(vocabID), lastModified: lastModified })
-      .then(r => {
-        if (r.deletedCount === 1) {
-          return true;
+      // @ts-ignore
+      .findOneAndUpdate(filter, update, { returnDocument: 'after' })
+      // @ts-ignore
+      .then(async (result: ModifyResult<Entity>) => {
+        if (result?.lastErrorObject?.updatedExisting === false || !result.value) {
+          await VocabularyService.countCollectionItems({_id: new ObjectId(vocabID)})
+            .then((count: number) => {
+              if(count < 1) {
+                throw new KnowledgeError(404, 'Not Found', `Vocab with id '${vocabID}' not found`);
+              }
+            });
+          await this.getEntity(vocabID, entityID)
+            .then((dbo: Entity) => {
+              if (!!dbo && new Date(dbo.lastModified).getTime() > ifUnmodifiedSince.getTime()) {
+                throw new KnowledgeError(412, 'Precondition Failed',
+                  'Target has been modified since last retrieval, the modified target is returned', dbo);
+              }
+              throw new KnowledgeError(404, 'Not Found', `Entity with id '${vocabID}/${entityID}' not found`);
+            });
         } else {
-          // eslint-disable-next-line @typescript-eslint/no-misused-promises
-          if (!!this.getEntity(vocabID, entityID)) {
-            throw new KnowledgeError(412, 'Header', 'Entity has been modified since last refresh');
-          } else {
-            throw new KnowledgeError(404, 'Entity', `No entity found for ID '${vocabID}/${entityID}'.`);
-          }
+          return result.value;
         }
       });
   }
 
-  public async listEntities(query: ListQueryModel, id?: string | ObjectId): Promise<ListingResult<Entity>> {
-    const { options, filter } = this.transformToMongoDBFilterOption(query, id);
-    // @ts-ignore
-    const dbos: Entity[] = (await EntityService.collection().find(filter, options).toArray()) as Entity[];
-    const totalItems: number = await EntityService.countCollectionItems(filter);
-    return {
-      offset: query.offset,
-      rows: dbos.length,
-      totalItems,
-      items: dbos
-    };
+  public deleteEntity = (vocabID: string, entityID: string, lastModified: Date): Promise<boolean> => EntityService.collection()
+    .deleteOne({ _id: new ObjectId(entityID), vocabulary: new ObjectId(vocabID), lastModified: lastModified })
+    .then(r => {
+      if (r.deletedCount === 1) {
+        return true;
+      } else {
+        // eslint-disable-next-line @typescript-eslint/no-misused-promises
+        if (!!this.getEntity(vocabID, entityID)) {
+          throw new KnowledgeError(412, 'Header', 'Entity has been modified since last refresh');
+        } else {
+          throw new KnowledgeError(404, 'Entity', `No entity found for ID '${vocabID}/${entityID}'.`);
+        }
+      }
+    });
+
+  public async removeEntitiesFromVocabWithId(id: string | ObjectId): Promise<number> {
+    return EntityService.collection().deleteMany({vocabulary: new ObjectId(id)}).then(r => r.deletedCount);
   }
 
-  private escapeRegExp(string: string): string {
-    return string.replace(/[.*+?^${}()|[\]\\]/g, '');
+  public async listEntities(query: ListQueryModel, id?: string | ObjectId): Promise<ListingResult<Entity>> {
+    const { options, filter } = this.transformToMongoDBFilterOption(query, id);
+    return EntityService.collection()
+      // @ts-ignore
+      .find(filter, options)
+      .toArray()
+      .then(async dbos => {
+        const totalItems: number = await EntityService.countCollectionItems(filter);
+        return {
+          offset: query.offset,
+          rows: dbos.length,
+          totalItems,
+          items: dbos as Entity[]
+        };
+      });
   }
 
   // eslint-disable-next-line max-len
@@ -188,13 +194,13 @@ export class EntityService {
         filter.$or = [
           {
             label: {
-              $regex: this.escapeRegExp(query.text),
+              $regex: UtilService.escapeRegExp(query.text),
               $options: 'gi'
             }
           },
           {
             description: {
-              $regex: this.escapeRegExp(query.text),
+              $regex: UtilService.escapeRegExp(query.text),
               $options: 'gi'
             }
           }

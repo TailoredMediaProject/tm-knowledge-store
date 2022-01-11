@@ -4,15 +4,15 @@ import {instance as persistenceService} from './persistence.service';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import ListQueryModel from '../models/list-query.model';
 import {ListingResult} from '../models/listing-result.model';
+import {entityServiceInstance} from './entity.service';
 import {UtilService} from './util.service';
-import {publicDecrypt} from 'crypto';
 
 export class VocabularyService {
   private static collection(): Collection {
     return persistenceService.db().collection('vocabularies');
   }
 
-  private static countCollectionItems(filter: Filter<Vocabulary>): Promise<number> {
+  public static countCollectionItems(filter: Filter<Vocabulary>): Promise<number> {
     // @ts-ignore
     return this.collection().countDocuments(filter);
   }
@@ -29,39 +29,46 @@ export class VocabularyService {
       .then((id) => this.getVocabular(id));
   }
 
-  public async getVocabular(id: string | ObjectId): Promise<Vocabulary> {
-    const pipeline = this.createMongoAggregationPipeline({matchIds: [id], addEntityCount: true});
-    const aggregationCursor = VocabularyService.collection().aggregate(pipeline);
-
-    const vocab = <Vocabulary> await aggregationCursor.next();
-
-    if (!vocab) {
-      throw new KnowledgeError(404, 'Vocabulary', 'Vocabulary not found!');
-    }
-    return vocab;
-  }
-
-  public async deleteVocab(id: string | ObjectId, date: Date): Promise<boolean> {
-    if (!ObjectId.isValid(id)) {
-      throw new KnowledgeError(400, 'ID', 'ID is not valid');
-    }
-
-    const result = await VocabularyService.collection().findOne({ _id: new ObjectId(id) });
-
-    if (!result) {
-      throw new KnowledgeError(404, 'Document', 'No document matches the provided ID.');
-    }
-
+  public getVocabular(id: string | ObjectId): Promise<Vocabulary> {
+    const pipeline = this.createMongoAggregationPipeline({matchIds: new ObjectId(id)});
+    console.log(pipeline);
     return VocabularyService.collection()
-      .deleteOne({ _id: new ObjectId(id), lastModified: date })
-      .then((r: DeleteResult) => {
-        if (r.deletedCount === 1) {
-          return true;
-        } else {
-          throw new KnowledgeError(412, 'Precondition Failed', 'If-Unmodified-Since has changed in the meantime!');
+      .aggregate(pipeline)
+      .next()
+      .then(result => {
+        if (!!result?._id) {
+          return result as Vocabulary;
         }
-      });
+        throw new KnowledgeError(404, 'Vocabulary', 'Vocabulary not found!');
+      })
   }
+
+  /*public getVocabular = (id: string | ObjectId): Promise<Vocabulary> => VocabularyService.collection()
+    .aggregate(this.createMongoAggregationPipeline({matchIds: [new ObjectId(id)]}))
+    .next()
+    .then(result => {
+      if (!!result?._id) {
+        return result as Vocabulary;
+      }
+      throw new KnowledgeError(404, 'Vocabulary', 'Vocabulary not found!');
+    })*/
+
+  public deleteVocab = (id: string | ObjectId, date: Date): Promise<boolean> => VocabularyService.collection()
+    .deleteOne({ _id: new ObjectId(id), lastModified: date })
+    .then(async (r: DeleteResult) => {
+      if (r.deletedCount === 1) {
+        return entityServiceInstance.removeEntitiesFromVocabWithId(id).then(() => true);
+      } else {
+        await VocabularyService.collection()
+          .findOne({ _id: new ObjectId(id) })
+          .then(result => {
+            if (!!result?._id) {
+              throw new KnowledgeError(412, 'Precondition Failed', 'If-Unmodified-Since has changed in the meantime!');
+            }
+            throw new KnowledgeError(404, 'Not Found', 'If-Unmodified-Since has changed in the meantime!');
+          });
+      }
+    });
 
   public updateVocab(id: string, ifUnmodifiedSince: Date, newVocab: Vocabulary): Promise<Vocabulary> {
     const query: Filter<Vocabulary> = {
@@ -120,16 +127,38 @@ export class VocabularyService {
   // eslint-disable-rows-line @typescript-eslint/explicit-module-boundary-types
   public async listVocab(query: ListQueryModel): Promise<ListingResult<Vocabulary>> {
     const { options, filter } = this.transformToMongoDBFilterOption(query);
-    const pipeline = this.createMongoAggregationPipeline({addEntityCount: true, filter, options});
+    const pipeline = this.createMongoAggregationPipeline({filter, options});
+    const itemPromise = VocabularyService.collection().aggregate(pipeline).toArray();
+    const totalItemsPromise = VocabularyService.countCollectionItems(filter);
+    return Promise.all([itemPromise, totalItemsPromise])
+      .then(result => {
+        console.log(result[0]);
+        return {
+          offset: query.offset,
+          rows: result[0].length,
+          totalItems: result[1],
+          items: result[0] as Vocabulary[]
+        }
+      })
+    /*  const aggregationCursor = VocabularyService.collection().aggregate(pipeline);
+    for await (const item of aggregationCursor) {
+      console.log(item);
+    }*/
+
     // @ts-ignore
-    const dbos: Vocabulary[] = (await VocabularyService.collection().find(filter, options).toArray()) as Vocabulary[];
-    const totalItems: number = await VocabularyService.countCollectionItems(filter);
-    return {
-      offset: query.offset,
-      rows: dbos.length,
-      totalItems,
-      items: dbos
-    };
+  /*  return VocabularyService.collection()
+      // @ts-ignore
+      .find(filter, options)
+      .toArray()
+      .then(async dbos => {
+        const totalItems: number = await ;
+        return {
+          offset: query.offset,
+          rows: dbos.length,
+          totalItems,
+          items: dbos as Vocabulary[]
+        };
+      });*/
   }
 
   // eslint-disable-next-line max-len
@@ -208,56 +237,62 @@ export class VocabularyService {
   }
 
   private createMongoAggregationPipeline(param: {
-    matchIds?: Array<string|ObjectId>,
+    matchIds?: string|ObjectId,
     filter?: Filter<Vocabulary>,
-    options?: FindOptions,
-    addEntityCount: boolean}): Document[] {
+    options?: FindOptions}): Document[] {
     const pipeline = [];
 
     if (param.matchIds) {
-      const ids = param.matchIds.map(id => new ObjectId(id));
-      const matchData = {};
-      // @ts-ignore
-      matchData['$match'] = {'$in': ids}
+      const matchData = {'$match': {
+        '_id': param.matchIds
+      }
+      };
       pipeline.push(matchData);
     }
 
-    if (param.filter) {
+    if (param.filter && Object.keys(param.filter).length > 0) {
       pipeline.push(param.filter);
     }
 
-    if (param.options) {
+    if (param.options && Object.keys(param.options).length > 0) {
       pipeline.push(param.options);
     }
 
-    if (param.addEntityCount) {
-      const lookupData = {
-        $lookup:
-            {
-              from: 'entities',
-              pipeline: [
-                {
-                  $match: {
-                    $expr: {
-                      $eq: ['$vocabulary','$$_id']
-                    }
+    const lookupData = {
+      $lookup:
+          {
+            from: 'entities',
+            let:{vocabId: '$_id'},
+            pipeline: [
+              {
+                $match: {
+                  $expr: {
+                    $eq: ['$vocabulary','$$vocabId']
                   }
-                },
-              ],
-              as: 'count'
-            }
-      };
-      const unwindData = {
-        $unwind: '$entityCount'
-      };
-      const addField = {
-        $addField: {
-          entityCount: '$entityCount.count'
+                }
+              },
+              {
+                $count: 'count'
+              }
+            ],
+            as: 'entityCount'
+          }
+    };
+    const unwindData = {
+      $unwind: {
+        path: '$entityCount',
+        preserveNullAndEmptyArrays: true
+      }
+    };
+    const addFields = {
+      $addFields: {
+        entityCount: {
+          $ifNull: ['$entityCount.count', 0]
         }
-      };
-      pipeline.push(lookupData, unwindData, addField);
+      }
+    };
+    pipeline.push(lookupData, unwindData, addFields);
 
-    }
     return pipeline;
   }
 }
