@@ -46,6 +46,38 @@ export class EntityService {
         }));
   }
 
+  public getEntityWithoutVocab(entityID: string | ObjectId): Promise<Entity> {
+    return EntityService.collection()
+      .findOne({ _id: new ObjectId(entityID) })
+      .then(result => {
+        if (!!result?._id) {
+          return result as Entity;
+        }
+        return Promise.reject(`Target entity with id '${entityID}' not found`);
+      });
+  }
+
+  public getEntities(vocabID: string | ObjectId): Promise<Entity[]> {
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+    const vocabNotFound = () => {
+      throw new KnowledgeError(404,
+        'Not found',
+        `Target vocabulary '${vocabID}' not found`);
+    };
+
+    return vocabularyService.getVocabular(vocabID)
+      .then((vocab: Vocabulary) => {
+        if (!!vocab?._id) {
+          return EntityService.collection()
+            .find({ vocabulary: new ObjectId(vocabID) })
+            .toArray()
+            .then(e => e as Entity[]);
+        }
+        vocabNotFound();
+      })
+      .catch(vocabNotFound);
+  }
+
   updateEntity(vocabID: string, entityID: string, ifUnmodifiedSince: Date, entity: Entity): Promise<Entity> {
     const filter: Filter<Entity> = {
       _id: new ObjectId(entityID),

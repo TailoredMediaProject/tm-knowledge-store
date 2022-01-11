@@ -4,6 +4,7 @@ import {instance as persistenceService} from './persistence.service';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import ListQueryModel from '../models/list-query.model';
 import {ListingResult} from '../models/listing-result.model';
+import {UtilService} from './util.service';
 
 export class VocabularyService {
   private static collection(): Collection {
@@ -126,10 +127,6 @@ export class VocabularyService {
       });
   }
 
-  private escapeRegExp(string: string): string {
-    return string.replace(/[.*+?^${}()|[\]\\]/g, '');
-  }
-
   // eslint-disable-next-line max-len
   private transformToMongoDBFilterOption(query?: ListQueryModel): { options: FindOptions; filter: Filter<Vocabulary> } {
     const options: FindOptions = {};
@@ -140,13 +137,13 @@ export class VocabularyService {
         filter.$or = [
           {
             label: {
-              $regex: this.escapeRegExp(query.text),
+              $regex: UtilService.escapeRegExp(query.text),
               $options: 'gi'
             }
           },
           {
             description: {
-              $regex: this.escapeRegExp(query.text),
+              $regex: UtilService.escapeRegExp(query.text),
               $options: 'gi'
             }
           }
