@@ -12,6 +12,11 @@ export class EntityService {
     return persistenceService.db().collection('entities');
   }
 
+  private static countCollectionItems(filter: Filter<Entity>): Promise<number> {
+    // @ts-ignore
+    return this.collection().countDocuments(filter);
+  }
+
   public createEntity(entity: Entity): Promise<Entity> {
     return vocabularyService.getVocabular(entity.vocabulary).then(() =>
       EntityService.collection()
@@ -106,12 +111,15 @@ export class EntityService {
       // @ts-ignore
       .find(filter, options)
       .toArray()
-      .then(dbos => ({
-        offset: query.offset,
-        rows: dbos.length,
-        totalItems: 0, // TODO
-        items: dbos as Entity[]
-      }));
+      .then(dbos => {
+        const totalItems: number = await EntityService.countCollectionItems(filter);
+        return {
+          offset: query.offset,
+          rows: dbos.length,
+          totalItems,
+          items: dbos as Entity[]
+        };
+      });
   }
 
   private escapeRegExp(string: string): string {
@@ -130,13 +138,15 @@ export class EntityService {
 
     if (!!query?.type) {
       /* eslint-disable */
-      if (Object.values(TagType).includes(query.type as TagType)) {
-        filter.type = query.type;
+      const capitalType: TagType = query.type.toUpperCase() as TagType;
+
+      if (Object.keys(TagType).includes(capitalType)) {
+        filter.type = capitalType;
       } else {
         throw new KnowledgeError(404, 'Bad Request', 'Invalid Parameter of type \'type\'!');
       }
+      /* eslint-enable */
     }
-    /* eslint-enable */
 
     if (!!query) {
       if (!!query?.text) {

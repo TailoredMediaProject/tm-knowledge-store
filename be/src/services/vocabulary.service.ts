@@ -10,6 +10,11 @@ export class VocabularyService {
     return persistenceService.db().collection('vocabularies');
   }
 
+  private static countCollectionItems(filter: Filter<Vocabulary>): Promise<number> {
+    // @ts-ignore
+    return this.collection().countDocuments(filter);
+  }
+
   public createVocab(newVocab: Vocabulary): Promise<Vocabulary> {
     return VocabularyService.collection()
       .insertOne({
@@ -110,12 +115,15 @@ export class VocabularyService {
       // @ts-ignore
       .find(filter, options)
       .toArray()
-      .then(dbos => ({
-        offset: query.offset,
-        rows: dbos.length,
-        totalItems: 0, // TODO
-        items: dbos as Vocabulary[]
-      }));
+      .then(dbos => {
+        const totalItems: number = await VocabularyService.countCollectionItems(filter);
+        return {
+          offset: query.offset,
+          rows: dbos.length,
+          totalItems,
+          items: dbos as Vocabulary[]
+        };
+      });
   }
 
   private escapeRegExp(string: string): string {
