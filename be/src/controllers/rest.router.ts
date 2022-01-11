@@ -7,64 +7,9 @@ import {entityServiceInstance} from '../services/entity.service';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import {ListingResult} from '../models/listing-result.model';
 import ListQueryModel from '../models/query-list.model';
-import {ObjectId} from 'mongodb';
 import {UtilService} from '../services/util.service';
 
 const router: Router = Router();
-
-const vocabDto2Dbo = (dto: VocabularyDTO): Vocabulary => ({
-  _id: undefined,
-  created: undefined,
-  description: dto.description,
-  label: dto.label,
-  lastModified: undefined
-});
-
-const vocabDbo2Dto = (dbo: Vocabulary): VocabularyDTO => ({
-  id: dbo._id.toHexString(),
-  label: dbo.label,
-  description: dbo.description,
-  created: dbo.created.toISOString(),
-  lastModified: dbo.lastModified.toISOString(),
-  entityCount: -1
-});
-
-
-const entityDto2Dbo = (dto: EntityDTO, next: NextFunction): Entity => ({
-  /* eslint-disable */
-  _id: !!dto?.id ? new ObjectId(UtilService.checkId(
-    // @ts-ignore
-    dto?.id, 'entity',
-    next)) : undefined,
-  vocabulary: new ObjectId(UtilService.checkId(
-    // @ts-ignore
-    dto?.vocabulary, 'vocabulary',
-    next)),
-  /* eslint-enable */
-  type: dto?.type?.toUpperCase(),
-  label: dto.label,
-  description: dto.description,
-  created: undefined,
-  lastModified: undefined,
-  externalResources: dto.externalResources,
-  sameAs: dto.sameAs,
-  data: undefined
-});
-
-const entityDbo2Dto = (dbo: Entity): EntityDTO => ({
-  id: dbo._id.toHexString(),
-  vocabulary: dbo.vocabulary.toHexString(),
-  // @ts-ignore
-  type: dbo?.type?.toUpperCase(),
-  label: dbo.label,
-  description: dbo.description,
-  created: dbo.created.toISOString(),
-  lastModified: dbo.lastModified.toISOString(),
-  externalResources: dbo.externalResources,
-  sameAs: dbo.sameAs,
-  data: dbo.data,
-  canonicalLink: undefined
-});
 
 router.get('/vocab', (req: Request, res: Response, next: NextFunction) => {
   if (!UtilService.checkQueryParams(['text', 'createdSince', 'modifiedSince', 'sort', 'offset', 'rows'], req?.query)) {
@@ -78,7 +23,7 @@ router.get('/vocab', (req: Request, res: Response, next: NextFunction) => {
 
     vocabularyService
       .listVocab(queryListModel)
-      .then((r: ListingResult<Vocabulary>) => ({ ...r, items: r.items.map((v: Vocabulary) => vocabDbo2Dto(v)) }))
+      .then((r: ListingResult<Vocabulary>) => ({ ...r, items: r.items.map((v: Vocabulary) => UtilService.vocabDbo2Dto(v)) }))
       .then((r: ListingResult<VocabularyDTO>) => res.json(r))
       .catch(next);
   }
@@ -86,11 +31,11 @@ router.get('/vocab', (req: Request, res: Response, next: NextFunction) => {
 
 router.post('/vocab', (req: Request, res: Response, next: NextFunction) => {
   const body = <VocabularyDTO> req.body;
-  const newVocab = vocabDto2Dbo(body);
+  const newVocab: Vocabulary = UtilService.vocabDto2Dbo(body);
 
   vocabularyService
     .createVocab(newVocab)
-    .then((v) => vocabDbo2Dto(v))
+    .then((v) => UtilService.vocabDbo2Dto(v))
     .then((v) => {
       const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}/${v.id}`;
 
@@ -107,8 +52,9 @@ router.put('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
   if (!!ifUnmodifiedSince) {
     if (!!req?.params?.id) {
       vocabularyService
-        .updateVocab(req?.params?.id, new Date(ifUnmodifiedSince), vocabDto2Dbo(req.body as VocabularyDTO))
-        .then((v: Vocabulary) => res.json(vocabDbo2Dto(v)))
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        .updateVocab(req?.params?.id, new Date(ifUnmodifiedSince), UtilService.vocabDto2Dbo(req.body as VocabularyDTO))
+        .then((v: Vocabulary) => res.json(UtilService.vocabDbo2Dto(v)))
         .catch(next);
     } else {
       next(new KnowledgeError(400, 'Bad Request', 'Missing or invalid ID'));
@@ -121,7 +67,7 @@ router.put('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
 router.get('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
   vocabularyService
     .getVocabular(req.params.id)
-    .then((v) => vocabDbo2Dto(v))
+    .then((v) => UtilService.vocabDbo2Dto(v))
     .then((v) => res.json(v))
     .catch(next);
 });
@@ -157,7 +103,7 @@ router.get('/vocab/:vId/entities', (req: Request, res: Response, next: NextFunct
 
     entityServiceInstance
       .listEntities(queryListModel, vId)
-      .then((r: ListingResult<Entity>) => ({ ...r, items: r.items.map((v: Entity) => entityDbo2Dto(v)) }))
+      .then((r: ListingResult<Entity>) => ({ ...r, items: r.items.map((v: Entity) => UtilService.entityDbo2Dto(v)) }))
       .then((r: ListingResult<EntityDTO>) => res.json(r))
       .catch(next);
   }
@@ -182,11 +128,11 @@ router.post('/vocab/:id/entities', (req: Request, res: Response, next: NextFunct
   req.body.vocabulary = vocabID;
 
   const body = <EntityDTO> req.body;
-  const entity: Entity = entityDto2Dbo(body, next);
+  const entity: Entity = UtilService.entityDto2Dbo(body, next);
 
   entityServiceInstance
     .createEntity(entity)
-    .then(entity => entityDbo2Dto(entity))
+    .then(entity => UtilService.entityDbo2Dto(entity))
     .then(ent => {
       const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}/${ent.id}`;
 
@@ -204,8 +150,9 @@ router.put('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: Next
   req.body.vocabulary = vId;
 
   entityServiceInstance
-    .updateEntity(vId, eId, ifUnmodifiedSince, entityDto2Dbo(req.body as EntityDTO, next))
-    .then((e: Entity) => res.json(entityDbo2Dto(e)))
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+    .updateEntity(vId, eId, ifUnmodifiedSince, UtilService.entityDto2Dbo(req.body as EntityDTO, next))
+    .then((e: Entity) => res.json(UtilService.entityDbo2Dto(e)))
     .catch(next);
 });
 

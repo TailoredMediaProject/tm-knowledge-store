@@ -7,5 +7,8 @@ export const KnowledgeErrorMiddleware = (err: KnowledgeError, req: Request, res:
     console.error(err);
     const body = !!err?.data ? err.data : { title: err.title, message: err.message };
     res.status(err.statusCode).json(body);
+  } else {
+    // TODO TM-107
+    res.status(500).json({title: 'Internal Server Error', message: err});
   }
 };

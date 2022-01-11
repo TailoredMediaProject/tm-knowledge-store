@@ -46,6 +46,17 @@ export class EntityService {
         }));
   }
 
+  public getEntityWithoutVocab(entityID: string | ObjectId): Promise<Entity> {
+    return EntityService.collection()
+      .findOne({ _id: new ObjectId(entityID) })
+      .then(result => {
+        if (!!result?._id) {
+          return result as Entity;
+        }
+        return Promise.reject(`Target entity with id '${entityID}' not found`);
+      });
+  }
+
   public getEntities(vocabID: string | ObjectId): Promise<Entity[]> {
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     const vocabNotFound = () => {
@@ -162,13 +173,15 @@ export class EntityService {
 
     if (!!query?.type) {
       /* eslint-disable */
-      if (Object.values(TagType).includes(query.type as TagType)) {
-        filter.type = query.type;
+      const capitalType: TagType = query.type.toUpperCase() as TagType;
+
+      if (Object.keys(TagType).includes(capitalType)) {
+        filter.type = capitalType;
       } else {
         throw new KnowledgeError(404, 'Bad Request', 'Invalid Parameter of type \'type\'!');
       }
+      /* eslint-enable */
     }
-    /* eslint-enable */
 
     if (!!query) {
       if (!!query?.text) {
