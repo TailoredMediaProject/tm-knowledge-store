@@ -130,18 +130,8 @@ export class EntityService {
   }
 
   public async deleteMultipleEntities(query: Filter<Entity>): Promise<boolean> {
-    return EntityService.countCollectionItems(query).then(count => 
-      count === 0
-        ? true
-      // @ts-ignore
-        : EntityService.collection().deleteMany(query).then(r => {
-          if (r.deletedCount === count) {
-            return true;
-          } else {
-            return Promise.reject({statusCode: 404, title: 'Entity', 'message': 'Could not delete all entities!'});
-          }
-        })
-    )
+    // @ts-ignore
+    return EntityService.collection().deleteMany(query).then(() => true);
   }
 
   public async listEntities(query: ListQueryModel, id?: string | ObjectId): Promise<ListingResult<Entity>> {
