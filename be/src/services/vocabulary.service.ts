@@ -56,7 +56,7 @@ export class VocabularyService {
       .deleteOne({ _id: new ObjectId(id), lastModified: date })
       .then((r: DeleteResult) => {
         if (r.deletedCount === 1) {
-          return entityServiceInstance.deleteMultipleEntities({vocabulary: new ObjectId(id)});
+          return entityServiceInstance.removeEntitiesFromVocabWithId(id).then(() => true);
         } else {
           throw new KnowledgeError(412, 'Precondition Failed', 'If-Unmodified-Since has changed in the meantime!');
         }

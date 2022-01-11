@@ -129,9 +129,8 @@ export class EntityService {
       });
   }
 
-  public async deleteMultipleEntities(query: Filter<Entity>): Promise<boolean> {
-    // @ts-ignore
-    return EntityService.collection().deleteMany(query).then(() => true);
+  public async removeEntitiesFromVocabWithId(id: string | ObjectId): Promise<number> {
+    return EntityService.collection().deleteMany({vocabulary: new ObjectId(id)}).then(r => r.deletedCount);
   }
 
   public async listEntities(query: ListQueryModel, id?: string | ObjectId): Promise<ListingResult<Entity>> {
