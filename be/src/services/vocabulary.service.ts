@@ -4,6 +4,7 @@ import {instance as persistenceService} from './persistence.service';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import ListQueryModel from '../models/list-query.model';
 import {ListingResult} from '../models/listing-result.model';
+import {entityServiceInstance} from './entity.service';
 import {UtilService} from './util.service';
 
 export class VocabularyService {
@@ -41,7 +42,7 @@ export class VocabularyService {
     .deleteOne({ _id: new ObjectId(id), lastModified: date })
     .then(async (r: DeleteResult) => {
       if (r.deletedCount === 1) {
-        return true;
+        return entityServiceInstance.removeEntitiesFromVocabWithId(id).then(() => true);
       } else {
         await VocabularyService.collection()
           .findOne({ _id: new ObjectId(id) })

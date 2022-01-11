@@ -142,6 +142,10 @@ export class EntityService {
       }
     });
 
+  public async removeEntitiesFromVocabWithId(id: string | ObjectId): Promise<number> {
+    return EntityService.collection().deleteMany({vocabulary: new ObjectId(id)}).then(r => r.deletedCount);
+  }
+
   public async listEntities(query: ListQueryModel, id?: string | ObjectId): Promise<ListingResult<Entity>> {
     const { options, filter } = this.transformToMongoDBFilterOption(query, id);
     return EntityService.collection()
