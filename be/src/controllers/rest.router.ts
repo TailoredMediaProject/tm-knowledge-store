@@ -40,7 +40,7 @@ const entityDto2Dbo = (dto: EntityDTO, next: NextFunction): Entity => ({
     // @ts-ignore
     dto?.vocabulary, 'vocabulary',
     next)),
-  /* eslint-enable */
+  /* eslint-disable */
   type: dto?.type?.toUpperCase(),
   label: dto.label,
   description: dto.description,

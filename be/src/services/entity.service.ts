@@ -114,7 +114,7 @@ export class EntityService {
   public async deleteEntity(vocabID: string, entityID: string, lastModified: Date): Promise<boolean> {
 
     return EntityService.collection()
-        .deleteOne({ _id: new ObjectId(entityID), vocabulary: new ObjectId(vocabID), lastModified: lastModified })
+      .deleteOne({ _id: new ObjectId(entityID), vocabulary: new ObjectId(vocabID), lastModified: lastModified })
       .then(r => {
         if (r.deletedCount === 1) {
           return true;
@@ -158,13 +158,15 @@ export class EntityService {
 
     if (!!query?.type) {
       /* eslint-disable */
-      if (Object.values(TagType).includes(query.type as TagType)) {
-        filter.type = query.type;
+      const capitalType: TagType = query.type.toUpperCase() as TagType;
+
+      if (Object.keys(TagType).includes(capitalType)) {
+        filter.type = capitalType;
       } else {
         throw new KnowledgeError(404, 'Bad Request', 'Invalid Parameter of type \'type\'!');
       }
+      /* eslint-enable */
     }
-    /* eslint-enable */
 
     if (!!query) {
       if (!!query?.text) {
