@@ -74,9 +74,10 @@ router.get('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
 
 router.delete('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
   const date: Date = UtilService.checkIfUnmodifiedHeader(req, next);
+  const vId = UtilService.checkId(req?.params?.id, 'vocabulary', next);
 
   vocabularyService
-    .deleteVocab(req.params.id, date)
+    .deleteVocab(vId, date)
     .then((result) => {
       if (result) {
         res.status(204).end();

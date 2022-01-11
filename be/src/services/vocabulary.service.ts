@@ -12,7 +12,7 @@ export class VocabularyService {
     return persistenceService.db().collection('vocabularies');
   }
 
-  private static countCollectionItems(filter: Filter<Vocabulary>): Promise<number> {
+  public static countCollectionItems(filter: Filter<Vocabulary>): Promise<number> {
     // @ts-ignore
     return this.collection().countDocuments(filter);
   }
@@ -29,40 +29,31 @@ export class VocabularyService {
       .then((id) => this.getVocabular(id));
   }
 
-  public async getVocabular(id: string | ObjectId): Promise<Vocabulary> {
-
-    const vocab = <Vocabulary> await VocabularyService.collection().findOne({ _id: new ObjectId(id) });
-
-    if (!vocab) {
+  public getVocabular = (id: string | ObjectId): Promise<Vocabulary> => VocabularyService.collection()
+    .findOne({ _id: new ObjectId(id) })
+    .then((result) => {
+      if (!!result?._id) {
+        return result as Vocabulary;
+      }
       throw new KnowledgeError(404, 'Vocabulary', 'Vocabulary not found!');
-    }
+    });
 
-    return VocabularyService.collection()
-      .findOne({ _id: new ObjectId(id) })
-      .then((x) => <Vocabulary> x);
-  }
-
-  public async deleteVocab(id: string | ObjectId, date: Date): Promise<boolean> {
-    if (!ObjectId.isValid(id)) {
-      throw new KnowledgeError(400, 'ID', 'ID is not valid');
-    }
-
-    const result = await VocabularyService.collection().findOne({ _id: new ObjectId(id) });
-
-    if (!result) {
-      throw new KnowledgeError(404, 'Document', 'No document matches the provided ID.');
-    }
-
-    return VocabularyService.collection()
-      .deleteOne({ _id: new ObjectId(id), lastModified: date })
-      .then((r: DeleteResult) => {
-        if (r.deletedCount === 1) {
-          return entityServiceInstance.removeEntitiesFromVocabWithId(id).then(() => true);
-        } else {
-          throw new KnowledgeError(412, 'Precondition Failed', 'If-Unmodified-Since has changed in the meantime!');
-        }
-      });
-  }
+  public deleteVocab = (id: string | ObjectId, date: Date): Promise<boolean> => VocabularyService.collection()
+    .deleteOne({ _id: new ObjectId(id), lastModified: date })
+    .then(async (r: DeleteResult) => {
+      if (r.deletedCount === 1) {
+        return entityServiceInstance.removeEntitiesFromVocabWithId(id).then(() => true);
+      } else {
+        await VocabularyService.collection()
+          .findOne({ _id: new ObjectId(id) })
+          .then(result => {
+            if (!!result?._id) {
+              throw new KnowledgeError(412, 'Precondition Failed', 'If-Unmodified-Since has changed in the meantime!');
+            }
+            throw new KnowledgeError(404, 'Not Found', 'If-Unmodified-Since has changed in the meantime!');
+          });
+      }
+    });
 
   public updateVocab(id: string, ifUnmodifiedSince: Date, newVocab: Vocabulary): Promise<Vocabulary> {
     const query: Filter<Vocabulary> = {
@@ -122,14 +113,19 @@ export class VocabularyService {
   public async listVocab(query: ListQueryModel): Promise<ListingResult<Vocabulary>> {
     const { options, filter } = this.transformToMongoDBFilterOption(query);
     // @ts-ignore
-    const dbos: Vocabulary[] = (await VocabularyService.collection().find(filter, options).toArray()) as Vocabulary[];
-    const totalItems: number = await VocabularyService.countCollectionItems(filter);
-    return {
-      offset: query.offset,
-      rows: dbos.length,
-      totalItems,
-      items: dbos
-    };
+    return VocabularyService.collection()
+      // @ts-ignore
+      .find(filter, options)
+      .toArray()
+      .then(async dbos => {
+        const totalItems: number = await VocabularyService.countCollectionItems(filter);
+        return {
+          offset: query.offset,
+          rows: dbos.length,
+          totalItems,
+          items: dbos as Vocabulary[]
+        };
+      });
   }
 
   // eslint-disable-next-line max-len
