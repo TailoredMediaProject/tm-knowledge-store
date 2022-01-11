@@ -2,7 +2,7 @@ import {instance as persistenceService} from './persistence.service';
 import {Collection, Filter, FindOptions, InsertOneResult, ModifyResult, ObjectId, UpdateFilter} from 'mongodb';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import {Entity} from '../models/dbo.models';
-import {vocabularyService} from './vocabulary.service';
+import {VocabularyService, vocabularyService} from './vocabulary.service';
 import ListQueryModel from '../models/list-query.model';
 import {ListingResult} from '../models/listing-result.model';
 import {TagType} from '../generated';
@@ -74,8 +74,12 @@ export class EntityService {
       // @ts-ignore
       .then(async (result: ModifyResult<Entity>) => {
         if (result?.lastErrorObject?.updatedExisting === false || !result.value) {
-          // TODO use vocab count in the future
-          await vocabularyService.getVocabular(vocabID); // Throws appropiate error if not found
+          await VocabularyService.countCollectionItems({_id: new ObjectId(vocabID)})
+            .then((count: number) => {
+              if(count < 1) {
+                throw new KnowledgeError(404, 'Not Found', `Vocab with id '${vocabID}' not found`);
+              }
+            });
           await this.getEntity(vocabID, entityID)
             .then((dbo: Entity) => {
               if (!!dbo && new Date(dbo.lastModified).getTime() > ifUnmodifiedSince.getTime()) {
@@ -111,7 +115,7 @@ export class EntityService {
       // @ts-ignore
       .find(filter, options)
       .toArray()
-      .then(dbos => {
+      .then(async dbos => {
         const totalItems: number = await EntityService.countCollectionItems(filter);
         return {
           offset: query.offset,

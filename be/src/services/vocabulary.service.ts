@@ -10,7 +10,7 @@ export class VocabularyService {
     return persistenceService.db().collection('vocabularies');
   }
 
-  private static countCollectionItems(filter: Filter<Vocabulary>): Promise<number> {
+  public static countCollectionItems(filter: Filter<Vocabulary>): Promise<number> {
     // @ts-ignore
     return this.collection().countDocuments(filter);
   }
@@ -115,7 +115,7 @@ export class VocabularyService {
       // @ts-ignore
       .find(filter, options)
       .toArray()
-      .then(dbos => {
+      .then(async dbos => {
         const totalItems: number = await VocabularyService.countCollectionItems(filter);
         return {
           offset: query.offset,
