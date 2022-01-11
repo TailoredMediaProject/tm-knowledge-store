@@ -10,6 +10,11 @@ export class VocabularyService {
     return persistenceService.db().collection('vocabularies');
   }
 
+  private static countCollectionItems(filter: Filter<Vocabulary>): Promise<number> {
+    // @ts-ignore
+    return this.collection().countDocuments(filter);
+  }
+
   public createVocab(newVocab: Vocabulary): Promise<Vocabulary> {
     return VocabularyService.collection()
       .insertOne({
@@ -116,10 +121,11 @@ export class VocabularyService {
     const { options, filter } = this.transformToMongoDBFilterOption(query);
     // @ts-ignore
     const dbos: Vocabulary[] = (await VocabularyService.collection().find(filter, options).toArray()) as Vocabulary[];
+    const totalItems: number = await VocabularyService.countCollectionItems(filter);
     return {
       offset: query.offset,
       rows: dbos.length,
-      totalItems: 0, // TODO
+      totalItems,
       items: dbos
     };
   }
