@@ -100,6 +100,6 @@ export class UtilService {
     description: dbo.description,
     created: dbo.created.toISOString(),
     lastModified: dbo.lastModified.toISOString(),
-    entityCount: -1
+    entityCount: dbo.entityCount
   });
 }

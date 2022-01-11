@@ -1,10 +1,11 @@
-import {Collection, DeleteResult, Filter, FindOptions, ModifyResult, ObjectId, UpdateFilter} from 'mongodb';
+import {Collection, DeleteResult, Document, Filter, FindOptions, ModifyResult, ObjectId, UpdateFilter} from 'mongodb';
 import {Vocabulary} from '../models/dbo.models';
 import {instance as persistenceService} from './persistence.service';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import ListQueryModel from '../models/list-query.model';
 import {ListingResult} from '../models/listing-result.model';
 import {UtilService} from './util.service';
+import {publicDecrypt} from 'crypto';
 
 export class VocabularyService {
   private static collection(): Collection {
@@ -29,15 +30,15 @@ export class VocabularyService {
   }
 
   public async getVocabular(id: string | ObjectId): Promise<Vocabulary> {
+    const pipeline = this.createMongoAggregationPipeline({matchIds: [id], addEntityCount: true});
+    const aggregationCursor = VocabularyService.collection().aggregate(pipeline);
 
-    //const vocab = <Vocabulary> await VocabularyService.collection().findOne({ _id: new ObjectId(id) });
-    const vocab = <Vocabulary> await
+    const vocab = <Vocabulary> await aggregationCursor.next();
 
     if (!vocab) {
       throw new KnowledgeError(404, 'Vocabulary', 'Vocabulary not found!');
     }
-
-    return Promise.resolve(vocab);
+    return vocab;
   }
 
   public async deleteVocab(id: string | ObjectId, date: Date): Promise<boolean> {
@@ -119,6 +120,7 @@ export class VocabularyService {
   // eslint-disable-rows-line @typescript-eslint/explicit-module-boundary-types
   public async listVocab(query: ListQueryModel): Promise<ListingResult<Vocabulary>> {
     const { options, filter } = this.transformToMongoDBFilterOption(query);
+    const pipeline = this.createMongoAggregationPipeline({addEntityCount: true, filter, options});
     // @ts-ignore
     const dbos: Vocabulary[] = (await VocabularyService.collection().find(filter, options).toArray()) as Vocabulary[];
     const totalItems: number = await VocabularyService.countCollectionItems(filter);
@@ -203,6 +205,60 @@ export class VocabularyService {
       }
     }
     return {};
+  }
+
+  private createMongoAggregationPipeline(param: {
+    matchIds?: Array<string|ObjectId>,
+    filter?: Filter<Vocabulary>,
+    options?: FindOptions,
+    addEntityCount: boolean}): Document[] {
+    const pipeline = [];
+
+    if (param.matchIds) {
+      const ids = param.matchIds.map(id => new ObjectId(id));
+      const matchData = {};
+      // @ts-ignore
+      matchData['$match'] = {'$in': ids}
+      pipeline.push(matchData);
+    }
+
+    if (param.filter) {
+      pipeline.push(param.filter);
+    }
+
+    if (param.options) {
+      pipeline.push(param.options);
+    }
+
+    if (param.addEntityCount) {
+      const lookupData = {
+        $lookup:
+            {
+              from: 'entities',
+              pipeline: [
+                {
+                  $match: {
+                    $expr: {
+                      $eq: ['$vocabulary','$$_id']
+                    }
+                  }
+                },
+              ],
+              as: 'count'
+            }
+      };
+      const unwindData = {
+        $unwind: '$entityCount'
+      };
+      const addField = {
+        $addField: {
+          entityCount: '$entityCount.count'
+        }
+      };
+      pipeline.push(lookupData, unwindData, addField);
+
+    }
+    return pipeline;
   }
 }
 

@@ -20,7 +20,6 @@ router.get('/vocab', (req: Request, res: Response, next: NextFunction) => {
       modifiedSince: !!req?.query?.modifiedSince ? new Date(`${req?.query.modifiedSince}`) : undefined,
       createdSince: !!req?.query?.createdSince ? new Date(`${req?.query.createdSince}`) : undefined
     };
-
     vocabularyService
       .listVocab(queryListModel)
       .then((r: ListingResult<Vocabulary>) => ({ ...r, items: r.items.map((v: Vocabulary) => UtilService.vocabDbo2Dto(v)) }))
