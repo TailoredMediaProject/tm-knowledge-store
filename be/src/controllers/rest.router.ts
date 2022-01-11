@@ -52,6 +52,7 @@ router.put('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
   if (!!ifUnmodifiedSince) {
     if (!!req?.params?.id) {
       vocabularyService
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         .updateVocab(req?.params?.id, new Date(ifUnmodifiedSince), UtilService.vocabDto2Dbo(req.body as VocabularyDTO))
         .then((v: Vocabulary) => res.json(UtilService.vocabDbo2Dto(v)))
         .catch(next);
@@ -149,6 +150,7 @@ router.put('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: Next
   req.body.vocabulary = vId;
 
   entityServiceInstance
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     .updateEntity(vId, eId, ifUnmodifiedSince, UtilService.entityDto2Dbo(req.body as EntityDTO, next))
     .then((e: Entity) => res.json(UtilService.entityDbo2Dto(e)))
     .catch(next);
