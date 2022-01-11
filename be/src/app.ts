@@ -4,7 +4,7 @@ import {Application, Router} from 'express';
 import RestRouter from './controllers/rest.router';
 import ResolveRouter from './controllers/resolve.router';
 import HealthRouter from './controllers/health.router';
-import {KnowledgeErrorMiddleware} from './controllers/knowledge-error.middleware';
+import {ErrorMiddleware} from './controllers/error.middleware';
 import express = require('express');
 import path = require('path');
 
@@ -24,8 +24,8 @@ const staticDir = process.env.BE_STATIC || 'static';
 app.use('/', express.static(path.join(__dirname, staticDir)));
 console.log('static files on /');
 
-console.log('Register KnowledgeErrorMiddleware');
-app.use(KnowledgeErrorMiddleware);
+console.log('Register ErrorMiddleware');
+app.use(ErrorMiddleware);
 
 // Listen on port
 const port: number = parseInt(process.env.BE_PORT || '8080', 10);
