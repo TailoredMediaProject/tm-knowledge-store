@@ -12,6 +12,11 @@ export class EntityService {
     return persistenceService.db().collection('entities');
   }
 
+  private static countCollectionItems(filter: Filter<Entity>): Promise<number> {
+    // @ts-ignore
+    return this.collection().countDocuments(filter);
+  }
+
   public createEntity(entity: Entity): Promise<Entity> {
     return vocabularyService.getVocabular(entity.vocabulary).then(() =>
       EntityService.collection()
@@ -114,6 +119,7 @@ export class EntityService {
         if (r.deletedCount === 1) {
           return true;
         } else {
+          // eslint-disable-next-line @typescript-eslint/no-misused-promises
           if (!!this.getEntity(vocabID, entityID)) {
             throw new KnowledgeError(412, 'Header', 'Entity has been modified since last refresh');
           } else {
@@ -127,11 +133,11 @@ export class EntityService {
     const { options, filter } = this.transformToMongoDBFilterOption(query, id);
     // @ts-ignore
     const dbos: Entity[] = (await EntityService.collection().find(filter, options).toArray()) as Entity[];
-    const size = dbos.length
+    const totalItems: number = await EntityService.countCollectionItems(filter);
     return {
       offset: query.offset,
       rows: dbos.length,
-      totalItems: size, // TODO
+      totalItems,
       items: dbos
     };
   }
