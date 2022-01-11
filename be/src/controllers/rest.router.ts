@@ -46,21 +46,16 @@ router.post('/vocab', (req: Request, res: Response, next: NextFunction) => {
 });
 
 router.put('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
-  const headerName = 'If-Unmodified-Since';
-  const ifUnmodifiedSince: string = req.header(headerName);
+  const ifUnmodifiedSince: Date = UtilService.checkIfUnmodifiedHeader(req, next);
 
-  if (!!ifUnmodifiedSince) {
-    if (!!req?.params?.id) {
-      vocabularyService
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-        .updateVocab(req?.params?.id, new Date(ifUnmodifiedSince), UtilService.vocabDto2Dbo(req.body as VocabularyDTO))
-        .then((v: Vocabulary) => res.json(UtilService.vocabDbo2Dto(v)))
-        .catch(next);
-    } else {
-      next(new KnowledgeError(400, 'Bad Request', 'Missing or invalid ID'));
-    }
+  if (!!req?.params?.id) {
+    vocabularyService
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      .updateVocab(req?.params?.id, ifUnmodifiedSince, UtilService.vocabDto2Dbo(req.body as VocabularyDTO))
+      .then((v: Vocabulary) => res.json(UtilService.vocabDbo2Dto(v)))
+      .catch(next);
   } else {
-    next(new KnowledgeError(428, 'Precondition Required', `Operation failed, ${headerName}-Header missing or falsy value!`));
+    next(new KnowledgeError(400, 'Bad Request', 'Missing or invalid ID'));
   }
 });
 
