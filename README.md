@@ -16,6 +16,7 @@ Use `docker-compose config` to verify that your `.yaml` is resolved correctly, t
 docker-compose up -d // start
 docker-compose down // stop
 ```
+but make sure that the frontend is build first!
 
 ## Docker Image
 

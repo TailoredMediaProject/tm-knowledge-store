@@ -9,10 +9,11 @@
     "debug": "DEBUG=express:* node dist/app.js",
     "test": "jest --passWithNoTests",
     "lint": "eslint --cache --fix ./src",
+    "clear": "rm -R -f node_modules dist coverage src/generated",
     "build": "tsc",
     "generate": "rm -R -f src/generated/* && openapi --input ../openapi.yaml --output ./src/generated",
     "generate:build": "npm run generate && npm run build",
-    "generate:build:start": "npm run generate && npm run build && npm run start",
+    "generate:build:start": "npm run generate:build && npm run start",
     "build:start": "npm run build && npm run start",
     "package": "npm run generate:build && copy-node-modules . ./dist"
   },
