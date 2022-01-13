@@ -30,7 +30,6 @@
   "dependencies": {
     "express": "^4.17.1",
     "mongodb": "^4.2.0",
-    "tm-entity-store-ui": "file:../fe",
     "typescript": "^4.1.6"
   },
   "devDependencies": {

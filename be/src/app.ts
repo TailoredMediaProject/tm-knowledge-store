@@ -7,7 +7,6 @@ import HealthRouter from './controllers/health.router';
 import {KnowledgeErrorMiddleware} from './controllers/knowledge-error.middleware';
 import express = require('express');
 
-const feDist = require.resolve('tm-entity-store-ui').replaceAll('/index.html', ''); // pointing to the .html alone is insufficient
 const app: Application = express();
 app.use(express.json());
 
@@ -18,8 +17,8 @@ console.log('Register OpenAPI-Spec v1 endpoints');
 const apiRoutes: Router[] = [RestRouter, ResolveRouter];
 app.use('/api/v1', apiRoutes);
 
-app.use('/', express.static(feDist));
-console.log(`Serving static files from '${feDist}' on '/'`);
+app.use('/', express.static('static'));
+console.log('Serving static files from \'/static\' on \'/\'');
 
 console.log('Register KnowledgeErrorMiddleware');
 app.use(KnowledgeErrorMiddleware);

@@ -5,27 +5,27 @@ WORKDIR /opt/app
 RUN apk add --no-cache openjdk11
 COPY ./openapi.yaml ./
 
-FROM base as fe-build-stage
-WORKDIR /opt/app/fe
-COPY ./fe/package*.json ./
-RUN npm ci
-COPY ./fe/ .
-RUN npm run generate:build
-
-FROM base as be-build-stage
+FROM base as build-stage
+# BE
 WORKDIR /opt/app/be
 COPY ./be/package*.json ./
 RUN npm ci
 COPY ./be ./
 RUN npm run package
 
+# Build FE into BE
+WORKDIR /opt/app/fe
+COPY ./fe/package*.json ./
+RUN npm ci
+COPY ./fe/ .
+RUN npm run generate:build
+
 # Merge BE + FE
 FROM $buildImage as production-stage
 RUN apk add --no-cache tini
 WORKDIR /app/
 RUN npm prune
-COPY --from=be-build-stage /opt/app/be/dist .
-COPY --from=fe-build-stage /opt/app/fe/dist ./node_modules/tm-entity-store-ui/dist
+COPY --from=build-stage /opt/app/be/dist .
 
 ENV NODE_ENV=production
 # BE
