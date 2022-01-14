@@ -86,6 +86,9 @@ export class UtilService {
     canonicalLink: undefined
   });
 
+  // TODO TM-92, transform with https://github.com/rubensworks/rdf-parse.js entity to turtle and return result
+  public static readonly entityDbo2Turtle = (e: Entity): EntityDTO => UtilService.entityDbo2Dto(e);
+
   public static readonly vocabDto2Dbo = (dto: VocabularyDTO): Vocabulary => ({
     _id: undefined,
     created: undefined,
