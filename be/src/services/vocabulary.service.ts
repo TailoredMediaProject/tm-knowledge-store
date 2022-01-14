@@ -6,6 +6,7 @@ import ListQueryModel from '../models/list-query.model';
 import {ListingResult} from '../models/listing-result.model';
 import {entityServiceInstance} from './entity.service';
 import {UtilService} from './util.service';
+import {HEADER_IF_UNMODIFIED_SINCE} from '../models/constants';
 
 export class VocabularyService {
   private static collection(): Collection {
@@ -48,9 +49,9 @@ export class VocabularyService {
           .findOne({ _id: new ObjectId(id) })
           .then(result => {
             if (!!result?._id) {
-              throw new KnowledgeError(412, 'Precondition Failed', 'If-Unmodified-Since has changed in the meantime!');
+              throw new KnowledgeError(412, 'Precondition Failed', `${HEADER_IF_UNMODIFIED_SINCE} has changed in the meantime!`);
             }
-            throw new KnowledgeError(404, 'Not Found', 'If-Unmodified-Since has changed in the meantime!');
+            throw new KnowledgeError(404, 'Not Found', `${HEADER_IF_UNMODIFIED_SINCE} has changed in the meantime!`);
           });
       }
     });
