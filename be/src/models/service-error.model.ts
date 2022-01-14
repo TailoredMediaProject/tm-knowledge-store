@@ -11,16 +11,16 @@ export class ServiceErrorFactory {
   public static readonly notFound = (message: string): Promise<ServiceError> =>
     Promise.reject(new ServiceError(ServiceErrorType.NOT_FOUND, message));
 
-  public static readonly badRequest = (message: string): Promise<ServiceError> =>
-    Promise.reject(new ServiceError(ServiceErrorType.BAD_REQUEST, message));
+  public static readonly invalidQueryValue = (message: string): Promise<ServiceError> =>
+    Promise.reject(new ServiceError(ServiceErrorType.INVALID_QUERY_VALUE, message));
 
   public static readonly preconditionFailed = (message: string, data?: unknown): Promise<ServiceError> =>
     Promise.reject(new ServiceError(ServiceErrorType.PRECONDITION_FAILED, message, data));
 }
 
 export enum ServiceErrorType {
-  BAD_REQUEST = 400,
-  NOT_FOUND = 404,
-  CONFLICT = 409,
-  PRECONDITION_FAILED = 412
+  INVALID_QUERY_VALUE,
+  NOT_FOUND,
+  CONFLICT,
+  PRECONDITION_FAILED
 }

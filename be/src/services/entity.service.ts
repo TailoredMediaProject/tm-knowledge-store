@@ -190,8 +190,8 @@ export class EntityService {
       } else {
         return {
           // @ts-ignore
-          options: ServiceErrorFactory.badRequest('Invalid Parameter of type \'type\'!'),
-          filter: ServiceErrorFactory.badRequest('Invalid Parameter of type \'type\'!')
+          options: ServiceErrorFactory.invalidQueryValue('Invalid Parameter of type \'type\'!'),
+          filter: ServiceErrorFactory.invalidQueryValue('Invalid Parameter of type \'type\'!')
         };
       }
       /* eslint-enable */
