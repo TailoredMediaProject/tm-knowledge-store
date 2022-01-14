@@ -32,6 +32,22 @@ export class UtilService {
     return date;
   };
 
+  public static readonly checkAcceptHeader = (req: Request, supportedMimeTypes: string[], next: NextFunction): string => {
+    const headerName = 'Accept';
+    const accept: string = req.header(headerName);
+
+    if(!accept || accept === '*/*') {
+      return 'text/turtle'; // TODO set in constants.ts when merged
+    }
+
+    if(supportedMimeTypes.includes(accept)) {
+      return accept;
+    }
+
+    next(new KnowledgeError(406, 'Not Acceptable', `The Accept-Header value '${accept}' is unacceptable`))
+    return undefined;
+  };
+
   public static readonly checkId = (id: string, idName: string, next: NextFunction): string => {
     if (ObjectId.isValid(id)) {
       return id;
@@ -86,8 +102,9 @@ export class UtilService {
     canonicalLink: undefined
   });
 
-  // TODO TM-92, transform with https://github.com/rubensworks/rdf-parse.js entity to turtle and return result
-  public static readonly entityDbo2Turtle = (e: Entity): EntityDTO => UtilService.entityDbo2Dto(e);
+  // TODO TM-92, next step in next branch: transform with https://github.com/rubensworks/rdf-parse.js entity to turtle and return result
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  public static readonly entityDbo2LinkedData = (e: Entity, mimeType: string): EntityDTO => UtilService.entityDbo2Dto(e);
 
   public static readonly vocabDto2Dbo = (dto: VocabularyDTO): Vocabulary => ({
     _id: undefined,

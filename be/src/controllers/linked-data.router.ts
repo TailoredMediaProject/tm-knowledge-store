@@ -7,9 +7,10 @@ const router: Router = Router();
 
 router.get('/:eId', (req: Request, res: Response, next: NextFunction) => {
   const eId: string = UtilService.checkId(req?.params?.eId, 'entity', next);
+  const accept = UtilService.checkAcceptHeader(req, ['text/turtle'], next);
 
   entityServiceInstance.getEntityWithoutVocab(eId)
-    .then((e: Entity) => res.json(UtilService.entityDbo2Turtle(e)))
+    .then((e: Entity) => res.json(UtilService.entityDbo2LinkedData(e, accept)))
     .catch(next);
 });
 
