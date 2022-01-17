@@ -8,12 +8,13 @@ import {KnowledgeError} from '../models/knowledge-error.model';
 import {ListingResult} from '../models/listing-result.model';
 import ListQueryModel from '../models/query-list.model';
 import {UtilService} from '../services/util.service';
+import {StatusCodes} from 'http-status-codes';
 
 const router: Router = Router();
 
 router.get('/vocab', (req: Request, res: Response, next: NextFunction) => {
   if (!UtilService.checkQueryParams(['text', 'createdSince', 'modifiedSince', 'sort', 'offset', 'rows'], req?.query)) {
-    next(new KnowledgeError(400, 'Bad Request', 'Invalid query parameters'));
+    next(new KnowledgeError(StatusCodes.BAD_REQUEST, 'Bad Request', 'Invalid query parameters'));
   } else {
     const queryListModel: ListQueryModel = {
       ...req?.query,
@@ -40,7 +41,7 @@ router.post('/vocab', (req: Request, res: Response, next: NextFunction) => {
       const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}/${v.id}`;
 
       res.setHeader('Location', fullUrl);
-      res.status(201).json(v);
+      res.status(StatusCodes.CREATED).json(v);
     })
     .catch(next);
 });
@@ -55,7 +56,7 @@ router.put('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
       .then((v: Vocabulary) => res.json(UtilService.vocabDbo2Dto(v)))
       .catch(next);
   } else {
-    next(new KnowledgeError(400, 'Bad Request', 'Missing or invalid ID'));
+    next(new KnowledgeError(StatusCodes.BAD_REQUEST, 'Bad Request', 'Missing or invalid ID'));
   }
 });
 
@@ -73,7 +74,7 @@ router.delete('/vocab/:id', (req: Request, res: Response, next: NextFunction) =>
 
   vocabularyService
     .deleteVocab(vId, date)
-    .then(() => res.status(204).end())
+    .then(() => res.status(StatusCodes.NO_CONTENT).end())
     .catch(next);
 });
 
@@ -81,7 +82,7 @@ router.get('/vocab/:vId/entities', (req: Request, res: Response, next: NextFunct
   const vId = UtilService.checkId(req?.params?.vId, 'vocabulary', next);
 
   if (!UtilService.checkQueryParams(['text', 'createdSince', 'modifiedSince', 'sort', 'offset', 'rows', 'type'], req?.query)) {
-    next(new KnowledgeError(400, 'Bad Request', 'Invalid query parameters'));
+    next(new KnowledgeError(StatusCodes.BAD_REQUEST, 'Bad Request', 'Invalid query parameters'));
   } else {
     const queryListModel: ListQueryModel = {
       ...req?.query,
@@ -125,7 +126,7 @@ router.post('/vocab/:id/entities', (req: Request, res: Response, next: NextFunct
       const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}/${ent.id}`;
 
       res.setHeader('Location', fullUrl);
-      res.status(201).json(ent);
+      res.status(StatusCodes.CREATED).json(ent);
     })
     .catch(next);
 });
@@ -150,7 +151,7 @@ router.delete('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: N
   const eId = UtilService.checkId(req?.params?.eId, 'entity', next);
 
   entityServiceInstance.deleteEntity(vId, eId, date)
-    .then(() => res.status(204).end())
+    .then(() => res.status(StatusCodes.NO_CONTENT).end())
     .catch(next);
 });
 
