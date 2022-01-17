@@ -5,7 +5,8 @@ import {Entity, Vocabulary} from '../models/dbo.models';
 import {Vocabulary as VocabularyDTO} from '../generated/models/Vocabulary';
 import {Entity as EntityDTO} from '../generated/models/Entity';
 import {StatusCodes} from 'http-status-codes';
-import {HEADER_IF_UNMODIFIED_SINCE, HOST, MIME_TYPE_TURTLE} from '../models/constants';
+import {HEADER_ACCEPT, HEADER_IF_UNMODIFIED_SINCE, HOST, MIME_TYPE_TURTLE} from '../models/constants';
+import {DataFactory, Writer} from 'n3';
 
 export class UtilService {
   public static readonly checkQueryParams = (allowed: string[], query: unknown): boolean =>
@@ -38,8 +39,7 @@ export class UtilService {
   };
 
   public static readonly checkAcceptHeader = (req: Request, supportedMimeTypes: string[], next: NextFunction): string => {
-    const headerName = 'Accept';
-    const accept: string = req.header(headerName);
+    const accept: string = req.header(HEADER_ACCEPT);
 
     if(!accept || accept === '*/*') {
       return MIME_TYPE_TURTLE;
@@ -107,9 +107,34 @@ export class UtilService {
     canonicalLink: `https://${HOST}/kb/${dbo._id.toHexString()}`
   });
 
-  // TODO TM-92, next step in next branch: transform entity to turtle and return result
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public static readonly entityDbo2LinkedData = (e: Entity, mimeType: string): EntityDTO => UtilService.entityDbo2Dto(e);
+  public static readonly entityDbo2LinkedData = (e: Entity, mimeType: string): string => {
+    const prefix = 'http://purl.org/dc/terms/';
+    const writer = new Writer({
+      format: mimeType,
+      prefixes: {dc: prefix}
+    });
+
+    writer.addQuad(
+      DataFactory.namedNode(`${e._id.toHexString()}`),
+      DataFactory.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'),
+      DataFactory.namedNode(`${e.type}`)
+    );
+
+    ['label', 'description', 'created', 'lastModified'].forEach((propertyName: string) => {
+      writer.addQuad(DataFactory.quad(
+        DataFactory.namedNode(`${e._id.toHexString()}`),
+        DataFactory.namedNode(`${prefix}${propertyName}`),
+        // @ts-ignore
+        DataFactory.literal(`${e[propertyName]}`)
+      ));
+    });
+
+    let rdf: string;
+    // Workaround, see https://github.com/rdfjs/N3.js/issues/264
+    writer.end((error, result) => rdf = `@base <https://${HOST}/kb/> .\n${result}`);
+    return rdf;
+  };
 
   public static readonly vocabDto2Dbo = (dto: VocabularyDTO): Vocabulary => ({
     _id: undefined,

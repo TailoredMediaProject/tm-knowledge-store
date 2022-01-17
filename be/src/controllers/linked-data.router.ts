@@ -2,7 +2,9 @@ import {NextFunction, Request, Response, Router} from 'express';
 import {UtilService} from '../services/util.service';
 import {entityServiceInstance} from '../services/entity.service';
 import {Entity} from '../models/dbo.models';
-import {MIME_TYPE_TURTLE} from '../models/constants';
+import {HEADER_CONTENT_TYPE, MIME_TYPE_TURTLE} from '../models/constants';
+import {StatusCodes} from 'http-status-codes';
+import {KnowledgeError} from '../models/knowledge-error.model';
 
 const router: Router = Router();
 
@@ -11,7 +13,18 @@ router.get('/:eId', (req: Request, res: Response, next: NextFunction) => {
   const accept = UtilService.checkAcceptHeader(req, [MIME_TYPE_TURTLE], next);
 
   entityServiceInstance.getEntityWithoutVocab(eId)
-    .then((e: Entity) => res.json(UtilService.entityDbo2LinkedData(e, accept)))
+    .then((e: Entity) => {
+      const rdf = UtilService.entityDbo2LinkedData(e, accept);
+
+      if(!!rdf) {
+        res.status(StatusCodes.OK)
+          .setHeader(HEADER_CONTENT_TYPE, accept)
+          .send(rdf);
+      } else {
+        // TODO
+        next(new KnowledgeError(StatusCodes.INTERNAL_SERVER_ERROR, '', ''))
+      }
+    })
     .catch(next);
 });
 
