@@ -34,6 +34,7 @@ export class VocabularyService {
     return VocabularyService.collection()
       .aggregate(pipeline)
       .next()
+    // @ts-ignore
       .then(result => {
         if (!!result?._id) {
           return result as Vocabulary;
