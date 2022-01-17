@@ -1,11 +1,11 @@
 import {Collection, DeleteResult, Filter, FindOptions, ModifyResult, ObjectId, UpdateFilter} from 'mongodb';
 import {Vocabulary} from '../models/dbo.models';
 import {instance as persistenceService} from './persistence.service';
-import {KnowledgeError} from '../models/knowledge-error.model';
 import ListQueryModel from '../models/list-query.model';
 import {ListingResult} from '../models/listing-result.model';
 import {entityServiceInstance} from './entity.service';
 import {UtilService} from './util.service';
+import {ServiceError, ServiceErrorFactory} from '../models/service-error.model';
 import {HEADER_IF_UNMODIFIED_SINCE} from '../models/constants';
 
 export class VocabularyService {
@@ -32,11 +32,12 @@ export class VocabularyService {
 
   public getVocabular = (id: string | ObjectId): Promise<Vocabulary> => VocabularyService.collection()
     .findOne({ _id: new ObjectId(id) })
+    // @ts-ignore
     .then((result) => {
       if (!!result?._id) {
         return result as Vocabulary;
       }
-      throw new KnowledgeError(404, 'Vocabulary', 'Vocabulary not found!');
+      return ServiceErrorFactory.notFound('Vocabulary not found!');
     });
 
   public deleteVocab = (id: string | ObjectId, date: Date): Promise<boolean> => VocabularyService.collection()
@@ -49,9 +50,9 @@ export class VocabularyService {
           .findOne({ _id: new ObjectId(id) })
           .then(result => {
             if (!!result?._id) {
-              throw new KnowledgeError(412, 'Precondition Failed', `${HEADER_IF_UNMODIFIED_SINCE} has changed in the meantime!`);
+              return ServiceErrorFactory.preconditionFailed(`${HEADER_IF_UNMODIFIED_SINCE} has changed in the meantime!`);
             }
-            throw new KnowledgeError(404, 'Not Found', `${HEADER_IF_UNMODIFIED_SINCE} has changed in the meantime!`);
+            return ServiceErrorFactory.notFound('Vocabulary not found');
           });
       }
     });
@@ -76,6 +77,7 @@ export class VocabularyService {
       }
     };
 
+    // @ts-ignore
     return VocabularyService.collection()
       // @ts-ignore
       .findOneAndUpdate(query, update, { returnDocument: 'after' })
@@ -90,24 +92,17 @@ export class VocabularyService {
       });
   }
 
-  private updateVocabNotFoundError(filter: Filter<Vocabulary>): Promise<Vocabulary> {
+  private updateVocabNotFoundError(filter: Filter<Vocabulary>): Promise<ServiceError> {
     delete filter.lastModified;
     return VocabularyService.collection()
       // @ts-ignore
       .findOne(filter)
       // @ts-ignore
-      .then((v: Vocabulary) => {
-        if (v._id.toHexString() === filter._id.toHexString()) {
-          throw new KnowledgeError(
-            412,
-            'Precondition Failed',
-            'Target has been modified since last retrieval, the modified target is returned',
-            v
-          );
-        } else {
-          throw new KnowledgeError(404, 'Not found', 'Target vocabulary with id \'$ {id}\' not found');
-        }
-      });
+      .then((v: Vocabulary) =>
+        v._id.toHexString() === filter._id.toHexString() ?
+          ServiceErrorFactory.preconditionFailed('Target has been modified since last retrieval, the modified target is returned') :
+          ServiceErrorFactory.notFound('Target vocabulary with id \'$ {id}\' not found')
+      );
   }
 
   // eslint-disable-rows-line @typescript-eslint/explicit-module-boundary-types
