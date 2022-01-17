@@ -5,7 +5,7 @@ services:
     env_file: .env
     image: 'node:lts-alpine'
     user: 'node'
-    working_dir: /home/node/app/dist
+    working_dir: /home/node/app
     environment:
       NODE_ENV: production
       HOST: '${BE_HOST}'
