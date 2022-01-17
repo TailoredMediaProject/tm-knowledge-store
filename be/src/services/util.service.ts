@@ -4,7 +4,7 @@ import {ObjectId} from 'mongodb';
 import {Entity, Vocabulary} from '../models/dbo.models';
 import {Vocabulary as VocabularyDTO} from '../generated/models/Vocabulary';
 import {Entity as EntityDTO} from '../generated/models/Entity';
-import {HEADER_IF_UNMODIFIED_SINCE, HOST} from '../models/constants';
+import {HEADER_IF_UNMODIFIED_SINCE, HOST, MIME_TYPE_TURTLE} from '../models/constants';
 
 export class UtilService {
   public static readonly checkQueryParams = (allowed: string[], query: unknown): boolean =>
@@ -37,7 +37,7 @@ export class UtilService {
     const accept: string = req.header(headerName);
 
     if(!accept || accept === '*/*') {
-      return 'text/turtle'; // TODO set in constants.ts when merged
+      return MIME_TYPE_TURTLE;
     }
 
     if(supportedMimeTypes.includes(accept)) {
@@ -102,7 +102,7 @@ export class UtilService {
     canonicalLink: `https://${HOST}/kb/${dbo._id.toHexString()}`
   });
 
-  // TODO TM-92, next step in next branch: transform with https://github.com/rubensworks/rdf-parse.js entity to turtle and return result
+  // TODO TM-92, next step in next branch: transform entity to turtle and return result
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public static readonly entityDbo2LinkedData = (e: Entity, mimeType: string): EntityDTO => UtilService.entityDbo2Dto(e);
 
