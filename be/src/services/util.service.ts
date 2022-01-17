@@ -5,6 +5,7 @@ import {Entity, Vocabulary} from '../models/dbo.models';
 import {Vocabulary as VocabularyDTO} from '../generated/models/Vocabulary';
 import {Entity as EntityDTO} from '../generated/models/Entity';
 import {HEADER_IF_UNMODIFIED_SINCE, HOST} from '../models/constants';
+import {StatusCodes} from 'http-status-codes';
 
 export class UtilService {
   public static readonly checkQueryParams = (allowed: string[], query: unknown): boolean =>
@@ -18,14 +19,18 @@ export class UtilService {
     const ifUnmodifiedSince: string = req.header(HEADER_IF_UNMODIFIED_SINCE);
 
     if (!ifUnmodifiedSince) {
-      next(new KnowledgeError(428, 'Precondition Required', `${HEADER_IF_UNMODIFIED_SINCE} missing`));
+      next(new KnowledgeError(StatusCodes.PRECONDITION_REQUIRED, 'Precondition Required', `${HEADER_IF_UNMODIFIED_SINCE} missing`));
       return undefined;
     }
 
     const date: Date = new Date(ifUnmodifiedSince);
 
     if (isNaN(date.getTime())) {
-      next(new KnowledgeError(422, 'Unprocessable Entity', `The ${HEADER_IF_UNMODIFIED_SINCE}-Header has an invalid date format!`));
+      next(new KnowledgeError(
+        StatusCodes.UNPROCESSABLE_ENTITY,
+        'Unprocessable Entity',
+        `The ${HEADER_IF_UNMODIFIED_SINCE}-Header has an invalid date format!`)
+      );
       return undefined;
     }
 
@@ -37,7 +42,7 @@ export class UtilService {
       return id;
     }
 
-    next(new KnowledgeError(428, 'Precondition Required', `Invalid ${idName} ID '${id}'`));
+    next(new KnowledgeError(StatusCodes.PRECONDITION_REQUIRED, 'Precondition Required', `Invalid ${idName} ID '${id}'`));
   };
 
   public static readonly escapeRegExp = (string: string): string => string.replace(/[.*+?^${}()|[\]\\]/g, '');
@@ -46,7 +51,7 @@ export class UtilService {
     try {
       return new URL(url);
     } catch (e) {
-      throw new KnowledgeError(400, 'Bad Request', `The URL '${url}' is malformed`);
+      throw new KnowledgeError(StatusCodes.BAD_REQUEST, 'Bad Request', `The URL '${url}' is malformed`);
     }
   };
 
