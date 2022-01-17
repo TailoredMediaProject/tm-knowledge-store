@@ -14,15 +14,14 @@ router.get('/:eId', (req: Request, res: Response, next: NextFunction) => {
 
   entityServiceInstance.getEntityWithoutVocab(eId)
     .then((e: Entity) => {
-      const rdf = UtilService.entityDbo2LinkedData(e, accept);
+      const rdf = UtilService.entityDbo2LinkedData(e, accept, next);
 
       if(!!rdf) {
         res.status(StatusCodes.OK)
           .setHeader(HEADER_CONTENT_TYPE, accept)
           .send(rdf);
       } else {
-        // TODO
-        next(new KnowledgeError(StatusCodes.INTERNAL_SERVER_ERROR, '', ''))
+        next(new KnowledgeError(StatusCodes.INTERNAL_SERVER_ERROR, `Could not create RDF for the Content-Type ${accept}`))
       }
     })
     .catch(next);
