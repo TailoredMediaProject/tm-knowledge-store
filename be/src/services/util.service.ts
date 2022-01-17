@@ -4,8 +4,8 @@ import {ObjectId} from 'mongodb';
 import {Entity, Vocabulary} from '../models/dbo.models';
 import {Vocabulary as VocabularyDTO} from '../generated/models/Vocabulary';
 import {Entity as EntityDTO} from '../generated/models/Entity';
-import {HEADER_IF_UNMODIFIED_SINCE, HOST} from '../models/constants';
 import {StatusCodes} from 'http-status-codes';
+import {HEADER_IF_UNMODIFIED_SINCE, HOST, MIME_TYPE_TURTLE} from '../models/constants';
 
 export class UtilService {
   public static readonly checkQueryParams = (allowed: string[], query: unknown): boolean =>
@@ -35,6 +35,22 @@ export class UtilService {
     }
 
     return date;
+  };
+
+  public static readonly checkAcceptHeader = (req: Request, supportedMimeTypes: string[], next: NextFunction): string => {
+    const headerName = 'Accept';
+    const accept: string = req.header(headerName);
+
+    if(!accept || accept === '*/*') {
+      return MIME_TYPE_TURTLE;
+    }
+
+    if(supportedMimeTypes.includes(accept)) {
+      return accept;
+    }
+
+    next(new KnowledgeError(StatusCodes.NOT_ACCEPTABLE, 'Not Acceptable', `The Accept-Header value '${accept}' is unacceptable`))
+    return undefined;
   };
 
   public static readonly checkId = (id: string, idName: string, next: NextFunction): string => {
@@ -90,6 +106,10 @@ export class UtilService {
     data: dbo.data,
     canonicalLink: `https://${HOST}/kb/${dbo._id.toHexString()}`
   });
+
+  // TODO TM-92, next step in next branch: transform entity to turtle and return result
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  public static readonly entityDbo2LinkedData = (e: Entity, mimeType: string): EntityDTO => UtilService.entityDbo2Dto(e);
 
   public static readonly vocabDto2Dbo = (dto: VocabularyDTO): Vocabulary => ({
     _id: undefined,
