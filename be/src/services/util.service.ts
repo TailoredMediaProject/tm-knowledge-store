@@ -115,7 +115,8 @@ export class UtilService {
     created: undefined,
     description: dto.description,
     label: dto.label,
-    lastModified: undefined
+    lastModified: undefined,
+    entityCount: undefined
   });
 
   public static readonly vocabDbo2Dto = (dbo: Vocabulary): VocabularyDTO => ({
@@ -124,6 +125,6 @@ export class UtilService {
     description: dbo.description,
     created: dbo.created.toISOString(),
     lastModified: dbo.lastModified.toISOString(),
-    entityCount: -1
+    entityCount: dbo.entityCount
   });
 }

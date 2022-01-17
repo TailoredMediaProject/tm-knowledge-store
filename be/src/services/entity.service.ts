@@ -18,6 +18,10 @@ export class EntityService {
     return this.collection().countDocuments(filter);
   }
 
+  public static countVocabEntities(vocabID: string | ObjectId): Promise<number> {
+    return this.countCollectionItems({vocabulary: new ObjectId(vocabID)});
+  }
+
   public createEntity(entity: Entity): Promise<Entity> {
     return vocabularyService.getVocabular(entity.vocabulary).then(() =>
       EntityService.collection()
