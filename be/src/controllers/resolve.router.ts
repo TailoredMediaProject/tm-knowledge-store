@@ -4,11 +4,12 @@ import {KnowledgeError} from '../models/knowledge-error.model';
 import {ResolveService} from '../models/resolve-service.interface';
 import KnowledgeResolveService from '../resolvers/knowledge-resolve.service';
 import DbpediaResolveService from '../resolvers/dbpedia-resolve.service';
+import {HOST} from '../models/constants';
 
 const router: Router = Router();
 
 const resolvers: ResolveService[] = [
-  new KnowledgeResolveService(['https://data.tmedia.redlink.io/kp/', 'http://data.tmedia.redlink.io/kp/']),
+  new KnowledgeResolveService([`https://${HOST}/kb/`, `http://${HOST}/kb/`]),
   new DbpediaResolveService()
 ].sort((a: ResolveService, b: ResolveService) => a.priority() - b.priority());
 

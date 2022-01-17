@@ -6,6 +6,7 @@ import {ListingResult} from '../models/listing-result.model';
 import {entityServiceInstance} from './entity.service';
 import {UtilService} from './util.service';
 import {ServiceError, ServiceErrorFactory} from '../models/service-error.model';
+import {HEADER_IF_UNMODIFIED_SINCE} from '../models/constants';
 
 export class VocabularyService {
   private static collection(): Collection {
@@ -49,7 +50,7 @@ export class VocabularyService {
           .findOne({ _id: new ObjectId(id) })
           .then(result => {
             if (!!result?._id) {
-              return ServiceErrorFactory.preconditionFailed('If-Unmodified-Since has changed in the meantime!');
+              return ServiceErrorFactory.preconditionFailed(`${HEADER_IF_UNMODIFIED_SINCE} has changed in the meantime!`);
             }
             return ServiceErrorFactory.notFound('Vocabulary not found');
           });
