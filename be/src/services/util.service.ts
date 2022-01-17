@@ -49,7 +49,7 @@ export class UtilService {
       return accept;
     }
 
-    next(new KnowledgeError(406, 'Not Acceptable', `The Accept-Header value '${accept}' is unacceptable`))
+    next(new KnowledgeError(StatusCodes.NOT_ACCEPTABLE, 'Not Acceptable', `The Accept-Header value '${accept}' is unacceptable`))
     return undefined;
   };
 
