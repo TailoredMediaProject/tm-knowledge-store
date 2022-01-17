@@ -19,7 +19,7 @@ const serviceError2StatusCode = (serveError: ServiceErrorType): number => {
 export const ErrorMiddleware = (err: KnowledgeError | ServiceError, req: Request, res: Response): void => {
   if (err instanceof KnowledgeError) {
     console.error(err);
-    const body = !!err?.data ? err.data : { title: err.title, message: err.message };
+    const body = !!err?.data ? err.data : { title: getReasonPhrase(err.statusCode), message: err.message };
     res.status(err.statusCode).json(body);
   } else if (err instanceof ServiceError) {
     console.error(err);

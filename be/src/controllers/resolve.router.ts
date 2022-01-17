@@ -16,7 +16,7 @@ const resolvers: ResolveService[] = [
 
 router.get('/resolve', (req: Request, res: Response, next: NextFunction) => {
   if (!UtilService.requireQueryParams(['uri'], req?.query)) {
-    next(new KnowledgeError(StatusCodes.BAD_REQUEST, 'Bad Request', 'Query parameter `uri` is missing or has a falsy value'));
+    next(new KnowledgeError(StatusCodes.BAD_REQUEST, 'Query parameter `uri` is missing or has a falsy value'));
   } else {
     const resolveUri: URL = UtilService.checkUrl(`${req?.query?.uri}`);
     const resolveService = resolvers.find(r => r.accept(resolveUri));
@@ -26,7 +26,7 @@ router.get('/resolve', (req: Request, res: Response, next: NextFunction) => {
         .then((r: unknown) => res.json(r))
         .catch(next);
     } else {
-      next(new KnowledgeError(StatusCodes.NOT_IMPLEMENTED, 'Not implemented', `Host of URI '${resolveUri}' is unsupported`));
+      next(new KnowledgeError(StatusCodes.NOT_IMPLEMENTED, `Host of URI '${resolveUri}' is unsupported`));
     }
   }
 });

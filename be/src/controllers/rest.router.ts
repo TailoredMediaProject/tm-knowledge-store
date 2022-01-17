@@ -14,7 +14,7 @@ const router: Router = Router();
 
 router.get('/vocab', (req: Request, res: Response, next: NextFunction) => {
   if (!UtilService.checkQueryParams(['text', 'createdSince', 'modifiedSince', 'sort', 'offset', 'rows'], req?.query)) {
-    next(new KnowledgeError(StatusCodes.BAD_REQUEST, 'Bad Request', 'Invalid query parameters'));
+    next(new KnowledgeError(StatusCodes.BAD_REQUEST, 'Invalid query parameters'));
   } else {
     const queryListModel: ListQueryModel = {
       ...req?.query,
@@ -56,7 +56,7 @@ router.put('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
       .then((v: Vocabulary) => res.json(UtilService.vocabDbo2Dto(v)))
       .catch(next);
   } else {
-    next(new KnowledgeError(StatusCodes.BAD_REQUEST, 'Bad Request', 'Missing or invalid ID'));
+    next(new KnowledgeError(StatusCodes.BAD_REQUEST,  'Missing or invalid ID'));
   }
 });
 
@@ -82,7 +82,7 @@ router.get('/vocab/:vId/entities', (req: Request, res: Response, next: NextFunct
   const vId = UtilService.checkId(req?.params?.vId, 'vocabulary', next);
 
   if (!UtilService.checkQueryParams(['text', 'createdSince', 'modifiedSince', 'sort', 'offset', 'rows', 'type'], req?.query)) {
-    next(new KnowledgeError(StatusCodes.BAD_REQUEST, 'Bad Request', 'Invalid query parameters'));
+    next(new KnowledgeError(StatusCodes.BAD_REQUEST, 'Invalid query parameters'));
   } else {
     const queryListModel: ListQueryModel = {
       ...req?.query,

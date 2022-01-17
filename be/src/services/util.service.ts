@@ -20,7 +20,7 @@ export class UtilService {
     const ifUnmodifiedSince: string = req.header(HEADER_IF_UNMODIFIED_SINCE);
 
     if (!ifUnmodifiedSince) {
-      next(new KnowledgeError(StatusCodes.PRECONDITION_REQUIRED, 'Precondition Required', `${HEADER_IF_UNMODIFIED_SINCE} missing`));
+      next(new KnowledgeError(StatusCodes.PRECONDITION_REQUIRED, `${HEADER_IF_UNMODIFIED_SINCE} missing`));
       return undefined;
     }
 
@@ -29,7 +29,6 @@ export class UtilService {
     if (isNaN(date.getTime())) {
       next(new KnowledgeError(
         StatusCodes.UNPROCESSABLE_ENTITY,
-        'Unprocessable Entity',
         `The ${HEADER_IF_UNMODIFIED_SINCE}-Header has an invalid date format!`)
       );
       return undefined;
@@ -49,7 +48,7 @@ export class UtilService {
       return accept;
     }
 
-    next(new KnowledgeError(StatusCodes.NOT_ACCEPTABLE, 'Not Acceptable', `The Accept-Header value '${accept}' is unacceptable`))
+    next(new KnowledgeError(StatusCodes.NOT_ACCEPTABLE,  `The Accept-Header value '${accept}' is unacceptable`))
     return undefined;
   };
 
@@ -58,7 +57,7 @@ export class UtilService {
       return id;
     }
 
-    next(new KnowledgeError(StatusCodes.PRECONDITION_REQUIRED, 'Precondition Required', `Invalid ${idName} ID '${id}'`));
+    next(new KnowledgeError(StatusCodes.PRECONDITION_REQUIRED, `Invalid ${idName} ID '${id}'`));
   };
 
   public static readonly escapeRegExp = (string: string): string => string.replace(/[.*+?^${}()|[\]\\]/g, '');
@@ -67,7 +66,7 @@ export class UtilService {
     try {
       return new URL(url);
     } catch (e) {
-      throw new KnowledgeError(StatusCodes.BAD_REQUEST, 'Bad Request', `The URL '${url}' is malformed`);
+      throw new KnowledgeError(StatusCodes.BAD_REQUEST, `The URL '${url}' is malformed`);
     }
   };
 
