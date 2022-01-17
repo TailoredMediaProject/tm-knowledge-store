@@ -73,15 +73,7 @@ router.delete('/vocab/:id', (req: Request, res: Response, next: NextFunction) =>
 
   vocabularyService
     .deleteVocab(vId, date)
-    .then((result) => {
-      if (result) {
-        res.status(204).end();
-      } else {
-        res.status(404).json({
-          message: 'Vocabulary not found'
-        });
-      }
-    })
+    .then(() => res.status(204).end())
     .catch(next);
 });
 
@@ -157,15 +149,9 @@ router.delete('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: N
   const vId = UtilService.checkId(req?.params?.vId, 'vocabulary', next);
   const eId = UtilService.checkId(req?.params?.eId, 'entity', next);
 
-  entityServiceInstance.deleteEntity(vId, eId, date).then(result => {
-    if (result) {
-      res.status(204).end();
-    } else {
-      res.status(404).json({
-        message: 'Entity not found'
-      });
-    }
-  }).catch(next);
+  entityServiceInstance.deleteEntity(vId, eId, date)
+    .then(() => res.status(204).end())
+    .catch(next);
 });
 
 export default router;

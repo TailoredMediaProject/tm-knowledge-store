@@ -4,6 +4,7 @@ import {ObjectId} from 'mongodb';
 import {Entity, Vocabulary} from '../models/dbo.models';
 import {Vocabulary as VocabularyDTO} from '../generated/models/Vocabulary';
 import {Entity as EntityDTO} from '../generated/models/Entity';
+import {HEADER_IF_UNMODIFIED_SINCE, HOST} from '../models/constants';
 
 export class UtilService {
   public static readonly checkQueryParams = (allowed: string[], query: unknown): boolean =>
@@ -14,18 +15,17 @@ export class UtilService {
     required.every((queryParam: string) => queryParam in query && !!query[queryParam])
 
   public static readonly checkIfUnmodifiedHeader = (req: Request, next: NextFunction): Date => {
-    const headerName = 'If-Unmodified-Since';
-    const ifUnmodifiedSince: string = req.header(headerName);
+    const ifUnmodifiedSince: string = req.header(HEADER_IF_UNMODIFIED_SINCE);
 
     if (!ifUnmodifiedSince) {
-      next(new KnowledgeError(428, 'Precondition Required', 'If-Unmodified-Since-Header missing'));
+      next(new KnowledgeError(428, 'Precondition Required', `${HEADER_IF_UNMODIFIED_SINCE} missing`));
       return undefined;
     }
 
     const date: Date = new Date(ifUnmodifiedSince);
 
     if (isNaN(date.getTime())) {
-      next(new KnowledgeError(422, 'Unprocessable Entity', `The ${headerName}-Header has an invalid date format!`));
+      next(new KnowledgeError(422, 'Unprocessable Entity', `The ${HEADER_IF_UNMODIFIED_SINCE}-Header has an invalid date format!`));
       return undefined;
     }
 
@@ -99,7 +99,7 @@ export class UtilService {
     externalResources: dbo.externalResources,
     sameAs: dbo.sameAs,
     data: dbo.data,
-    canonicalLink: undefined
+    canonicalLink: `https://${HOST}/kb/${dbo._id.toHexString()}`
   });
 
   // TODO TM-92, next step in next branch: transform with https://github.com/rubensworks/rdf-parse.js entity to turtle and return result
