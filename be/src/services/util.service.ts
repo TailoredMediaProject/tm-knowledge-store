@@ -91,7 +91,8 @@ export class UtilService {
     created: undefined,
     description: dto.description,
     label: dto.label,
-    lastModified: undefined
+    lastModified: undefined,
+    entityCount: undefined
   });
 
   public static readonly vocabDbo2Dto = (dbo: Vocabulary): VocabularyDTO => ({

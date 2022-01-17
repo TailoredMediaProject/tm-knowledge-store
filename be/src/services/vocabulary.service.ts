@@ -30,8 +30,7 @@ export class VocabularyService {
   }
 
   public getVocabular(id: string | ObjectId): Promise<Vocabulary> {
-    const pipeline = this.createMongoAggregationPipeline({matchIds: new ObjectId(id)});
-    console.log(pipeline);
+    const pipeline = VocabularyService.createMongoAggregationPipeline(new ObjectId(id));
     return VocabularyService.collection()
       .aggregate(pipeline)
       .next()
@@ -42,16 +41,6 @@ export class VocabularyService {
         throw new KnowledgeError(404, 'Vocabulary', 'Vocabulary not found!');
       })
   }
-
-  /*public getVocabular = (id: string | ObjectId): Promise<Vocabulary> => VocabularyService.collection()
-    .aggregate(this.createMongoAggregationPipeline({matchIds: [new ObjectId(id)]}))
-    .next()
-    .then(result => {
-      if (!!result?._id) {
-        return result as Vocabulary;
-      }
-      throw new KnowledgeError(404, 'Vocabulary', 'Vocabulary not found!');
-    })*/
 
   public deleteVocab = (id: string | ObjectId, date: Date): Promise<boolean> => VocabularyService.collection()
     .deleteOne({ _id: new ObjectId(id), lastModified: date })
@@ -126,8 +115,8 @@ export class VocabularyService {
 
   // eslint-disable-rows-line @typescript-eslint/explicit-module-boundary-types
   public async listVocab(query: ListQueryModel): Promise<ListingResult<Vocabulary>> {
-    const { options, filter } = this.transformToMongoDBFilterOption(query);
-    const pipeline = this.createMongoAggregationPipeline({filter, options});
+    const { options, filter } = VocabularyService.transformToMongoDBFilterOption(query);
+    const pipeline = VocabularyService.createMongoAggregationPipeline(null, filter, options);
     const itemPromise = VocabularyService.collection().aggregate(pipeline).toArray();
     const totalItemsPromise = VocabularyService.countCollectionItems(filter);
     return Promise.all([itemPromise, totalItemsPromise])
@@ -140,29 +129,10 @@ export class VocabularyService {
           items: result[0] as Vocabulary[]
         }
       })
-    /*  const aggregationCursor = VocabularyService.collection().aggregate(pipeline);
-    for await (const item of aggregationCursor) {
-      console.log(item);
-    }*/
-
-    // @ts-ignore
-  /*  return VocabularyService.collection()
-      // @ts-ignore
-      .find(filter, options)
-      .toArray()
-      .then(async dbos => {
-        const totalItems: number = await ;
-        return {
-          offset: query.offset,
-          rows: dbos.length,
-          totalItems,
-          items: dbos as Vocabulary[]
-        };
-      });*/
   }
 
   // eslint-disable-next-line max-len
-  private transformToMongoDBFilterOption(query?: ListQueryModel): { options: FindOptions; filter: Filter<Vocabulary> } {
+  private static transformToMongoDBFilterOption(query?: ListQueryModel): { options: FindOptions; filter: Filter<Vocabulary> } {
     const options: FindOptions = {};
     const filter: Filter<Vocabulary> = {};
 
@@ -203,7 +173,7 @@ export class VocabularyService {
 
       if (!!query?.sort) {
         // @ts-ignore
-        options.sort = this.mapToMongoSort(query?.sort);
+        options.sort = VocabularyService.mapToMongoSort(query?.sort);
       }
 
       if (!!query?.offset) {
@@ -221,7 +191,7 @@ export class VocabularyService {
     };
   }
 
-  private mapToMongoSort(sort: string): unknown {
+  private static mapToMongoSort(sort: string): unknown {
     if (!!sort && sort.includes(' ')) {
       if (sort.toLowerCase().includes('created')) {
         return {
@@ -236,26 +206,26 @@ export class VocabularyService {
     return {};
   }
 
-  private createMongoAggregationPipeline(param: {
+  private static createMongoAggregationPipeline(
     matchIds?: string|ObjectId,
     filter?: Filter<Vocabulary>,
-    options?: FindOptions}): Document[] {
+    options?: FindOptions): Document[] {
     const pipeline = [];
 
-    if (param.matchIds) {
+    if (matchIds) {
       const matchData = {'$match': {
-        '_id': param.matchIds
+        '_id': matchIds
       }
       };
       pipeline.push(matchData);
     }
 
-    if (param.filter && Object.keys(param.filter).length > 0) {
-      pipeline.push(param.filter);
+    if (filter && Object.keys(filter).length > 0) {
+      pipeline.push(filter);
     }
 
-    if (param.options && Object.keys(param.options).length > 0) {
-      pipeline.push(param.options);
+    if (options && Object.keys(options).length > 0) {
+      pipeline.push(options);
     }
 
     const lookupData = {
