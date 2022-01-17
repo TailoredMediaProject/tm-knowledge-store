@@ -1,12 +1,12 @@
 import {instance as persistenceService} from './persistence.service';
 import {Collection, Filter, FindOptions, InsertOneResult, ModifyResult, ObjectId, UpdateFilter} from 'mongodb';
-import {KnowledgeError} from '../models/knowledge-error.model';
 import {Entity, Vocabulary} from '../models/dbo.models';
 import {VocabularyService, vocabularyService} from './vocabulary.service';
 import ListQueryModel from '../models/list-query.model';
 import {ListingResult} from '../models/listing-result.model';
 import {TagType} from '../generated';
 import {UtilService} from './util.service';
+import {ServiceErrorFactory} from '../models/service-error.model';
 
 export class EntityService {
   private static collection(): Collection {
@@ -41,36 +41,31 @@ export class EntityService {
           _id: new ObjectId(entityID),
           vocabulary: new ObjectId(vocabID)
         })
+        // @ts-ignore
         .then(result => {
           if (!!result?._id) {
             return result as Entity;
           }
-          throw new KnowledgeError(404,
-            'Not found',
-            `Target entity with id '${entityID}' in vocabulary '${vocabID}' not found`);
+          return ServiceErrorFactory.notFound(`Target entity with id '${entityID}' in vocabulary '${vocabID}' not found`);
         }));
   }
 
   public getEntityWithoutVocab(entityID: string | ObjectId): Promise<Entity> {
     return EntityService.collection()
       .findOne({ _id: new ObjectId(entityID) })
+      // @ts-ignore
       .then(result => {
         if (!!result?._id) {
           return result as Entity;
         }
-        return Promise.reject(`Target entity with id '${entityID}' not found`);
+        return ServiceErrorFactory.notFound(`Target entity with id '${entityID}' not found`);
       });
   }
 
   public getEntities(vocabID: string | ObjectId): Promise<Entity[]> {
-    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-    const vocabNotFound = () => {
-      throw new KnowledgeError(404,
-        'Not found',
-        `Target vocabulary '${vocabID}' not found`);
-    };
-
+    // @ts-ignore
     return vocabularyService.getVocabular(vocabID)
+      // @ts-ignore
       .then((vocab: Vocabulary) => {
         if (!!vocab?._id) {
           return EntityService.collection()
@@ -78,9 +73,9 @@ export class EntityService {
             .toArray()
             .then(e => e as Entity[]);
         }
-        vocabNotFound();
+        return ServiceErrorFactory.notFound(`Target vocabulary '${vocabID}' not found`);
       })
-      .catch(vocabNotFound);
+      .catch(() => ServiceErrorFactory.notFound(`Target vocabulary '${vocabID}' not found`));
   }
 
   updateEntity(vocabID: string, entityID: string, ifUnmodifiedSince: Date, entity: Entity): Promise<Entity> {
@@ -105,25 +100,28 @@ export class EntityService {
       }
     };
 
+    // @ts-ignore
     return EntityService.collection()
       // @ts-ignore
       .findOneAndUpdate(filter, update, { returnDocument: 'after' })
       // @ts-ignore
       .then(async (result: ModifyResult<Entity>) => {
         if (result?.lastErrorObject?.updatedExisting === false || !result.value) {
-          await VocabularyService.countCollectionItems({_id: new ObjectId(vocabID)})
+          await VocabularyService.countCollectionItems({ _id: new ObjectId(vocabID) })
             .then((count: number) => {
-              if(count < 1) {
-                throw new KnowledgeError(404, 'Not Found', `Vocab with id '${vocabID}' not found`);
+              if (count < 1) {
+                return ServiceErrorFactory.notFound(`Vocab with id '${vocabID}' not found`);
               }
             });
           await this.getEntity(vocabID, entityID)
             .then((dbo: Entity) => {
               if (!!dbo && new Date(dbo.lastModified).getTime() > ifUnmodifiedSince.getTime()) {
-                throw new KnowledgeError(412, 'Precondition Failed',
-                  'Target has been modified since last retrieval, the modified target is returned', dbo);
+                return ServiceErrorFactory.preconditionFailed(
+                  'Target has been modified since last retrieval, the modified target is returned',
+                  dbo
+                );
               }
-              throw new KnowledgeError(404, 'Not Found', `Entity with id '${vocabID}/${entityID}' not found`);
+              return ServiceErrorFactory.notFound(`Entity with id '${vocabID}/${entityID}' not found`);
             });
         } else {
           return result.value;
@@ -133,25 +131,35 @@ export class EntityService {
 
   public deleteEntity = (vocabID: string, entityID: string, lastModified: Date): Promise<boolean> => EntityService.collection()
     .deleteOne({ _id: new ObjectId(entityID), vocabulary: new ObjectId(vocabID), lastModified: lastModified })
+    // @ts-ignore
     .then(r => {
       if (r.deletedCount === 1) {
         return true;
       } else {
         // eslint-disable-next-line @typescript-eslint/no-misused-promises
         if (!!this.getEntity(vocabID, entityID)) {
-          throw new KnowledgeError(412, 'Header', 'Entity has been modified since last refresh');
+          return ServiceErrorFactory.preconditionFailed('Entity has been modified since last refresh');
         } else {
-          throw new KnowledgeError(404, 'Entity', `No entity found for ID '${vocabID}/${entityID}'.`);
+          return ServiceErrorFactory.notFound(`No entity found for ID '${vocabID}/${entityID}'`);
         }
       }
     });
 
   public async removeEntitiesFromVocabWithId(id: string | ObjectId): Promise<number> {
-    return EntityService.collection().deleteMany({vocabulary: new ObjectId(id)}).then(r => r.deletedCount);
+    return EntityService.collection().deleteMany({ vocabulary: new ObjectId(id) }).then(r => r.deletedCount);
   }
 
   public async listEntities(query: ListQueryModel, id?: string | ObjectId): Promise<ListingResult<Entity>> {
     const { options, filter } = this.transformToMongoDBFilterOption(query, id);
+
+    if (options instanceof Promise) {
+      return options;
+    }
+
+    if (filter instanceof Promise) {
+      return filter;
+    }
+
     return EntityService.collection()
       // @ts-ignore
       .find(filter, options)
@@ -184,7 +192,11 @@ export class EntityService {
       if (Object.keys(TagType).includes(capitalType)) {
         filter.type = capitalType;
       } else {
-        throw new KnowledgeError(404, 'Bad Request', 'Invalid Parameter of type \'type\'!');
+        return {
+          // @ts-ignore
+          options: ServiceErrorFactory.invalidQueryValue('Invalid Parameter of type \'type\'!'),
+          filter: ServiceErrorFactory.invalidQueryValue('Invalid Parameter of type \'type\'!')
+        };
       }
       /* eslint-enable */
     }
