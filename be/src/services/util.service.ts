@@ -6,7 +6,6 @@ import {Vocabulary as VocabularyDTO} from '../generated/models/Vocabulary';
 import {Entity as EntityDTO} from '../generated/models/Entity';
 import {StatusCodes} from 'http-status-codes';
 import {HEADER_ACCEPT, HEADER_IF_UNMODIFIED_SINCE, HOST, MIME_TYPE_TURTLE} from '../models/constants';
-import {DataFactory, Literal, Writer} from 'n3';
 
 export class UtilService {
   public static readonly checkQueryParams = (allowed: string[], query: unknown): boolean =>
@@ -106,14 +105,6 @@ export class UtilService {
     canonicalLink: `https://${HOST}/kb/${dbo._id.toHexString()}`
   });
 
-  public static readonly entityDbo2LinkedData = (e: Entity, mimeType: string, next: NextFunction): string => {
-    if(MIME_TYPE_TURTLE === mimeType) {
-      return UtilService.entityDbo2Turtle(e);
-    } else {
-      UtilService.throwNotAcceptable(mimeType, next);
-    }
-  };
-
   public static readonly vocabDto2Dbo = (dto: VocabularyDTO): Vocabulary => ({
     _id: undefined,
     created: undefined,
@@ -131,40 +122,6 @@ export class UtilService {
     entityCount: -1
   });
 
-  private static readonly throwNotAcceptable = (mimeType: string, next: NextFunction): void =>
+  public static readonly throwNotAcceptable = (mimeType: string, next: NextFunction): void =>
     next(new KnowledgeError(StatusCodes.NOT_ACCEPTABLE,  `The Accept-Header value '${mimeType}' is unacceptable`));
-
-  private static readonly entityDbo2Turtle = (e: Entity): string => {
-    const prefix = 'http://purl.org/dc/terms/';
-    const writer = new Writer({
-      format: MIME_TYPE_TURTLE,
-      prefixes: {dc: prefix}
-    });
-
-    writer.addQuad(
-      DataFactory.namedNode(`${e._id.toHexString()}`),
-      DataFactory.namedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'),
-      DataFactory.namedNode(`${e.type}`)
-    );
-
-    ['label', 'description', 'created', 'lastModified'].forEach((propertyName: string) => {
-      writer.addQuad(DataFactory.quad(
-        DataFactory.namedNode(`${e._id.toHexString()}`),
-        DataFactory.namedNode(`${prefix}${propertyName}`),
-        // @ts-ignore
-        UtilService.typeTurtleValue(e[propertyName])
-      ));
-    });
-
-    let rdf: string;
-    // Workaround, see https://github.com/rdfjs/N3.js/issues/264
-    writer.end((error, result) => rdf = `@base <https://${HOST}/kb/> .\n${result}`);
-    return rdf;
-  };
-
-  private static readonly typeTurtleValue = (value: unknown): Literal => value instanceof Date ?
-    DataFactory.literal(
-      value.toISOString(),
-      DataFactory.namedNode('xsd:Date')
-    ) : DataFactory.literal(`${value}`);
 }
