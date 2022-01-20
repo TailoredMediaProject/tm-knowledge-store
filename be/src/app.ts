@@ -20,7 +20,7 @@ const apiRoutes: Router[] = [RestRouter, ResolveRouter];
 app.use('/api/v1', apiRoutes);
 
 console.log('Register linked data router');
-app.use('/kp', LinkedDataRouter);
+app.use('/kb', LinkedDataRouter);
 
 // Set static files
 const staticDir = process.env.BE_STATIC || 'static';
