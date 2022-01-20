@@ -4,6 +4,8 @@ export const HEADER_IF_UNMODIFIED_SINCE = 'If-Unmodified-Since';
 export const HEADER_ACCEPT = 'Accept';
 export const HEADER_CONTENT_TYPE = 'Content-Type';
 export const MIME_TYPE_TURTLE = 'text/turtle';
+export const MIME_TYPE_RDF_XML = 'application/rdf+xml';
+export const MIME_TYPE_N3 = 'text/n3';
 export const PROPERTY_MAPPING_CONFIG = {
   entity: {
     prefixUrl: 'http://purl.org/dc/terms/',
