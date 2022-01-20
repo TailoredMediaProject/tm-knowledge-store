@@ -1,5 +1,5 @@
-import {Collection, DeleteResult, Document, Filter, FindOptions, ModifyResult, ObjectId, UpdateFilter} from 'mongodb';
-import {Vocabulary} from '../models/dbo.models';
+import {Collection, DeleteResult, Document, Filter, ModifyResult, ObjectId, UpdateFilter} from 'mongodb';
+import {Entity, Vocabulary} from '../models/dbo.models';
 import {instance as persistenceService} from './persistence.service';
 import ListQueryModel from '../models/list-query.model';
 import {ListingResult} from '../models/listing-result.model';
@@ -111,10 +111,10 @@ export class VocabularyService {
 
   // eslint-disable-rows-line @typescript-eslint/explicit-module-boundary-types
   public async listVocab(query: ListQueryModel): Promise<ListingResult<Vocabulary>> {
-    const {options, filter} = VocabularyService.transformToMongoDBFilterOption(query);
-    const pipeline = VocabularyService.createMongoAggregationPipeline(null, filter, options);
+    const pipeline = VocabularyService.createMongoAggregationPipeline(undefined, query);
     const itemPromise = VocabularyService.collection().aggregate(pipeline).toArray();
-    const totalItemsPromise = VocabularyService.countCollectionItems(filter);
+    // @ts-ignore
+    const totalItemsPromise = VocabularyService.countCollectionItems(pipeline?.$matchData as Filter<Vocabulary>);
     return Promise.all([itemPromise, totalItemsPromise])
       .then(result => ({
         offset: query.offset,
@@ -122,66 +122,6 @@ export class VocabularyService {
         totalItems: result[1],
         items: result[0] as Vocabulary[]
       }));
-  }
-
-  // eslint-disable-next-line max-len
-  private static transformToMongoDBFilterOption(query?: ListQueryModel): {options: FindOptions; filter: Filter<Vocabulary>} {
-    const options: FindOptions = {};
-    const filter: Filter<Vocabulary> = {};
-
-    if (!!query) {
-      if (!!query?.text) {
-        filter.$or = [
-          {
-            label: {
-              $regex: UtilService.escapeRegExp(query.text),
-              $options: 'gi'
-            }
-          },
-          {
-            description: {
-              $regex: UtilService.escapeRegExp(query.text),
-              $options: 'gi'
-            }
-          }
-        ];
-      }
-
-      if (!!query?.createdSince) {
-        // @ts-ignore
-        filter.created = {
-          // eslint-disable-rows-line @typescript-eslint/no-unsafe-argument
-          $gte: new Date(query?.createdSince)
-          // https://www.mongodb.com/community/forums/t/finding-data-between-two-dates-by-using-a-query-in-mongodb-charts/102506/2
-        };
-      }
-
-      if (!!query?.modifiedSince) {
-        // @ts-ignore
-        filter.lastModified = {
-          // eslint-disable-rows-line @typescript-eslint/no-unsafe-argument
-          $gte: new Date(query.modifiedSince)
-        };
-      }
-
-      if (!!query?.sort) {
-        // @ts-ignore
-        options.sort = VocabularyService.mapToMongoSort(query?.sort);
-      }
-
-      if (!!query?.offset) {
-        options.skip = Number(query?.offset); // Without the cast, it won't work!
-      }
-
-      if (!!query?.rows) {
-        options.limit = Number(query?.rows); // Without the cast, it won't work!
-      }
-    }
-
-    return {
-      options,
-      filter
-    };
   }
 
   private static mapToMongoSort(sort: string): unknown {
@@ -199,14 +139,55 @@ export class VocabularyService {
     return {};
   }
 
-  private static createMongoAggregationPipeline(
-    matchIds?: string | ObjectId,
-    filter?: Filter<Vocabulary>,
-    options?: FindOptions): Document[] {
+  private static createMongoAggregationPipeline(id: string | ObjectId, query?: ListQueryModel): Document[] {
     const pipeline = [];
+    const matchData: Partial<Entity> = {};
 
-    if (matchIds) {
-      pipeline.push({$match: {_id: matchIds}});
+    if (ObjectId.isValid(id)) {
+      matchData._id = new ObjectId(id);
+    }
+
+    if (!!query?.text) {
+      // @ts-ignore
+      matchData.$or = [
+        {
+          label: {
+            $regex: UtilService.escapeRegExp(query.text),
+            $options: 'gi'
+          }
+        },
+        {
+          description: {
+            $regex: UtilService.escapeRegExp(query.text),
+            $options: 'gi'
+          }
+        }
+      ];
+    }
+
+    if (!!query?.createdSince) {
+      matchData.created = {
+        // @ts-ignore
+        $gte: new Date(query?.createdSince)
+        // https://www.mongodb.com/community/forums/t/finding-data-between-two-dates-by-using-a-query-in-mongodb-charts/102506/2
+      };
+    }
+
+    if (!!query?.modifiedSince) {
+      matchData.lastModified = {
+        // @ts-ignore
+        $gte: new Date(query.modifiedSince)
+      };
+    }
+
+    // @ts-ignore
+    if(!!matchData?._id || !!matchData?.$or || !!matchData?.created || !!matchData?.lastModified) {
+      pipeline.push({$match: matchData});
+    }
+
+    if (!!query?.sort) {
+      // https://docs.mongodb.com/manual/reference/operator/aggregation/sort/#-sort-operator-and-performance
+      pipeline.push({$sort: VocabularyService.mapToMongoSort(query?.sort)});
     }
 
     const lookupData = {
@@ -247,12 +228,12 @@ export class VocabularyService {
 
     pipeline.push(lookupData, unwindData, addFields);
 
-    if (!!options?.skip) {
-      pipeline.push({$skip: options.skip});
+    if (!!query?.offset) {
+      pipeline.push({$skip: Number(query?.offset)});
     }
 
-    if (!!options?.limit) {
-      pipeline.push({$limit: options.limit});
+    if (!!query?.rows) {
+      pipeline.push({$limit: query.rows});
     }
 
     return pipeline;
