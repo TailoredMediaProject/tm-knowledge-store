@@ -1,4 +1,4 @@
-import {Request, Response} from 'express';
+import {NextFunction, Request, Response} from 'express';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import {ServiceError, ServiceErrorType} from '../models/service-error.model';
 import {getReasonPhrase, StatusCodes} from 'http-status-codes';
@@ -16,7 +16,9 @@ const serviceError2StatusCode = (serveError: ServiceErrorType): number => {
   return StatusCodes.INTERNAL_SERVER_ERROR;
 };
 
-export const ErrorMiddleware = (err: KnowledgeError | ServiceError, req: Request, res: Response): void => {
+// LEAVE THE unused next arg, otherwise the error handler will not work!
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const ErrorMiddleware = (err: KnowledgeError | ServiceError | Error, req: Request, res: Response, next: NextFunction): void => {
   if (err instanceof KnowledgeError) {
     console.error(err);
     const body = !!err?.data ? err.data : { title: getReasonPhrase(err.statusCode), message: err.message };
@@ -29,6 +31,6 @@ export const ErrorMiddleware = (err: KnowledgeError | ServiceError, req: Request
     res.status(statusCode).json(body);
   }
   else {
-    res.status(StatusCodes.BAD_REQUEST).json({title: 'Internal Server Error', message: err});
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({title: getReasonPhrase(StatusCodes.INTERNAL_SERVER_ERROR), message: err.message});
   }
 };

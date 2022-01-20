@@ -28,12 +28,13 @@ const staticDir = process.env.BE_STATIC || 'static';
 app.use('/', express.static(path.join(__dirname, staticDir)));
 console.log('static files on /');
 
-console.log('Register ErrorMiddleware');
-app.use(ErrorMiddleware);
-
 // Listen on port
 const port: number = parseInt(process.env.BE_PORT || '8080', 10);
 // @ts-ignore
 const addressInfo: AddressInfo = app.listen(port).address();
 addressInfo.address = addressInfo.address === '::' ? 'localhost' : addressInfo.address;
 console.log(`On baseUrl http://${addressInfo.address}:${addressInfo.port}`);
+
+// Register error middleware, must always be last
+console.log('Register ErrorMiddleware');
+app.use(ErrorMiddleware);
