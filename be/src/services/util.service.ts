@@ -5,7 +5,7 @@ import {Entity, Vocabulary} from '../models/dbo.models';
 import {Vocabulary as VocabularyDTO} from '../generated/models/Vocabulary';
 import {Entity as EntityDTO} from '../generated/models/Entity';
 import {StatusCodes} from 'http-status-codes';
-import {HEADER_IF_UNMODIFIED_SINCE, HOST, MIME_TYPE_TURTLE} from '../models/constants';
+import {HEADER_ACCEPT, HEADER_IF_UNMODIFIED_SINCE, HOST, MIME_TYPE_TURTLE} from '../models/constants';
 
 export class UtilService {
   public static readonly checkQueryParams = (allowed: string[], query: unknown): boolean =>
@@ -37,8 +37,7 @@ export class UtilService {
   };
 
   public static readonly checkAcceptHeader = (req: Request, supportedMimeTypes: string[], next: NextFunction): string => {
-    const headerName = 'Accept';
-    const accept: string = req.header(headerName);
+    const accept: string = req.header(HEADER_ACCEPT);
 
     if(!accept || accept === '*/*') {
       return MIME_TYPE_TURTLE;
@@ -48,7 +47,7 @@ export class UtilService {
       return accept;
     }
 
-    next(new KnowledgeError(StatusCodes.NOT_ACCEPTABLE,  `The Accept-Header value '${accept}' is unacceptable`))
+    UtilService.throwNotAcceptable(accept, next);
     return undefined;
   };
 
@@ -106,10 +105,6 @@ export class UtilService {
     canonicalLink: `https://${HOST}/kb/${dbo._id.toHexString()}`
   });
 
-  // TODO TM-92, next step in next branch: transform entity to turtle and return result
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  public static readonly entityDbo2LinkedData = (e: Entity, mimeType: string): EntityDTO => UtilService.entityDbo2Dto(e);
-
   public static readonly vocabDto2Dbo = (dto: VocabularyDTO): Vocabulary => ({
     _id: undefined,
     created: undefined,
@@ -127,4 +122,7 @@ export class UtilService {
     lastModified: dbo.lastModified.toISOString(),
     entityCount: dbo.entityCount
   });
+
+  public static readonly throwNotAcceptable = (mimeType: string, next: NextFunction): void =>
+    next(new KnowledgeError(StatusCodes.NOT_ACCEPTABLE,  `The Accept-Header value '${mimeType}' is unacceptable`));
 }
