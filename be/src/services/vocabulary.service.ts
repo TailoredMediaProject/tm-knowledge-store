@@ -35,23 +35,23 @@ export class VocabularyService {
     return VocabularyService.collection()
       .aggregate(pipeline)
       .next()
-    // @ts-ignore
+      // @ts-ignore
       .then(result => {
         if (!!result?._id) {
           return result as Vocabulary;
         }
         return ServiceErrorFactory.notFound('Vocabulary not found!');
-      })
+      });
   }
 
   public deleteVocab = (id: string | ObjectId, date: Date): Promise<boolean> => VocabularyService.collection()
-    .deleteOne({ _id: new ObjectId(id), lastModified: date })
+    .deleteOne({_id: new ObjectId(id), lastModified: date})
     .then(async (r: DeleteResult) => {
       if (r.deletedCount === 1) {
         return entityServiceInstance.removeEntitiesFromVocabWithId(id).then(() => true);
       } else {
         await VocabularyService.collection()
-          .findOne({ _id: new ObjectId(id) })
+          .findOne({_id: new ObjectId(id)})
           .then(result => {
             if (!!result?._id) {
               return ServiceErrorFactory.preconditionFailed(`${HEADER_IF_UNMODIFIED_SINCE} has changed in the meantime!`);
@@ -84,7 +84,7 @@ export class VocabularyService {
     // @ts-ignore
     return VocabularyService.collection()
       // @ts-ignore
-      .findOneAndUpdate(query, update, { returnDocument: 'after' })
+      .findOneAndUpdate(query, update, {returnDocument: 'after'})
       // @ts-ignore
       .then((result: ModifyResult<Vocabulary>) => {
         // @ts-ignore
@@ -111,24 +111,21 @@ export class VocabularyService {
 
   // eslint-disable-rows-line @typescript-eslint/explicit-module-boundary-types
   public async listVocab(query: ListQueryModel): Promise<ListingResult<Vocabulary>> {
-    const { options, filter } = VocabularyService.transformToMongoDBFilterOption(query);
+    const {options, filter} = VocabularyService.transformToMongoDBFilterOption(query);
     const pipeline = VocabularyService.createMongoAggregationPipeline(null, filter, options);
     const itemPromise = VocabularyService.collection().aggregate(pipeline).toArray();
     const totalItemsPromise = VocabularyService.countCollectionItems(filter);
     return Promise.all([itemPromise, totalItemsPromise])
-      .then(result => {
-        console.log(result[0]);
-        return {
-          offset: query.offset,
-          rows: result[0].length,
-          totalItems: result[1],
-          items: result[0] as Vocabulary[]
-        }
-      })
+      .then(result => ({
+        offset: query.offset,
+        rows: result[0].length,
+        totalItems: result[1],
+        items: result[0] as Vocabulary[]
+      }));
   }
 
   // eslint-disable-next-line max-len
-  private static transformToMongoDBFilterOption(query?: ListQueryModel): { options: FindOptions; filter: Filter<Vocabulary> } {
+  private static transformToMongoDBFilterOption(query?: ListQueryModel): {options: FindOptions; filter: Filter<Vocabulary>} {
     const options: FindOptions = {};
     const filter: Filter<Vocabulary> = {};
 
@@ -203,53 +200,43 @@ export class VocabularyService {
   }
 
   private static createMongoAggregationPipeline(
-    matchIds?: string|ObjectId,
+    matchIds?: string | ObjectId,
     filter?: Filter<Vocabulary>,
     options?: FindOptions): Document[] {
     const pipeline = [];
 
     if (matchIds) {
-      const matchData = {'$match': {
-        '_id': matchIds
-      }
-      };
-      pipeline.push(matchData);
-    }
-
-    if (filter && Object.keys(filter).length > 0) {
-      pipeline.push(filter);
-    }
-
-    if (options && Object.keys(options).length > 0) {
-      pipeline.push(options);
+      pipeline.push({$match: {_id: matchIds}});
     }
 
     const lookupData = {
       $lookup:
-          {
-            from: 'entities',
-            let:{vocabId: '$_id'},
-            pipeline: [
-              {
-                $match: {
-                  $expr: {
-                    $eq: ['$vocabulary','$$vocabId']
-                  }
+        {
+          from: 'entities',
+          let: {vocabId: '$_id'},
+          pipeline: [
+            {
+              $match: {
+                $expr: {
+                  $eq: ['$vocabulary', '$$vocabId']
                 }
-              },
-              {
-                $count: 'count'
               }
-            ],
-            as: 'entityCount'
-          }
+            },
+            {
+              $count: 'count'
+            }
+          ],
+          as: 'entityCount'
+        }
     };
+
     const unwindData = {
       $unwind: {
         path: '$entityCount',
         preserveNullAndEmptyArrays: true
       }
     };
+
     const addFields = {
       $addFields: {
         entityCount: {
@@ -257,7 +244,16 @@ export class VocabularyService {
         }
       }
     };
+
     pipeline.push(lookupData, unwindData, addFields);
+
+    if (!!options?.skip) {
+      pipeline.push({$skip: options.skip});
+    }
+
+    if (!!options?.limit) {
+      pipeline.push({$limit: options.limit});
+    }
 
     return pipeline;
   }
