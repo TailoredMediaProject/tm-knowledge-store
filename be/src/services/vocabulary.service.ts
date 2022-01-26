@@ -1,11 +1,12 @@
-import {Collection, DeleteResult, Filter, FindOptions, ModifyResult, ObjectId, UpdateFilter} from 'mongodb';
-import {Vocabulary} from '../models/dbo.models';
+import {Collection, DeleteResult, Document, Filter, ModifyResult, ObjectId, UpdateFilter} from 'mongodb';
+import {Entity, Vocabulary} from '../models/dbo.models';
 import {instance as persistenceService} from './persistence.service';
-import {KnowledgeError} from '../models/knowledge-error.model';
 import ListQueryModel from '../models/list-query.model';
 import {ListingResult} from '../models/listing-result.model';
 import {entityServiceInstance} from './entity.service';
 import {UtilService} from './util.service';
+import {ServiceError, ServiceErrorFactory} from '../models/service-error.model';
+import {HEADER_IF_UNMODIFIED_SINCE} from '../models/constants';
 
 export class VocabularyService {
   private static collection(): Collection {
@@ -29,28 +30,33 @@ export class VocabularyService {
       .then((id) => this.getVocabular(id));
   }
 
-  public getVocabular = (id: string | ObjectId): Promise<Vocabulary> => VocabularyService.collection()
-    .findOne({ _id: new ObjectId(id) })
-    .then((result) => {
-      if (!!result?._id) {
-        return result as Vocabulary;
-      }
-      throw new KnowledgeError(404, 'Vocabulary', 'Vocabulary not found!');
-    });
+  public getVocabular(id: string | ObjectId): Promise<Vocabulary> {
+    const pipeline = VocabularyService.createMongoAggregationPipeline(new ObjectId(id));
+    return VocabularyService.collection()
+      .aggregate(pipeline)
+      .next()
+      // @ts-ignore
+      .then(result => {
+        if (!!result?._id) {
+          return result as Vocabulary;
+        }
+        return ServiceErrorFactory.notFound('Vocabulary not found!');
+      });
+  }
 
   public deleteVocab = (id: string | ObjectId, date: Date): Promise<boolean> => VocabularyService.collection()
-    .deleteOne({ _id: new ObjectId(id), lastModified: date })
+    .deleteOne({_id: new ObjectId(id), lastModified: date})
     .then(async (r: DeleteResult) => {
       if (r.deletedCount === 1) {
         return entityServiceInstance.removeEntitiesFromVocabWithId(id).then(() => true);
       } else {
         await VocabularyService.collection()
-          .findOne({ _id: new ObjectId(id) })
+          .findOne({_id: new ObjectId(id)})
           .then(result => {
             if (!!result?._id) {
-              throw new KnowledgeError(412, 'Precondition Failed', 'If-Unmodified-Since has changed in the meantime!');
+              return ServiceErrorFactory.preconditionFailed(`${HEADER_IF_UNMODIFIED_SINCE} has changed in the meantime!`);
             }
-            throw new KnowledgeError(404, 'Not Found', 'If-Unmodified-Since has changed in the meantime!');
+            return ServiceErrorFactory.notFound('Vocabulary not found');
           });
       }
     });
@@ -75,9 +81,10 @@ export class VocabularyService {
       }
     };
 
+    // @ts-ignore
     return VocabularyService.collection()
       // @ts-ignore
-      .findOneAndUpdate(query, update, { returnDocument: 'after' })
+      .findOneAndUpdate(query, update, {returnDocument: 'after'})
       // @ts-ignore
       .then((result: ModifyResult<Vocabulary>) => {
         // @ts-ignore
@@ -89,106 +96,35 @@ export class VocabularyService {
       });
   }
 
-  private updateVocabNotFoundError(filter: Filter<Vocabulary>): Promise<Vocabulary> {
+  private updateVocabNotFoundError(filter: Filter<Vocabulary>): Promise<ServiceError> {
     delete filter.lastModified;
     return VocabularyService.collection()
       // @ts-ignore
       .findOne(filter)
       // @ts-ignore
-      .then((v: Vocabulary) => {
-        if (v._id.toHexString() === filter._id.toHexString()) {
-          throw new KnowledgeError(
-            412,
-            'Precondition Failed',
-            'Target has been modified since last retrieval, the modified target is returned',
-            v
-          );
-        } else {
-          throw new KnowledgeError(404, 'Not found', 'Target vocabulary with id \'$ {id}\' not found');
-        }
-      });
+      .then((v: Vocabulary) =>
+        v._id.toHexString() === filter._id.toHexString() ?
+          ServiceErrorFactory.preconditionFailed('Target has been modified since last retrieval, the modified target is returned') :
+          ServiceErrorFactory.notFound('Target vocabulary with id \'$ {id}\' not found')
+      );
   }
 
   // eslint-disable-rows-line @typescript-eslint/explicit-module-boundary-types
   public async listVocab(query: ListQueryModel): Promise<ListingResult<Vocabulary>> {
-    const { options, filter } = this.transformToMongoDBFilterOption(query);
+    const pipeline = VocabularyService.createMongoAggregationPipeline(undefined, query);
+    const itemPromise = VocabularyService.collection().aggregate(pipeline).toArray();
     // @ts-ignore
-    return VocabularyService.collection()
-      // @ts-ignore
-      .find(filter, options)
-      .toArray()
-      .then(async dbos => {
-        const totalItems: number = await VocabularyService.countCollectionItems(filter);
-        return {
-          offset: query.offset,
-          rows: dbos.length,
-          totalItems,
-          items: dbos as Vocabulary[]
-        };
-      });
+    const totalItemsPromise = VocabularyService.countCollectionItems(pipeline?.$matchData as Filter<Vocabulary>);
+    return Promise.all([itemPromise, totalItemsPromise])
+      .then(result => ({
+        offset: query.offset,
+        rows: result[0].length,
+        totalItems: result[1],
+        items: result[0] as Vocabulary[]
+      }));
   }
 
-  // eslint-disable-next-line max-len
-  private transformToMongoDBFilterOption(query?: ListQueryModel): { options: FindOptions; filter: Filter<Vocabulary> } {
-    const options: FindOptions = {};
-    const filter: Filter<Vocabulary> = {};
-
-    if (!!query) {
-      if (!!query?.text) {
-        filter.$or = [
-          {
-            label: {
-              $regex: UtilService.escapeRegExp(query.text),
-              $options: 'gi'
-            }
-          },
-          {
-            description: {
-              $regex: UtilService.escapeRegExp(query.text),
-              $options: 'gi'
-            }
-          }
-        ];
-      }
-
-      if (!!query?.createdSince) {
-        // @ts-ignore
-        filter.created = {
-          // eslint-disable-rows-line @typescript-eslint/no-unsafe-argument
-          $gte: new Date(query?.createdSince)
-          // https://www.mongodb.com/community/forums/t/finding-data-between-two-dates-by-using-a-query-in-mongodb-charts/102506/2
-        };
-      }
-
-      if (!!query?.modifiedSince) {
-        // @ts-ignore
-        filter.lastModified = {
-          // eslint-disable-rows-line @typescript-eslint/no-unsafe-argument
-          $gte: new Date(query.modifiedSince)
-        };
-      }
-
-      if (!!query?.sort) {
-        // @ts-ignore
-        options.sort = this.mapToMongoSort(query?.sort);
-      }
-
-      if (!!query?.offset) {
-        options.skip = Number(query?.offset); // Without the cast, it won't work!
-      }
-
-      if (!!query?.rows) {
-        options.limit = Number(query?.rows); // Without the cast, it won't work!
-      }
-    }
-
-    return {
-      options,
-      filter
-    };
-  }
-
-  private mapToMongoSort(sort: string): unknown {
+  private static mapToMongoSort(sort: string): unknown {
     if (!!sort && sort.includes(' ')) {
       if (sort.toLowerCase().includes('created')) {
         return {
@@ -201,6 +137,106 @@ export class VocabularyService {
       }
     }
     return {};
+  }
+
+  private static createMongoAggregationPipeline(id: string | ObjectId, query?: ListQueryModel): Document[] {
+    const pipeline = [];
+    const matchData: Partial<Entity> = {};
+
+    if (ObjectId.isValid(id)) {
+      matchData._id = new ObjectId(id);
+    }
+
+    if (!!query?.text) {
+      // @ts-ignore
+      matchData.$or = [
+        {
+          label: {
+            $regex: UtilService.escapeRegExp(query.text),
+            $options: 'gi'
+          }
+        },
+        {
+          description: {
+            $regex: UtilService.escapeRegExp(query.text),
+            $options: 'gi'
+          }
+        }
+      ];
+    }
+
+    if (!!query?.createdSince) {
+      matchData.created = {
+        // @ts-ignore
+        $gte: new Date(query?.createdSince)
+        // https://www.mongodb.com/community/forums/t/finding-data-between-two-dates-by-using-a-query-in-mongodb-charts/102506/2
+      };
+    }
+
+    if (!!query?.modifiedSince) {
+      matchData.lastModified = {
+        // @ts-ignore
+        $gte: new Date(query.modifiedSince)
+      };
+    }
+
+    // @ts-ignore
+    if(!!matchData?._id || !!matchData?.$or || !!matchData?.created || !!matchData?.lastModified) {
+      pipeline.push({$match: matchData});
+    }
+
+    if (!!query?.sort) {
+      // https://docs.mongodb.com/manual/reference/operator/aggregation/sort/#-sort-operator-and-performance
+      pipeline.push({$sort: VocabularyService.mapToMongoSort(query?.sort)});
+    }
+
+    const lookupData = {
+      $lookup:
+        {
+          from: 'entities',
+          let: {vocabId: '$_id'},
+          pipeline: [
+            {
+              $match: {
+                $expr: {
+                  $eq: ['$vocabulary', '$$vocabId']
+                }
+              }
+            },
+            {
+              $count: 'count'
+            }
+          ],
+          as: 'entityCount'
+        }
+    };
+
+    const unwindData = {
+      $unwind: {
+        path: '$entityCount',
+        preserveNullAndEmptyArrays: true
+      }
+    };
+
+    const addFields = {
+      $addFields: {
+        entityCount: {
+          $ifNull: ['$entityCount.count', 0]
+        }
+      }
+    };
+
+    pipeline.push(lookupData, unwindData, addFields);
+
+    if (!!query?.offset) {
+      pipeline.push({$skip: Number(query?.offset)});
+    }
+
+    if (!!query?.rows) {
+      pipeline.push({$limit: query.rows});
+    }
+
+    return pipeline;
   }
 }
 

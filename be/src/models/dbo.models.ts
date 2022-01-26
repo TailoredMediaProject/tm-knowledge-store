@@ -6,6 +6,7 @@ export interface Vocabulary {
   description: string;
   created: Date;
   lastModified: Date;
+  entityCount: number;
 }
 
 export interface Entity {

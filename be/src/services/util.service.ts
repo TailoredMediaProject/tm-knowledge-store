@@ -4,6 +4,8 @@ import {ObjectId} from 'mongodb';
 import {Entity, Vocabulary} from '../models/dbo.models';
 import {Vocabulary as VocabularyDTO} from '../generated/models/Vocabulary';
 import {Entity as EntityDTO} from '../generated/models/Entity';
+import {StatusCodes} from 'http-status-codes';
+import {HEADER_ACCEPT, HEADER_IF_UNMODIFIED_SINCE, HOST, MIME_TYPE_TURTLE} from '../models/constants';
 
 export class UtilService {
   public static readonly checkQueryParams = (allowed: string[], query: unknown): boolean =>
@@ -14,22 +16,39 @@ export class UtilService {
     required.every((queryParam: string) => queryParam in query && !!query[queryParam])
 
   public static readonly checkIfUnmodifiedHeader = (req: Request, next: NextFunction): Date => {
-    const headerName = 'If-Unmodified-Since';
-    const ifUnmodifiedSince: string = req.header(headerName);
+    const ifUnmodifiedSince: string = req.header(HEADER_IF_UNMODIFIED_SINCE);
 
     if (!ifUnmodifiedSince) {
-      next(new KnowledgeError(428, 'Precondition Required', 'If-Unmodified-Since-Header missing'));
+      next(new KnowledgeError(StatusCodes.PRECONDITION_REQUIRED, `${HEADER_IF_UNMODIFIED_SINCE} missing`));
       return undefined;
     }
 
     const date: Date = new Date(ifUnmodifiedSince);
 
     if (isNaN(date.getTime())) {
-      next(new KnowledgeError(422, 'Unprocessable Entity', `The ${headerName}-Header has an invalid date format!`));
+      next(new KnowledgeError(
+        StatusCodes.UNPROCESSABLE_ENTITY,
+        `The ${HEADER_IF_UNMODIFIED_SINCE}-Header has an invalid date format!`)
+      );
       return undefined;
     }
 
     return date;
+  };
+
+  public static readonly checkAcceptHeader = (req: Request, supportedMimeTypes: string[], next: NextFunction): string => {
+    const accept: string = req.header(HEADER_ACCEPT);
+
+    if(!accept || accept === '*/*') {
+      return MIME_TYPE_TURTLE;
+    }
+
+    if(supportedMimeTypes.includes(accept)) {
+      return accept;
+    }
+
+    UtilService.throwNotAcceptable(accept, next);
+    return undefined;
   };
 
   public static readonly checkId = (id: string, idName: string, next: NextFunction): string => {
@@ -37,7 +56,7 @@ export class UtilService {
       return id;
     }
 
-    next(new KnowledgeError(428, 'Precondition Required', `Invalid ${idName} ID '${id}'`));
+    next(new KnowledgeError(StatusCodes.PRECONDITION_REQUIRED, `Invalid ${idName} ID '${id}'`));
   };
 
   public static readonly escapeRegExp = (string: string): string => string.replace(/[.*+?^${}()|[\]\\]/g, '');
@@ -46,7 +65,7 @@ export class UtilService {
     try {
       return new URL(url);
     } catch (e) {
-      throw new KnowledgeError(400, 'Bad Request', `The URL '${url}' is malformed`);
+      throw new KnowledgeError(StatusCodes.BAD_REQUEST, `The URL '${url}' is malformed`);
     }
   };
 
@@ -83,7 +102,7 @@ export class UtilService {
     externalResources: dbo.externalResources,
     sameAs: dbo.sameAs,
     data: dbo.data,
-    canonicalLink: undefined
+    canonicalLink: `https://${HOST}/kb/${dbo._id.toHexString()}`
   });
 
   public static readonly vocabDto2Dbo = (dto: VocabularyDTO): Vocabulary => ({
@@ -91,7 +110,8 @@ export class UtilService {
     created: undefined,
     description: dto.description,
     label: dto.label,
-    lastModified: undefined
+    lastModified: undefined,
+    entityCount: undefined
   });
 
   public static readonly vocabDbo2Dto = (dbo: Vocabulary): VocabularyDTO => ({
@@ -100,6 +120,9 @@ export class UtilService {
     description: dbo.description,
     created: dbo.created.toISOString(),
     lastModified: dbo.lastModified.toISOString(),
-    entityCount: -1
+    entityCount: dbo.entityCount
   });
+
+  public static readonly throwNotAcceptable = (mimeType: string, next: NextFunction): void =>
+    next(new KnowledgeError(StatusCodes.NOT_ACCEPTABLE,  `The Accept-Header value '${mimeType}' is unacceptable`));
 }

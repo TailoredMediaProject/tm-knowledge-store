@@ -4,17 +4,19 @@ import {KnowledgeError} from '../models/knowledge-error.model';
 import {ResolveService} from '../models/resolve-service.interface';
 import KnowledgeResolveService from '../resolvers/knowledge-resolve.service';
 import DbpediaResolveService from '../resolvers/dbpedia-resolve.service';
+import {HOST} from '../models/constants';
+import {StatusCodes} from 'http-status-codes';
 
 const router: Router = Router();
 
 const resolvers: ResolveService[] = [
-  new KnowledgeResolveService(['https://data.tmedia.redlink.io/kp/', 'http://data.tmedia.redlink.io/kp/']),
+  new KnowledgeResolveService([`https://${HOST}/kb/`, `http://${HOST}/kb/`]),
   new DbpediaResolveService()
 ].sort((a: ResolveService, b: ResolveService) => a.priority() - b.priority());
 
 router.get('/resolve', (req: Request, res: Response, next: NextFunction) => {
   if (!UtilService.requireQueryParams(['uri'], req?.query)) {
-    next(new KnowledgeError(400, 'Bad Request', 'Query parameter `uri` is missing or has a falsy value'));
+    next(new KnowledgeError(StatusCodes.BAD_REQUEST, 'Query parameter `uri` is missing or has a falsy value'));
   } else {
     const resolveUri: URL = UtilService.checkUrl(`${req?.query?.uri}`);
     const resolveService = resolvers.find(r => r.accept(resolveUri));
@@ -24,7 +26,7 @@ router.get('/resolve', (req: Request, res: Response, next: NextFunction) => {
         .then((r: unknown) => res.json(r))
         .catch(next);
     } else {
-      next(new KnowledgeError(501, 'Not implemented', `Host of URI '${resolveUri}' is unsupported`));
+      next(new KnowledgeError(StatusCodes.NOT_IMPLEMENTED, `Host of URI '${resolveUri}' is unsupported`));
     }
   }
 });
