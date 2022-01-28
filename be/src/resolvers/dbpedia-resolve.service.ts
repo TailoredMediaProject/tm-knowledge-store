@@ -106,9 +106,6 @@ export default class DbpediaResolveService implements ResolveService {
         .map(q => q.object)
         .filter(o => o instanceof Literal)
         // @ts-ignore
-        //   .filter((l: Literal) => l.language == this.language)
-        // .map(p => p.value)
-        // .sort()
         .reduce(((previousValue: Literal, currentValue: Literal) => {
           if (previousValue !== currentValue) {
             console.log(currentValue.language + ': ' + currentValue.value)
