@@ -12,6 +12,8 @@ const serviceError2StatusCode = (serveError: ServiceErrorType): number => {
     return StatusCodes.CONFLICT;
   } else if (ServiceErrorType.PRECONDITION_FAILED === serveError) {
     return StatusCodes.PRECONDITION_FAILED;
+  } else if (ServiceErrorType.REQUEST_TIMEOUT === serveError) {
+    return StatusCodes.REQUEST_TIMEOUT;
   }
   return StatusCodes.INTERNAL_SERVER_ERROR;
 };
