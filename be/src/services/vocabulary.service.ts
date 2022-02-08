@@ -233,7 +233,7 @@ export class VocabularyService {
     }
 
     if (!!query?.rows) {
-      pipeline.push({$limit: query.rows});
+      pipeline.push({$limit: Number(query?.rows)});
     }
 
     return pipeline;
