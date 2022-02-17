@@ -9,9 +9,11 @@ import {StatusCodes} from 'http-status-codes';
 
 const router: Router = Router();
 
+// @ts-ignore
+
 const resolvers: ResolveService[] = [
   new KnowledgeResolveService([`https://${HOST}/kb/`, `http://${HOST}/kb/`]),
-  new DbpediaResolveService()
+  new DbpediaResolveService(['dbpedia.org'], 'de')
 ].sort((a: ResolveService, b: ResolveService) => a.priority() - b.priority());
 
 router.get('/resolve', (req: Request, res: Response, next: NextFunction) => {

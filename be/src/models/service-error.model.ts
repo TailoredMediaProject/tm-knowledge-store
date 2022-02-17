@@ -16,11 +16,15 @@ export class ServiceErrorFactory {
 
   public static readonly preconditionFailed = (message: string, data?: unknown): Promise<ServiceError> =>
     Promise.reject(new ServiceError(ServiceErrorType.PRECONDITION_FAILED, message, data));
+
+  public static readonly requestTimeout = (message: string): Promise<ServiceError> =>
+    Promise.reject(new ServiceError(ServiceErrorType.REQUEST_TIMEOUT, message));
 }
 
 export enum ServiceErrorType {
   INVALID_QUERY_VALUE,
   NOT_FOUND,
   CONFLICT,
-  PRECONDITION_FAILED
+  PRECONDITION_FAILED,
+  REQUEST_TIMEOUT
 }
