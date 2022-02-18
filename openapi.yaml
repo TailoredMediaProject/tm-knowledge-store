@@ -190,7 +190,6 @@ paths:
             application/ld+json: { }
             text/turtle: { }
             text/rdf+xml: { }
-
 components:
   schemas:
     Id:
