@@ -234,6 +234,8 @@ components:
           allOf:
             - $ref: '#/components/schemas/Id'
           readOnly: true
+        slug:
+          type: string
         created:
           allOf:
             - $ref: '#/components/schemas/DateTime'
