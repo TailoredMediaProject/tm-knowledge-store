@@ -2,6 +2,7 @@ import {ObjectId} from 'mongodb';
 
 export interface Vocabulary {
   _id: ObjectId;
+  slug: string;
   label: string;
   description: string;
   created: Date;

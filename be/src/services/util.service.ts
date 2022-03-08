@@ -6,6 +6,8 @@ import {Vocabulary as VocabularyDTO} from '../generated/models/Vocabulary';
 import {Entity as EntityDTO} from '../generated/models/Entity';
 import {StatusCodes} from 'http-status-codes';
 import {HEADER_ACCEPT, HEADER_IF_UNMODIFIED_SINCE, HOST, MIME_TYPE_TURTLE} from '../models/constants';
+import {vocabularyService} from './vocabulary.service';
+import {log} from 'rdflib';
 
 export class UtilService {
   public static readonly checkQueryParams = (allowed: string[], query: unknown): boolean =>
@@ -59,6 +61,37 @@ export class UtilService {
     next(new KnowledgeError(StatusCodes.PRECONDITION_REQUIRED, `Invalid ${idName} ID '${id}'`));
   };
 
+  public static readonly checkIfIdOrSlug = (id: string): Promise<string> => {
+    if (ObjectId.isValid(id)) {
+      return Promise.resolve(id);
+    }
+    return vocabularyService.getVocabularyWithSlug(id).then((vocab: Vocabulary) => {
+      if (vocab) {
+        return vocab._id.toHexString();
+      }
+      return Promise.reject(new KnowledgeError(StatusCodes.PRECONDITION_REQUIRED, `Invalid Vocabulary ID '${id}'`));
+    })
+  }
+  
+  public static readonly checkOrCreateId = (id: string): Promise<string> => 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    this.checkIfIdOrSlug(id).catch(error => vocabularyService.createVocab({
+      _id: null,
+      slug: id,
+      created: new Date(),
+      lastModified: new Date(),
+      label: null,
+      description: null,
+      entityCount:0,
+    })
+      .then((vocab: Vocabulary) => vocab._id.toHexString())
+      .catch(error => {
+        console.error(error);
+        return error;
+      }));
+    
+  
+
   public static readonly escapeRegExp = (string: string): string => string.replace(/[.*+?^${}()|[\]\\]/g, '');
 
   public static readonly checkUrl = (url: string): URL => {
@@ -107,6 +140,7 @@ export class UtilService {
 
   public static readonly vocabDto2Dbo = (dto: VocabularyDTO): Vocabulary => ({
     _id: undefined,
+    slug: dto.slug,
     created: undefined,
     description: dto.description,
     label: dto.label,
@@ -116,6 +150,7 @@ export class UtilService {
 
   public static readonly vocabDbo2Dto = (dbo: Vocabulary): VocabularyDTO => ({
     id: dbo._id.toHexString(),
+    slug: dbo.slug,
     label: dbo.label,
     description: dbo.description,
     created: dbo.created.toISOString(),

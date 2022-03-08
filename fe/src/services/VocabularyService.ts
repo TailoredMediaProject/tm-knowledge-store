@@ -1,92 +1,43 @@
-import {AxiosInstance, AxiosPromise, AxiosRequestConfig} from 'axios';
-import {Configuration, Pageable, Vocabulary, VocabularyApiFp} from '../openapi';
+import {Configuration, Pageable, Vocabulary, VocabularyApi} from '@/openapi';
 import {ISO8601toUTC} from '@/Utility/DateUtility';
 import {extractVocabList, VocabList} from '@/Objects/VocabList';
 
 export class VocabularyService {
   private readonly basePath: string;
   private readonly apiPath: string;
-  private readonly apiFn: {
-    createVocabulary(
-      vocabulary?: Vocabulary,
-      options?: AxiosRequestConfig
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Vocabulary>>;
-    deleteVocabulary(
-      vocabularyId: string,
-      ifUnmodifiedSince: string,
-      options?: AxiosRequestConfig
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Vocabulary>>;
-    getVocabulary(
-      vocabularyId: string,
-      options?: AxiosRequestConfig
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Vocabulary>>;
-    listVocabularies(
-      text?: string,
-      createdSince?: string,
-      modifiedSince?: string,
-      sort?: 'created asc' | 'created desc' | 'modified asc' | 'modified desc',
-      offset?: number,
-      rows?: number,
-      options?: AxiosRequestConfig
-    ): Promise<(
-      axios?: AxiosInstance,
-      basePath?: string
-      // eslint-disable-next-line @typescript-eslint/ban-types
-    ) => AxiosPromise<Pageable & object>>;
-    updateVocabulary(
-      vocabularyId: string,
-      ifUnmodifiedSince: string,
-      vocabulary?: Vocabulary,
-      options?: AxiosRequestConfig
-    ): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Vocabulary>>;
-  };
+  private apiFn = new VocabularyApi();
 
   constructor(basePath: string) {
     this.basePath = basePath;
     this.apiPath = basePath + '/vocab';
-    this.apiFn = VocabularyApiFp(
-      new Configuration({ basePath: this.basePath })
-    );
+    this.apiFn = new VocabularyApi(new Configuration({basePath: this.basePath}));
   }
 
-  async getVocabs(
-    text?: string,
-    page = 0,
-    rowCount = 10
-  ): Promise<VocabList | undefined> {
-    return this.apiFn
-      .listVocabularies(text, undefined, undefined, undefined, page, rowCount)
-      .then((req) =>
-        req().then((resp) => {
-          if (resp.status >= 400) {
-            console.error(resp);
-            return;
-          }
-          const data = resp.data as Pageable & [Vocabulary];
-          return extractVocabList(data);
-        })
-      );
+  async getVocabs(text?: string, page = 0, rowCount = 10): Promise<VocabList | undefined> {
+    return this.apiFn.listVocabularies(text, undefined, undefined, undefined, page, rowCount).then((resp) => {
+      if (resp.status >= 400) {
+        console.error(resp);
+        return;
+      }
+      const data = resp.data as Pageable & [Vocabulary];
+      return extractVocabList(data);
+    });
   }
 
   getVocab(objectID: string): Promise<Vocabulary | undefined> {
     if (!objectID || objectID === '') {
       return Promise.reject('No vocabulary ID set!');
     }
-    return this.apiFn.getVocabulary(objectID).then((req) =>
-      req().then((resp) => {
-        if (resp.status >= 400) {
-          console.error(resp);
-          return;
-        }
-        return resp.data;
-      })
-    );
+    return this.apiFn.getVocabulary(objectID).then((resp) => {
+      if (resp.status >= 400) {
+        console.error(resp);
+        return;
+      }
+      return resp.data;
+    });
   }
 
-  createVocab(
-    label?: string,
-    description?: string
-  ): Promise<Vocabulary | undefined> {
+  createVocab(label?: string, description?: string): Promise<Vocabulary | undefined> {
     return this.apiFn
       .createVocabulary({
         created: '',
@@ -96,15 +47,13 @@ export class VocabularyService {
         label: label,
         description: description
       })
-      .then((req) =>
-        req().then((resp) => {
-          if (resp.status >= 400) {
-            console.error(resp);
-            return;
-          }
-          return resp.data;
-        })
-      );
+      .then((resp) => {
+        if (resp.status >= 400) {
+          console.error(resp);
+          return;
+        }
+        return resp.data;
+      });
   }
 
   updateVocab(vocab: Vocabulary): Promise<Vocabulary | undefined> {
@@ -116,17 +65,13 @@ export class VocabularyService {
       return Promise.reject('Invalid date!');
     }
 
-    return this.apiFn
-      .updateVocabulary(objectID, lastModified, vocab)
-      .then((req) =>
-        req().then((resp) => {
-          if (resp.status >= 400) {
-            console.error(resp);
-            return;
-          }
-          return resp.data;
-        })
-      );
+    return this.apiFn.updateVocabulary(objectID, lastModified, vocab).then((resp) => {
+      if (resp.status >= 400) {
+        console.error(resp);
+        return;
+      }
+      return resp.data;
+    });
   }
 
   deleteVocab(vocab: Vocabulary): Promise<Vocabulary | undefined> {
@@ -139,19 +84,18 @@ export class VocabularyService {
       return Promise.reject('Invalid date!');
     }
 
-    return this.apiFn.deleteVocabulary(objectID, lastModified).then((req) =>
-      req()
-        .then((resp) => {
-          if (resp.status >= 400) {
-            console.error(resp);
-            return undefined;
-          }
-          return resp.data;
-        })
-        .catch((error) => {
-          console.error(error);
-          return Promise.reject('Error deleting vocabulary!');
-        })
-    );
+    return this.apiFn
+      .deleteVocabulary(objectID, lastModified)
+      .then((resp) => {
+        if (resp.status >= 400) {
+          console.error(resp);
+          return undefined;
+        }
+        return resp.data;
+      })
+      .catch((error) => {
+        console.error(error);
+        return Promise.reject('Error deleting vocabulary!');
+      });
   }
 }

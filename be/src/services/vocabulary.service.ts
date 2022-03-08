@@ -44,6 +44,18 @@ export class VocabularyService {
       });
   }
 
+  public getVocabularyWithSlug(slug: string): Promise<Vocabulary> {
+    const pipeline = VocabularyService.createMongoAggregationPipeline(null, {slug});
+    return VocabularyService.collection()
+      .aggregate(pipeline)
+      .next()
+      .then(result => {
+        if (!!result?._id) {
+          return result as Vocabulary;
+        }
+      })
+  }
+
   public deleteVocab = (id: string | ObjectId, date: Date): Promise<boolean> => VocabularyService.collection()
     .deleteOne({_id: new ObjectId(id), lastModified: date})
     .then(async (r: DeleteResult) => {
@@ -147,6 +159,11 @@ export class VocabularyService {
       matchData._id = new ObjectId(id);
     }
 
+    if (!!query?.slug) {
+      // @ts-ignore
+      matchData.slug = query.slug;
+    }
+
     if (!!query?.text) {
       // @ts-ignore
       matchData.$or = [
@@ -181,7 +198,7 @@ export class VocabularyService {
     }
 
     // @ts-ignore
-    if(!!matchData?._id || !!matchData?.$or || !!matchData?.created || !!matchData?.lastModified) {
+    if(!!matchData?._id || !!matchData?.$or || !!matchData?.created || !!matchData?.lastModified || !!matchData?.slug) {
       pipeline.push({$match: matchData});
     }
 

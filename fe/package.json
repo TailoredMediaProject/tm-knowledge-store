@@ -9,7 +9,7 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "start": "vue-cli-service serve --open",
+    "start": "vue-cli-service serve",
     "docker:start": "vue-cli-service serve --port 4200"
   },
   "dependencies": {

@@ -6,4 +6,5 @@ export default interface ListQueryModel {
   offset?: number;
   rows?: number;
   type?: string;
+  slug?: string;
 }
