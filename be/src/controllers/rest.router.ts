@@ -23,26 +23,50 @@ router.get('/vocab', (req: Request, res: Response, next: NextFunction) => {
     };
     vocabularyService
       .listVocab(queryListModel)
-      .then((r: ListingResult<Vocabulary>) => ({ ...r, items: r.items.map((v: Vocabulary) => UtilService.vocabDbo2Dto(v)) }))
+      .then((r: ListingResult<Vocabulary>) => ({
+        ...r,
+        items: r.items.map((v: Vocabulary) => UtilService.vocabDbo2Dto(v))
+      }))
       .then((r: ListingResult<VocabularyDTO>) => res.json(r))
       .catch(next);
   }
 });
 
-router.post('/vocab', (req: Request, res: Response, next: NextFunction) => {
-  const body = <VocabularyDTO> req.body;
+// eslint-disable-next-line @typescript-eslint/no-misused-promises
+router.post('/vocab', async (req: Request, res: Response, next: NextFunction) => {
+  const body = <VocabularyDTO>req.body;
   const newVocab: Vocabulary = UtilService.vocabDto2Dbo(body);
 
-  vocabularyService
-    .createVocab(newVocab)
-    .then((v) => UtilService.vocabDbo2Dto(v))
-    .then((v) => {
-      const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}/${v.id}`;
+  if (req.body.slug !== undefined) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+    const slugC = await UtilService.checkIfSlugExist(req.body.slug)
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument,@typescript-eslint/no-misused-promises
+    if (!slugC) {
+      vocabularyService
+        .createVocab(newVocab)
+        .then((v) => UtilService.vocabDbo2Dto(v))
+        .then((v) => {
+          const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}/${v.id}`;
 
-      res.setHeader('Location', fullUrl);
-      res.status(StatusCodes.CREATED).json(v);
-    })
-    .catch(next);
+          res.setHeader('Location', fullUrl);
+          res.status(StatusCodes.CREATED).json(v);
+        })
+        .catch(next);
+    } else {
+      res.status(StatusCodes.BAD_REQUEST).json('Vocab with that Slug already created!')
+    }
+  } else {
+    vocabularyService
+      .createVocab(newVocab)
+      .then((v) => UtilService.vocabDbo2Dto(v))
+      .then((v) => {
+        const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}/${v.id}`;
+
+        res.setHeader('Location', fullUrl);
+        res.status(StatusCodes.CREATED).json(v);
+      })
+      .catch(next);
+  }
 });
 
 router.put('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
@@ -50,7 +74,7 @@ router.put('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
   UtilService.checkIfIdOrSlug(req?.params?.id)
     .then((id: string) => {
       vocabularyService
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         .updateVocab(id, ifUnmodifiedSince, UtilService.vocabDto2Dbo(req.body as VocabularyDTO))
         .then((v: Vocabulary) => res.json(UtilService.vocabDbo2Dto(v)))
         .catch(next);
@@ -97,7 +121,10 @@ router.get('/vocab/:vId/entities', (req: Request, res: Response, next: NextFunct
 
         entityServiceInstance
           .listEntities(queryListModel, vId)
-          .then((r: ListingResult<Entity>) => ({ ...r, items: r.items.map((v: Entity) => UtilService.entityDbo2Dto(v)) }))
+          .then((r: ListingResult<Entity>) => ({
+            ...r,
+            items: r.items.map((v: Entity) => UtilService.entityDbo2Dto(v))
+          }))
           .then((r: ListingResult<EntityDTO>) => res.json(r))
           .catch(next);
       }
@@ -126,7 +153,7 @@ router.post('/vocab/:id/entities', (req: Request, res: Response, next: NextFunct
     .then((vId: string) => {
       req.body.vocabulary = vId;
 
-      const body = <EntityDTO> req.body;
+      const body = <EntityDTO>req.body;
       const entity: Entity = UtilService.entityDto2Dbo(body, next);
 
       entityServiceInstance
@@ -152,7 +179,7 @@ router.put('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: Next
       req.body.vocabulary = vId;
 
       entityServiceInstance
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         .updateEntity(vId, eId, ifUnmodifiedSince, UtilService.entityDto2Dbo(req.body as EntityDTO, next))
         .then((e: Entity) => res.json(UtilService.entityDbo2Dto(e)))
         .catch(next);

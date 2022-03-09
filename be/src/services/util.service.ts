@@ -72,8 +72,17 @@ export class UtilService {
       return Promise.reject(new KnowledgeError(StatusCodes.PRECONDITION_REQUIRED, `Invalid Vocabulary ID '${id}'`));
     })
   }
-  
-  public static readonly checkOrCreateId = (id: string): Promise<string> => 
+
+  public static readonly checkIfSlugExist = (slug: string): Promise<boolean> => 
+    vocabularyService.getVocabularyWithSlug(slug).then((vocab: Vocabulary) => {
+      if (vocab) {
+        return true
+      }
+      return false;
+    })
+
+  public static readonly checkOrCreateId = (id: string): Promise<string> =>
+    // @ts-ignore
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     this.checkIfIdOrSlug(id).catch(error => vocabularyService.createVocab({
       _id: null,
