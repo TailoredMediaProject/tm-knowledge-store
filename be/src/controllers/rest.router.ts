@@ -32,41 +32,27 @@ router.get('/vocab', (req: Request, res: Response, next: NextFunction) => {
   }
 });
 
-// eslint-disable-next-line @typescript-eslint/no-misused-promises
-router.post('/vocab', async (req: Request, res: Response, next: NextFunction) => {
+router.post('/vocab',  (req: Request, res: Response, next: NextFunction) => {
   const body = <VocabularyDTO>req.body;
   const newVocab: Vocabulary = UtilService.vocabDto2Dbo(body);
 
-  if (req.body.slug !== undefined) {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    const slugC = await UtilService.checkIfSlugExist(req.body.slug)
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument,@typescript-eslint/no-misused-promises
-    if (!slugC) {
-      vocabularyService
-        .createVocab(newVocab)
-        .then((v) => UtilService.vocabDbo2Dto(v))
-        .then((v) => {
-          const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}/${v.id}`;
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+  UtilService.checkIfSlugExist(body.slug)
+    .then(exists => {
+      if (!exists) {
+        vocabularyService
+          .createVocab(newVocab)
+          .then((v) => UtilService.vocabDbo2Dto(v))
+          .then((v) => {
+            const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}/${v.id}`;
 
-          res.setHeader('Location', fullUrl);
-          res.status(StatusCodes.CREATED).json(v);
-        })
-        .catch(next);
-    } else {
-      res.status(StatusCodes.BAD_REQUEST).json('Vocab with that Slug already created!')
-    }
-  } else {
-    vocabularyService
-      .createVocab(newVocab)
-      .then((v) => UtilService.vocabDbo2Dto(v))
-      .then((v) => {
-        const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}/${v.id}`;
-
-        res.setHeader('Location', fullUrl);
-        res.status(StatusCodes.CREATED).json(v);
-      })
-      .catch(next);
-  }
+            res.setHeader('Location', fullUrl);
+            res.status(StatusCodes.CREATED).json(v);
+          })
+          .catch(next);
+      }
+    })
+    .catch(next);
 });
 
 router.put('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {

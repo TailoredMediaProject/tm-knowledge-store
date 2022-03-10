@@ -7,7 +7,6 @@ import {Entity as EntityDTO} from '../generated/models/Entity';
 import {StatusCodes} from 'http-status-codes';
 import {HEADER_ACCEPT, HEADER_IF_UNMODIFIED_SINCE, HOST, MIME_TYPE_TURTLE} from '../models/constants';
 import {vocabularyService} from './vocabulary.service';
-import {log} from 'rdflib';
 
 export class UtilService {
   public static readonly checkQueryParams = (allowed: string[], query: unknown): boolean =>
@@ -73,13 +72,12 @@ export class UtilService {
     })
   }
 
-  public static readonly checkIfSlugExist = (slug: string): Promise<boolean> => 
-    vocabularyService.getVocabularyWithSlug(slug).then((vocab: Vocabulary) => {
-      if (vocab) {
-        return true
-      }
-      return false;
-    })
+  public static readonly checkIfSlugExist = (slug?: string): Promise<boolean> => {
+    if (!slug || slug.trim() === '') {
+      return Promise.resolve(false);
+    }
+    return vocabularyService.getVocabularyWithSlug(slug).then((vocab: Vocabulary) => !!vocab);
+  }
 
   public static readonly checkOrCreateId = (id: string): Promise<string> =>
     // @ts-ignore

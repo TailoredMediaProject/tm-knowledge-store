@@ -1,4 +1,4 @@
-import {Db, MongoClient, MongoError} from 'mongodb';
+import {Db, MongoClient, MongoClientOptions, MongoError} from 'mongodb';
 
 export class PersistenceService {
   private client: MongoClient;
@@ -19,14 +19,16 @@ export class PersistenceService {
     const password = process.env.MONGO_PASSWORD;
     const authPathParams = !!username && !!password ? `${username}:${password}@` : '';
     const dbHost = process.env.MONGO_HOST || 'localhost';
-    const dbPort = +(process.env.MONGO_PORT || 27017);
+    const dbPort = +(process.env.MONGO_PORT || 27018);
     const dbName = process.env.MONGO_DATABASE || 'knowledge';
-    const mongoUrl: string = process.env.MONGO_URL || `mongodb://${authPathParams}${dbHost}:${dbPort}`;
+    const mongoUrl: string = process.env.MONGO_URL || `mongodb://${authPathParams}${dbHost}:${dbPort}/${dbName}`;
 
-    this.client = new MongoClient(mongoUrl, {
+    const mongoClientOptions: MongoClientOptions = {
       connectTimeoutMS: 5000,
       serverSelectionTimeoutMS: 5000
-    });
+    } as MongoClientOptions;
+
+    this.client = new MongoClient(mongoUrl, mongoClientOptions);
 
     this.client.connect((error: MongoError | Error) => {
       if (error) {
