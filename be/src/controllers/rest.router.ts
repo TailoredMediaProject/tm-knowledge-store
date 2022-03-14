@@ -156,6 +156,30 @@ router.post('/vocab/:id/entities', (req: Request, res: Response, next: NextFunct
     .catch(next);
 });
 
+router.post('/workflow/vocab/:id/entities', (req: Request, res: Response, next: NextFunction) => {
+  UtilService.checkOrCreateId(req?.params?.id)
+    .then((vId: string) => {
+      req.body.vocabulary = vId;
+
+      const body = <EntityDTO>req.body;
+      const entity: Entity = UtilService.entityDto2Dbo(body, next);
+
+      // implement check if entity already exists
+
+      entityServiceInstance
+        .createEntity(entity)
+        .then(entity => UtilService.entityDbo2Dto(entity))
+        .then(ent => {
+          const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}/${ent.id}`;
+
+          res.setHeader('Location', fullUrl);
+          res.status(StatusCodes.CREATED).json(ent.canonicalLink);
+        })
+        .catch(next);
+    })
+    .catch(next);
+});
+
 router.put('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: NextFunction) => {
   const ifUnmodifiedSince: Date = UtilService.checkIfUnmodifiedHeader(req, next);
   UtilService.checkIfIdOrSlug(req?.params?.vId)
