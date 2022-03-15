@@ -140,40 +140,22 @@ router.post('/vocab/:id/entities', (req: Request, res: Response, next: NextFunct
       req.body.vocabulary = vId;
 
       const body = <EntityDTO>req.body;
-      const entity: Entity = UtilService.entityDto2Dbo(body, next);
+      UtilService.checkIfEntityExists(body.vocabulary, body.label, body.type, body.sameAs)
+        .then((entity: Entity) => {
+          if (entity !== null) {
+            return entity;
+          }
+          const newEntity: Entity = UtilService.entityDto2Dbo(body, next);
 
-      entityServiceInstance
-        .createEntity(entity)
+          return entityServiceInstance
+            .createEntity(newEntity);
+        })
         .then(entity => UtilService.entityDbo2Dto(entity))
         .then(ent => {
           const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}/${ent.id}`;
 
           res.setHeader('Location', fullUrl);
           res.status(StatusCodes.CREATED).json(ent);
-        })
-        .catch(next);
-    })
-    .catch(next);
-});
-
-router.post('/workflow/vocab/:id/entities', (req: Request, res: Response, next: NextFunction) => {
-  UtilService.checkOrCreateId(req?.params?.id)
-    .then((vId: string) => {
-      req.body.vocabulary = vId;
-
-      const body = <EntityDTO>req.body;
-      const entity: Entity = UtilService.entityDto2Dbo(body, next);
-
-      // implement check if entity already exists
-
-      entityServiceInstance
-        .createEntity(entity)
-        .then(entity => UtilService.entityDbo2Dto(entity))
-        .then(ent => {
-          const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}/${ent.id}`;
-
-          res.setHeader('Location', fullUrl);
-          res.status(StatusCodes.CREATED).json(ent.canonicalLink);
         })
         .catch(next);
     })

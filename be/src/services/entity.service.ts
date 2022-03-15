@@ -185,23 +185,22 @@ export class EntityService {
       filter.vocabulary = new ObjectId(id);
     }
 
-    if (!!query?.type) {
-      /* eslint-disable */
-      const capitalType: TagType = query.type.toUpperCase() as TagType;
-
-      if (Object.keys(TagType).includes(capitalType)) {
-        filter.type = capitalType;
-      } else {
-        return {
-          // @ts-ignore
-          options: ServiceErrorFactory.invalidQueryValue('Invalid Parameter of type \'type\'!'),
-          filter: ServiceErrorFactory.invalidQueryValue('Invalid Parameter of type \'type\'!')
-        };
-      }
-      /* eslint-enable */
-    }
-
     if (!!query) {
+      if (!!query?.type) {
+        /* eslint-disable */
+        const capitalType: TagType = query.type.toUpperCase() as TagType;
+
+        if (Object.keys(TagType).includes(capitalType)) {
+          filter.type = capitalType;
+        } else {
+          return {
+            // @ts-ignore
+            options: ServiceErrorFactory.invalidQueryValue('Invalid Parameter of type \'type\'!'),
+            filter: ServiceErrorFactory.invalidQueryValue('Invalid Parameter of type \'type\'!')
+          };
+        }
+        /* eslint-enable */
+      }
       if (!!query?.text) {
         filter.$or = [
           {
@@ -217,6 +216,14 @@ export class EntityService {
             }
           }
         ];
+      }
+
+      if (!!query?.vocabId) {
+        filter.vocabulary = new ObjectId(query.vocabId);
+      }
+
+      if (!!query?.includesSameAs && query.includesSameAs.length > 0) {
+        filter.sameAs = {$in: query.includesSameAs};
       }
 
       if (!!query?.createdSince) {

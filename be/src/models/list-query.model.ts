@@ -7,4 +7,6 @@ export default interface ListQueryModel {
   rows?: number;
   type?: string;
   slug?: string;
+  includesSameAs?: string[];
+  vocabId?: string;
 }

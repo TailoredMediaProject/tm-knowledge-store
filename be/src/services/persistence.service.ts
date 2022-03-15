@@ -19,7 +19,7 @@ export class PersistenceService {
     const password = process.env.MONGO_PASSWORD;
     const authPathParams = !!username && !!password ? `${username}:${password}@` : '';
     const dbHost = process.env.MONGO_HOST || 'localhost';
-    const dbPort = +(process.env.MONGO_PORT || 27018);
+    const dbPort = +(process.env.MONGO_PORT || 27017);
     const dbName = process.env.MONGO_DATABASE || 'knowledge';
     const mongoUrl: string = process.env.MONGO_URL || `mongodb://${authPathParams}${dbHost}:${dbPort}/${dbName}`;
 

@@ -7,6 +7,8 @@ import {Entity as EntityDTO} from '../generated/models/Entity';
 import {StatusCodes} from 'http-status-codes';
 import {HEADER_ACCEPT, HEADER_IF_UNMODIFIED_SINCE, HOST, MIME_TYPE_TURTLE} from '../models/constants';
 import {vocabularyService} from './vocabulary.service';
+import {TagType} from '../generated';
+import {entityServiceInstance} from './entity.service';
 
 export class UtilService {
   public static readonly checkQueryParams = (allowed: string[], query: unknown): boolean =>
@@ -69,7 +71,7 @@ export class UtilService {
         return vocab._id.toHexString();
       }
       return Promise.reject(new KnowledgeError(StatusCodes.PRECONDITION_REQUIRED, `Invalid Vocabulary ID '${id}'`));
-    })
+    });
   }
 
   public static readonly checkIfSlugExist = (slug?: string): Promise<boolean> => {
@@ -82,22 +84,34 @@ export class UtilService {
   public static readonly checkOrCreateId = (id: string): Promise<string> =>
     // @ts-ignore
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    this.checkIfIdOrSlug(id).catch(error => vocabularyService.createVocab({
-      _id: null,
-      slug: id,
-      created: new Date(),
-      lastModified: new Date(),
-      label: null,
-      description: null,
-      entityCount:0,
-    })
-      .then((vocab: Vocabulary) => vocab._id.toHexString())
+    this.checkIfIdOrSlug(id)
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      .catch(async _ => await vocabularyService.createVocab({
+        _id: null,
+        slug: id,
+        created: new Date(),
+        lastModified: new Date(),
+        label: null,
+        description: null,
+        entityCount: 0,
+      }).then(vocab => vocab._id.toHexString()))
       .catch(error => {
         console.error(error);
         return error;
-      }));
-    
-  
+      })
+
+  public static readonly checkIfEntityExists = (vocabId: string, label: string, type: TagType, sameAs: string[]): Promise<Entity> => {
+    if (!vocabId || vocabId.trim() === '' || sameAs.length === 0) {
+      return Promise.reject('VocabId and sameAs links not given!');
+    }
+    return entityServiceInstance.listEntities({vocabId, text: label, type, includesSameAs: sameAs})
+      .then(list => {
+        if (list.items.length > 0) {
+          return list.items[0];
+        }
+        return null;
+      });
+  }
 
   public static readonly escapeRegExp = (string: string): string => string.replace(/[.*+?^${}()|[\]\\]/g, '');
 
