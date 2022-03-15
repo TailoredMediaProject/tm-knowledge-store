@@ -140,6 +140,7 @@ router.post('/vocab/:id/entities', (req: Request, res: Response, next: NextFunct
       req.body.vocabulary = vId;
 
       const body = <EntityDTO>req.body;
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       UtilService.checkIfEntityExists(body.vocabulary, body.label, body.type, body.sameAs)
         .then((entity: Entity) => {
           if (entity !== null) {
