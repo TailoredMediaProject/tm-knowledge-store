@@ -20,8 +20,7 @@ export default class KnowledgeResolveService implements ResolveService {
 
       return entityServiceInstance
         .getEntityWithoutVocab(entityId)
-        .then((e: Entity) => UtilService.entityDbo2Dto(e))
-        .catch((e: unknown) => Promise.reject(`Internal Server Error ${e.toString()}`));
+        .then((e: Entity) => UtilService.entityDbo2Dto(e));
     }
     return Promise.reject('URL to resolve is falsy');
   }

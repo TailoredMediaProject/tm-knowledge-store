@@ -27,8 +27,6 @@ export class PersistenceService {
       serverSelectionTimeoutMS: 5000
     } as MongoClientOptions;
 
-    console.log(mongoUrl)
-
     this.client = new MongoClient(mongoUrl, mongoClientOptions);
 
     this.client.connect((error: MongoError | Error) => {
