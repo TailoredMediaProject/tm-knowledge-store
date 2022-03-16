@@ -1,5 +1,5 @@
 import {instance as persistenceService} from './persistence.service';
-import {Collection, Filter, FindOptions, InsertOneResult, ModifyResult, ObjectId, UpdateFilter} from 'mongodb';
+import {Collection, Filter, FindOptions, InsertOneResult, ModifyResult, ObjectId, UpdateFilter, WithId} from 'mongodb';
 import {Entity, Vocabulary} from '../models/dbo.models';
 import {VocabularyService, vocabularyService} from './vocabulary.service';
 import ListQueryModel from '../models/list-query.model';
@@ -51,13 +51,18 @@ export class EntityService {
   }
 
   public getEntityWithoutVocab(entityID: string | ObjectId): Promise<Entity> {
+    // @ts-ignore
     return EntityService.collection()
       .findOne({ _id: new ObjectId(entityID) })
       // @ts-ignore
-      .then(result => {
+      .then((result: Document<WithId<Entity>>) => {
         if (!!result?._id) {
           return result as Entity;
         }
+        return ServiceErrorFactory.notFound(`Target entity with id '${entityID}' not found`);
+      })
+      .catch(err => {
+        console.error(err);
         return ServiceErrorFactory.notFound(`Target entity with id '${entityID}' not found`);
       });
   }

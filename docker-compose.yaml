@@ -1,4 +1,4 @@
-version: '2'
+version: '3.8'
 
 services:
   knowledge-store:
@@ -18,9 +18,25 @@ services:
       - '8080:8080'
     command: 'npm run dev:start'
   mongo:
-    image: mongo:latest
+    image: mongo:4.4.12 # Last 4.x, latest image is 5+ incompatible with mongodb k8s version
+    volumes:
+      - ./be/mongodb-create-user.sh:/docker-entrypoint-initdb.d/mongodb-create-user.sh
+    env_file: .env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_DB_DATABASE}
+      MONGO_DB_DATABASE: ${MONGO_DB_DATABASE}
+      MONGO_DB_USERNAME: ${MONGO_DB_USERNAME}
+      MONGO_DB_PASSWORD: ${MONGO_DB_PASSWORD}
     ports:
       - "27017:27017"
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo mongodb:27017/${MONGO_DB_DATABASE} --quiet
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3
   vuejs:
     env_file: .env
     image: 'node:lts-alpine'
