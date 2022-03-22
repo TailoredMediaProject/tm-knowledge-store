@@ -100,9 +100,9 @@ export class UtilService {
         return error;
       })
 
-  public static readonly checkIfEntityExists = (vocabId: string, label: string, type: TagType, sameAs: string[]): Promise<Entity> => {
-    if (!vocabId || vocabId.trim() === '' || sameAs.length === 0) {
-      return Promise.reject('VocabId and sameAs links not given!');
+  public static readonly checkIfEntityExists = (vocabId: string, label: string, type: TagType, sameAs?: string[]): Promise<Entity> => {
+    if (!vocabId || vocabId.trim() === '') {
+      return Promise.reject('VocabId not given!');
     }
     return entityServiceInstance.listEntities({vocabId, text: label, type, includesSameAs: sameAs})
       .then(list => {
