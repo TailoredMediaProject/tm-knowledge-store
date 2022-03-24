@@ -5,7 +5,7 @@
   "main": "dist/app.js",
   "scripts": {
     "start": "node dist/app.js",
-    "dev:start": "nodemon",
+    "dev:start": "nodemon src/app.ts",
     "debug": "DEBUG=express:* node dist/app.js",
     "test": "jest --passWithNoTests",
     "lint": "eslint --cache --fix ./src",

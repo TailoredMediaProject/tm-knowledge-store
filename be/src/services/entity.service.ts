@@ -177,6 +177,16 @@ export class EntityService {
           totalItems,
           items: dbos as Entity[]
         };
+      })
+      .catch(async (e) => {
+        console.error(e);
+        const totalItems: number = await EntityService.countCollectionItems(filter);
+        return {
+          offset: query.offset,
+          rows: 0,
+          totalItems,
+          items: []
+        };
       });
   }
 
