@@ -9,3 +9,25 @@ export interface ResolveService {
   /**@return The priority of the service as number where the priority is equal to the numeric value.*/
   priority(): number;
 }
+
+export interface PersonName {
+  forename: string;
+  surname: string;
+}
+
+export interface Place {
+  name: string;
+  nameLink: URL;
+  country: string;
+  countryLink: URL;
+}
+
+export interface EntityData {
+  personName: PersonName;
+  alternativeNames: PersonName[];
+  description: string;
+  birthday: Date;
+  deathday: Date;
+  birthPlace: Place;
+  deathPlace: Place;
+}

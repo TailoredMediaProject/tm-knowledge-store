@@ -1,0 +1,583 @@
+{
+  "person": [
+    {
+      "id": 545363,
+      "personId": "person-545363",
+      "verschmolzenZuId": null,
+      "weitereIds": [],
+      "namen": [
+        {
+          "nameId": "personName-1827960",
+          "personId": "person-545363",
+          "name": "Kreisky",
+          "vorname": "Bruno",
+          "namenszusatz": null,
+          "bemerkung": null,
+          "namenstyp": {
+            "kurzName": "NM",
+            "langName": "Name",
+            "typ": "Person.Name.Typ",
+            "permalink": "https://normdb.ivz.cn.ard.de/wert/10625"
+          },
+          "istHauptname": true,
+          "gueltigVon": null,
+          "gueltigBis": null,
+          "checkpoint": 1622868675371,
+          "aenderungsdatum": "2021-06-05 04:51 AM UTC"
+        }
+      ],
+      "beginnDatum": {
+        "tag": 22,
+        "monat": 1,
+        "jahr": 1911,
+        "datumzusatz": null,
+        "datumaera": "n. Chr."
+      },
+      "beginnOrt": "Wien",
+      "beginnOrtVokabel": {
+        "vokabelId": "vokabel-2973",
+        "vokabelNameId": "vokabelName-3525",
+        "vokabelName": "Wien",
+        "vokabelNameZusatz": null,
+        "vokabelTeilbereichId": "vokabelTeilbereich-610",
+        "vokabelTeilbereich": "Hauptstadt, Staatenbestandteil",
+        "vokabularId": "vokabular-1",
+        "vokabular": "Geographika",
+        "permalink": "https://normdb.ivz.cn.ard.de/vokabel/2973"
+      },
+      "beginnLand": {
+        "vokabelId": "vokabel-30615",
+        "vokabelNameId": "vokabelName-31167",
+        "vokabelName": "Österreich-Ungarn",
+        "vokabelNameZusatz": null,
+        "vokabelTeilbereichId": "vokabelTeilbereich-4",
+        "vokabelTeilbereich": "Staat",
+        "vokabularId": "vokabular-1",
+        "vokabular": "Geographika",
+        "permalink": "https://normdb.ivz.cn.ard.de/vokabel/30615"
+      },
+      "endeDatum": {
+        "tag": 29,
+        "monat": 7,
+        "jahr": 1990,
+        "datumzusatz": null,
+        "datumaera": "n. Chr."
+      },
+      "endeOrt": "Wien",
+      "endeOrtVokabel": {
+        "vokabelId": "vokabel-2973",
+        "vokabelNameId": "vokabelName-3525",
+        "vokabelName": "Wien",
+        "vokabelNameZusatz": null,
+        "vokabelTeilbereichId": "vokabelTeilbereich-610",
+        "vokabelTeilbereich": "Hauptstadt, Staatenbestandteil",
+        "vokabularId": "vokabular-1",
+        "vokabular": "Geographika",
+        "permalink": "https://normdb.ivz.cn.ard.de/vokabel/2973"
+      },
+      "endeLand": {
+        "vokabelId": "vokabel-1584",
+        "vokabelNameId": "vokabelName-2136",
+        "vokabelName": "Österreich",
+        "vokabelNameZusatz": null,
+        "vokabelTeilbereichId": "vokabelTeilbereich-4",
+        "vokabelTeilbereich": "Staat",
+        "vokabularId": "vokabular-1",
+        "vokabular": "Geographika",
+        "permalink": "https://normdb.ivz.cn.ard.de/vokabel/1584"
+      },
+      "bemerkung": null,
+      "normierungsstatus": {
+        "kurzName": "IND",
+        "langName": "Individuum",
+        "typ": "Normierung.Status",
+        "permalink": "https://normdb.ivz.cn.ard.de/wert/10626"
+      },
+      "berufeFunktionen": [
+        "Politiker (SPÖ)",
+        "Jurist",
+        "Diplomat"
+      ],
+      "funktionstypen": [
+        {
+          "kurzName": "RDR",
+          "langName": "Redner",
+          "typ": "Person_Beteiligter.Funktion",
+          "permalink": "https://normdb.ivz.cn.ard.de/wert/1482"
+        }
+      ],
+      "permalink": "https://normdb.ivz.cn.ard.de/person/545363",
+      "brid": "brid://normdb.de/person/545363",
+      "steckbrief": "Bundeskanzler von 1970 bis 1983.",
+      "akademischerTitel": "Dr. iur. Dr. h. c.",
+      "ehrentitel": null,
+      "weblink": null,
+      "sortierwert": "KREISKY, BRUNO",
+      "geschlecht": {
+        "kurzName": "M",
+        "langName": "Männlich",
+        "typ": "Geschlecht",
+        "permalink": "https://normdb.ivz.cn.ard.de/wert/71"
+      },
+      "nationalitaeten": [
+        {
+          "vokabelId": "vokabel-1584",
+          "vokabelNameId": "vokabelName-2136",
+          "vokabelName": "Österreich",
+          "vokabelNameZusatz": null,
+          "vokabelTeilbereichId": "vokabelTeilbereich-4",
+          "vokabelTeilbereich": "Staat",
+          "vokabularId": "vokabular-1",
+          "vokabular": "Geographika",
+          "permalink": "https://normdb.ivz.cn.ard.de/vokabel/1584"
+        }
+      ],
+      "sachgebiete": [
+        {
+          "kurzName": "PO",
+          "langName": "Politik",
+          "typ": "Sachgebiet",
+          "permalink": "https://normdb.ivz.cn.ard.de/wert/9684"
+        }
+      ],
+      "instrumenteStimmlagen": [],
+      "sprachkenntnisse": [
+        {
+          "vokabelId": "vokabel-500",
+          "vokabelNameId": "vokabelName-500",
+          "vokabelName": "deutsch=österreichisch",
+          "vokabelNameZusatz": null,
+          "vokabelTeilbereichId": "vokabelTeilbereich-3",
+          "vokabelTeilbereich": "Standard Sprachen",
+          "vokabularId": "vokabular-3",
+          "vokabular": "Sprachen",
+          "permalink": "https://normdb.ivz.cn.ard.de/vokabel/500"
+        }
+      ],
+      "datenquellen": [
+        "de.wikipedia",
+        "SWR-ÜR",
+        "Munzinger Biographien",
+        "Gedenktageliste 15l"
+      ],
+      "lebensstationen": [
+        {
+          "lebensstationId": "lebensstation-257484",
+          "personId": "person-545363",
+          "datenquelle": "de.wikipedia",
+          "beginnDatum": null,
+          "endeDatum": null,
+          "lebensstationstyp": {
+            "kurzName": "UEBERB",
+            "langName": "Überblick",
+            "typ": "Person.Lebensstation.Typ",
+            "permalink": null
+          },
+          "stationAbstract": "Mitglied SPÖ: Volksschule Wien, Mittelschule Wien, Studium Rechtswissenschaften Universität Wien  1929-1938 (Promotion); Jurist, Mitarbeiter Sekretariat Konsumgenossenschaft  Stockholm 1939-1945, Legationsrat Botschaft Stockholm 1947-1959, Beamter Wirtschaftspolitische Abteilung Außenministerium 1949-1951, Kabinettsvizedirektor Präsidentschaftskanzlei, außenpolitischer Berater Bundespräsident Theodor Körner 1951-1953, stellvertretender Vorsitzender Kuratorium Österreichischer Rundfunk 1968-1970; Vorsitzender Reichsbildungsausschuss Sozialistische Arbeiterjugend Österreichs 1933-1934, Vorsitzender Klub Österreichischer  Sozialdemokraten Schweden 1941-1945, Vorsitzender Österreichische Vereinigung Schweden 1944-1945, Staatssekretär Auswärtige Angelegenheiten Bundeskanzleramt 2.4.1953-16.7.1959, stellvertretender 1958-1966, Landesparteivorsitzender SPÖ Niederösterreich 1966-1967, Abgeordneter Nationalrat 8.6.1956-30.9.1983, stellvertretender 1959-1967, Bundesparteivorsitzender SPÖ 1967-1983, Bundesminister Auswärtige Angelegenheiten Bundeskanzleramt 16.-31.7.1959, Bundesminister Auswärtige Angelegenheiten 31.7.1959-19.4.1966, Bundeskanzler 21.4.1970-24.5.1983, Obmann Parlamentsklub SPÖ 1970-1983, Bundesminister Landesverteidigung 4.-8.2.1971, Vizepräsident Sozialistische Internationale 1976-1989; Mitbegründer Revolutionäre Sozialistische Jugend 1934, Widerstandskämpfer, politische Haft 1935-1937, nach nationalsozialistischer Machtübernahme erneute politische Haft, Landesverweis, Emigration Schweden 1938, Rückkehr Österreich 1945",
+          "aenderungsdatum": "2021-02-23 15:57 PM UTC"
+        }
+      ],
+      "austauschobjekte": [
+        {
+          "beschreibung": "Besuch des österreichischen Bundeskanzlers Bruno Kreisky in der DDR vom 30. Mai bis 4. April 1978",
+          "url": "http://linkresolver1.ivz.cn.ard.de/linkresolver/resolve?context=hfdb1&hfdb-recherche/doShowVollinfo.do?vollinfoArt=vollinfokonf&ak=1514115&ko=2004498&amo=847742&destination=drahfdb1",
+          "isEssenz": false,
+          "essenzUrl": null,
+          "objektListe": false,
+          "kontext": "Intranet:HFDB",
+          "mimeTyp": null,
+          "nutzergruppe": null,
+          "bezugsObjekt": "Medium:Audio",
+          "objektId": null,
+          "bestand": "DRA",
+          "permanent": true,
+          "aoVersion": "1.1"
+        },
+        {
+          "beschreibung": "Besuch des österreichischen Bundeskanzlers Bruno Kreisky in der DDR vom 30. Mai bis 4. April 1978",
+          "url": "http://linkresolver1.ivz.cn.ard.de/linkresolver/resolve?context=hfdb1&hfdb-recherche/doShowVollinfo.do?vollinfoArt=vollinfokonf&ak=1514114&ko=2004497&amo=847742&destination=drahfdb1",
+          "isEssenz": false,
+          "essenzUrl": null,
+          "objektListe": false,
+          "kontext": "Intranet:HFDB",
+          "mimeTyp": null,
+          "nutzergruppe": null,
+          "bezugsObjekt": "Medium:Audio",
+          "objektId": null,
+          "bestand": "DRA",
+          "permanent": true,
+          "aoVersion": "1.1"
+        },
+        {
+          "beschreibung": "Besuch des österreichischen Bundeskanzlers Bruno Kreisky in der DDR vom 30. Mai bis 4. April 1978",
+          "url": "http://linkresolver1.ivz.cn.ard.de/linkresolver/resolve?context=hfdb1&hfdb-recherche/doShowVollinfo.do?vollinfoArt=vollinfokonf&ak=1514113&ko=2004496&amo=847742&destination=drahfdb1",
+          "isEssenz": false,
+          "essenzUrl": null,
+          "objektListe": false,
+          "kontext": "Intranet:HFDB",
+          "mimeTyp": null,
+          "nutzergruppe": null,
+          "bezugsObjekt": "Medium:Audio",
+          "objektId": null,
+          "bestand": "DRA",
+          "permanent": true,
+          "aoVersion": "1.1"
+        },
+        {
+          "beschreibung": "Staatsbesuch von Erich Honecker in Österreich vom 10. bis 13. November 1980",
+          "url": "http://linkresolver1.ivz.cn.ard.de/linkresolver/resolve?context=hfdb1&hfdb-recherche/doShowVollinfo.do?vollinfoArt=vollinfokonf&ak=1531562&ko=1963312&amo=828742&destination=drahfdb1",
+          "isEssenz": false,
+          "essenzUrl": null,
+          "objektListe": false,
+          "kontext": "Intranet:HFDB",
+          "mimeTyp": null,
+          "nutzergruppe": null,
+          "bezugsObjekt": "Medium:Audio",
+          "objektId": null,
+          "bestand": "DRA",
+          "permanent": true,
+          "aoVersion": "1.1"
+        },
+        {
+          "beschreibung": "Erklärung des österreichischen Bundeskanzlers Kreisky anlässlich des Überfalls palästinensischer Terroristen auf einen Auswandererzug mit Juden aus der Sowjetunion (Ausschnitt)",
+          "url": "http://linkresolver1.ivz.cn.ard.de/linkresolver/resolve?context=hfdb1&hfdb-recherche/doShowVollinfo.do?vollinfoArt=vollinfokonf&ak=1421154&ko=1187740&amo=510326&destination=drahfdb1",
+          "isEssenz": false,
+          "essenzUrl": null,
+          "objektListe": false,
+          "kontext": "Intranet:HFDB",
+          "mimeTyp": null,
+          "nutzergruppe": null,
+          "bezugsObjekt": "Medium:Audio",
+          "objektId": null,
+          "bestand": "DRA",
+          "permanent": true,
+          "aoVersion": "1.1"
+        },
+        {
+          "beschreibung": "Regierungserklärung des österreichischen Bundeskanzlers",
+          "url": "http://linkresolver1.ivz.cn.ard.de/linkresolver/resolve?context=hfdb1&hfdb-recherche/doShowVollinfo.do?vollinfoArt=vollinfokonf&ak=1384964&ko=654958&amo=302670&destination=drahfdb1",
+          "isEssenz": false,
+          "essenzUrl": null,
+          "objektListe": false,
+          "kontext": "Intranet:HFDB",
+          "mimeTyp": null,
+          "nutzergruppe": null,
+          "bezugsObjekt": "Medium:Audio",
+          "objektId": null,
+          "bestand": "DRA",
+          "permanent": true,
+          "aoVersion": "1.1"
+        },
+        {
+          "beschreibung": "Munzinger-Biographie Bruno Kreisky",
+          "url": "http://www.munzinger.de/document/00000005320",
+          "isEssenz": false,
+          "essenzUrl": null,
+          "objektListe": false,
+          "kontext": "WWW:Munzinger",
+          "mimeTyp": null,
+          "nutzergruppe": null,
+          "bezugsObjekt": "Objekt:Person",
+          "objektId": null,
+          "bestand": null,
+          "permanent": true,
+          "aoVersion": "1.1"
+        },
+        {
+          "beschreibung": "Wikipedia Biografie Bruno Kreisky",
+          "url": "http://de.wikipedia.org/wiki/Bruno_Kreisky",
+          "isEssenz": false,
+          "essenzUrl": null,
+          "objektListe": false,
+          "kontext": "WWW:Wikipedia",
+          "mimeTyp": null,
+          "nutzergruppe": null,
+          "bezugsObjekt": "Objekt:Person",
+          "objektId": "130268333",
+          "bestand": null,
+          "permanent": true,
+          "aoVersion": "1.1"
+        },
+        {
+          "beschreibung": "Bruno Kreisky in GND",
+          "url": "http://d-nb.info/gnd/118566512",
+          "isEssenz": false,
+          "essenzUrl": null,
+          "objektListe": false,
+          "kontext": "WWW:GND",
+          "mimeTyp": null,
+          "nutzergruppe": null,
+          "bezugsObjekt": "Objekt:Person",
+          "objektId": "118566512",
+          "bestand": null,
+          "permanent": true,
+          "aoVersion": "1.1"
+        },
+        {
+          "beschreibung": "Bruno Kreisky in DDB",
+          "url": "https://www.deutsche-digitale-bibliothek.de/entity/118566512",
+          "isEssenz": false,
+          "essenzUrl": null,
+          "objektListe": false,
+          "kontext": "WWW:DDB",
+          "mimeTyp": null,
+          "nutzergruppe": null,
+          "bezugsObjekt": "Objekt:Person",
+          "objektId": "118566512",
+          "bestand": null,
+          "permanent": true,
+          "aoVersion": "1.1"
+        },
+        {
+          "beschreibung": "Bruno Kreisky in MusicBrainz",
+          "url": "https://musicbrainz.org/artist/97df83b6-ada0-4f40-8ad0-e00a4f09655e",
+          "isEssenz": false,
+          "essenzUrl": null,
+          "objektListe": false,
+          "kontext": "WWW:MusicBrainz",
+          "mimeTyp": null,
+          "nutzergruppe": null,
+          "bezugsObjekt": "Objekt:Person",
+          "objektId": "97df83b6-ada0-4f40-8ad0-e00a4f09655e",
+          "bestand": null,
+          "permanent": true,
+          "aoVersion": "1.1"
+        },
+        {
+          "beschreibung": "Bruno Kreisky in IMDb",
+          "url": "http://www.imdb.com/name/nm1727529",
+          "isEssenz": false,
+          "essenzUrl": null,
+          "objektListe": false,
+          "kontext": "WWW:IMDB",
+          "mimeTyp": null,
+          "nutzergruppe": null,
+          "bezugsObjekt": "Objekt:Person",
+          "objektId": "nm1727529",
+          "bestand": null,
+          "permanent": true,
+          "aoVersion": "1.1"
+        },
+        {
+          "beschreibung": "Bruno Kreisky in Wikidata",
+          "url": "https://www.wikidata.org/wiki/Q44517",
+          "isEssenz": false,
+          "essenzUrl": null,
+          "objektListe": false,
+          "kontext": "WWW:Wikidata",
+          "mimeTyp": null,
+          "nutzergruppe": null,
+          "bezugsObjekt": "Objekt:Person",
+          "objektId": "Q44517",
+          "bestand": null,
+          "permanent": true,
+          "aoVersion": "1.1"
+        }
+      ],
+      "erstellungsdatum": "2007-02-28 02:32 AM UTC",
+      "aenderungsdatum": "2021-06-05 04:51 AM UTC",
+      "checkpoint": 1622868675371
+    }
+  ],
+  "vokabel": [
+    {
+      "id": 73659,
+      "vokabelId": "vokabel-73659",
+      "weitereIds": null,
+      "verschmolzenZuId": null,
+      "uebergeordneteVokabelId": "vokabel-73585",
+      "vokabelNamen": [
+        {
+          "vokabelId": "vokabel-73659",
+          "vokabelNameId": "vokabelName-96279",
+          "vokabelName": "Regierungspolitik",
+          "vokabelNameZusatz": null,
+          "vokabelNameTyp": {
+            "kurzName": "DE",
+            "langName": "Deskriptor",
+            "typ": "Vokabel.Name.Typ",
+            "permalink": "https://normdb.ivz.cn.ard.de/wert/1159"
+          },
+          "sprache": null,
+          "normquellen": [],
+          "istHauptname": true,
+          "erstellungsdatum": 1288156771371,
+          "aenderungsdatum": 1589665019907
+        },
+        {
+          "vokabelId": "vokabel-73659",
+          "vokabelNameId": "vokabelName-328950",
+          "vokabelName": "government policy",
+          "vokabelNameZusatz": null,
+          "vokabelNameTyp": {
+            "kurzName": "VNUEB",
+            "langName": "Übersetzung",
+            "typ": "Vokabel.Name.Typ",
+            "permalink": "https://normdb.ivz.cn.ard.de/wert/12506"
+          },
+          "sprache": {
+            "vokabelId": "vokabel-97",
+            "vokabelNameId": "vokabelName-97",
+            "vokabelName": "englisch",
+            "vokabelNameZusatz": null,
+            "vokabelTeilbereichId": "vokabelTeilbereich-3",
+            "vokabelTeilbereich": "Standard Sprachen",
+            "vokabularId": "vokabular-3",
+            "vokabular": "Sprachen",
+            "permalink": "https://normdb.ivz.cn.ard.de/vokabel/97"
+          },
+          "normquellen": [
+            {
+              "kurzName": "AXES_DW_INNO",
+              "langName": "EU/DW-Projekt AXES",
+              "typ": "Normquelle",
+              "permalink": "https://normdb.ivz.cn.ard.de/wert/11446"
+            }
+          ],
+          "istHauptname": false,
+          "erstellungsdatum": 1525333023560,
+          "aenderungsdatum": 1525333023560
+        }
+      ],
+      "standard": true,
+      "zugelassen": true,
+      "erlaeuterung": null,
+      "teilbereich": {
+        "vokabelTeilbereichId": "vokabelTeilbereich-201",
+        "vokabelTeilbereich": "Klassen",
+        "hierarchisch": true,
+        "vokabular": {
+          "vokabularId": "vokabular-310",
+          "name": "ARD Sachklassifikation",
+          "permalink": "https://normdb.ivz.cn.ard.de/vokabular/310"
+        },
+        "aenderungsDatum": 1185971114000,
+        "nichtZugelassenerTeilbereich": false,
+        "standardTeilbereichNeuanlage": false
+      },
+      "status": {
+        "kurzName": "ABG",
+        "langName": "Abgestimmt",
+        "typ": "Vokabel.Status",
+        "permalink": null
+      },
+      "notation": "PCEP",
+      "indexierungsRegel": null,
+      "istKlasse": true,
+      "vollstaendig": false,
+      "permalink": "https://normdb.ivz.cn.ard.de/vokabel/73659",
+      "historisch": null,
+      "vokabelGeschlecht": null,
+      "systematik": "",
+      "regionen": null,
+      "ethnien": null,
+      "gebiet": null,
+      "erstellungsDatum": 1288156771371,
+      "aenderungsDatum": 1589665019907
+    },
+
+    {
+      "id": 230109,
+      "vokabelId": "vokabel-230109",
+      "weitereIds": null,
+      "verschmolzenZuId": null,
+      "uebergeordneteVokabelId": null,
+      "vokabelNamen": [
+        {
+          "vokabelId": "vokabel-230109",
+          "vokabelNameId": "vokabelName-308434",
+          "vokabelName": "ORF-Zentrum Küniglberg",
+          "vokabelNameZusatz": "Ort, Bezirk Hietzing",
+          "vokabelNameTyp": {
+            "kurzName": "SY",
+            "langName": "Synonym",
+            "typ": "Vokabel.Name.Typ",
+            "permalink": "https://normdb.ivz.cn.ard.de/wert/1163"
+          },
+          "sprache": {
+            "vokabelId": "vokabel-94",
+            "vokabelNameId": "vokabelName-94",
+            "vokabelName": "deutsch",
+            "vokabelNameZusatz": null,
+            "vokabelTeilbereichId": "vokabelTeilbereich-3",
+            "vokabelTeilbereich": "Standard Sprachen",
+            "vokabularId": "vokabular-3",
+            "vokabular": "Sprachen",
+            "permalink": "https://normdb.ivz.cn.ard.de/vokabel/94"
+          },
+          "normquellen": [],
+          "istHauptname": false,
+          "erstellungsdatum": 1504688232767,
+          "aenderungsdatum": 1504688232767
+        },
+        {
+          "vokabelId": "vokabel-230109",
+          "vokabelNameId": "vokabelName-308414",
+          "vokabelName": "ORF-Zentrum",
+          "vokabelNameZusatz": "Ort, Bezirk Hietzing",
+          "vokabelNameTyp": {
+            "kurzName": "DE",
+            "langName": "Deskriptor",
+            "typ": "Vokabel.Name.Typ",
+            "permalink": "https://normdb.ivz.cn.ard.de/wert/1159"
+          },
+          "sprache": {
+            "vokabelId": "vokabel-94",
+            "vokabelNameId": "vokabelName-94",
+            "vokabelName": "deutsch",
+            "vokabelNameZusatz": null,
+            "vokabelTeilbereichId": "vokabelTeilbereich-3",
+            "vokabelTeilbereich": "Standard Sprachen",
+            "vokabularId": "vokabular-3",
+            "vokabular": "Sprachen",
+            "permalink": "https://normdb.ivz.cn.ard.de/vokabel/94"
+          },
+          "normquellen": [],
+          "istHauptname": true,
+          "erstellungsdatum": 1504688217169,
+          "aenderungsdatum": 1514466745294
+        }
+      ],
+      "standard": false,
+      "zugelassen": true,
+      "erlaeuterung": null,
+      "teilbereich": {
+        "vokabelTeilbereichId": "vokabelTeilbereich-5",
+        "vokabelTeilbereich": "Ort",
+        "hierarchisch": false,
+        "vokabular": {
+          "vokabularId": "vokabular-1",
+          "name": "Geographika",
+          "permalink": "https://normdb.ivz.cn.ard.de/vokabular/1"
+        },
+        "aenderungsDatum": 1297837800000,
+        "nichtZugelassenerTeilbereich": false,
+        "standardTeilbereichNeuanlage": true
+      },
+      "status": {
+        "kurzName": "ABG",
+        "langName": "Abgestimmt",
+        "typ": "Vokabel.Status",
+        "permalink": null
+      },
+      "notation": null,
+      "indexierungsRegel": null,
+      "istKlasse": false,
+      "vollstaendig": true,
+      "permalink": "https://normdb.ivz.cn.ard.de/vokabel/230109",
+      "historisch": {
+        "kurzName": "HIST-N",
+        "langName": "Nein",
+        "typ": "Vokabel.Historisch",
+        "permalink": null
+      },
+      "vokabelGeschlecht": null,
+      "systematik": "",
+      "regionen": null,
+      "ethnien": null,
+      "gebiet": null,
+      "erstellungsDatum": 1504688217169,
+      "aenderungsDatum": 1514466745294
+    }
+  ]
+}

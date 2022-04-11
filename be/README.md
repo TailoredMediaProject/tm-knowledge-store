@@ -23,6 +23,15 @@ Start:
 npm run start
 ```
 
+Develop:
+```shell
+npm run dev:start
+```
+
+Mock external REST API:
+```shell
+npm run mock:start
+```
 ## Development
 
 Please install the [IntelliJ Prettier Plugin](https://plugins.jetbrains.com/plugin/10456-prettier) and enable it with `Run on save for files` set in its settings of IntelliJ.

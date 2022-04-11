@@ -10,7 +10,7 @@ const router: Router = Router();
 
 router.get('/:eId', (req: Request, res: Response, next: NextFunction) => {
   const eId: string = UtilService.checkId(req?.params?.eId, 'entity', next);
-  const accept = UtilService.checkAcceptHeader(req, [MIME_TYPE_TURTLE, MIME_TYPE_RDF_XML, MIME_TYPE_N3, 'gg'], next);
+  const accept = UtilService.checkAcceptHeader(req, [MIME_TYPE_TURTLE, MIME_TYPE_RDF_XML, MIME_TYPE_N3], next);
 
   entityServiceInstance.getEntityWithoutVocab(eId)
     .then((e: Entity) => {
