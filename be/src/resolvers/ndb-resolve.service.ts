@@ -6,19 +6,20 @@ import {Entity} from '../models/dbo.models';
 
 export default class NdbResolveService implements ResolveService {
   private readonly baseUri: string[];
+  // eslint-disable-next-line no-undef
+  private readonly canBeActive = process.env.NODE_ENV !== 'production';
 
   constructor(baseUri: string[]) {
     this.baseUri = baseUri;
   }
 
-  public readonly accept = (uri: URL): boolean => this.baseUri.some((base: string) => uri.toString().startsWith(base));
+  public readonly accept = (uri: URL): boolean => this.canBeActive && this.baseUri.some((base: string) => uri.toString().startsWith(base));
 
   public readonly priority = (): number => 10;
 
   public readonly resolve = (uri: URL): Promise<unknown> => {
     if (this.accept(uri)) {
-      // eslint-disable-next-line no-undef
-      if (process.env.NODE_ENV !== 'production') {
+      if (this.canBeActive) {
         // On local, use mocked NDB REST API
         uri = new URL('http://localhost:3000/vokabel/230109');
       }
