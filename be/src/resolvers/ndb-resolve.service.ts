@@ -1,10 +1,10 @@
-import {EntityData, PersonName, Place, ResolveService} from '../models/resolve-service.interface';
+import {EntityData, PersonName, Place, ResolveServiceInterface} from '../models/resolve-service.interface';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import {StatusCodes} from 'http-status-codes';
 import {FetchError} from 'rdflib';
 import {Entity} from '../models/dbo.models';
 
-export default class NdbResolveService implements ResolveService {
+export default class NdbResolveService implements ResolveServiceInterface {
   private readonly baseUri: string[];
   // eslint-disable-next-line no-undef
   private readonly canBeActive = process.env.NODE_ENV !== 'production';
@@ -17,7 +17,7 @@ export default class NdbResolveService implements ResolveService {
 
   public readonly priority = (): number => 10;
 
-  public readonly resolve = (uri: URL): Promise<unknown> => {
+  public readonly resolve = (uri: URL): Promise<Partial<Entity>> => {
     if (this.accept(uri)) {
       if (this.canBeActive) {
         // On local, use mocked NDB REST API

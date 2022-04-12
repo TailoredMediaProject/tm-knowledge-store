@@ -4,6 +4,7 @@ import {Entity, Vocabulary} from '../models/dbo.models';
 import {Vocabulary as VocabularyDTO} from '../generated/models/Vocabulary';
 import {Entity as EntityDTO} from '../generated/models/Entity';
 import {entityServiceInstance} from '../services/entity.service';
+import {instance as rsInstance} from '../services/resolve.service';
 import {KnowledgeError} from '../models/knowledge-error.model';
 import {ListingResult} from '../models/listing-result.model';
 import ListQueryModel from '../models/query-list.model';
@@ -32,13 +33,13 @@ router.get('/vocab', (req: Request, res: Response, next: NextFunction) => {
   }
 });
 
-router.post('/vocab',  (req: Request, res: Response, next: NextFunction) => {
+router.post('/vocab', (req: Request, res: Response, next: NextFunction) => {
   const body = <VocabularyDTO>req.body;
   const newVocab: Vocabulary = UtilService.vocabDto2Dbo(body);
 
   // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   UtilService.checkIfSlugExist(body.slug)
-    .then(exists => {
+    .then((exists) => {
       if (!exists) {
         vocabularyService
           .createVocab(newVocab)
@@ -60,7 +61,7 @@ router.put('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
   UtilService.checkIfIdOrSlug(req?.params?.id)
     .then((id: string) => {
       vocabularyService
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         .updateVocab(id, ifUnmodifiedSince, UtilService.vocabDto2Dbo(req.body as VocabularyDTO))
         .then((v: Vocabulary) => res.json(UtilService.vocabDbo2Dto(v)))
         .catch(next);
@@ -78,7 +79,6 @@ router.get('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
         .catch(next);
     })
     .catch(next);
-
 });
 
 router.delete('/vocab/:id', (req: Request, res: Response, next: NextFunction) => {
@@ -124,7 +124,8 @@ router.get('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: Next
       const eId = UtilService.checkId(req?.params?.eId, 'entity', next);
 
       try {
-        entityServiceInstance.getEntity(vId, eId)
+        entityServiceInstance
+          .getEntity(vId, eId)
           .then((e: Entity) => res.json(e))
           .catch(next);
       } catch (e) {
@@ -148,11 +149,11 @@ router.post('/vocab/:id/entities', (req: Request, res: Response, next: NextFunct
           }
           const newEntity: Entity = UtilService.entityDto2Dbo(body, next);
 
-          return entityServiceInstance
-            .createEntity(newEntity);
+          return entityServiceInstance.createEntity(newEntity);
         })
-        .then(entity => UtilService.entityDbo2Dto(entity))
-        .then(ent => {
+        .then((entity: Entity) => rsInstance.schedule(entity))
+        .then((entity: Entity) => UtilService.entityDbo2Dto(entity))
+        .then((ent) => {
           const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}/${ent.id}`;
 
           res.setHeader('Location', fullUrl);
@@ -172,8 +173,9 @@ router.put('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: Next
       req.body.vocabulary = vId;
 
       entityServiceInstance
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
         .updateEntity(vId, eId, ifUnmodifiedSince, UtilService.entityDto2Dbo(req.body as EntityDTO, next))
+        .then((entity: Entity) => rsInstance.schedule(entity))
         .then((e: Entity) => res.json(UtilService.entityDbo2Dto(e)))
         .catch(next);
     })
@@ -186,7 +188,8 @@ router.delete('/vocab/:vId/entities/:eId', (req: Request, res: Response, next: N
     .then((vId: string) => {
       const eId = UtilService.checkId(req?.params?.eId, 'entity', next);
 
-      entityServiceInstance.deleteEntity(vId, eId, date)
+      entityServiceInstance
+        .deleteEntity(vId, eId, date)
         .then(() => res.status(StatusCodes.NO_CONTENT).end())
         .catch(next);
     })
