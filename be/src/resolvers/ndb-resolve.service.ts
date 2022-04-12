@@ -20,7 +20,7 @@ export default class NdbResolveService implements ResolveService {
       // eslint-disable-next-line no-undef
       if (process.env.NODE_ENV !== 'production') {
         // On local, use mocked NDB REST API
-        uri = new URL('http://localhost:3000/person/545363');
+        uri = new URL('http://localhost:3000/vokabel/230109');
       }
 
       return fetch(uri.toString(), {method: 'GET'})
@@ -49,9 +49,9 @@ export default class NdbResolveService implements ResolveService {
         value = responseBody[key];
         key = key.toLowerCase();
 
+        this.parseType(key, value, entity, data);
         this.parseGeneral(key, value, entity, data);
         this.praseGender(key, value, entity, data);
-        this.parseType(key, value, entity, data);
         this.parseNames(key, value, entity, data);
         this.parseDates(key, value, entity, data);
         this.parsePlaces(key, value, entity, data);
@@ -67,8 +67,13 @@ export default class NdbResolveService implements ResolveService {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   private readonly parseType = (key: string, value: never, entity: Entity, data: EntityData): void => {
-    if (key === 'personid' && !!value) {
-      entity.type = 'Person';
+    if (!!value) {
+      if (key === 'personid') {
+        entity.type = 'Person';
+      } else if (key === 'teilbereich') {
+        // @ts-ignore
+        entity.type = value.vokabelTeilbereich === 'Ort' ? 'Landmark' : 'Object';
+      }
     }
   };
 
@@ -95,6 +100,9 @@ export default class NdbResolveService implements ResolveService {
           data.nationalities = value.map((nationalitaet) => nationalitaet.vokabelName);
         }
       } else if (key === 'steckbrief') {
+        entity.description = value;
+        data.description = entity.description;
+      } else if (key === 'erlaeuterung') {
         entity.description = value;
         data.description = entity.description;
       } else if (key === 'berufefunktionen') {
@@ -135,7 +143,7 @@ export default class NdbResolveService implements ResolveService {
             // @ts-ignore
             personName.surname = name?.name;
             // @ts-ignore
-            data.personName = this.isNameSet(personName) ? personName : undefined;
+            data.name = this.isNameSet(personName) ? personName : undefined;
           });
 
         // @ts-ignore
@@ -149,7 +157,7 @@ export default class NdbResolveService implements ResolveService {
             // @ts-ignore
             personName.surname = name?.name;
 
-            if (!!data?.alternativeNames) {
+            if (!data?.alternativeNames) {
               data.alternativeNames = [];
             }
 
@@ -159,10 +167,29 @@ export default class NdbResolveService implements ResolveService {
           });
 
         // @ts-ignore
-        entity.label = this.isNameSet(data.personName)
-          ? `${data.personName.forename}${!!data?.personName?.forename ? ' ' : ''}${data.personName.surname}`
+        entity.label = this.isNameSet(data.name)
+          ? // @ts-ignore
+            `${data.name.forename}${!!data?.name?.forename ? ' ' : ''}${data.name.surname}`
           : undefined;
       }
+    } else if (key === 'vokabelnamen') {
+      // @ts-ignore
+      value.forEach((name) => {
+        if (name.istHauptname) {
+          data.name = entity.label = name.vokabelName;
+        } else if (!!name?.vokabelName && (name?.vokabelNameTyp?.langName !== 'Deskriptor' || !name?.istHauptname)) {
+          if (!entity?.label) {
+            entity.label = name.vokabelName;
+          }
+
+          if (!data?.alternativeNames) {
+            data.alternativeNames = [];
+          }
+
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+          data.alternativeNames.push(name.vokabelName);
+        }
+      });
     }
   };
 

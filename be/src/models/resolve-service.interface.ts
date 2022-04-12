@@ -22,7 +22,7 @@ export interface Place {
 
 export interface EntityData {
   title: string;
-  personName: PersonName;
+  name: PersonName | string;
   alternativeNames: PersonName[];
   description: string;
   gender: string;
