@@ -17,17 +17,19 @@ export interface PersonName {
 
 export interface Place {
   name: string;
-  nameLink: URL;
   country: string;
-  countryLink: URL;
 }
 
 export interface EntityData {
+  title: string;
   personName: PersonName;
   alternativeNames: PersonName[];
   description: string;
+  gender: string;
   birthday: Date;
   deathday: Date;
   birthPlace: Place;
   deathPlace: Place;
+  professions: string[];
+  nationalities: string[];
 }

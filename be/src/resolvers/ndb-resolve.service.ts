@@ -18,7 +18,8 @@ export default class NdbResolveService implements ResolveService {
   public readonly resolve = (uri: URL): Promise<unknown> => {
     if (this.accept(uri)) {
       // eslint-disable-next-line no-undef
-      if (!process.env.NODE_ENV) {
+      if (process.env.NODE_ENV !== 'production') {
+        // On local, use mocked NDB REST API
         uri = new URL('http://localhost:3000/person/545363');
       }
 
@@ -37,7 +38,7 @@ export default class NdbResolveService implements ResolveService {
     return Promise.reject('URL to resolve is falsy');
   };
 
-  public readonly parse = (responseBody: string): void => {
+  public readonly parse = (responseBody: string): Promise<Entity> => {
     if (!!responseBody) {
       const entity: Entity = {} as Entity;
       let value: never;
@@ -49,6 +50,7 @@ export default class NdbResolveService implements ResolveService {
         key = key.toLowerCase();
 
         this.parseGeneral(key, value, entity, data);
+        this.praseGender(key, value, entity, data);
         this.parseType(key, value, entity, data);
         this.parseNames(key, value, entity, data);
         this.parseDates(key, value, entity, data);
@@ -57,8 +59,10 @@ export default class NdbResolveService implements ResolveService {
 
       entity.data = data;
 
-      console.log(entity);
+      return Promise.resolve(entity);
     }
+
+    throw new KnowledgeError(StatusCodes.INTERNAL_SERVER_ERROR, 'NDB returned falsy body');
   };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -69,16 +73,48 @@ export default class NdbResolveService implements ResolveService {
   };
 
   private readonly parseGeneral = (key: string, value: never, entity: Entity, data: EntityData): void => {
-    if (key === 'permalink' || key === 'brid') {
-      if (!!entity?.sameAs) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-        entity.sameAs.push(value);
-      } else {
-        entity.sameAs = [value];
+    if (!!value) {
+      if (key === 'permalink' || key === 'brid') {
+        if (!!entity?.sameAs) {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+          entity.sameAs.push(value);
+        } else {
+          entity.sameAs = [value];
+        }
       }
-    } else if (key === 'steckbrief') {
-      entity.description = value;
-      data.description = entity.description;
+      // @ts-ignore
+      else if (key === 'nationalitaeten' && !!value?.length > 0) {
+        if (!!data?.nationalities) {
+          // @ts-ignore
+          value.foreach((nationalitaet) =>
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+            data.nationalities.push(nationalitaet.vokabelName)
+          );
+        } else {
+          // @ts-ignore
+          data.nationalities = value.map((nationalitaet) => nationalitaet.vokabelName);
+        }
+      } else if (key === 'steckbrief') {
+        entity.description = value;
+        data.description = entity.description;
+      } else if (key === 'berufefunktionen') {
+        data.professions = value;
+      } else if (key === 'akademischertitel' || key === 'ehrentitel') {
+        data.title = !!data?.title ? `${data?.title} ${value}` : value;
+      }
+    }
+  };
+
+  private readonly praseGender = (key: string, value: never, entity: Entity, data: EntityData): void => {
+    if (key === 'geschlecht') {
+      // @ts-ignore
+      if (!!value?.langName) {
+        // @ts-ignore
+        data.gender = value.langName;
+      } else {
+        // @ts-ignore
+        data.gender = !!value?.kurzName === 'M' ? 'Männlich' : 'Weiblich';
+      }
     }
   };
 
@@ -124,7 +160,7 @@ export default class NdbResolveService implements ResolveService {
 
         // @ts-ignore
         entity.label = this.isNameSet(data.personName)
-          ? `${data.personName.forename}${!!data.personName.forename ? '' : ''}${data.personName.surname}`
+          ? `${data.personName.forename}${!!data?.personName?.forename ? ' ' : ''}${data.personName.surname}`
           : undefined;
       }
     }
@@ -152,14 +188,10 @@ export default class NdbResolveService implements ResolveService {
         // @ts-ignore
         data.birthPlace.name = value.vokabelName;
       }
-      // @ts-ignore
-      data.birthPlace.nameLink = value.permalink;
     } else if (key === 'beginnland') {
       this.createPlace('birthPlace', data);
       // @ts-ignore
       data.birthPlace.country = value.vokabelName;
-      // @ts-ignore
-      data.birthPlace.countryLink = value.permalink;
     } else if (key === 'endeort') {
       this.createPlace('deathPlace', data);
       if (!data?.deathPlace?.name) {
@@ -171,14 +203,10 @@ export default class NdbResolveService implements ResolveService {
         // @ts-ignore
         data.deathPlace.name = value.vokabelName;
       }
-      // @ts-ignore
-      data.deathPlace.nameLink = value.permalink;
     } else if (key === 'endeland') {
       this.createPlace('deathPlace', data);
       // @ts-ignore
       data.deathPlace.country = value.vokabelName;
-      // @ts-ignore
-      data.deathPlace.countryLink = value.permalink;
     }
   };
 
@@ -187,9 +215,7 @@ export default class NdbResolveService implements ResolveService {
     if (!data.hasOwnProperty(name)) {
       data[name] = {
         name: undefined,
-        nameLink: undefined,
-        country: undefined,
-        countryLink: undefined
+        country: undefined
       } as Place;
     }
   };
