@@ -31,6 +31,7 @@ export class ResolveService {
   private readonly processQuery = (): void => {
     if (this.idle) {
       // eslint-disable-next-line no-undef
+      // @ts-ignore
       for (const [id, uri] of this.query.entries()) {
         this.idle = false;
         this.resolve(uri)

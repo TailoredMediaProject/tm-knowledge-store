@@ -128,7 +128,7 @@ export default class NdbResolveService implements ResolveServiceInterface {
   private readonly parseNames = (key: string, value: never, entity: Entity, data: EntityData): void => {
     if (key === 'namen') {
       // @ts-ignore
-      const namen: any[] = value;
+      const namen: never[] = value;
 
       if (!!namen) {
         namen
@@ -168,7 +168,7 @@ export default class NdbResolveService implements ResolveServiceInterface {
         // @ts-ignore
         entity.label = this.isNameSet(data.name)
           ? // @ts-ignore
-            `${data.name.forename}${!!data?.name?.forename ? ' ' : ''}${data.name.surname}`
+          `${data.name.forename}${!!data?.name?.forename ? ' ' : ''}${data.name.surname}`
           : undefined;
       }
     } else if (key === 'vokabelnamen') {
