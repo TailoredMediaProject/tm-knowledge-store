@@ -1,5 +1,7 @@
 // eslint-disable-next-line no-undef
 export const HOST = process.env.BE_HOST || 'data.tmedia.redlink.io';
+// eslint-disable-next-line no-undef
+export const BASE_URI_NDB = process.env.BASE_URL_NDB || 'normdb.ivz.cn.ard.de';
 export const HEADER_IF_UNMODIFIED_SINCE = 'If-Unmodified-Since';
 export const HEADER_ACCEPT = 'Accept';
 export const HEADER_CONTENT_TYPE = 'Content-Type';

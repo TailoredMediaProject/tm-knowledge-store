@@ -6,7 +6,7 @@ import ListQueryModel from '../models/list-query.model';
 import {ListingResult} from '../models/listing-result.model';
 import {TagType} from '../generated';
 import {UtilService} from './util.service';
-import {ServiceErrorFactory} from '../models/service-error.model';
+import {ServiceError, ServiceErrorFactory} from '../models/service-error.model';
 
 export class EntityService {
   private static collection(): Collection {
@@ -31,59 +31,141 @@ export class EntityService {
           created: new Date(),
           lastModified: new Date()
         })
-        .then((result: InsertOneResult) => this.getEntity(entity.vocabulary, result.insertedId)));
+        .then((result: InsertOneResult) => this.getEntity(entity.vocabulary, result.insertedId))
+    );
   }
 
   public getEntity(vocabID: string | ObjectId, entityID: string | ObjectId): Promise<Entity> {
-    return vocabularyService.getVocabular(vocabID)
-      .then(() => EntityService.collection()
+    return vocabularyService.getVocabular(vocabID).then(() =>
+      EntityService.collection()
         .findOne({
           _id: new ObjectId(entityID),
           vocabulary: new ObjectId(vocabID)
         })
         // @ts-ignore
-        .then(result => {
+        .then((result) => {
           if (!!result?._id) {
             return result as Entity;
           }
           return ServiceErrorFactory.notFound(`Target entity with id '${entityID}' in vocabulary '${vocabID}' not found`);
-        }));
+        })
+    );
   }
 
   public getEntityWithoutVocab(entityID: string | ObjectId): Promise<Entity> {
     // @ts-ignore
-    return EntityService.collection()
-      .findOne({ _id: new ObjectId(entityID) })
-      // @ts-ignore
-      .then((result: Document<WithId<Entity>>) => {
-        if (!!result?._id) {
-          return result as Entity;
-        }
-        return ServiceErrorFactory.notFound(`Target entity with id '${entityID}' not found`);
-      })
-      .catch(err => {
-        console.error(err);
-        return ServiceErrorFactory.notFound(`Target entity with id '${entityID}' not found`);
-      });
+    return (
+      EntityService.collection()
+        .findOne({_id: new ObjectId(entityID)})
+        // @ts-ignore
+        .then((result: Document<WithId<Entity>>) => {
+          if (!!result?._id) {
+            return result as Entity;
+          }
+          return ServiceErrorFactory.notFound(`Target entity with id '${entityID}' not found`);
+        })
+        .catch((err) => {
+          console.error(err);
+          return ServiceErrorFactory.notFound(`Target entity with id '${entityID}' not found`);
+        })
+    );
   }
 
   public getEntities(vocabID: string | ObjectId): Promise<Entity[]> {
     // @ts-ignore
-    return vocabularyService.getVocabular(vocabID)
-      // @ts-ignore
-      .then((vocab: Vocabulary) => {
-        if (!!vocab?._id) {
-          return EntityService.collection()
-            .find({ vocabulary: new ObjectId(vocabID) })
-            .toArray()
-            .then(e => e as Entity[]);
-        }
-        return ServiceErrorFactory.notFound(`Target vocabulary '${vocabID}' not found`);
-      })
-      .catch(() => ServiceErrorFactory.notFound(`Target vocabulary '${vocabID}' not found`));
+    return (
+      vocabularyService
+        .getVocabular(vocabID)
+        // @ts-ignore
+        .then((vocab: Vocabulary) => {
+          if (!!vocab?._id) {
+            return EntityService.collection()
+              .find({vocabulary: new ObjectId(vocabID)})
+              .toArray()
+              .then((e) => e as Entity[]);
+          }
+          return ServiceErrorFactory.notFound(`Target vocabulary '${vocabID}' not found`);
+        })
+        .catch(() => ServiceErrorFactory.notFound(`Target vocabulary '${vocabID}' not found`))
+    );
   }
 
-  updateEntity(vocabID: string, entityID: string, ifUnmodifiedSince: Date, entity: Entity): Promise<Entity> {
+  /**Sets the argument entity in the DB without any modified checks and only not already set values, called internally by an resolve
+   * service.*/
+  public readonly updateResolvedEntity = (entity: Partial<Entity>): Promise<Entity> =>
+    // @ts-ignore
+    this.getEntityWithoutVocab(entity._id).then((dbEntity: Entity) => {
+      const $set = this.deepNestedCoalescence(dbEntity, entity);
+
+      if (!!$set && Object.keys($set).length > 0) {
+        const filter: Filter<Entity> = {
+          _id: entity._id,
+          lastModified: {
+            // eslint-disable-rows-line @typescript-eslint/no-unsafe-argument
+            $eq: dbEntity.lastModified
+          }
+        };
+        const update: UpdateFilter<Entity> = {
+          $set,
+          $currentDate: {
+            lastModified: true
+          }
+        };
+
+        return (
+          EntityService.collection()
+            // @ts-ignore
+            .findOneAndUpdate(filter, update, {returnDocument: 'after'})
+            // @ts-ignore
+            .then((result: ModifyResult<Entity>) => {
+              if (result?.lastErrorObject?.updatedExisting === false || !result.value) {
+                return this.getEntityWithoutVocab(entity._id).then((modifiedEntity: Entity): Promise<Entity | ServiceError> => {
+                  // Check if an atomic updated failed, if so retry
+                  if (!!modifiedEntity?.lastModified &&
+                    new Date(modifiedEntity.lastModified).getTime() > new Date(dbEntity.lastModified).getTime()) {
+                    return this.updateResolvedEntity(entity);
+                  }
+                  return ServiceErrorFactory.notFound(`Vocab with id '${entity._id}' not found`);
+                });
+              } else {
+                return result.value;
+              }
+            })
+        );
+      }
+      return dbEntity;
+    });
+
+  private readonly deepNestedCoalescence = <T>(base: T, feature: Partial<T>): T => {
+    let keys: string[] = !!base ? Object.keys(base) : [];
+
+    if(!!feature) {
+      keys = keys.concat(Object.keys(feature)
+        .filter((key: string) => !keys.find((bKey: string) => bKey === key))
+      );
+    }
+
+    const coalescence: T = {} as T;
+
+    keys.forEach((key: string) => {
+      // @ts-ignore
+      if (!base[key] && !!feature[key]) {
+        // @ts-ignore
+        coalescence[key] = feature[key];
+      }
+
+      // @ts-ignore
+      if(key === 'data') {
+        // @ts-ignore
+        coalescence[key] = this.deepNestedCoalescence(base[key], feature[key]);
+      }
+    });
+
+    return coalescence;
+  };
+
+  /**Sets the argument entity in the DB, called by a controller or client.*/
+  public updateEntity(vocabID: string, entityID: string, ifUnmodifiedSince: Date, entity: Entity): Promise<Entity> {
     const filter: Filter<Entity> = {
       _id: new ObjectId(entityID),
       lastModified: {
@@ -106,20 +188,19 @@ export class EntityService {
     };
 
     // @ts-ignore
-    return EntityService.collection()
-      // @ts-ignore
-      .findOneAndUpdate(filter, update, { returnDocument: 'after' })
-      // @ts-ignore
-      .then(async (result: ModifyResult<Entity>) => {
-        if (result?.lastErrorObject?.updatedExisting === false || !result.value) {
-          await VocabularyService.countCollectionItems({ _id: new ObjectId(vocabID) })
-            .then((count: number) => {
+    return (
+      EntityService.collection()
+        // @ts-ignore
+        .findOneAndUpdate(filter, update, {returnDocument: 'after'})
+        // @ts-ignore
+        .then(async (result: ModifyResult<Entity>) => {
+          if (result?.lastErrorObject?.updatedExisting === false || !result.value) {
+            await VocabularyService.countCollectionItems({_id: new ObjectId(vocabID)}).then((count: number) => {
               if (count < 1) {
                 return ServiceErrorFactory.notFound(`Vocab with id '${vocabID}' not found`);
               }
             });
-          await this.getEntity(vocabID, entityID)
-            .then((dbo: Entity) => {
+            await this.getEntity(vocabID, entityID).then((dbo: Entity) => {
               if (!!dbo && new Date(dbo.lastModified).getTime() > ifUnmodifiedSince.getTime()) {
                 return ServiceErrorFactory.preconditionFailed(
                   'Target has been modified since last retrieval, the modified target is returned',
@@ -128,34 +209,38 @@ export class EntityService {
               }
               return ServiceErrorFactory.notFound(`Entity with id '${vocabID}/${entityID}' not found`);
             });
-        } else {
-          return result.value;
-        }
-      });
+          } else {
+            return result.value;
+          }
+        })
+    );
   }
 
-  public deleteEntity = (vocabID: string, entityID: string, lastModified: Date): Promise<boolean> => EntityService.collection()
-    .deleteOne({ _id: new ObjectId(entityID), vocabulary: new ObjectId(vocabID), lastModified: lastModified })
-    // @ts-ignore
-    .then(r => {
-      if (r.deletedCount === 1) {
-        return true;
-      } else {
-        // eslint-disable-next-line @typescript-eslint/no-misused-promises
-        if (!!this.getEntity(vocabID, entityID)) {
-          return ServiceErrorFactory.preconditionFailed('Entity has been modified since last refresh');
+  public deleteEntity = (vocabID: string, entityID: string, lastModified: Date): Promise<boolean> =>
+    EntityService.collection()
+      .deleteOne({_id: new ObjectId(entityID), vocabulary: new ObjectId(vocabID), lastModified: lastModified})
+      // @ts-ignore
+      .then((r) => {
+        if (r.deletedCount === 1) {
+          return true;
         } else {
-          return ServiceErrorFactory.notFound(`No entity found for ID '${vocabID}/${entityID}'`);
+          // eslint-disable-next-line @typescript-eslint/no-misused-promises
+          if (!!this.getEntity(vocabID, entityID)) {
+            return ServiceErrorFactory.preconditionFailed('Entity has been modified since last refresh');
+          } else {
+            return ServiceErrorFactory.notFound(`No entity found for ID '${vocabID}/${entityID}'`);
+          }
         }
-      }
-    });
+      });
 
   public async removeEntitiesFromVocabWithId(id: string | ObjectId): Promise<number> {
-    return EntityService.collection().deleteMany({ vocabulary: new ObjectId(id) }).then(r => r.deletedCount);
+    return EntityService.collection()
+      .deleteMany({vocabulary: new ObjectId(id)})
+      .then((r) => r.deletedCount);
   }
 
   public async listEntities(query: ListQueryModel, id?: string | ObjectId): Promise<ListingResult<Entity>> {
-    const { options, filter } = this.transformToMongoDBFilterOption(query, id);
+    const {options, filter} = this.transformToMongoDBFilterOption(query, id);
 
     if (options instanceof Promise) {
       return options;
@@ -165,33 +250,35 @@ export class EntityService {
       return filter;
     }
 
-    return EntityService.collection()
-      // @ts-ignore
-      .find(filter, options)
-      .toArray()
-      .then(async dbos => {
-        const totalItems: number = await EntityService.countCollectionItems(filter);
-        return {
-          offset: query.offset,
-          rows: dbos.length,
-          totalItems,
-          items: dbos as Entity[]
-        };
-      })
-      .catch(async (e) => {
-        console.error(e);
-        const totalItems: number = await EntityService.countCollectionItems(filter);
-        return {
-          offset: query.offset,
-          rows: 0,
-          totalItems,
-          items: []
-        };
-      });
+    return (
+      EntityService.collection()
+        // @ts-ignore
+        .find(filter, options)
+        .toArray()
+        .then(async (dbos) => {
+          const totalItems: number = await EntityService.countCollectionItems(filter);
+          return {
+            offset: query.offset,
+            rows: dbos.length,
+            totalItems,
+            items: dbos as Entity[]
+          };
+        })
+        .catch(async (e) => {
+          console.error(e);
+          const totalItems: number = await EntityService.countCollectionItems(filter);
+          return {
+            offset: query.offset,
+            rows: 0,
+            totalItems,
+            items: []
+          };
+        })
+    );
   }
 
   // eslint-disable-next-line max-len
-  private transformToMongoDBFilterOption(query?: ListQueryModel, id?: string | ObjectId): { options: FindOptions; filter: Filter<Entity> } {
+  private transformToMongoDBFilterOption(query?: ListQueryModel, id?: string | ObjectId): {options: FindOptions; filter: Filter<Entity>} {
     const options: FindOptions = {};
     const filter: Filter<Entity> = {};
 

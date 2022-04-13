@@ -31,7 +31,7 @@ export class PersistenceService {
 
     this.client.connect((error: MongoError | Error) => {
       if (error) {
-        console.error('Connection to MongoDB failed!');
+        console.error(error);
       } else {
         console.log('Initial connection to MongoDB successful');
         this._db = this.client.db();
