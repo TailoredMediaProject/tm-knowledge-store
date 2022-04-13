@@ -67,7 +67,8 @@
     "bracketSpacing": false,
     "printWidth": 140,
     "semi": true,
-    "singleQuote": true
+    "singleQuote": true,
+    "arrowParens": "avoid"
   },
   "nodemonConfig": {
     "ignore": [

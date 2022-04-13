@@ -6,7 +6,7 @@ import ListQueryModel from '../models/list-query.model';
 import {ListingResult} from '../models/listing-result.model';
 import {TagType} from '../generated';
 import {UtilService} from './util.service';
-import {ServiceErrorFactory} from '../models/service-error.model';
+import {ServiceError, ServiceErrorFactory} from '../models/service-error.model';
 
 export class EntityService {
   private static collection(): Collection {
@@ -90,44 +90,79 @@ export class EntityService {
     );
   }
 
-  /**Sets the argument entity in the DB without any modified checks and only not already set values, called internally by an resolve service.*/
+  /**Sets the argument entity in the DB without any modified checks and only not already set values, called internally by an resolve
+   * service.*/
   public readonly updateResolvedEntity = (entity: Partial<Entity>): Promise<Entity> =>
     // @ts-ignore
     this.getEntityWithoutVocab(entity._id).then((dbEntity: Entity) => {
-      const filter: Filter<Entity> = {_id: entity._id};
-      const $set = {};
+      const $set = this.deepNestedCoalescence(dbEntity, entity);
 
-      Object.keys(dbEntity).forEach((key: string) => {
-        // @ts-ignore
-        if (!dbEntity[key] && !!entity[key]) {
-          // @ts-ignore
-          $set[key] = entity[key];
-        }
-      });
+      if (!!$set && Object.keys($set).length > 0) {
+        const filter: Filter<Entity> = {
+          _id: entity._id,
+          lastModified: {
+            // eslint-disable-rows-line @typescript-eslint/no-unsafe-argument
+            $eq: dbEntity.lastModified
+          }
+        };
+        const update: UpdateFilter<Entity> = {
+          $set,
+          $currentDate: {
+            lastModified: true
+          }
+        };
 
-      const update: UpdateFilter<Entity> = {
-        $set,
-        $currentDate: {
-          lastModified: true
-        }
-      };
-
-      // TODO deep nest coalesce entities
-
-      return (
-        EntityService.collection()
-          // @ts-ignore
-          .findOneAndUpdate(filter, update, {returnDocument: 'after'})
-          // @ts-ignore
-          .then((result: ModifyResult<Entity>) => {
-            if (result?.lastErrorObject?.updatedExisting === false || !result.value) {
-              return ServiceErrorFactory.notFound(`Vocab with id '${entity._id}' not found`);
-            } else {
-              return result.value;
-            }
-          })
-      );
+        return (
+          EntityService.collection()
+            // @ts-ignore
+            .findOneAndUpdate(filter, update, {returnDocument: 'after'})
+            // @ts-ignore
+            .then((result: ModifyResult<Entity>) => {
+              if (result?.lastErrorObject?.updatedExisting === false || !result.value) {
+                return this.getEntityWithoutVocab(entity._id).then((modifiedEntity: Entity): Promise<Entity | ServiceError> => {
+                  // Check if an atomic updated failed, if so retry
+                  if (!!modifiedEntity?.lastModified &&
+                    new Date(modifiedEntity.lastModified).getTime() > new Date(dbEntity.lastModified).getTime()) {
+                    return this.updateResolvedEntity(entity);
+                  }
+                  return ServiceErrorFactory.notFound(`Vocab with id '${entity._id}' not found`);
+                });
+              } else {
+                return result.value;
+              }
+            })
+        );
+      }
+      return dbEntity;
     });
+
+  private readonly deepNestedCoalescence = <T>(base: T, feature: Partial<T>): T => {
+    let keys: string[] = !!base ? Object.keys(base) : [];
+
+    if(!!feature) {
+      keys = keys.concat(Object.keys(feature)
+        .filter((key: string) => !keys.find((bKey: string) => bKey === key))
+      );
+    }
+
+    const coalescence: T = {} as T;
+
+    keys.forEach((key: string) => {
+      // @ts-ignore
+      if (!base[key] && !!feature[key]) {
+        // @ts-ignore
+        coalescence[key] = feature[key];
+      }
+
+      // @ts-ignore
+      if(key === 'data') {
+        // @ts-ignore
+        coalescence[key] = this.deepNestedCoalescence(base[key], feature[key]);
+      }
+    });
+
+    return coalescence;
+  };
 
   /**Sets the argument entity in the DB, called by a controller or client.*/
   public updateEntity(vocabID: string, entityID: string, ifUnmodifiedSince: Date, entity: Entity): Promise<Entity> {
@@ -262,8 +297,8 @@ export class EntityService {
         } else {
           return {
             // @ts-ignore
-            options: ServiceErrorFactory.invalidQueryValue("Invalid Parameter of type 'type'!"),
-            filter: ServiceErrorFactory.invalidQueryValue("Invalid Parameter of type 'type'!")
+            options: ServiceErrorFactory.invalidQueryValue('Invalid Parameter of type \'type\'!'),
+            filter: ServiceErrorFactory.invalidQueryValue('Invalid Parameter of type \'type\'!')
           };
         }
         /* eslint-enable */

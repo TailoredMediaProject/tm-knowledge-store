@@ -21,7 +21,7 @@ export default class NdbResolveService implements ResolveServiceInterface {
     if (this.accept(uri)) {
       if (this.canBeActive) {
         // On local, use mocked NDB REST API
-        uri = new URL('http://localhost:3000/vokabel/230109');
+        uri = new URL('http://localhost:3000/person/545363');
       }
 
       return fetch(uri.toString(), {method: 'GET'})
