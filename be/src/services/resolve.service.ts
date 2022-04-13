@@ -22,7 +22,10 @@ export class ResolveService {
   private idle = true;
 
   constructor() {
-    setInterval(this.processQuery, this.interval);
+    // eslint-disable-next-line no-constant-condition
+    if(false) {// TODO All resolvers are disabled until we have the external prod URI, see TODO in ndb-resolve.service.ts
+      setInterval(this.processQuery, this.interval);
+    }
   }
 
   private readonly processQuery = (): void => {
@@ -56,7 +59,7 @@ export class ResolveService {
     if (!!resolveService) {
       return resolveService.resolve(uri);
     } else {
-      throw new KnowledgeError(StatusCodes.NOT_IMPLEMENTED, `Host of URI '${uri.toString()}' is unsupported`);
+      return Promise.reject(new KnowledgeError(StatusCodes.NOT_IMPLEMENTED, `Host of URI '${uri.toString()}' is unsupported`));
     }
   };
 

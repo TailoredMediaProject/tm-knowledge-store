@@ -6,23 +6,21 @@ import {Entity} from '../models/dbo.models';
 
 export default class NdbResolveService implements ResolveServiceInterface {
   private readonly baseUri: string[];
-  // eslint-disable-next-line no-undef
-  private readonly canBeActive = process.env.NODE_ENV !== 'production';
 
   constructor(baseUri: string[]) {
     this.baseUri = baseUri;
   }
 
-  public readonly accept = (uri: URL): boolean => this.canBeActive && this.baseUri.some((base: string) => uri.toString().startsWith(base));
+  public readonly accept = (uri: URL): boolean =>
+    false && // TODO remove when we have the external prod URI
+    this.baseUri.some((base: string) => uri.toString().startsWith(base));
 
   public readonly priority = (): number => 10;
 
   public readonly resolve = (uri: URL): Promise<Partial<Entity>> => {
     if (this.accept(uri)) {
-      if (this.canBeActive) {
-        // On local, use mocked NDB REST API
-        uri = new URL('http://localhost:3000/person/545363');
-      }
+      // On local, use mocked NDB REST API
+      uri = new URL('http://localhost:3000/person/545363'); // TODO remove when we have the external prod URI
 
       return fetch(uri.toString(), {method: 'GET'})
         .then((res: Response): Promise<string> => res.json())
