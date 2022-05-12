@@ -60,18 +60,18 @@ class ConstantService {
           canonicalLink: rawElement['Tag-TreeType']
         }));
 
-      Promise.all(entries.map((aam: AutomaticAnalysisModel) => entityServiceInstance.createEntity(UtilService.aam2EntityDbo(aam, vocab._id))))
-        .then((savedEntities: Entity[]): void => {
-          // Save backup
-          fs.writeFileSync(path.join(__dirname, this.AUTOMATIC_ANALYSIS_BACKUP), JSON.stringify(savedEntities, null, 2));
-          // Save id / link list
-          fs.writeFileSync(path.join(__dirname, this.AUTOMATIC_ANALYSIS_ID_LIST), JSON.stringify(
-            savedEntities.map((e: Entity) => ({
-              label: e.externalResources[0],
-              canonicalLink: UtilService.createCanonicalLink(e?._id?.toHexString())
-            })), null, 2));
-          console.log(`${this.LOG_TAG} Generated backup and ID list successfully`);
-        })
+      Promise.all(entries.map((aam: AutomaticAnalysisModel) =>
+        entityServiceInstance.createEntity(UtilService.aam2EntityDbo(aam, vocab._id)))).then((savedEntities: Entity[]): void => {
+        // Save backup
+        fs.writeFileSync(path.join(__dirname, this.AUTOMATIC_ANALYSIS_BACKUP), JSON.stringify(savedEntities, null, 2));
+        // Save id / link list
+        fs.writeFileSync(path.join(__dirname, this.AUTOMATIC_ANALYSIS_ID_LIST), JSON.stringify(
+          savedEntities.map((e: Entity) => ({
+            label: e.externalResources[0],
+            canonicalLink: UtilService.createCanonicalLink(e?._id?.toHexString())
+          })), null, 2));
+        console.log(`${this.LOG_TAG} Generated backup and ID list successfully`);
+      })
         .catch(console.error);
     } else {
       console.log(`${this.LOG_TAG} Backup exists, no new AA entities were created`);
