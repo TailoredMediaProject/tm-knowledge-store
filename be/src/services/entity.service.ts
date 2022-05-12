@@ -22,12 +22,12 @@ export class EntityService {
     return this.countCollectionItems({vocabulary: new ObjectId(vocabID)});
   }
 
-  public createEntity(entity: Entity): Promise<Entity> {
+  public createEntity(entity: Entity, useId = false): Promise<Entity> {
     return vocabularyService.getVocabular(entity.vocabulary).then(() =>
       EntityService.collection()
         .insertOne({
           ...entity,
-          _id: undefined,
+          _id: useId ? entity?._id : undefined,
           created: new Date(),
           lastModified: new Date()
         })

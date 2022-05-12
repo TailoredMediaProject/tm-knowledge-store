@@ -71,7 +71,7 @@ class ConstantService {
       nonExistingEntities.filter(e => !!e)
         .forEach((nE: Entity): void => {
           nE.vocabulary = vocab._id;
-          entityServiceInstance.createEntity(nE)
+          entityServiceInstance.createEntity(nE, true)
             .then((): void => {created = true;})
             .catch(console.error);
         });
