@@ -22,7 +22,11 @@ class ConstantService {
 
   public readonly init = (): void => {
     this.initVocab()
-      .then((vocab: Vocabulary): void => this.initEntities(vocab))
+      .then((vocab: Vocabulary): void => {
+        if(!!vocab) {
+          this.initEntities(vocab);
+        }
+      })
       .catch(console.error);
   };
 
@@ -31,7 +35,7 @@ class ConstantService {
       .then((vocab: Vocabulary): Promise<Vocabulary> => {
         if (!!vocab && vocab?.entityCount > 0) {
           console.log(`${this.LOG_TAG} Vocab ${vocab._id.toHexString()} exits with ${vocab.entityCount} entities`);
-          return Promise.resolve(vocab);
+          return Promise.resolve(undefined);
         } else {
           console.log(`${this.LOG_TAG} New AA vocab will be created`);
           return vocabularyService.createVocab({
