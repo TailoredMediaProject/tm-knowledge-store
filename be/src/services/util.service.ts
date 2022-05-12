@@ -7,8 +7,9 @@ import {Entity as EntityDTO} from '../generated/models/Entity';
 import {StatusCodes} from 'http-status-codes';
 import {HEADER_ACCEPT, HEADER_IF_UNMODIFIED_SINCE, HOST, MIME_TYPE_TURTLE} from '../models/constants';
 import {vocabularyService} from './vocabulary.service';
-import {TagType} from '../generated';
 import {entityServiceInstance} from './entity.service';
+import {ListingResult} from '../models/listing-result.model';
+import {AutomaticAnalysisModel} from '../models/automatic-analysis.model';
 
 export class UtilService {
   public static readonly checkQueryParams = (allowed: string[], query: unknown): boolean =>
@@ -16,7 +17,7 @@ export class UtilService {
 
   public static readonly requireQueryParams = (required: string[], query: unknown): boolean =>
     // @ts-ignore
-    required.every((queryParam: string) => queryParam in query && !!query[queryParam])
+    required.every((queryParam: string) => queryParam in query && !!query[queryParam]);
 
   public static readonly checkIfUnmodifiedHeader = (req: Request, next: NextFunction): Date => {
     const ifUnmodifiedSince: string = req.header(HEADER_IF_UNMODIFIED_SINCE);
@@ -42,11 +43,11 @@ export class UtilService {
   public static readonly checkAcceptHeader = (req: Request, supportedMimeTypes: string[], next: NextFunction): string => {
     const accept: string = req.header(HEADER_ACCEPT);
 
-    if(!accept || accept === '*/*') {
+    if (!accept || accept === '*/*') {
       return MIME_TYPE_TURTLE;
     }
 
-    if(supportedMimeTypes.includes(accept)) {
+    if (supportedMimeTypes.includes(accept)) {
       return accept;
     }
 
@@ -72,14 +73,14 @@ export class UtilService {
       }
       return Promise.reject(new KnowledgeError(StatusCodes.PRECONDITION_REQUIRED, `Invalid Vocabulary ID '${id}'`));
     });
-  }
+  };
 
   public static readonly checkIfSlugExist = (slug?: string): Promise<boolean> => {
     if (!slug || slug.trim() === '') {
       return Promise.resolve(false);
     }
     return vocabularyService.getVocabularyWithSlug(slug).then((vocab: Vocabulary) => !!vocab);
-  }
+  };
 
   public static readonly checkOrCreateId = (id: string): Promise<string> =>
     // @ts-ignore
@@ -93,25 +94,31 @@ export class UtilService {
         lastModified: new Date(),
         label: null,
         description: null,
-        entityCount: 0,
+        entityCount: 0
       }).then(vocab => vocab._id.toHexString()))
       .catch(error => {
         console.error(error);
         return error;
-      })
+      });
 
-  public static readonly checkIfEntityExists = (vocabId: string, label: string, type: TagType, sameAs?: string[]): Promise<Entity> => {
-    if (!vocabId || vocabId.trim() === '') {
+  public static readonly checkIfEntityExists = (body: EntityDTO): Promise<Entity> => {
+    if (!!body?.vocabulary?.trim()) {
+      return entityServiceInstance.listEntities({
+        vocabId: body.vocabulary,
+        text: body.label,
+        type: body.type,
+        includesSameAs: body.sameAs
+      })
+        .then((list: ListingResult<Entity>) => {
+          if (list.items.length > 0) {
+            return list.items[0];
+          }
+          return null;
+        });
+    } else {
       return Promise.reject('VocabId not given!');
     }
-    return entityServiceInstance.listEntities({vocabId, text: label, type, includesSameAs: sameAs})
-      .then(list => {
-        if (list.items.length > 0) {
-          return list.items[0];
-        }
-        return null;
-      });
-  }
+  };
 
   public static readonly escapeRegExp = (string: string): string => string.replace(/[.*+?^${}()|[\]\\]/g, '');
 
@@ -144,6 +151,21 @@ export class UtilService {
     data: undefined
   });
 
+  public static readonly aam2EntityDbo = (aam: AutomaticAnalysisModel, vocabulary: ObjectId): Entity => ({
+    /* eslint-disable */
+    _id: undefined,
+    vocabulary,
+    /* eslint-enable */
+    type: aam?.entityType?.toUpperCase(),
+    label: aam?.label,
+    description: aam?.tagTree,
+    created: undefined,
+    lastModified: undefined,
+    externalResources: !!aam?.eId ? [aam?.eId] : undefined,
+    sameAs: undefined,
+    data: undefined
+  });
+
   public static readonly entityDbo2Dto = (dbo: Entity): EntityDTO => ({
     id: dbo._id.toHexString(),
     vocabulary: dbo.vocabulary.toHexString(),
@@ -156,8 +178,10 @@ export class UtilService {
     externalResources: dbo.externalResources,
     sameAs: dbo.sameAs,
     data: dbo.data,
-    canonicalLink: `https://${HOST}/kb/${dbo._id.toHexString()}`
+    canonicalLink: UtilService.createCanonicalLink(dbo._id.toHexString())
   });
+
+  public static readonly createCanonicalLink = (id: string): string => `https://${HOST}/kb/${id}`;
 
   public static readonly vocabDto2Dbo = (dto: VocabularyDTO): Vocabulary => ({
     _id: undefined,
@@ -180,5 +204,5 @@ export class UtilService {
   });
 
   public static readonly throwNotAcceptable = (mimeType: string, next: NextFunction): void =>
-    next(new KnowledgeError(StatusCodes.NOT_ACCEPTABLE,  `The Accept-Header value '${mimeType}' is unacceptable`));
+    next(new KnowledgeError(StatusCodes.NOT_ACCEPTABLE, `The Accept-Header value '${mimeType}' is unacceptable`));
 }

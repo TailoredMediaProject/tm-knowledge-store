@@ -140,16 +140,14 @@ router.post('/vocab/:id/entities', (req: Request, res: Response, next: NextFunct
     .then((vId: string) => {
       req.body.vocabulary = vId;
 
-      const body = <EntityDTO>req.body;
+      const body: EntityDTO = <EntityDTO> req.body;
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-      UtilService.checkIfEntityExists(body.vocabulary, body.label, body.type, body.sameAs)
+      UtilService.checkIfEntityExists(body)
         .then((entity: Entity) => {
-          if (entity !== null) {
+          if (!!entity) {
             return entity;
           }
-          const newEntity: Entity = UtilService.entityDto2Dbo(body, next);
-
-          return entityServiceInstance.createEntity(newEntity);
+          return entityServiceInstance.createEntity(UtilService.entityDto2Dbo(body, next));
         })
         .then((entity: Entity) => rsInstance.schedule(entity))
         .then((entity: Entity) => UtilService.entityDbo2Dto(entity))

@@ -1,4 +1,5 @@
 import {Db, MongoClient, MongoClientOptions, MongoError} from 'mongodb';
+import {instance as csInstance} from './constant.service';
 
 export class PersistenceService {
   private client: MongoClient;
@@ -36,6 +37,7 @@ export class PersistenceService {
         console.log('Initial connection to MongoDB successful');
         this._db = this.client.db();
         this.pingDB().catch((error) => console.error(error));
+        csInstance.init();
       }
     });
   }
