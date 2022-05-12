@@ -1,0 +1,1934 @@
+[
+  {
+    "label": "airfield",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc724cb40fb8f04e6e515"
+  },
+  {
+    "label": "airplane_cabin",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc724cb40fb8f04e6e516"
+  },
+  {
+    "label": "airport_terminal",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc724cb40fb8f04e6e517"
+  },
+  {
+    "label": "alcove",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc724cb40fb8f04e6e519"
+  },
+  {
+    "label": "alley",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc724cb40fb8f04e6e518"
+  },
+  {
+    "label": "amphitheater",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc724cb40fb8f04e6e51a"
+  },
+  {
+    "label": "amusement_arcade",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc724cb40fb8f04e6e51b"
+  },
+  {
+    "label": "amusement_park",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc724cb40fb8f04e6e51c"
+  },
+  {
+    "label": "apartment_building_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc724cb40fb8f04e6e51d"
+  },
+  {
+    "label": "aquarium",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc724cb40fb8f04e6e520"
+  },
+  {
+    "label": "aqueduct",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc724cb40fb8f04e6e51e"
+  },
+  {
+    "label": "arcade",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc724cb40fb8f04e6e51f"
+  },
+  {
+    "label": "arch",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc724cb40fb8f04e6e521"
+  },
+  {
+    "label": "archaelogical_excavation",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc724cb40fb8f04e6e522"
+  },
+  {
+    "label": "archive",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e52b"
+  },
+  {
+    "label": "arena_hockey",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc724cb40fb8f04e6e523"
+  },
+  {
+    "label": "arena_performance",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc724cb40fb8f04e6e525"
+  },
+  {
+    "label": "arena_rodeo",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc724cb40fb8f04e6e524"
+  },
+  {
+    "label": "army_base",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc724cb40fb8f04e6e526"
+  },
+  {
+    "label": "art_gallery",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e528"
+  },
+  {
+    "label": "art_school",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e52a"
+  },
+  {
+    "label": "art_studio",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc724cb40fb8f04e6e527"
+  },
+  {
+    "label": "artists_loft",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e529"
+  },
+  {
+    "label": "assembly_line",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e52c"
+  },
+  {
+    "label": "athletic_field_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e530"
+  },
+  {
+    "label": "atrium_public",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e52d"
+  },
+  {
+    "label": "attic",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e52e"
+  },
+  {
+    "label": "auditorium",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e534"
+  },
+  {
+    "label": "auto_factory",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e52f"
+  },
+  {
+    "label": "auto_showroom",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e532"
+  },
+  {
+    "label": "badlands",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e531"
+  },
+  {
+    "label": "bakery_shop",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e537"
+  },
+  {
+    "label": "balcony_exterior",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e533"
+  },
+  {
+    "label": "balcony_interior",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e536"
+  },
+  {
+    "label": "ball_pit",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e535"
+  },
+  {
+    "label": "ballroom",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e53f"
+  },
+  {
+    "label": "bamboo_forest",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e539"
+  },
+  {
+    "label": "bank_vault",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e53a"
+  },
+  {
+    "label": "banquet_hall",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e538"
+  },
+  {
+    "label": "bar",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e540"
+  },
+  {
+    "label": "barn",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e542"
+  },
+  {
+    "label": "barndoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e53c"
+  },
+  {
+    "label": "baseball_field",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e53b"
+  },
+  {
+    "label": "basement",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e543"
+  },
+  {
+    "label": "basketball_court_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e53e"
+  },
+  {
+    "label": "bathroom",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e53d"
+  },
+  {
+    "label": "bazaar_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e541"
+  },
+  {
+    "label": "bazaar_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e548"
+  },
+  {
+    "label": "beach",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e544"
+  },
+  {
+    "label": "beach_house",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e545"
+  },
+  {
+    "label": "beauty_salon",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e54a"
+  },
+  {
+    "label": "bedchamber",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e549"
+  },
+  {
+    "label": "bedroom",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e546"
+  },
+  {
+    "label": "beer_garden",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e547"
+  },
+  {
+    "label": "beer_hall",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e54c"
+  },
+  {
+    "label": "berth",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e54b"
+  },
+  {
+    "label": "biology_laboratory",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e54d"
+  },
+  {
+    "label": "boardwalk",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e55a"
+  },
+  {
+    "label": "boat_deck",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e555"
+  },
+  {
+    "label": "boathouse",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e551"
+  },
+  {
+    "label": "bookstore",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e54e"
+  },
+  {
+    "label": "booth_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e553"
+  },
+  {
+    "label": "botanical_garden",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e550"
+  },
+  {
+    "label": "bow_window_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e552"
+  },
+  {
+    "label": "bowling_alley",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e54f"
+  },
+  {
+    "label": "boxing_ring",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e554"
+  },
+  {
+    "label": "bridge",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e557"
+  },
+  {
+    "label": "building_facade",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e558"
+  },
+  {
+    "label": "bullring",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e556"
+  },
+  {
+    "label": "burial_chamber",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e55b"
+  },
+  {
+    "label": "bus_interior",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e55c"
+  },
+  {
+    "label": "bus_station_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e559"
+  },
+  {
+    "label": "butchers_shop",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e55f"
+  },
+  {
+    "label": "butte",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e55e"
+  },
+  {
+    "label": "cabin_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e55d"
+  },
+  {
+    "label": "cafeteria",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e562"
+  },
+  {
+    "label": "campsite",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e560"
+  },
+  {
+    "label": "campus",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e563"
+  },
+  {
+    "label": "canal_natural",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e561"
+  },
+  {
+    "label": "canal_urban",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e564"
+  },
+  {
+    "label": "candy_store",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e565"
+  },
+  {
+    "label": "canyon",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e571"
+  },
+  {
+    "label": "car_interior",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e569"
+  },
+  {
+    "label": "carrousel",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e56a"
+  },
+  {
+    "label": "castle",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e573"
+  },
+  {
+    "label": "catacomb",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e566"
+  },
+  {
+    "label": "cemetery",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e56e"
+  },
+  {
+    "label": "chalet",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e568"
+  },
+  {
+    "label": "chemistry_lab",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e56c"
+  },
+  {
+    "label": "childs_room",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e570"
+  },
+  {
+    "label": "church_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e56d"
+  },
+  {
+    "label": "church_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e56b"
+  },
+  {
+    "label": "classroom",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e572"
+  },
+  {
+    "label": "clean_room",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e56f"
+  },
+  {
+    "label": "cliff",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e567"
+  },
+  {
+    "label": "closet",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e574"
+  },
+  {
+    "label": "clothing_store",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e57a"
+  },
+  {
+    "label": "coast",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e579"
+  },
+  {
+    "label": "cockpit",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e580"
+  },
+  {
+    "label": "coffee_shop",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e57d"
+  },
+  {
+    "label": "computer_room",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e578"
+  },
+  {
+    "label": "conference_center",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e57b"
+  },
+  {
+    "label": "conference_room",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e57c"
+  },
+  {
+    "label": "construction_site",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e581"
+  },
+  {
+    "label": "corn_field",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e575"
+  },
+  {
+    "label": "corral",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e577"
+  },
+  {
+    "label": "corridor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e576"
+  },
+  {
+    "label": "cottage",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e57e"
+  },
+  {
+    "label": "courthouse",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e587"
+  },
+  {
+    "label": "courtyard",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e586"
+  },
+  {
+    "label": "creek",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e585"
+  },
+  {
+    "label": "crevasse",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e57f"
+  },
+  {
+    "label": "crosswalk",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e584"
+  },
+  {
+    "label": "dam",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e588"
+  },
+  {
+    "label": "delicatessen",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e582"
+  },
+  {
+    "label": "department_store",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e583"
+  },
+  {
+    "label": "desert_sand",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e590"
+  },
+  {
+    "label": "desert_vegetation",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e589"
+  },
+  {
+    "label": "desert_road",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e58d"
+  },
+  {
+    "label": "diner_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e58c"
+  },
+  {
+    "label": "dining_hall",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e58a"
+  },
+  {
+    "label": "dining_room",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e591"
+  },
+  {
+    "label": "discotheque",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e58f"
+  },
+  {
+    "label": "doorway_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e58b"
+  },
+  {
+    "label": "dorm_room",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e58e"
+  },
+  {
+    "label": "downtown",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e59d"
+  },
+  {
+    "label": "dressing_room",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e592"
+  },
+  {
+    "label": "driveway",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e59b"
+  },
+  {
+    "label": "drugstore",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e597"
+  },
+  {
+    "label": "elevator_door",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e596"
+  },
+  {
+    "label": "elevator_lobby",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e593"
+  },
+  {
+    "label": "elevator_shaft",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5b9"
+  },
+  {
+    "label": "embassy",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5a6"
+  },
+  {
+    "label": "engine_room",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e59e"
+  },
+  {
+    "label": "entrance_hall",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5a8"
+  },
+  {
+    "label": "escalator_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5a2"
+  },
+  {
+    "label": "excavation",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e59c"
+  },
+  {
+    "label": "fabric_store",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e594"
+  },
+  {
+    "label": "farm",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e59a"
+  },
+  {
+    "label": "fastfood_restaurant",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5a1"
+  },
+  {
+    "label": "field_cultivated",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5a7"
+  },
+  {
+    "label": "field_wild",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e595"
+  },
+  {
+    "label": "field_road",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5a4"
+  },
+  {
+    "label": "fire_escape",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e598"
+  },
+  {
+    "label": "fire_station",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e599"
+  },
+  {
+    "label": "fishpond",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5a5"
+  },
+  {
+    "label": "flea_market_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5b6"
+  },
+  {
+    "label": "florist_shop_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5a3"
+  },
+  {
+    "label": "food_court",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5a0"
+  },
+  {
+    "label": "football_field",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5b0"
+  },
+  {
+    "label": "forest_broadleaf",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5af"
+  },
+  {
+    "label": "forest_path",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e59f"
+  },
+  {
+    "label": "forest_road",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5b4"
+  },
+  {
+    "label": "formal_garden",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5b2"
+  },
+  {
+    "label": "fountain",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5ab"
+  },
+  {
+    "label": "galley",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5a9"
+  },
+  {
+    "label": "garage_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5ad"
+  },
+  {
+    "label": "garage_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5ac"
+  },
+  {
+    "label": "gas_station",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5b1"
+  },
+  {
+    "label": "gazebo_exterior",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5ae"
+  },
+  {
+    "label": "general_store_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5bb"
+  },
+  {
+    "label": "general_store_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5aa"
+  },
+  {
+    "label": "gift_shop",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5b8"
+  },
+  {
+    "label": "glacier",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5bc"
+  },
+  {
+    "label": "golf_course",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5b7"
+  },
+  {
+    "label": "greenhouse_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5ba"
+  },
+  {
+    "label": "greenhouse_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5c2"
+  },
+  {
+    "label": "grotto",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5bd"
+  },
+  {
+    "label": "gymnasium_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5cb"
+  },
+  {
+    "label": "hangar_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5b3"
+  },
+  {
+    "label": "hangar_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5b5"
+  },
+  {
+    "label": "harbor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5c9"
+  },
+  {
+    "label": "hardware_store",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5d5"
+  },
+  {
+    "label": "hayfield",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5d6"
+  },
+  {
+    "label": "heliport",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5cf"
+  },
+  {
+    "label": "highway",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5cd"
+  },
+  {
+    "label": "home_office",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5c4"
+  },
+  {
+    "label": "home_theater",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5be"
+  },
+  {
+    "label": "hospital",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5c8"
+  },
+  {
+    "label": "hospital_room",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5ca"
+  },
+  {
+    "label": "hot_spring",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5c5"
+  },
+  {
+    "label": "hotel_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5c6"
+  },
+  {
+    "label": "hotel_room",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5c3"
+  },
+  {
+    "label": "house",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5ce"
+  },
+  {
+    "label": "hunting_lodge_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5c7"
+  },
+  {
+    "label": "ice_cream_parlor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5bf"
+  },
+  {
+    "label": "ice_floe",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5c1"
+  },
+  {
+    "label": "ice_shelf",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5c0"
+  },
+  {
+    "label": "ice_skating_rink_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5d4"
+  },
+  {
+    "label": "ice_skating_rink_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5da"
+  },
+  {
+    "label": "iceberg",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5dc"
+  },
+  {
+    "label": "igloo",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5db"
+  },
+  {
+    "label": "industrial_area",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5d7"
+  },
+  {
+    "label": "inn_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5dd"
+  },
+  {
+    "label": "islet",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5d2"
+  },
+  {
+    "label": "jacuzzi_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5de"
+  },
+  {
+    "label": "jail_cell",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5d8"
+  },
+  {
+    "label": "japanese_garden",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5d9"
+  },
+  {
+    "label": "jewelry_shop",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5d0"
+  },
+  {
+    "label": "junkyard",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5cc"
+  },
+  {
+    "label": "kasbah",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5d3"
+  },
+  {
+    "label": "kennel_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5d1"
+  },
+  {
+    "label": "kindergarden_classroom",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5ee"
+  },
+  {
+    "label": "kitchen",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5ff"
+  },
+  {
+    "label": "lagoon",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5f4"
+  },
+  {
+    "label": "lake_natural",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5ec"
+  },
+  {
+    "label": "landfill",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5e1"
+  },
+  {
+    "label": "landing_deck",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5eb"
+  },
+  {
+    "label": "laundromat",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5e6"
+  },
+  {
+    "label": "lawn",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5ef"
+  },
+  {
+    "label": "lecture_room",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5e7"
+  },
+  {
+    "label": "legislative_chamber",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5e0"
+  },
+  {
+    "label": "library_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5e8"
+  },
+  {
+    "label": "library_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5e5"
+  },
+  {
+    "label": "lighthouse",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5f1"
+  },
+  {
+    "label": "living_room",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5df"
+  },
+  {
+    "label": "loading_dock",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5f5"
+  },
+  {
+    "label": "lobby",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5e9"
+  },
+  {
+    "label": "lock_chamber",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5f3"
+  },
+  {
+    "label": "locker_room",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5f0"
+  },
+  {
+    "label": "mansion",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5f2"
+  },
+  {
+    "label": "manufactured_home",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5fa"
+  },
+  {
+    "label": "market_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5e2"
+  },
+  {
+    "label": "market_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5ed"
+  },
+  {
+    "label": "marsh",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5e3"
+  },
+  {
+    "label": "martial_arts_gym",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5e4"
+  },
+  {
+    "label": "mausoleum",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5ea"
+  },
+  {
+    "label": "medina",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e603"
+  },
+  {
+    "label": "mezzanine",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e608"
+  },
+  {
+    "label": "moat_water",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e600"
+  },
+  {
+    "label": "mosque_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e601"
+  },
+  {
+    "label": "motel",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5fc"
+  },
+  {
+    "label": "mountain",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5f6"
+  },
+  {
+    "label": "mountain_path",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5fe"
+  },
+  {
+    "label": "mountain_snowy",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e60b"
+  },
+  {
+    "label": "movie_theater_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e605"
+  },
+  {
+    "label": "museum_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5fb"
+  },
+  {
+    "label": "museum_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e60a"
+  },
+  {
+    "label": "music_studio",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e602"
+  },
+  {
+    "label": "natural_history_museum",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e607"
+  },
+  {
+    "label": "nursery",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5f8"
+  },
+  {
+    "label": "nursing_home",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e606"
+  },
+  {
+    "label": "oast_house",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5f7"
+  },
+  {
+    "label": "ocean",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5f9"
+  },
+  {
+    "label": "office",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e611"
+  },
+  {
+    "label": "office_building",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e60e"
+  },
+  {
+    "label": "office_cubicles",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e60d"
+  },
+  {
+    "label": "oilrig",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e604"
+  },
+  {
+    "label": "operating_room",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e610"
+  },
+  {
+    "label": "orchard",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e613"
+  },
+  {
+    "label": "orchestra_pit",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e60f"
+  },
+  {
+    "label": "pagoda",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e619"
+  },
+  {
+    "label": "palace",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e609"
+  },
+  {
+    "label": "pantry",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e5fd"
+  },
+  {
+    "label": "park",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e60c"
+  },
+  {
+    "label": "parking_garage_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e626"
+  },
+  {
+    "label": "parking_garage_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e612"
+  },
+  {
+    "label": "parking_lot",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e615"
+  },
+  {
+    "label": "pasture",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e614"
+  },
+  {
+    "label": "patio",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e61b"
+  },
+  {
+    "label": "pavilion",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e617"
+  },
+  {
+    "label": "pet_shop",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e61e"
+  },
+  {
+    "label": "pharmacy",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e630"
+  },
+  {
+    "label": "phone_booth",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e62a"
+  },
+  {
+    "label": "physics_laboratory",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e61d"
+  },
+  {
+    "label": "picnic_area",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e618"
+  },
+  {
+    "label": "pier",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e616"
+  },
+  {
+    "label": "pizzeria",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e61c"
+  },
+  {
+    "label": "playground",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e61a"
+  },
+  {
+    "label": "playroom",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e635"
+  },
+  {
+    "label": "plaza",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e63b"
+  },
+  {
+    "label": "pond",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e632"
+  },
+  {
+    "label": "porch",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e628"
+  },
+  {
+    "label": "promenade",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e62e"
+  },
+  {
+    "label": "pub_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e62d"
+  },
+  {
+    "label": "racecourse",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e62f"
+  },
+  {
+    "label": "raceway",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e623"
+  },
+  {
+    "label": "raft",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e633"
+  },
+  {
+    "label": "railroad_track",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e621"
+  },
+  {
+    "label": "rainforest",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e629"
+  },
+  {
+    "label": "reception",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e634"
+  },
+  {
+    "label": "recreation_room",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e631"
+  },
+  {
+    "label": "repair_shop",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e61f"
+  },
+  {
+    "label": "residential_neighborhood",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e627"
+  },
+  {
+    "label": "restaurant",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e63a"
+  },
+  {
+    "label": "restaurant_kitchen",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e624"
+  },
+  {
+    "label": "restaurant_patio",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e636"
+  },
+  {
+    "label": "rice_paddy",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e62c"
+  },
+  {
+    "label": "river",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e622"
+  },
+  {
+    "label": "rock_arch",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e625"
+  },
+  {
+    "label": "roof_garden",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e620"
+  },
+  {
+    "label": "rope_bridge",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e62b"
+  },
+  {
+    "label": "ruin",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e653"
+  },
+  {
+    "label": "runway",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e643"
+  },
+  {
+    "label": "sandbox",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e63f"
+  },
+  {
+    "label": "sauna",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e638"
+  },
+  {
+    "label": "schoolhouse",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e655"
+  },
+  {
+    "label": "science_museum",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e63c"
+  },
+  {
+    "label": "server_room",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e637"
+  },
+  {
+    "label": "shed",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e63e"
+  },
+  {
+    "label": "shoe_shop",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e64e"
+  },
+  {
+    "label": "shopfront",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e654"
+  },
+  {
+    "label": "shopping_mall_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e640"
+  },
+  {
+    "label": "shower",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e651"
+  },
+  {
+    "label": "ski_resort",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e64f"
+  },
+  {
+    "label": "ski_slope",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e649"
+  },
+  {
+    "label": "sky",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e639"
+  },
+  {
+    "label": "skyscraper",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e657"
+  },
+  {
+    "label": "slum",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e65a"
+  },
+  {
+    "label": "snowfield",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e64b"
+  },
+  {
+    "label": "soccer_field",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e656"
+  },
+  {
+    "label": "stable",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e64d"
+  },
+  {
+    "label": "stadium_baseball",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e647"
+  },
+  {
+    "label": "stadium_football",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e644"
+  },
+  {
+    "label": "stadium_soccer",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e652"
+  },
+  {
+    "label": "stage_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e650"
+  },
+  {
+    "label": "stage_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e645"
+  },
+  {
+    "label": "staircase",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e648"
+  },
+  {
+    "label": "storage_room",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e659"
+  },
+  {
+    "label": "street",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e641"
+  },
+  {
+    "label": "subway_station_platform",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e642"
+  },
+  {
+    "label": "supermarket",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e63d"
+  },
+  {
+    "label": "sushi_bar",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e65e"
+  },
+  {
+    "label": "swamp",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e65f"
+  },
+  {
+    "label": "swimming_hole",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e660"
+  },
+  {
+    "label": "swimming_pool_indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e64c"
+  },
+  {
+    "label": "swimming_pool_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e646"
+  },
+  {
+    "label": "synagogue_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e65c"
+  },
+  {
+    "label": "television_room",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e65b"
+  },
+  {
+    "label": "television_studio",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e64a"
+  },
+  {
+    "label": "temple_asia",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e65d"
+  },
+  {
+    "label": "throne_room",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e658"
+  },
+  {
+    "label": "ticket_booth",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e665"
+  },
+  {
+    "label": "topiary_garden",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e661"
+  },
+  {
+    "label": "tower",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e662"
+  },
+  {
+    "label": "toyshop",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e676"
+  },
+  {
+    "label": "train_interior",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e67e"
+  },
+  {
+    "label": "train_station_platform",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e673"
+  },
+  {
+    "label": "tree_farm",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e664"
+  },
+  {
+    "label": "tree_house",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e67c"
+  },
+  {
+    "label": "trench",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e667"
+  },
+  {
+    "label": "tundra",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e678"
+  },
+  {
+    "label": "underwater_ocean_deep",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e671"
+  },
+  {
+    "label": "utility_room",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e674"
+  },
+  {
+    "label": "valley",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e66b"
+  },
+  {
+    "label": "vegetable_garden",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e679"
+  },
+  {
+    "label": "veterinarians_office",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e67d"
+  },
+  {
+    "label": "viaduct",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e675"
+  },
+  {
+    "label": "village",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e67a"
+  },
+  {
+    "label": "vineyard",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e66d"
+  },
+  {
+    "label": "volcano",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e66a"
+  },
+  {
+    "label": "volleyball_court_outdoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e672"
+  },
+  {
+    "label": "waiting_room",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e669"
+  },
+  {
+    "label": "water_park",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e668"
+  },
+  {
+    "label": "water_tower",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e66e"
+  },
+  {
+    "label": "waterfall",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e666"
+  },
+  {
+    "label": "watering_hole",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e66f"
+  },
+  {
+    "label": "wave",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e670"
+  },
+  {
+    "label": "wet_bar",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e677"
+  },
+  {
+    "label": "wheat_field",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e66c"
+  },
+  {
+    "label": "wind_farm",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e67b"
+  },
+  {
+    "label": "windmill",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e663"
+  },
+  {
+    "label": "yard",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e690"
+  },
+  {
+    "label": "youth_hostel",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e68a"
+  },
+  {
+    "label": "zen_garden",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e682"
+  },
+  {
+    "label": "indoor",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e680"
+  },
+  {
+    "label": "outdoor_manmade",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e681"
+  },
+  {
+    "label": "outdoor_natural",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e68c"
+  },
+  {
+    "label": "spring",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e6a8"
+  },
+  {
+    "label": "summer",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e68e"
+  },
+  {
+    "label": "fall",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e6b3"
+  },
+  {
+    "label": "winter",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e693"
+  },
+  {
+    "label": "night",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e6ae"
+  },
+  {
+    "label": "twilight",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e694"
+  },
+  {
+    "label": "sunrise",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6bc"
+  },
+  {
+    "label": "fulldaylight",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e68f"
+  },
+  {
+    "label": "sunset",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e688"
+  },
+  {
+    "label": "extreme_closeup",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e67f"
+  },
+  {
+    "label": "closeup",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e695"
+  },
+  {
+    "label": "medium_closeup",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e686"
+  },
+  {
+    "label": "tight_medium",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e68d"
+  },
+  {
+    "label": "medium",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e687"
+  },
+  {
+    "label": "medium_full",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e685"
+  },
+  {
+    "label": "full_shot",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e692"
+  },
+  {
+    "label": "long",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e689"
+  },
+  {
+    "label": "extreme_long",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e684"
+  },
+  {
+    "label": "unpopulated\t",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e69c"
+  },
+  {
+    "label": "few_people ",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e68b"
+  },
+  {
+    "label": "few_vehicles ",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e683"
+  },
+  {
+    "label": "few_large",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e691"
+  },
+  {
+    "label": "medium",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e6af"
+  },
+  {
+    "label": "populated",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6e3"
+  },
+  {
+    "label": "person",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e696"
+  },
+  {
+    "label": "bicycle",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e6a1"
+  },
+  {
+    "label": "car",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e69e"
+  },
+  {
+    "label": "motorcycle",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e69f"
+  },
+  {
+    "label": "airplane",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e6a2"
+  },
+  {
+    "label": "bus",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e6a0"
+  },
+  {
+    "label": "train",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e698"
+  },
+  {
+    "label": "truck",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e69d"
+  },
+  {
+    "label": "boat",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e6ad"
+  },
+  {
+    "label": "traffic light",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e6a6"
+  },
+  {
+    "label": "fire hydrant",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6b9"
+  },
+  {
+    "label": "street sign",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e6ab"
+  },
+  {
+    "label": "stop sign",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e6b2"
+  },
+  {
+    "label": "parking meter",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e6a3"
+  },
+  {
+    "label": "bench",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e6a9"
+  },
+  {
+    "label": "bird",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e6b1"
+  },
+  {
+    "label": "cat",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e69b"
+  },
+  {
+    "label": "dog",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e6aa"
+  },
+  {
+    "label": "horse",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e697"
+  },
+  {
+    "label": "sheep",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e6a4"
+  },
+  {
+    "label": "cow",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e6a5"
+  },
+  {
+    "label": "elephant",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e6a7"
+  },
+  {
+    "label": "bear",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e69a"
+  },
+  {
+    "label": "zebra",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e699"
+  },
+  {
+    "label": "giraffe",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6e1"
+  },
+  {
+    "label": "hat",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6bd"
+  },
+  {
+    "label": "backpack",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6e7"
+  },
+  {
+    "label": "umbrella",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6df"
+  },
+  {
+    "label": "shoe",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6c4"
+  },
+  {
+    "label": "eye glasses",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6b8"
+  },
+  {
+    "label": "handbag",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6e2"
+  },
+  {
+    "label": "tie",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6c3"
+  },
+  {
+    "label": "suitcase",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6bf"
+  },
+  {
+    "label": "frisbee",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6eb"
+  },
+  {
+    "label": "skis",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6c2"
+  },
+  {
+    "label": "snowboard",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6e4"
+  },
+  {
+    "label": "sports ball",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e6b4"
+  },
+  {
+    "label": "kite",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6ba"
+  },
+  {
+    "label": "baseball bat",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e6ac"
+  },
+  {
+    "label": "baseball glove",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e6b6"
+  },
+  {
+    "label": "skateboard",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e6b0"
+  },
+  {
+    "label": "surfboard",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6b7"
+  },
+  {
+    "label": "tennis racket",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6bb"
+  },
+  {
+    "label": "bottle",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6e0"
+  },
+  {
+    "label": "plate",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc725cb40fb8f04e6e6b5"
+  },
+  {
+    "label": "wine glass",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6d0"
+  },
+  {
+    "label": "cup",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6cb"
+  },
+  {
+    "label": "fork",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6de"
+  },
+  {
+    "label": "knife",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6db"
+  },
+  {
+    "label": "spoon",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6da"
+  },
+  {
+    "label": "bowl",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6c7"
+  },
+  {
+    "label": "banana",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6c1"
+  },
+  {
+    "label": "apple",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6cd"
+  },
+  {
+    "label": "sandwich",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6be"
+  },
+  {
+    "label": "orange",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6c5"
+  },
+  {
+    "label": "broccoli",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6c0"
+  },
+  {
+    "label": "carrot",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6c6"
+  },
+  {
+    "label": "hot dog",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6e5"
+  },
+  {
+    "label": "pizza",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6dc"
+  },
+  {
+    "label": "donut",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6d2"
+  },
+  {
+    "label": "cake",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6e6"
+  },
+  {
+    "label": "chair",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6cf"
+  },
+  {
+    "label": "couch",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6cc"
+  },
+  {
+    "label": "potted plant",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6ee"
+  },
+  {
+    "label": "bed",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6d1"
+  },
+  {
+    "label": "mirror",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6ec"
+  },
+  {
+    "label": "dining table",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6d8"
+  },
+  {
+    "label": "window",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6ce"
+  },
+  {
+    "label": "desk",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6ca"
+  },
+  {
+    "label": "toilet",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6ea"
+  },
+  {
+    "label": "door",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6d3"
+  },
+  {
+    "label": "tv",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6d6"
+  },
+  {
+    "label": "laptop",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6ef"
+  },
+  {
+    "label": "mouse",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6c9"
+  },
+  {
+    "label": "remote",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6c8"
+  },
+  {
+    "label": "keyboard",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6d7"
+  },
+  {
+    "label": "cell phone",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6d4"
+  },
+  {
+    "label": "microwave",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6d5"
+  },
+  {
+    "label": "oven",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6dd"
+  },
+  {
+    "label": "toaster",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6e8"
+  },
+  {
+    "label": "sink",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6d9"
+  },
+  {
+    "label": "refrigerator",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6e9"
+  },
+  {
+    "label": "blender",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6ed"
+  },
+  {
+    "label": "book",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6f1"
+  },
+  {
+    "label": "clock",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6f0"
+  },
+  {
+    "label": "vase",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6f3"
+  },
+  {
+    "label": "scissors",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6f2"
+  },
+  {
+    "label": "teddy bear",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6f5"
+  },
+  {
+    "label": "hair drier",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6f6"
+  },
+  {
+    "label": "toothbrush",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6f7"
+  },
+  {
+    "label": "hair brush",
+    "canonicalLink": "https://data.tmedia.redlink.io/kb/627cc726cb40fb8f04e6e6f4"
+  }
+]

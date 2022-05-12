@@ -3,8 +3,8 @@
 import path = require('path');
 import fs = require('fs');
 import {AutomaticAnalysisModel} from '../models/automatic-analysis.model';
-import {entityServiceInstance} from '../services/entity.service';
-import {vocabularyService} from '../services/vocabulary.service';
+import {entityServiceInstance} from './entity.service';
+import {vocabularyService} from './vocabulary.service';
 import {UtilService} from './util.service';
 import {Entity, Vocabulary} from '../models/dbo.models';
 // eslint-disable-next-line @typescript-eslint/no-var-requires

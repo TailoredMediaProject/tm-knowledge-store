@@ -1,0 +1,6764 @@
+[
+  {
+    "_id": "627cc724cb40fb8f04e6e515",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Flugplatz",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:52.919Z",
+    "lastModified": "2022-05-12T08:36:52.919Z",
+    "externalResources": [
+      "airfield"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc724cb40fb8f04e6e516",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Flugzeug Kabine",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:52.921Z",
+    "lastModified": "2022-05-12T08:36:52.921Z",
+    "externalResources": [
+      "airplane_cabin"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc724cb40fb8f04e6e517",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Flughafen Terminal",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:52.941Z",
+    "lastModified": "2022-05-12T08:36:52.941Z",
+    "externalResources": [
+      "airport_terminal"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc724cb40fb8f04e6e519",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Alkoven",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:52.943Z",
+    "lastModified": "2022-05-12T08:36:52.943Z",
+    "externalResources": [
+      "alcove"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc724cb40fb8f04e6e518",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Gasse",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:52.942Z",
+    "lastModified": "2022-05-12T08:36:52.942Z",
+    "externalResources": [
+      "alley"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc724cb40fb8f04e6e51a",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Amphitheater",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:52.944Z",
+    "lastModified": "2022-05-12T08:36:52.944Z",
+    "externalResources": [
+      "amphitheater"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc724cb40fb8f04e6e51b",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Vergnügungshalle",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:52.953Z",
+    "lastModified": "2022-05-12T08:36:52.953Z",
+    "externalResources": [
+      "amusement_arcade"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc724cb40fb8f04e6e51c",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Vergnügungspark",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:52.961Z",
+    "lastModified": "2022-05-12T08:36:52.961Z",
+    "externalResources": [
+      "amusement_park"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc724cb40fb8f04e6e51d",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Wohnhaus Außen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:52.964Z",
+    "lastModified": "2022-05-12T08:36:52.964Z",
+    "externalResources": [
+      "apartment_building_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc724cb40fb8f04e6e520",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Aquarium",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:52.970Z",
+    "lastModified": "2022-05-12T08:36:52.970Z",
+    "externalResources": [
+      "aquarium"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc724cb40fb8f04e6e51e",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Aquädukt",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:52.967Z",
+    "lastModified": "2022-05-12T08:36:52.967Z",
+    "externalResources": [
+      "aqueduct"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc724cb40fb8f04e6e51f",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Arkade",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:52.968Z",
+    "lastModified": "2022-05-12T08:36:52.968Z",
+    "externalResources": [
+      "arcade"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc724cb40fb8f04e6e521",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bogen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:52.975Z",
+    "lastModified": "2022-05-12T08:36:52.975Z",
+    "externalResources": [
+      "arch"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc724cb40fb8f04e6e522",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Archäologische Ausgrabung",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:52.976Z",
+    "lastModified": "2022-05-12T08:36:52.976Z",
+    "externalResources": [
+      "archaelogical_excavation"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e52b",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Archiv",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.005Z",
+    "lastModified": "2022-05-12T08:36:53.005Z",
+    "externalResources": [
+      "archive"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc724cb40fb8f04e6e523",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Eishockeyarena",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:52.988Z",
+    "lastModified": "2022-05-12T08:36:52.988Z",
+    "externalResources": [
+      "arena_hockey"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc724cb40fb8f04e6e525",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Leistungsarena",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:52.990Z",
+    "lastModified": "2022-05-12T08:36:52.990Z",
+    "externalResources": [
+      "arena_performance"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc724cb40fb8f04e6e524",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Rodeoarena",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:52.989Z",
+    "lastModified": "2022-05-12T08:36:52.989Z",
+    "externalResources": [
+      "arena_rodeo"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc724cb40fb8f04e6e526",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Militärbasis",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:52.991Z",
+    "lastModified": "2022-05-12T08:36:52.991Z",
+    "externalResources": [
+      "army_base"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e528",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Kunstgalerie",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.002Z",
+    "lastModified": "2022-05-12T08:36:53.002Z",
+    "externalResources": [
+      "art_gallery"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e52a",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Kunstschule",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.004Z",
+    "lastModified": "2022-05-12T08:36:53.004Z",
+    "externalResources": [
+      "art_school"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc724cb40fb8f04e6e527",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Kunstatelier",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:52.997Z",
+    "lastModified": "2022-05-12T08:36:52.997Z",
+    "externalResources": [
+      "art_studio"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e529",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Kunstdachboden",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.003Z",
+    "lastModified": "2022-05-12T08:36:53.003Z",
+    "externalResources": [
+      "artists_loft"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e52c",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Fließband",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.013Z",
+    "lastModified": "2022-05-12T08:36:53.013Z",
+    "externalResources": [
+      "assembly_line"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e530",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Sportplatz Außen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.029Z",
+    "lastModified": "2022-05-12T08:36:53.029Z",
+    "externalResources": [
+      "athletic_field_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e52d",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Öffentliches Atrium",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.019Z",
+    "lastModified": "2022-05-12T08:36:53.019Z",
+    "externalResources": [
+      "atrium_public"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e52e",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Dachboden",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.027Z",
+    "lastModified": "2022-05-12T08:36:53.027Z",
+    "externalResources": [
+      "attic"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e534",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Auditorium",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.035Z",
+    "lastModified": "2022-05-12T08:36:53.035Z",
+    "externalResources": [
+      "auditorium"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e52f",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Auto Fabrik",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.028Z",
+    "lastModified": "2022-05-12T08:36:53.028Z",
+    "externalResources": [
+      "auto_factory"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e532",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Auto Ausstellungsraum",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.033Z",
+    "lastModified": "2022-05-12T08:36:53.033Z",
+    "externalResources": [
+      "auto_showroom"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e531",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Ödland",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.032Z",
+    "lastModified": "2022-05-12T08:36:53.032Z",
+    "externalResources": [
+      "badlands"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e537",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bäckerei",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.050Z",
+    "lastModified": "2022-05-12T08:36:53.050Z",
+    "externalResources": [
+      "bakery_shop"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e533",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Balkon Außen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.034Z",
+    "lastModified": "2022-05-12T08:36:53.034Z",
+    "externalResources": [
+      "balcony_exterior"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e536",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Balkon Innen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.036Z",
+    "lastModified": "2022-05-12T08:36:53.036Z",
+    "externalResources": [
+      "balcony_interior"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e535",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bällebad",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.036Z",
+    "lastModified": "2022-05-12T08:36:53.036Z",
+    "externalResources": [
+      "ball_pit"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e53f",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Ballsaal",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.081Z",
+    "lastModified": "2022-05-12T08:36:53.081Z",
+    "externalResources": [
+      "ballroom"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e539",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bambuswald",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.057Z",
+    "lastModified": "2022-05-12T08:36:53.057Z",
+    "externalResources": [
+      "bamboo_forest"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e53a",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bankgewölbe",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.058Z",
+    "lastModified": "2022-05-12T08:36:53.058Z",
+    "externalResources": [
+      "bank_vault"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e538",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bankettsaal",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.056Z",
+    "lastModified": "2022-05-12T08:36:53.056Z",
+    "externalResources": [
+      "banquet_hall"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e540",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bar",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.082Z",
+    "lastModified": "2022-05-12T08:36:53.082Z",
+    "externalResources": [
+      "bar"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e542",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Scheune",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.084Z",
+    "lastModified": "2022-05-12T08:36:53.084Z",
+    "externalResources": [
+      "barn"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e53c",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Scheunentor",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.064Z",
+    "lastModified": "2022-05-12T08:36:53.064Z",
+    "externalResources": [
+      "barndoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e53b",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Baseballfeld",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.060Z",
+    "lastModified": "2022-05-12T08:36:53.060Z",
+    "externalResources": [
+      "baseball_field"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e543",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Keller",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.085Z",
+    "lastModified": "2022-05-12T08:36:53.085Z",
+    "externalResources": [
+      "basement"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e53e",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Basketballplatz Innen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.080Z",
+    "lastModified": "2022-05-12T08:36:53.080Z",
+    "externalResources": [
+      "basketball_court_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e53d",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bad",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.066Z",
+    "lastModified": "2022-05-12T08:36:53.066Z",
+    "externalResources": [
+      "bathroom"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e541",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Basar Innen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.083Z",
+    "lastModified": "2022-05-12T08:36:53.083Z",
+    "externalResources": [
+      "bazaar_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e548",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Basar Außen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.097Z",
+    "lastModified": "2022-05-12T08:36:53.097Z",
+    "externalResources": [
+      "bazaar_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e544",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Strand",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.086Z",
+    "lastModified": "2022-05-12T08:36:53.086Z",
+    "externalResources": [
+      "beach"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e545",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Strandhaus",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.087Z",
+    "lastModified": "2022-05-12T08:36:53.087Z",
+    "externalResources": [
+      "beach_house"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e54a",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Schönheitssalon",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.111Z",
+    "lastModified": "2022-05-12T08:36:53.111Z",
+    "externalResources": [
+      "beauty_salon"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e549",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Schlafgemach",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.110Z",
+    "lastModified": "2022-05-12T08:36:53.110Z",
+    "externalResources": [
+      "bedchamber"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e546",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Schlafzimmer",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.094Z",
+    "lastModified": "2022-05-12T08:36:53.094Z",
+    "externalResources": [
+      "bedroom"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e547",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Biergarten",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.096Z",
+    "lastModified": "2022-05-12T08:36:53.096Z",
+    "externalResources": [
+      "beer_garden"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e54c",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bierhalle",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.121Z",
+    "lastModified": "2022-05-12T08:36:53.121Z",
+    "externalResources": [
+      "beer_hall"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e54b",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Liegeplatz",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.120Z",
+    "lastModified": "2022-05-12T08:36:53.120Z",
+    "externalResources": [
+      "berth"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e54d",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Biologielabor",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.123Z",
+    "lastModified": "2022-05-12T08:36:53.123Z",
+    "externalResources": [
+      "biology_laboratory"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e55a",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Promenade",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.156Z",
+    "lastModified": "2022-05-12T08:36:53.156Z",
+    "externalResources": [
+      "boardwalk"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e555",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bootsdeck",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.139Z",
+    "lastModified": "2022-05-12T08:36:53.139Z",
+    "externalResources": [
+      "boat_deck"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e551",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bootshaus",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.131Z",
+    "lastModified": "2022-05-12T08:36:53.131Z",
+    "externalResources": [
+      "boathouse"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e54e",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Buchhandlung",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.128Z",
+    "lastModified": "2022-05-12T08:36:53.128Z",
+    "externalResources": [
+      "bookstore"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e553",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Kabineinnen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.133Z",
+    "lastModified": "2022-05-12T08:36:53.133Z",
+    "externalResources": [
+      "booth_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e550",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Botanischer Garten",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.130Z",
+    "lastModified": "2022-05-12T08:36:53.130Z",
+    "externalResources": [
+      "botanical_garden"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e552",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bogenfenster Innen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.132Z",
+    "lastModified": "2022-05-12T08:36:53.132Z",
+    "externalResources": [
+      "bow_window_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e54f",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bowlingbahn",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.129Z",
+    "lastModified": "2022-05-12T08:36:53.129Z",
+    "externalResources": [
+      "bowling_alley"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e554",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Boxring",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.134Z",
+    "lastModified": "2022-05-12T08:36:53.134Z",
+    "externalResources": [
+      "boxing_ring"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e557",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Brücke",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.153Z",
+    "lastModified": "2022-05-12T08:36:53.153Z",
+    "externalResources": [
+      "bridge"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e558",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Gebäude Fassade",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.154Z",
+    "lastModified": "2022-05-12T08:36:53.154Z",
+    "externalResources": [
+      "building_facade"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e556",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Stierreiten",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.152Z",
+    "lastModified": "2022-05-12T08:36:53.152Z",
+    "externalResources": [
+      "bullring"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e55b",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Grabkammer",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.157Z",
+    "lastModified": "2022-05-12T08:36:53.157Z",
+    "externalResources": [
+      "burial_chamber"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e55c",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bus Innen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.158Z",
+    "lastModified": "2022-05-12T08:36:53.158Z",
+    "externalResources": [
+      "bus_interior"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e559",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Metzerrei innen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.155Z",
+    "lastModified": "2022-05-12T08:36:53.155Z",
+    "externalResources": [
+      "bus_station_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e55f",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Metzger",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.162Z",
+    "lastModified": "2022-05-12T08:36:53.162Z",
+    "externalResources": [
+      "butchers_shop"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e55e",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Butte",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.160Z",
+    "lastModified": "2022-05-12T08:36:53.160Z",
+    "externalResources": [
+      "butte"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e55d",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Kabine Außen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.159Z",
+    "lastModified": "2022-05-12T08:36:53.159Z",
+    "externalResources": [
+      "cabin_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e562",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Cafeteria",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.167Z",
+    "lastModified": "2022-05-12T08:36:53.167Z",
+    "externalResources": [
+      "cafeteria"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e560",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Campingplatz",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.165Z",
+    "lastModified": "2022-05-12T08:36:53.165Z",
+    "externalResources": [
+      "campsite"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e563",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Campus",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.181Z",
+    "lastModified": "2022-05-12T08:36:53.181Z",
+    "externalResources": [
+      "campus"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e561",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Natürlicher Kanal",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.166Z",
+    "lastModified": "2022-05-12T08:36:53.166Z",
+    "externalResources": [
+      "canal_natural"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e564",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Stätischer Kanal",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.182Z",
+    "lastModified": "2022-05-12T08:36:53.182Z",
+    "externalResources": [
+      "canal_urban"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e565",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Süßwarenladen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.183Z",
+    "lastModified": "2022-05-12T08:36:53.183Z",
+    "externalResources": [
+      "candy_store"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e571",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Schlucht",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.215Z",
+    "lastModified": "2022-05-12T08:36:53.215Z",
+    "externalResources": [
+      "canyon"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e569",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Auto Innen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.195Z",
+    "lastModified": "2022-05-12T08:36:53.195Z",
+    "externalResources": [
+      "car_interior"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e56a",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Karussell",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.196Z",
+    "lastModified": "2022-05-12T08:36:53.196Z",
+    "externalResources": [
+      "carrousel"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e573",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Schloss",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.217Z",
+    "lastModified": "2022-05-12T08:36:53.217Z",
+    "externalResources": [
+      "castle"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e566",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Katakombe",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.192Z",
+    "lastModified": "2022-05-12T08:36:53.192Z",
+    "externalResources": [
+      "catacomb"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e56e",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Friedhof",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.212Z",
+    "lastModified": "2022-05-12T08:36:53.212Z",
+    "externalResources": [
+      "cemetery"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e568",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Chalet",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.194Z",
+    "lastModified": "2022-05-12T08:36:53.194Z",
+    "externalResources": [
+      "chalet"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e56c",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Chemielabor",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.203Z",
+    "lastModified": "2022-05-12T08:36:53.203Z",
+    "externalResources": [
+      "chemistry_lab"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e570",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Kinderzimmer",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.214Z",
+    "lastModified": "2022-05-12T08:36:53.214Z",
+    "externalResources": [
+      "childs_room"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e56d",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Kirche (Innenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.203Z",
+    "lastModified": "2022-05-12T08:36:53.203Z",
+    "externalResources": [
+      "church_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e56b",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Kirche (Außenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.202Z",
+    "lastModified": "2022-05-12T08:36:53.202Z",
+    "externalResources": [
+      "church_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e572",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Klassenzimmer",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.216Z",
+    "lastModified": "2022-05-12T08:36:53.216Z",
+    "externalResources": [
+      "classroom"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e56f",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "sauberes Zimmer",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.213Z",
+    "lastModified": "2022-05-12T08:36:53.213Z",
+    "externalResources": [
+      "clean_room"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e567",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Kliff",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.193Z",
+    "lastModified": "2022-05-12T08:36:53.193Z",
+    "externalResources": [
+      "cliff"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e574",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Wandschrank",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.228Z",
+    "lastModified": "2022-05-12T08:36:53.228Z",
+    "externalResources": [
+      "closet"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e57a",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bekleidungsgeschäft",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.240Z",
+    "lastModified": "2022-05-12T08:36:53.240Z",
+    "externalResources": [
+      "clothing_store"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e579",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Küste",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.239Z",
+    "lastModified": "2022-05-12T08:36:53.239Z",
+    "externalResources": [
+      "coast"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e580",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Cockpit",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.275Z",
+    "lastModified": "2022-05-12T08:36:53.275Z",
+    "externalResources": [
+      "cockpit"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e57d",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Kaffeehaus",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.243Z",
+    "lastModified": "2022-05-12T08:36:53.243Z",
+    "externalResources": [
+      "coffee_shop"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e578",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Computerraum",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.238Z",
+    "lastModified": "2022-05-12T08:36:53.238Z",
+    "externalResources": [
+      "computer_room"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e57b",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Konferenzzentrum",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.242Z",
+    "lastModified": "2022-05-12T08:36:53.242Z",
+    "externalResources": [
+      "conference_center"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e57c",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Konferenzraum",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.243Z",
+    "lastModified": "2022-05-12T08:36:53.243Z",
+    "externalResources": [
+      "conference_room"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e581",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Baustelle",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.276Z",
+    "lastModified": "2022-05-12T08:36:53.276Z",
+    "externalResources": [
+      "construction_site"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e575",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Maisfeld",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.231Z",
+    "lastModified": "2022-05-12T08:36:53.231Z",
+    "externalResources": [
+      "corn_field"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e577",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Gehege",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.237Z",
+    "lastModified": "2022-05-12T08:36:53.237Z",
+    "externalResources": [
+      "corral"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e576",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Gang",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.236Z",
+    "lastModified": "2022-05-12T08:36:53.236Z",
+    "externalResources": [
+      "corridor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e57e",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Hütte",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.273Z",
+    "lastModified": "2022-05-12T08:36:53.273Z",
+    "externalResources": [
+      "cottage"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e587",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Gerichtsgebäude",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.282Z",
+    "lastModified": "2022-05-12T08:36:53.282Z",
+    "externalResources": [
+      "courthouse"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e586",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Hof",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.281Z",
+    "lastModified": "2022-05-12T08:36:53.281Z",
+    "externalResources": [
+      "courtyard"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e585",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bach",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.280Z",
+    "lastModified": "2022-05-12T08:36:53.280Z",
+    "externalResources": [
+      "creek"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e57f",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Gletscherspalte",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.274Z",
+    "lastModified": "2022-05-12T08:36:53.274Z",
+    "externalResources": [
+      "crevasse"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e584",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Zebrastreifen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.279Z",
+    "lastModified": "2022-05-12T08:36:53.279Z",
+    "externalResources": [
+      "crosswalk"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e588",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Damm",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.283Z",
+    "lastModified": "2022-05-12T08:36:53.283Z",
+    "externalResources": [
+      "dam"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e582",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Delikatessen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.277Z",
+    "lastModified": "2022-05-12T08:36:53.277Z",
+    "externalResources": [
+      "delicatessen"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e583",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Kaufhaus",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.278Z",
+    "lastModified": "2022-05-12T08:36:53.278Z",
+    "externalResources": [
+      "department_store"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e590",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Sandwüste",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.291Z",
+    "lastModified": "2022-05-12T08:36:53.291Z",
+    "externalResources": [
+      "desert_sand"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e589",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Wüste (bewachsen)",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.286Z",
+    "lastModified": "2022-05-12T08:36:53.286Z",
+    "externalResources": [
+      "desert_vegetation"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e58d",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Wüstenstraße",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.289Z",
+    "lastModified": "2022-05-12T08:36:53.289Z",
+    "externalResources": [
+      "desert_road"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e58c",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Abendessen im Freien",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.288Z",
+    "lastModified": "2022-05-12T08:36:53.288Z",
+    "externalResources": [
+      "diner_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e58a",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Speisesaal",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.287Z",
+    "lastModified": "2022-05-12T08:36:53.287Z",
+    "externalResources": [
+      "dining_hall"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e591",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Esszimmer",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.291Z",
+    "lastModified": "2022-05-12T08:36:53.291Z",
+    "externalResources": [
+      "dining_room"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e58f",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Diskothek",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.290Z",
+    "lastModified": "2022-05-12T08:36:53.290Z",
+    "externalResources": [
+      "discotheque"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e58b",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Tür im Freien",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.287Z",
+    "lastModified": "2022-05-12T08:36:53.287Z",
+    "externalResources": [
+      "doorway_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e58e",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Schlafsaal",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.289Z",
+    "lastModified": "2022-05-12T08:36:53.289Z",
+    "externalResources": [
+      "dorm_room"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e59d",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Innenstadt",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.340Z",
+    "lastModified": "2022-05-12T08:36:53.340Z",
+    "externalResources": [
+      "downtown"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e592",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Umkleideraum",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.312Z",
+    "lastModified": "2022-05-12T08:36:53.312Z",
+    "externalResources": [
+      "dressing_room"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e59b",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Auffahrt",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.332Z",
+    "lastModified": "2022-05-12T08:36:53.332Z",
+    "externalResources": [
+      "driveway"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e597",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Drogerie",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.322Z",
+    "lastModified": "2022-05-12T08:36:53.322Z",
+    "externalResources": [
+      "drugstore"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e596",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Aufzugstür",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.321Z",
+    "lastModified": "2022-05-12T08:36:53.321Z",
+    "externalResources": [
+      "elevator_door"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e593",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Aufzugshalle",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.313Z",
+    "lastModified": "2022-05-12T08:36:53.313Z",
+    "externalResources": [
+      "elevator_lobby"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5b9",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Fahrstuhlschacht",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.405Z",
+    "lastModified": "2022-05-12T08:36:53.405Z",
+    "externalResources": [
+      "elevator_shaft"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5a6",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Botschaft",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.358Z",
+    "lastModified": "2022-05-12T08:36:53.358Z",
+    "externalResources": [
+      "embassy"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e59e",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Maschinenraum",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.342Z",
+    "lastModified": "2022-05-12T08:36:53.342Z",
+    "externalResources": [
+      "engine_room"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5a8",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Eingangshalle",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.370Z",
+    "lastModified": "2022-05-12T08:36:53.370Z",
+    "externalResources": [
+      "entrance_hall"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5a2",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Rolltreppe drinnen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.352Z",
+    "lastModified": "2022-05-12T08:36:53.352Z",
+    "externalResources": [
+      "escalator_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e59c",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Ausgrabung",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.333Z",
+    "lastModified": "2022-05-12T08:36:53.333Z",
+    "externalResources": [
+      "excavation"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e594",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Stoffladen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.314Z",
+    "lastModified": "2022-05-12T08:36:53.314Z",
+    "externalResources": [
+      "fabric_store"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e59a",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bauernhof",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.331Z",
+    "lastModified": "2022-05-12T08:36:53.331Z",
+    "externalResources": [
+      "farm"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5a1",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Fastfood-Restaurant",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.351Z",
+    "lastModified": "2022-05-12T08:36:53.351Z",
+    "externalResources": [
+      "fastfood_restaurant"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5a7",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Acker",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.359Z",
+    "lastModified": "2022-05-12T08:36:53.359Z",
+    "externalResources": [
+      "field_cultivated"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e595",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Feld (Wild)",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.315Z",
+    "lastModified": "2022-05-12T08:36:53.315Z",
+    "externalResources": [
+      "field_wild"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5a4",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Feldweg",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.356Z",
+    "lastModified": "2022-05-12T08:36:53.356Z",
+    "externalResources": [
+      "field_road"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e598",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Notausgang",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.323Z",
+    "lastModified": "2022-05-12T08:36:53.323Z",
+    "externalResources": [
+      "fire_escape"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e599",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Feuerwehr",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.330Z",
+    "lastModified": "2022-05-12T08:36:53.330Z",
+    "externalResources": [
+      "fire_station"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5a5",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Fischteich",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.357Z",
+    "lastModified": "2022-05-12T08:36:53.357Z",
+    "externalResources": [
+      "fishpond"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5b6",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Flohmarkt (Innen)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.394Z",
+    "lastModified": "2022-05-12T08:36:53.394Z",
+    "externalResources": [
+      "flea_market_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5a3",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Blumenladen (Innenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.353Z",
+    "lastModified": "2022-05-12T08:36:53.353Z",
+    "externalResources": [
+      "florist_shop_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5a0",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Fressmeile",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.350Z",
+    "lastModified": "2022-05-12T08:36:53.350Z",
+    "externalResources": [
+      "food_court"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5b0",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Fußballfeld",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.386Z",
+    "lastModified": "2022-05-12T08:36:53.386Z",
+    "externalResources": [
+      "football_field"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5af",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Waldlaub",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.382Z",
+    "lastModified": "2022-05-12T08:36:53.382Z",
+    "externalResources": [
+      "forest_broadleaf"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e59f",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Waldweg",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.344Z",
+    "lastModified": "2022-05-12T08:36:53.344Z",
+    "externalResources": [
+      "forest_path"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5b4",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Waldstraße",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.391Z",
+    "lastModified": "2022-05-12T08:36:53.391Z",
+    "externalResources": [
+      "forest_road"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5b2",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Formaler Garten",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.388Z",
+    "lastModified": "2022-05-12T08:36:53.388Z",
+    "externalResources": [
+      "formal_garden"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5ab",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Brunnen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.378Z",
+    "lastModified": "2022-05-12T08:36:53.378Z",
+    "externalResources": [
+      "fountain"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5a9",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Galeere",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.371Z",
+    "lastModified": "2022-05-12T08:36:53.371Z",
+    "externalResources": [
+      "galley"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5ad",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Garage (Innenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.380Z",
+    "lastModified": "2022-05-12T08:36:53.380Z",
+    "externalResources": [
+      "garage_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5ac",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Garage (Außenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.379Z",
+    "lastModified": "2022-05-12T08:36:53.379Z",
+    "externalResources": [
+      "garage_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5b1",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Tankstelle",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.387Z",
+    "lastModified": "2022-05-12T08:36:53.387Z",
+    "externalResources": [
+      "gas_station"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5ae",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Pavillon außen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.381Z",
+    "lastModified": "2022-05-12T08:36:53.381Z",
+    "externalResources": [
+      "gazebo_exterior"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5bb",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Gemischtwarenladen (Innenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.406Z",
+    "lastModified": "2022-05-12T08:36:53.406Z",
+    "externalResources": [
+      "general_store_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5aa",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Gemischtwarenladen (Außenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.372Z",
+    "lastModified": "2022-05-12T08:36:53.372Z",
+    "externalResources": [
+      "general_store_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5b8",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Geschenkeladen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.404Z",
+    "lastModified": "2022-05-12T08:36:53.404Z",
+    "externalResources": [
+      "gift_shop"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5bc",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Gletscher",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.407Z",
+    "lastModified": "2022-05-12T08:36:53.407Z",
+    "externalResources": [
+      "glacier"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5b7",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Golfplatz",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.395Z",
+    "lastModified": "2022-05-12T08:36:53.395Z",
+    "externalResources": [
+      "golf_course"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5ba",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Gewächshaus (Innenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.405Z",
+    "lastModified": "2022-05-12T08:36:53.405Z",
+    "externalResources": [
+      "greenhouse_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5c2",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Gewächshaus (Außenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.426Z",
+    "lastModified": "2022-05-12T08:36:53.426Z",
+    "externalResources": [
+      "greenhouse_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5bd",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Grotte",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.408Z",
+    "lastModified": "2022-05-12T08:36:53.408Z",
+    "externalResources": [
+      "grotto"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5cb",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Turnhalle (Innenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.444Z",
+    "lastModified": "2022-05-12T08:36:53.444Z",
+    "externalResources": [
+      "gymnasium_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5b3",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Hangar (Innenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.390Z",
+    "lastModified": "2022-05-12T08:36:53.390Z",
+    "externalResources": [
+      "hangar_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5b5",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Hangar (Außenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.393Z",
+    "lastModified": "2022-05-12T08:36:53.393Z",
+    "externalResources": [
+      "hangar_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5c9",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Hafen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.443Z",
+    "lastModified": "2022-05-12T08:36:53.443Z",
+    "externalResources": [
+      "harbor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5d5",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Baumarkt",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.473Z",
+    "lastModified": "2022-05-12T08:36:53.473Z",
+    "externalResources": [
+      "hardware_store"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5d6",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Heufeld",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.474Z",
+    "lastModified": "2022-05-12T08:36:53.474Z",
+    "externalResources": [
+      "hayfield"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5cf",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Hubschrauberlandeplatz",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.458Z",
+    "lastModified": "2022-05-12T08:36:53.458Z",
+    "externalResources": [
+      "heliport"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5cd",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Autobahn",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.454Z",
+    "lastModified": "2022-05-12T08:36:53.454Z",
+    "externalResources": [
+      "highway"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5c4",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Heimbüro",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.431Z",
+    "lastModified": "2022-05-12T08:36:53.431Z",
+    "externalResources": [
+      "home_office"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5be",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Heimkino",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.415Z",
+    "lastModified": "2022-05-12T08:36:53.415Z",
+    "externalResources": [
+      "home_theater"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5c8",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Krankenhaus",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.442Z",
+    "lastModified": "2022-05-12T08:36:53.442Z",
+    "externalResources": [
+      "hospital"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5ca",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Krankenhauszimmer",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.443Z",
+    "lastModified": "2022-05-12T08:36:53.443Z",
+    "externalResources": [
+      "hospital_room"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5c5",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Heiße Quelle",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.439Z",
+    "lastModified": "2022-05-12T08:36:53.439Z",
+    "externalResources": [
+      "hot_spring"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5c6",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "hotel (Außenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.440Z",
+    "lastModified": "2022-05-12T08:36:53.440Z",
+    "externalResources": [
+      "hotel_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5c3",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Hotelzimmer",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.428Z",
+    "lastModified": "2022-05-12T08:36:53.428Z",
+    "externalResources": [
+      "hotel_room"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5ce",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Haus",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.455Z",
+    "lastModified": "2022-05-12T08:36:53.455Z",
+    "externalResources": [
+      "house"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5c7",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Jagdschloss (Außenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.441Z",
+    "lastModified": "2022-05-12T08:36:53.441Z",
+    "externalResources": [
+      "hunting_lodge_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5bf",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Eisdiele",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.417Z",
+    "lastModified": "2022-05-12T08:36:53.417Z",
+    "externalResources": [
+      "ice_cream_parlor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5c1",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Eisscholle",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.424Z",
+    "lastModified": "2022-05-12T08:36:53.424Z",
+    "externalResources": [
+      "ice_floe"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5c0",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Eisregal",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.418Z",
+    "lastModified": "2022-05-12T08:36:53.418Z",
+    "externalResources": [
+      "ice_shelf"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5d4",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Eislaufplatz im Innenbereich",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.473Z",
+    "lastModified": "2022-05-12T08:36:53.473Z",
+    "externalResources": [
+      "ice_skating_rink_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5da",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Eislaufplatz im Freien",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.476Z",
+    "lastModified": "2022-05-12T08:36:53.476Z",
+    "externalResources": [
+      "ice_skating_rink_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5dc",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Eisberg",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.478Z",
+    "lastModified": "2022-05-12T08:36:53.478Z",
+    "externalResources": [
+      "iceberg"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5db",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Iglu",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.478Z",
+    "lastModified": "2022-05-12T08:36:53.478Z",
+    "externalResources": [
+      "igloo"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5d7",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Industriegebiet",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.474Z",
+    "lastModified": "2022-05-12T08:36:53.474Z",
+    "externalResources": [
+      "industrial_area"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5dd",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Gasthaus (Außenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.489Z",
+    "lastModified": "2022-05-12T08:36:53.489Z",
+    "externalResources": [
+      "inn_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5d2",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Inselchen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.471Z",
+    "lastModified": "2022-05-12T08:36:53.471Z",
+    "externalResources": [
+      "islet"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5de",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Whirlpool (Innenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.490Z",
+    "lastModified": "2022-05-12T08:36:53.490Z",
+    "externalResources": [
+      "jacuzzi_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5d8",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Gefängniszelle",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.475Z",
+    "lastModified": "2022-05-12T08:36:53.475Z",
+    "externalResources": [
+      "jail_cell"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5d9",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "japanischer Garten",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.475Z",
+    "lastModified": "2022-05-12T08:36:53.475Z",
+    "externalResources": [
+      "japanese_garden"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5d0",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Juwelier",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.459Z",
+    "lastModified": "2022-05-12T08:36:53.459Z",
+    "externalResources": [
+      "jewelry_shop"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5cc",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Schrottplatz",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.453Z",
+    "lastModified": "2022-05-12T08:36:53.453Z",
+    "externalResources": [
+      "junkyard"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5d3",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Kasbah",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.472Z",
+    "lastModified": "2022-05-12T08:36:53.472Z",
+    "externalResources": [
+      "kasbah"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5d1",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Zwinger (Außenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.462Z",
+    "lastModified": "2022-05-12T08:36:53.462Z",
+    "externalResources": [
+      "kennel_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5ee",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Kindergarten Klassenzimmer",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.536Z",
+    "lastModified": "2022-05-12T08:36:53.536Z",
+    "externalResources": [
+      "kindergarden_classroom"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5ff",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Küche",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.579Z",
+    "lastModified": "2022-05-12T08:36:53.579Z",
+    "externalResources": [
+      "kitchen"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5f4",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Lagune",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.544Z",
+    "lastModified": "2022-05-12T08:36:53.544Z",
+    "externalResources": [
+      "lagoon"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5ec",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "See natürlich",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.527Z",
+    "lastModified": "2022-05-12T08:36:53.527Z",
+    "externalResources": [
+      "lake_natural"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5e1",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Deponie",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.507Z",
+    "lastModified": "2022-05-12T08:36:53.507Z",
+    "externalResources": [
+      "landfill"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5eb",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Landedeck",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.526Z",
+    "lastModified": "2022-05-12T08:36:53.526Z",
+    "externalResources": [
+      "landing_deck"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5e6",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Waschsalon",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.519Z",
+    "lastModified": "2022-05-12T08:36:53.519Z",
+    "externalResources": [
+      "laundromat"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5ef",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Rasen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.537Z",
+    "lastModified": "2022-05-12T08:36:53.537Z",
+    "externalResources": [
+      "lawn"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5e7",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Hörsaal",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.522Z",
+    "lastModified": "2022-05-12T08:36:53.522Z",
+    "externalResources": [
+      "lecture_room"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5e0",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "gesetzgebende Kammer",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.506Z",
+    "lastModified": "2022-05-12T08:36:53.506Z",
+    "externalResources": [
+      "legislative_chamber"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5e8",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bibliothek (Innenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.523Z",
+    "lastModified": "2022-05-12T08:36:53.523Z",
+    "externalResources": [
+      "library_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5e5",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bibliothek (Außenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.517Z",
+    "lastModified": "2022-05-12T08:36:53.517Z",
+    "externalResources": [
+      "library_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5f1",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Leuchtturm",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.540Z",
+    "lastModified": "2022-05-12T08:36:53.540Z",
+    "externalResources": [
+      "lighthouse"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5df",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Wohnzimmer",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.505Z",
+    "lastModified": "2022-05-12T08:36:53.505Z",
+    "externalResources": [
+      "living_room"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5f5",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Laderampe",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.546Z",
+    "lastModified": "2022-05-12T08:36:53.546Z",
+    "externalResources": [
+      "loading_dock"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5e9",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Empfangshalle",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.524Z",
+    "lastModified": "2022-05-12T08:36:53.524Z",
+    "externalResources": [
+      "lobby"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5f3",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Schleusenkammer",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.542Z",
+    "lastModified": "2022-05-12T08:36:53.542Z",
+    "externalResources": [
+      "lock_chamber"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5f0",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Umkleideraum",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.539Z",
+    "lastModified": "2022-05-12T08:36:53.539Z",
+    "externalResources": [
+      "locker_room"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5f2",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Villa",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.541Z",
+    "lastModified": "2022-05-12T08:36:53.541Z",
+    "externalResources": [
+      "mansion"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5fa",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Zuhause hergestellt",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.567Z",
+    "lastModified": "2022-05-12T08:36:53.567Z",
+    "externalResources": [
+      "manufactured_home"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5e2",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Markthalle",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.508Z",
+    "lastModified": "2022-05-12T08:36:53.508Z",
+    "externalResources": [
+      "market_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5ed",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Markt (Außenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.535Z",
+    "lastModified": "2022-05-12T08:36:53.535Z",
+    "externalResources": [
+      "market_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5e3",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Sumpf",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.512Z",
+    "lastModified": "2022-05-12T08:36:53.512Z",
+    "externalResources": [
+      "marsh"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5e4",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Kampfsport-Fitnessstudio",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.513Z",
+    "lastModified": "2022-05-12T08:36:53.513Z",
+    "externalResources": [
+      "martial_arts_gym"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5ea",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Mausoleum",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.525Z",
+    "lastModified": "2022-05-12T08:36:53.525Z",
+    "externalResources": [
+      "mausoleum"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e603",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Medina",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.584Z",
+    "lastModified": "2022-05-12T08:36:53.584Z",
+    "externalResources": [
+      "medina"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e608",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Zwischenstock",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.603Z",
+    "lastModified": "2022-05-12T08:36:53.603Z",
+    "externalResources": [
+      "mezzanine"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e600",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Wassergraben",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.581Z",
+    "lastModified": "2022-05-12T08:36:53.581Z",
+    "externalResources": [
+      "moat_water"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e601",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Moschee (Außenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.582Z",
+    "lastModified": "2022-05-12T08:36:53.582Z",
+    "externalResources": [
+      "mosque_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5fc",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Motel",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.574Z",
+    "lastModified": "2022-05-12T08:36:53.574Z",
+    "externalResources": [
+      "motel"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5f6",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Berg",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.547Z",
+    "lastModified": "2022-05-12T08:36:53.547Z",
+    "externalResources": [
+      "mountain"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5fe",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bergweg",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.578Z",
+    "lastModified": "2022-05-12T08:36:53.578Z",
+    "externalResources": [
+      "mountain_path"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e60b",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Berg schneebedeckt",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.605Z",
+    "lastModified": "2022-05-12T08:36:53.605Z",
+    "externalResources": [
+      "mountain_snowy"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e605",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Kino (Innenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.599Z",
+    "lastModified": "2022-05-12T08:36:53.599Z",
+    "externalResources": [
+      "movie_theater_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5fb",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Museum (Innenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.573Z",
+    "lastModified": "2022-05-12T08:36:53.573Z",
+    "externalResources": [
+      "museum_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e60a",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Museum (Außenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.604Z",
+    "lastModified": "2022-05-12T08:36:53.604Z",
+    "externalResources": [
+      "museum_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e602",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Musik Studio",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.583Z",
+    "lastModified": "2022-05-12T08:36:53.583Z",
+    "externalResources": [
+      "music_studio"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e607",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Naturkundemuseum",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.602Z",
+    "lastModified": "2022-05-12T08:36:53.602Z",
+    "externalResources": [
+      "natural_history_museum"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5f8",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Kindergarten",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.560Z",
+    "lastModified": "2022-05-12T08:36:53.560Z",
+    "externalResources": [
+      "nursery"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e606",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Altenheim",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.601Z",
+    "lastModified": "2022-05-12T08:36:53.601Z",
+    "externalResources": [
+      "nursing_home"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5f7",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Trockenschuppen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.559Z",
+    "lastModified": "2022-05-12T08:36:53.559Z",
+    "externalResources": [
+      "oast_house"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5f9",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Ozean",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.564Z",
+    "lastModified": "2022-05-12T08:36:53.564Z",
+    "externalResources": [
+      "ocean"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e611",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Sekretariat",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.611Z",
+    "lastModified": "2022-05-12T08:36:53.611Z",
+    "externalResources": [
+      "office"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e60e",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bürogebäude",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.608Z",
+    "lastModified": "2022-05-12T08:36:53.608Z",
+    "externalResources": [
+      "office_building"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e60d",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bürozellen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.607Z",
+    "lastModified": "2022-05-12T08:36:53.607Z",
+    "externalResources": [
+      "office_cubicles"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e604",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Ölbohrinsel",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.598Z",
+    "lastModified": "2022-05-12T08:36:53.598Z",
+    "externalResources": [
+      "oilrig"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e610",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Operationssaal",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.610Z",
+    "lastModified": "2022-05-12T08:36:53.610Z",
+    "externalResources": [
+      "operating_room"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e613",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Obstgarten",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.620Z",
+    "lastModified": "2022-05-12T08:36:53.620Z",
+    "externalResources": [
+      "orchard"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e60f",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Orchestergraben",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.609Z",
+    "lastModified": "2022-05-12T08:36:53.609Z",
+    "externalResources": [
+      "orchestra_pit"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e619",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Pagode",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.627Z",
+    "lastModified": "2022-05-12T08:36:53.627Z",
+    "externalResources": [
+      "pagoda"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e609",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Palast",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.603Z",
+    "lastModified": "2022-05-12T08:36:53.603Z",
+    "externalResources": [
+      "palace"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e5fd",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Speisekammer",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.577Z",
+    "lastModified": "2022-05-12T08:36:53.577Z",
+    "externalResources": [
+      "pantry"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e60c",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Park",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.606Z",
+    "lastModified": "2022-05-12T08:36:53.606Z",
+    "externalResources": [
+      "park"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e626",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Parkgarage (Innenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.675Z",
+    "lastModified": "2022-05-12T08:36:53.675Z",
+    "externalResources": [
+      "parking_garage_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e612",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Parkgarage (Außenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.619Z",
+    "lastModified": "2022-05-12T08:36:53.619Z",
+    "externalResources": [
+      "parking_garage_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e615",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Parkplatz",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.622Z",
+    "lastModified": "2022-05-12T08:36:53.622Z",
+    "externalResources": [
+      "parking_lot"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e614",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Weide",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.621Z",
+    "lastModified": "2022-05-12T08:36:53.621Z",
+    "externalResources": [
+      "pasture"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e61b",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Terrasse",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.643Z",
+    "lastModified": "2022-05-12T08:36:53.643Z",
+    "externalResources": [
+      "patio"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e617",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Pavillon",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.623Z",
+    "lastModified": "2022-05-12T08:36:53.623Z",
+    "externalResources": [
+      "pavilion"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e61e",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Tierhandlung",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.646Z",
+    "lastModified": "2022-05-12T08:36:53.646Z",
+    "externalResources": [
+      "pet_shop"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e630",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Apotheke",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.691Z",
+    "lastModified": "2022-05-12T08:36:53.691Z",
+    "externalResources": [
+      "pharmacy"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e62a",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Telefonzelle",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.678Z",
+    "lastModified": "2022-05-12T08:36:53.678Z",
+    "externalResources": [
+      "phone_booth"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e61d",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "physik labor",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.645Z",
+    "lastModified": "2022-05-12T08:36:53.645Z",
+    "externalResources": [
+      "physics_laboratory"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e618",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Picknick Bereich",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.626Z",
+    "lastModified": "2022-05-12T08:36:53.626Z",
+    "externalResources": [
+      "picnic_area"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e616",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Seebrücke",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.623Z",
+    "lastModified": "2022-05-12T08:36:53.623Z",
+    "externalResources": [
+      "pier"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e61c",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Pizzeria",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.644Z",
+    "lastModified": "2022-05-12T08:36:53.644Z",
+    "externalResources": [
+      "pizzeria"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e61a",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Spielplatz",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.642Z",
+    "lastModified": "2022-05-12T08:36:53.642Z",
+    "externalResources": [
+      "playground"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e635",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Spielzimmer",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.703Z",
+    "lastModified": "2022-05-12T08:36:53.703Z",
+    "externalResources": [
+      "playroom"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e63b",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Platz",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.721Z",
+    "lastModified": "2022-05-12T08:36:53.721Z",
+    "externalResources": [
+      "plaza"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e632",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Teich",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.692Z",
+    "lastModified": "2022-05-12T08:36:53.692Z",
+    "externalResources": [
+      "pond"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e628",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Veranda",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.676Z",
+    "lastModified": "2022-05-12T08:36:53.676Z",
+    "externalResources": [
+      "porch"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e62e",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Promenade",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.689Z",
+    "lastModified": "2022-05-12T08:36:53.689Z",
+    "externalResources": [
+      "promenade"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e62d",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Kneipe (Innenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.688Z",
+    "lastModified": "2022-05-12T08:36:53.688Z",
+    "externalResources": [
+      "pub_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e62f",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Rennbahn",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.690Z",
+    "lastModified": "2022-05-12T08:36:53.690Z",
+    "externalResources": [
+      "racecourse"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e623",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Laufbahn",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.671Z",
+    "lastModified": "2022-05-12T08:36:53.671Z",
+    "externalResources": [
+      "raceway"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e633",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Floß",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.696Z",
+    "lastModified": "2022-05-12T08:36:53.696Z",
+    "externalResources": [
+      "raft"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e621",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bahngleis",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.667Z",
+    "lastModified": "2022-05-12T08:36:53.667Z",
+    "externalResources": [
+      "railroad_track"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e629",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Regenwald",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.677Z",
+    "lastModified": "2022-05-12T08:36:53.677Z",
+    "externalResources": [
+      "rainforest"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e634",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Rezeption",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.701Z",
+    "lastModified": "2022-05-12T08:36:53.701Z",
+    "externalResources": [
+      "reception"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e631",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Erholungsraum",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.691Z",
+    "lastModified": "2022-05-12T08:36:53.691Z",
+    "externalResources": [
+      "recreation_room"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e61f",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Reparaturwerkstatt",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.659Z",
+    "lastModified": "2022-05-12T08:36:53.659Z",
+    "externalResources": [
+      "repair_shop"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e627",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Wohngegend",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.675Z",
+    "lastModified": "2022-05-12T08:36:53.675Z",
+    "externalResources": [
+      "residential_neighborhood"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e63a",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Restaurant",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.720Z",
+    "lastModified": "2022-05-12T08:36:53.720Z",
+    "externalResources": [
+      "restaurant"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e624",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Restaurantküche",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.673Z",
+    "lastModified": "2022-05-12T08:36:53.673Z",
+    "externalResources": [
+      "restaurant_kitchen"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e636",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Terrasse des Restaurants",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.711Z",
+    "lastModified": "2022-05-12T08:36:53.711Z",
+    "externalResources": [
+      "restaurant_patio"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e62c",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Reisfeld",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.687Z",
+    "lastModified": "2022-05-12T08:36:53.687Z",
+    "externalResources": [
+      "rice_paddy"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e622",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Fluss",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.669Z",
+    "lastModified": "2022-05-12T08:36:53.669Z",
+    "externalResources": [
+      "river"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e625",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Felsbogen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.674Z",
+    "lastModified": "2022-05-12T08:36:53.674Z",
+    "externalResources": [
+      "rock_arch"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e620",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Dachgarten",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.662Z",
+    "lastModified": "2022-05-12T08:36:53.662Z",
+    "externalResources": [
+      "roof_garden"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e62b",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Hängebrücke",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.686Z",
+    "lastModified": "2022-05-12T08:36:53.686Z",
+    "externalResources": [
+      "rope_bridge"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e653",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "zugrunde richten",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.769Z",
+    "lastModified": "2022-05-12T08:36:53.769Z",
+    "externalResources": [
+      "ruin"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e643",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Runway",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.741Z",
+    "lastModified": "2022-05-12T08:36:53.741Z",
+    "externalResources": [
+      "runway"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e63f",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Sandkasten",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.734Z",
+    "lastModified": "2022-05-12T08:36:53.734Z",
+    "externalResources": [
+      "sandbox"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e638",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Sauna",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.713Z",
+    "lastModified": "2022-05-12T08:36:53.713Z",
+    "externalResources": [
+      "sauna"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e655",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Schulhaus",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.771Z",
+    "lastModified": "2022-05-12T08:36:53.771Z",
+    "externalResources": [
+      "schoolhouse"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e63c",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Wissenschaftsmuseum",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.722Z",
+    "lastModified": "2022-05-12T08:36:53.722Z",
+    "externalResources": [
+      "science_museum"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e637",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Serverraum",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.712Z",
+    "lastModified": "2022-05-12T08:36:53.712Z",
+    "externalResources": [
+      "server_room"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e63e",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Baracke",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.728Z",
+    "lastModified": "2022-05-12T08:36:53.728Z",
+    "externalResources": [
+      "shed"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e64e",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Schuhladen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.762Z",
+    "lastModified": "2022-05-12T08:36:53.762Z",
+    "externalResources": [
+      "shoe_shop"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e654",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Schaufenster",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.770Z",
+    "lastModified": "2022-05-12T08:36:53.770Z",
+    "externalResources": [
+      "shopfront"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e640",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Einkaufszentrum (Innenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.734Z",
+    "lastModified": "2022-05-12T08:36:53.734Z",
+    "externalResources": [
+      "shopping_mall_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e651",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Dusche",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.768Z",
+    "lastModified": "2022-05-12T08:36:53.768Z",
+    "externalResources": [
+      "shower"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e64f",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Skigebiet",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.763Z",
+    "lastModified": "2022-05-12T08:36:53.763Z",
+    "externalResources": [
+      "ski_resort"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e649",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Skipiste",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.757Z",
+    "lastModified": "2022-05-12T08:36:53.757Z",
+    "externalResources": [
+      "ski_slope"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e639",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Himmel",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.714Z",
+    "lastModified": "2022-05-12T08:36:53.714Z",
+    "externalResources": [
+      "sky"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e657",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Wolkenkratzer",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.772Z",
+    "lastModified": "2022-05-12T08:36:53.772Z",
+    "externalResources": [
+      "skyscraper"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e65a",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Slum",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.775Z",
+    "lastModified": "2022-05-12T08:36:53.775Z",
+    "externalResources": [
+      "slum"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e64b",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Schneefeld",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.759Z",
+    "lastModified": "2022-05-12T08:36:53.759Z",
+    "externalResources": [
+      "snowfield"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e656",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Fussballplatz",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.772Z",
+    "lastModified": "2022-05-12T08:36:53.772Z",
+    "externalResources": [
+      "soccer_field"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e64d",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "stabil",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.761Z",
+    "lastModified": "2022-05-12T08:36:53.761Z",
+    "externalResources": [
+      "stable"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e647",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Stadion-Baseball",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.755Z",
+    "lastModified": "2022-05-12T08:36:53.755Z",
+    "externalResources": [
+      "stadium_baseball"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e644",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Fußball im Stadion",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.742Z",
+    "lastModified": "2022-05-12T08:36:53.742Z",
+    "externalResources": [
+      "stadium_football"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e652",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Fußball im Stadion",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.768Z",
+    "lastModified": "2022-05-12T08:36:53.768Z",
+    "externalResources": [
+      "stadium_soccer"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e650",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bühne (Innenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.767Z",
+    "lastModified": "2022-05-12T08:36:53.767Z",
+    "externalResources": [
+      "stage_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e645",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Freiluftbühne",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.753Z",
+    "lastModified": "2022-05-12T08:36:53.753Z",
+    "externalResources": [
+      "stage_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e648",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Treppe",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.756Z",
+    "lastModified": "2022-05-12T08:36:53.756Z",
+    "externalResources": [
+      "staircase"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e659",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Lagerraum",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.775Z",
+    "lastModified": "2022-05-12T08:36:53.775Z",
+    "externalResources": [
+      "storage_room"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e641",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Straße",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.736Z",
+    "lastModified": "2022-05-12T08:36:53.736Z",
+    "externalResources": [
+      "street"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e642",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bahnsteig der U-Bahn",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.740Z",
+    "lastModified": "2022-05-12T08:36:53.740Z",
+    "externalResources": [
+      "subway_station_platform"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e63d",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Supermarkt",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.727Z",
+    "lastModified": "2022-05-12T08:36:53.727Z",
+    "externalResources": [
+      "supermarket"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e65e",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Sushi-Bar",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.791Z",
+    "lastModified": "2022-05-12T08:36:53.791Z",
+    "externalResources": [
+      "sushi_bar"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e65f",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Sumpf",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.792Z",
+    "lastModified": "2022-05-12T08:36:53.792Z",
+    "externalResources": [
+      "swamp"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e660",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Schwimmloch",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.792Z",
+    "lastModified": "2022-05-12T08:36:53.792Z",
+    "externalResources": [
+      "swimming_hole"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e64c",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Hallenbad",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.760Z",
+    "lastModified": "2022-05-12T08:36:53.760Z",
+    "externalResources": [
+      "swimming_pool_indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e646",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Freibad",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.754Z",
+    "lastModified": "2022-05-12T08:36:53.754Z",
+    "externalResources": [
+      "swimming_pool_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e65c",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Synagoge (Außenansicht)",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.789Z",
+    "lastModified": "2022-05-12T08:36:53.789Z",
+    "externalResources": [
+      "synagogue_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e65b",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Fernsehzimmer",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.776Z",
+    "lastModified": "2022-05-12T08:36:53.776Z",
+    "externalResources": [
+      "television_room"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e64a",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Fernsehstudio",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.758Z",
+    "lastModified": "2022-05-12T08:36:53.758Z",
+    "externalResources": [
+      "television_studio"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e65d",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Tempel Asien",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.790Z",
+    "lastModified": "2022-05-12T08:36:53.790Z",
+    "externalResources": [
+      "temple_asia"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e658",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Thronsaal",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.774Z",
+    "lastModified": "2022-05-12T08:36:53.774Z",
+    "externalResources": [
+      "throne_room"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e665",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Ticketschalter",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.810Z",
+    "lastModified": "2022-05-12T08:36:53.810Z",
+    "externalResources": [
+      "ticket_booth"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e661",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Topiary Garten",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.796Z",
+    "lastModified": "2022-05-12T08:36:53.796Z",
+    "externalResources": [
+      "topiary_garden"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e662",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Turm",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.799Z",
+    "lastModified": "2022-05-12T08:36:53.799Z",
+    "externalResources": [
+      "tower"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e676",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Spielzeugladen",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.840Z",
+    "lastModified": "2022-05-12T08:36:53.840Z",
+    "externalResources": [
+      "toyshop"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e67e",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Innenraum des Zuges",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.858Z",
+    "lastModified": "2022-05-12T08:36:53.858Z",
+    "externalResources": [
+      "train_interior"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e673",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Bahnsteig",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.837Z",
+    "lastModified": "2022-05-12T08:36:53.837Z",
+    "externalResources": [
+      "train_station_platform"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e664",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Baumfarm",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.804Z",
+    "lastModified": "2022-05-12T08:36:53.804Z",
+    "externalResources": [
+      "tree_farm"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e67c",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Baumhaus",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.856Z",
+    "lastModified": "2022-05-12T08:36:53.856Z",
+    "externalResources": [
+      "tree_house"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e667",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Graben",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.816Z",
+    "lastModified": "2022-05-12T08:36:53.816Z",
+    "externalResources": [
+      "trench"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e678",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Tundra",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.853Z",
+    "lastModified": "2022-05-12T08:36:53.853Z",
+    "externalResources": [
+      "tundra"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e671",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Unterwasserozean tief",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.834Z",
+    "lastModified": "2022-05-12T08:36:53.834Z",
+    "externalResources": [
+      "underwater_ocean_deep"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e674",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Allzweckraum",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.838Z",
+    "lastModified": "2022-05-12T08:36:53.838Z",
+    "externalResources": [
+      "utility_room"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e66b",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Senke",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.820Z",
+    "lastModified": "2022-05-12T08:36:53.820Z",
+    "externalResources": [
+      "valley"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e679",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Gemüsegarten",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.853Z",
+    "lastModified": "2022-05-12T08:36:53.853Z",
+    "externalResources": [
+      "vegetable_garden"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e67d",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Veterinäramt",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.857Z",
+    "lastModified": "2022-05-12T08:36:53.857Z",
+    "externalResources": [
+      "veterinarians_office"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e675",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Viadukt",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.839Z",
+    "lastModified": "2022-05-12T08:36:53.839Z",
+    "externalResources": [
+      "viaduct"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e67a",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Dorf",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.854Z",
+    "lastModified": "2022-05-12T08:36:53.854Z",
+    "externalResources": [
+      "village"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e66d",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Weinberg",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.827Z",
+    "lastModified": "2022-05-12T08:36:53.827Z",
+    "externalResources": [
+      "vineyard"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e66a",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Vulkan",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.818Z",
+    "lastModified": "2022-05-12T08:36:53.818Z",
+    "externalResources": [
+      "volcano"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e672",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Volleyballplatz im Freien",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.835Z",
+    "lastModified": "2022-05-12T08:36:53.835Z",
+    "externalResources": [
+      "volleyball_court_outdoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e669",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Wartezimmer",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.818Z",
+    "lastModified": "2022-05-12T08:36:53.818Z",
+    "externalResources": [
+      "waiting_room"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e668",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Wasserpark",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.817Z",
+    "lastModified": "2022-05-12T08:36:53.817Z",
+    "externalResources": [
+      "water_park"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e66e",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Wasserturm",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.828Z",
+    "lastModified": "2022-05-12T08:36:53.828Z",
+    "externalResources": [
+      "water_tower"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e666",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Wasserfall",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.811Z",
+    "lastModified": "2022-05-12T08:36:53.811Z",
+    "externalResources": [
+      "waterfall"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e66f",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Wasserstelle",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.830Z",
+    "lastModified": "2022-05-12T08:36:53.830Z",
+    "externalResources": [
+      "watering_hole"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e670",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Welle",
+    "description": "Bezeichnung / Landschaft",
+    "created": "2022-05-12T08:36:53.832Z",
+    "lastModified": "2022-05-12T08:36:53.832Z",
+    "externalResources": [
+      "wave"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e677",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Nassbar",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.852Z",
+    "lastModified": "2022-05-12T08:36:53.852Z",
+    "externalResources": [
+      "wet_bar"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e66c",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Weizenfeld",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.821Z",
+    "lastModified": "2022-05-12T08:36:53.821Z",
+    "externalResources": [
+      "wheat_field"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e67b",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Windpark",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.855Z",
+    "lastModified": "2022-05-12T08:36:53.855Z",
+    "externalResources": [
+      "wind_farm"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e663",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Windmühle",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.803Z",
+    "lastModified": "2022-05-12T08:36:53.803Z",
+    "externalResources": [
+      "windmill"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e690",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Garten",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.904Z",
+    "lastModified": "2022-05-12T08:36:53.904Z",
+    "externalResources": [
+      "yard"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e68a",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Jugendherberge",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.887Z",
+    "lastModified": "2022-05-12T08:36:53.887Z",
+    "externalResources": [
+      "youth_hostel"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e682",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "PLACE",
+    "label": "Zen Garten",
+    "description": "Bezeichnung / Infrastruktur",
+    "created": "2022-05-12T08:36:53.872Z",
+    "lastModified": "2022-05-12T08:36:53.872Z",
+    "externalResources": [
+      "zen_garden"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e680",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "INDOOR/OUTDOOR",
+    "label": "Drinnen",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Innen",
+    "created": "2022-05-12T08:36:53.870Z",
+    "lastModified": "2022-05-12T08:36:53.870Z",
+    "externalResources": [
+      "indoor"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e681",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "INDOOR/OUTDOOR",
+    "label": "Draußen",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Aussen",
+    "created": "2022-05-12T08:36:53.871Z",
+    "lastModified": "2022-05-12T08:36:53.871Z",
+    "externalResources": [
+      "outdoor_manmade"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e68c",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "INDOOR/OUTDOOR",
+    "label": "Draußen (Natur)",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Aussen",
+    "created": "2022-05-12T08:36:53.889Z",
+    "lastModified": "2022-05-12T08:36:53.889Z",
+    "externalResources": [
+      "outdoor_natural"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e6a8",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "SEASON",
+    "label": "Frühling",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Jahreszeit",
+    "created": "2022-05-12T08:36:53.959Z",
+    "lastModified": "2022-05-12T08:36:53.959Z",
+    "externalResources": [
+      "spring"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e68e",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "SEASON",
+    "label": "Sommer",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Jahreszeit",
+    "created": "2022-05-12T08:36:53.891Z",
+    "lastModified": "2022-05-12T08:36:53.891Z",
+    "externalResources": [
+      "summer"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e6b3",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "SEASON",
+    "label": "Herbst",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Jahreszeit",
+    "created": "2022-05-12T08:36:53.988Z",
+    "lastModified": "2022-05-12T08:36:53.988Z",
+    "externalResources": [
+      "fall"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e693",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "SEASON",
+    "label": "Winter",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Jahreszeit",
+    "created": "2022-05-12T08:36:53.906Z",
+    "lastModified": "2022-05-12T08:36:53.906Z",
+    "externalResources": [
+      "winter"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e6ae",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "DAYTIME",
+    "label": "Nacht",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Tageszeit",
+    "created": "2022-05-12T08:36:53.971Z",
+    "lastModified": "2022-05-12T08:36:53.971Z",
+    "externalResources": [
+      "night"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e694",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "DAYTIME",
+    "label": "Dämmerung",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Tageszeit",
+    "created": "2022-05-12T08:36:53.907Z",
+    "lastModified": "2022-05-12T08:36:53.907Z",
+    "externalResources": [
+      "twilight"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6bc",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "DAYTIME",
+    "label": "Sonnenaufgang",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Tageszeit",
+    "created": "2022-05-12T08:36:54.011Z",
+    "lastModified": "2022-05-12T08:36:54.011Z",
+    "externalResources": [
+      "sunrise"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e68f",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "DAYTIME",
+    "label": "Tag",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Tageszeit",
+    "created": "2022-05-12T08:36:53.892Z",
+    "lastModified": "2022-05-12T08:36:53.892Z",
+    "externalResources": [
+      "fulldaylight"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e688",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "DAYTIME",
+    "label": "Sonnenuntergang",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Tageszeit",
+    "created": "2022-05-12T08:36:53.884Z",
+    "lastModified": "2022-05-12T08:36:53.884Z",
+    "externalResources": [
+      "sunset"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e67f",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "SHOTTYPE",
+    "label": "Nahaufnahme (extrem)",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Einstellung",
+    "created": "2022-05-12T08:36:53.862Z",
+    "lastModified": "2022-05-12T08:36:53.862Z",
+    "externalResources": [
+      "extreme_closeup"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e695",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "SHOTTYPE",
+    "label": "Nahaufnahme",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Einstellung",
+    "created": "2022-05-12T08:36:53.908Z",
+    "lastModified": "2022-05-12T08:36:53.908Z",
+    "externalResources": [
+      "closeup"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e686",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "SHOTTYPE",
+    "label": "Nahaufnahme (mittel)",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Einstellung",
+    "created": "2022-05-12T08:36:53.882Z",
+    "lastModified": "2022-05-12T08:36:53.882Z",
+    "externalResources": [
+      "medium_closeup"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e68d",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "SHOTTYPE",
+    "label": "Leicht Mittel",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Einstellung",
+    "created": "2022-05-12T08:36:53.890Z",
+    "lastModified": "2022-05-12T08:36:53.890Z",
+    "externalResources": [
+      "tight_medium"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e687",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "SHOTTYPE",
+    "label": "Mittel",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Einstellung",
+    "created": "2022-05-12T08:36:53.883Z",
+    "lastModified": "2022-05-12T08:36:53.883Z",
+    "externalResources": [
+      "medium"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e685",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "SHOTTYPE",
+    "label": "Mittel (Ganz)",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Einstellung",
+    "created": "2022-05-12T08:36:53.881Z",
+    "lastModified": "2022-05-12T08:36:53.881Z",
+    "externalResources": [
+      "medium_full"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e692",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "SHOTTYPE",
+    "label": "Ganze Aufnahme",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Einstellung",
+    "created": "2022-05-12T08:36:53.905Z",
+    "lastModified": "2022-05-12T08:36:53.905Z",
+    "externalResources": [
+      "full_shot"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e689",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "SHOTTYPE",
+    "label": "Lang",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Einstellung",
+    "created": "2022-05-12T08:36:53.886Z",
+    "lastModified": "2022-05-12T08:36:53.886Z",
+    "externalResources": [
+      "long"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e684",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "SHOTTYPE",
+    "label": "Exrem Lang",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Einstellung",
+    "created": "2022-05-12T08:36:53.875Z",
+    "lastModified": "2022-05-12T08:36:53.875Z",
+    "externalResources": [
+      "extreme_long"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e69c",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "BUSTLE",
+    "label": "unbevölkert",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Bildaufbau",
+    "created": "2022-05-12T08:36:53.935Z",
+    "lastModified": "2022-05-12T08:36:53.935Z",
+    "externalResources": [
+      "unpopulated\t"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e68b",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "BUSTLE",
+    "label": "Wenig Menschen",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Bildaufbau",
+    "created": "2022-05-12T08:36:53.888Z",
+    "lastModified": "2022-05-12T08:36:53.888Z",
+    "externalResources": [
+      "few_people "
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e683",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "BUSTLE",
+    "label": "Wenig Fahrzeuge",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Bildaufbau",
+    "created": "2022-05-12T08:36:53.873Z",
+    "lastModified": "2022-05-12T08:36:53.873Z",
+    "externalResources": [
+      "few_vehicles "
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e691",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "BUSTLE",
+    "label": "Großansicht",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Bildaufbau",
+    "created": "2022-05-12T08:36:53.905Z",
+    "lastModified": "2022-05-12T08:36:53.905Z",
+    "externalResources": [
+      "few_large"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e6af",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "BUSTLE",
+    "label": "Mittel",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Bildaufbau",
+    "created": "2022-05-12T08:36:53.972Z",
+    "lastModified": "2022-05-12T08:36:53.972Z",
+    "externalResources": [
+      "medium"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6e3",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "BUSTLE",
+    "label": "Bevölkert",
+    "description": "Atmosphare/Stimmung / Bildaufbau / Bildaufbau",
+    "created": "2022-05-12T08:36:54.127Z",
+    "lastModified": "2022-05-12T08:36:54.127Z",
+    "externalResources": [
+      "populated"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e696",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Person",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.914Z",
+    "lastModified": "2022-05-12T08:36:53.914Z",
+    "externalResources": [
+      "person"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e6a1",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Fahrrad",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.944Z",
+    "lastModified": "2022-05-12T08:36:53.944Z",
+    "externalResources": [
+      "bicycle"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e69e",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Auto",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.941Z",
+    "lastModified": "2022-05-12T08:36:53.941Z",
+    "externalResources": [
+      "car"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e69f",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Motorrad",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.942Z",
+    "lastModified": "2022-05-12T08:36:53.942Z",
+    "externalResources": [
+      "motorcycle"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e6a2",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Flugzeug",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.945Z",
+    "lastModified": "2022-05-12T08:36:53.945Z",
+    "externalResources": [
+      "airplane"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e6a0",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Bus",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.943Z",
+    "lastModified": "2022-05-12T08:36:53.943Z",
+    "externalResources": [
+      "bus"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e698",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Zug",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.927Z",
+    "lastModified": "2022-05-12T08:36:53.927Z",
+    "externalResources": [
+      "train"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e69d",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "LKW",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.939Z",
+    "lastModified": "2022-05-12T08:36:53.939Z",
+    "externalResources": [
+      "truck"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e6ad",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Boot",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.970Z",
+    "lastModified": "2022-05-12T08:36:53.970Z",
+    "externalResources": [
+      "boat"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e6a6",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Ampel",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.957Z",
+    "lastModified": "2022-05-12T08:36:53.957Z",
+    "externalResources": [
+      "traffic light"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6b9",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Hydrant",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.006Z",
+    "lastModified": "2022-05-12T08:36:54.006Z",
+    "externalResources": [
+      "fire hydrant"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e6ab",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Straßenschild",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.964Z",
+    "lastModified": "2022-05-12T08:36:53.964Z",
+    "externalResources": [
+      "street sign"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e6b2",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Stoppschild",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.987Z",
+    "lastModified": "2022-05-12T08:36:53.987Z",
+    "externalResources": [
+      "stop sign"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e6a3",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Parkuhr",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.945Z",
+    "lastModified": "2022-05-12T08:36:53.945Z",
+    "externalResources": [
+      "parking meter"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e6a9",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Bank",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.960Z",
+    "lastModified": "2022-05-12T08:36:53.960Z",
+    "externalResources": [
+      "bench"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e6b1",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Vogel",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.980Z",
+    "lastModified": "2022-05-12T08:36:53.980Z",
+    "externalResources": [
+      "bird"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e69b",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Katze",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.932Z",
+    "lastModified": "2022-05-12T08:36:53.932Z",
+    "externalResources": [
+      "cat"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e6aa",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Hund",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.961Z",
+    "lastModified": "2022-05-12T08:36:53.961Z",
+    "externalResources": [
+      "dog"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e697",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Pferd",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.926Z",
+    "lastModified": "2022-05-12T08:36:53.926Z",
+    "externalResources": [
+      "horse"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e6a4",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Schaf",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.956Z",
+    "lastModified": "2022-05-12T08:36:53.956Z",
+    "externalResources": [
+      "sheep"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e6a5",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Kuh",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.956Z",
+    "lastModified": "2022-05-12T08:36:53.956Z",
+    "externalResources": [
+      "cow"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e6a7",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Elefant",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.958Z",
+    "lastModified": "2022-05-12T08:36:53.958Z",
+    "externalResources": [
+      "elephant"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e69a",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Bär",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.930Z",
+    "lastModified": "2022-05-12T08:36:53.930Z",
+    "externalResources": [
+      "bear"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e699",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Zebra",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.928Z",
+    "lastModified": "2022-05-12T08:36:53.928Z",
+    "externalResources": [
+      "zebra"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6e1",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Giraffe",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.111Z",
+    "lastModified": "2022-05-12T08:36:54.111Z",
+    "externalResources": [
+      "giraffe"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6bd",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Hut",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.014Z",
+    "lastModified": "2022-05-12T08:36:54.014Z",
+    "externalResources": [
+      "hat"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6e7",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Rucksack",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.130Z",
+    "lastModified": "2022-05-12T08:36:54.130Z",
+    "externalResources": [
+      "backpack"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6df",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Regenschirm",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.109Z",
+    "lastModified": "2022-05-12T08:36:54.109Z",
+    "externalResources": [
+      "umbrella"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6c4",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Schuh",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.055Z",
+    "lastModified": "2022-05-12T08:36:54.055Z",
+    "externalResources": [
+      "shoe"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6b8",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Brille",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.005Z",
+    "lastModified": "2022-05-12T08:36:54.005Z",
+    "externalResources": [
+      "eye glasses"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6e2",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Handtasche",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.126Z",
+    "lastModified": "2022-05-12T08:36:54.126Z",
+    "externalResources": [
+      "handbag"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6c3",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Krawatte",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.053Z",
+    "lastModified": "2022-05-12T08:36:54.053Z",
+    "externalResources": [
+      "tie"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6bf",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Koffer",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.017Z",
+    "lastModified": "2022-05-12T08:36:54.017Z",
+    "externalResources": [
+      "suitcase"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6eb",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Frisbee",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.133Z",
+    "lastModified": "2022-05-12T08:36:54.133Z",
+    "externalResources": [
+      "frisbee"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6c2",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Ski",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.032Z",
+    "lastModified": "2022-05-12T08:36:54.032Z",
+    "externalResources": [
+      "skis"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6e4",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Snowboard",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.127Z",
+    "lastModified": "2022-05-12T08:36:54.127Z",
+    "externalResources": [
+      "snowboard"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e6b4",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Sportball",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.989Z",
+    "lastModified": "2022-05-12T08:36:53.989Z",
+    "externalResources": [
+      "sports ball"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6ba",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Drachen",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.007Z",
+    "lastModified": "2022-05-12T08:36:54.007Z",
+    "externalResources": [
+      "kite"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e6ac",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Baseballschläger",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.968Z",
+    "lastModified": "2022-05-12T08:36:53.968Z",
+    "externalResources": [
+      "baseball bat"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e6b6",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Baseballhandschuh",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.992Z",
+    "lastModified": "2022-05-12T08:36:53.992Z",
+    "externalResources": [
+      "baseball glove"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e6b0",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Skateboard",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.978Z",
+    "lastModified": "2022-05-12T08:36:53.978Z",
+    "externalResources": [
+      "skateboard"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6b7",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Surfbrett",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.004Z",
+    "lastModified": "2022-05-12T08:36:54.004Z",
+    "externalResources": [
+      "surfboard"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6bb",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Tennisschläger",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.008Z",
+    "lastModified": "2022-05-12T08:36:54.008Z",
+    "externalResources": [
+      "tennis racket"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6e0",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Flasche",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.110Z",
+    "lastModified": "2022-05-12T08:36:54.110Z",
+    "externalResources": [
+      "bottle"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc725cb40fb8f04e6e6b5",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Teller",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:53.991Z",
+    "lastModified": "2022-05-12T08:36:53.991Z",
+    "externalResources": [
+      "plate"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6d0",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Weinglas",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.090Z",
+    "lastModified": "2022-05-12T08:36:54.090Z",
+    "externalResources": [
+      "wine glass"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6cb",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Tasse",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.084Z",
+    "lastModified": "2022-05-12T08:36:54.084Z",
+    "externalResources": [
+      "cup"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6de",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Gabel",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.108Z",
+    "lastModified": "2022-05-12T08:36:54.108Z",
+    "externalResources": [
+      "fork"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6db",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Messer",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.100Z",
+    "lastModified": "2022-05-12T08:36:54.100Z",
+    "externalResources": [
+      "knife"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6da",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Löffel",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.099Z",
+    "lastModified": "2022-05-12T08:36:54.099Z",
+    "externalResources": [
+      "spoon"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6c7",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Schüssel",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.072Z",
+    "lastModified": "2022-05-12T08:36:54.072Z",
+    "externalResources": [
+      "bowl"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6c1",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Banane",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.024Z",
+    "lastModified": "2022-05-12T08:36:54.024Z",
+    "externalResources": [
+      "banana"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6cd",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Apfel",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.087Z",
+    "lastModified": "2022-05-12T08:36:54.087Z",
+    "externalResources": [
+      "apple"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6be",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Sandwich",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.016Z",
+    "lastModified": "2022-05-12T08:36:54.016Z",
+    "externalResources": [
+      "sandwich"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6c5",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Orange",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.056Z",
+    "lastModified": "2022-05-12T08:36:54.056Z",
+    "externalResources": [
+      "orange"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6c0",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Brokkoli",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.022Z",
+    "lastModified": "2022-05-12T08:36:54.022Z",
+    "externalResources": [
+      "broccoli"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6c6",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Karotte",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.066Z",
+    "lastModified": "2022-05-12T08:36:54.066Z",
+    "externalResources": [
+      "carrot"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6e5",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Hotdog",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.128Z",
+    "lastModified": "2022-05-12T08:36:54.128Z",
+    "externalResources": [
+      "hot dog"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6dc",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Pizza",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.101Z",
+    "lastModified": "2022-05-12T08:36:54.101Z",
+    "externalResources": [
+      "pizza"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6d2",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Donut",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.091Z",
+    "lastModified": "2022-05-12T08:36:54.091Z",
+    "externalResources": [
+      "donut"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6e6",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Kuchen",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.129Z",
+    "lastModified": "2022-05-12T08:36:54.129Z",
+    "externalResources": [
+      "cake"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6cf",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Stuhl",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.089Z",
+    "lastModified": "2022-05-12T08:36:54.089Z",
+    "externalResources": [
+      "chair"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6cc",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Couch",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.086Z",
+    "lastModified": "2022-05-12T08:36:54.086Z",
+    "externalResources": [
+      "couch"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6ee",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Topfpflanze",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.135Z",
+    "lastModified": "2022-05-12T08:36:54.135Z",
+    "externalResources": [
+      "potted plant"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6d1",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Bett",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.090Z",
+    "lastModified": "2022-05-12T08:36:54.090Z",
+    "externalResources": [
+      "bed"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6ec",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Spiegel",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.133Z",
+    "lastModified": "2022-05-12T08:36:54.133Z",
+    "externalResources": [
+      "mirror"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6d8",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Esstisch",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.097Z",
+    "lastModified": "2022-05-12T08:36:54.097Z",
+    "externalResources": [
+      "dining table"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6ce",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Fenster",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.088Z",
+    "lastModified": "2022-05-12T08:36:54.088Z",
+    "externalResources": [
+      "window"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6ca",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Schreibtisch",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.080Z",
+    "lastModified": "2022-05-12T08:36:54.080Z",
+    "externalResources": [
+      "desk"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6ea",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Toilette",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.132Z",
+    "lastModified": "2022-05-12T08:36:54.132Z",
+    "externalResources": [
+      "toilet"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6d3",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Tür",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.092Z",
+    "lastModified": "2022-05-12T08:36:54.092Z",
+    "externalResources": [
+      "door"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6d6",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Fernseher",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.095Z",
+    "lastModified": "2022-05-12T08:36:54.095Z",
+    "externalResources": [
+      "tv"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6ef",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Laptop",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.148Z",
+    "lastModified": "2022-05-12T08:36:54.148Z",
+    "externalResources": [
+      "laptop"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6c9",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Maus",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.077Z",
+    "lastModified": "2022-05-12T08:36:54.077Z",
+    "externalResources": [
+      "mouse"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6c8",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Fernbedienung",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.076Z",
+    "lastModified": "2022-05-12T08:36:54.076Z",
+    "externalResources": [
+      "remote"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6d7",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Tastatur",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.096Z",
+    "lastModified": "2022-05-12T08:36:54.096Z",
+    "externalResources": [
+      "keyboard"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6d4",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Handy",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.093Z",
+    "lastModified": "2022-05-12T08:36:54.093Z",
+    "externalResources": [
+      "cell phone"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6d5",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Mikrowelle",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.094Z",
+    "lastModified": "2022-05-12T08:36:54.094Z",
+    "externalResources": [
+      "microwave"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6dd",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Ofen",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.103Z",
+    "lastModified": "2022-05-12T08:36:54.103Z",
+    "externalResources": [
+      "oven"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6e8",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Toaster",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.131Z",
+    "lastModified": "2022-05-12T08:36:54.131Z",
+    "externalResources": [
+      "toaster"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6d9",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Spüle",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.098Z",
+    "lastModified": "2022-05-12T08:36:54.098Z",
+    "externalResources": [
+      "sink"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6e9",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Kühlschrank",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.131Z",
+    "lastModified": "2022-05-12T08:36:54.131Z",
+    "externalResources": [
+      "refrigerator"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6ed",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Mixer",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.134Z",
+    "lastModified": "2022-05-12T08:36:54.134Z",
+    "externalResources": [
+      "blender"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6f1",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Buch",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.151Z",
+    "lastModified": "2022-05-12T08:36:54.151Z",
+    "externalResources": [
+      "book"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6f0",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Uhr",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.151Z",
+    "lastModified": "2022-05-12T08:36:54.151Z",
+    "externalResources": [
+      "clock"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6f3",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Vase",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.153Z",
+    "lastModified": "2022-05-12T08:36:54.153Z",
+    "externalResources": [
+      "vase"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6f2",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Schere",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.152Z",
+    "lastModified": "2022-05-12T08:36:54.152Z",
+    "externalResources": [
+      "scissors"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6f5",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Teddybär",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.153Z",
+    "lastModified": "2022-05-12T08:36:54.153Z",
+    "externalResources": [
+      "teddy bear"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6f6",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Fön",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.154Z",
+    "lastModified": "2022-05-12T08:36:54.154Z",
+    "externalResources": [
+      "hair drier"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6f7",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Zahnbürste",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.154Z",
+    "lastModified": "2022-05-12T08:36:54.154Z",
+    "externalResources": [
+      "toothbrush"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "627cc726cb40fb8f04e6e6f4",
+    "vocabulary": "627ba3e9fa69831e6f5bcbae",
+    "type": "OBJECT",
+    "label": "Haarbürste",
+    "description": "Bezeichnung / Objekt",
+    "created": "2022-05-12T08:36:54.153Z",
+    "lastModified": "2022-05-12T08:36:54.153Z",
+    "externalResources": [
+      "hair brush"
+    ],
+    "sameAs": null,
+    "data": null
+  }
+]
