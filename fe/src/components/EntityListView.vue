@@ -12,45 +12,14 @@
                 <button
                   type="button"
                   @click="goBackToVocabs()"
-                  class="
-                    relative
-                    inline-flex
-                    items-center
-                    px-4
-                    py-2
-                    mx-2
-                    border border-transparent
-                    shadow-sm
-                    text-sm
-                    font-medium
-                    rounded-md
-                    text-white
-                    bg-tmOrange
-                    hover:bg-tmHoverOrange
-                    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tmFocusOrange
-                  "
+                  class="relative inline-flex items-center px-4 py-2 mx-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-tmOrange hover:bg-tmHoverOrange focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tmFocusOrange"
                 >
                   Back
                 </button>
                 <button
                   type="button"
                   @click="editEntity($event)"
-                  class="
-                    relative
-                    inline-flex
-                    items-center
-                    px-4
-                    py-2
-                    border border-transparent
-                    shadow-sm
-                    text-sm
-                    font-medium
-                    rounded-md
-                    text-white
-                    bg-tmOrange
-                    hover:bg-tmHoverOrange
-                    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tmFocusOrange
-                  "
+                  class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-tmOrange hover:bg-tmHoverOrange focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tmFocusOrange"
                 >
                   New Entity
                 </button>
@@ -83,19 +52,7 @@
                 </td>
                 <td class="flex flex-row flex-nowrap items-center justify-center px-3 py-3">
                   <button
-                    class="
-                      border border-transparent
-                      bg-tmOrange
-                      rounded-md
-                      text-white
-                      items-center
-                      px-3.5
-                      py-2.5
-                      text-sm
-                      font-medium
-                      inline-flex
-                      hover:bg-tmHoverOrange
-                    "
+                    class="border border-transparent bg-tmOrange rounded-md text-white items-center px-3.5 py-2.5 text-sm font-medium inline-flex hover:bg-tmHoverOrange"
                     @click="editEntity($event, entity)"
                   >
                     <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
@@ -105,20 +62,7 @@
                     </svg>
                   </button>
                   <button
-                    class="
-                      border border-transparent
-                      bg-tmOrange
-                      rounded-md
-                      text-white
-                      items-center
-                      ml-3
-                      px-3.5
-                      py-2.5
-                      text-sm
-                      font-medium
-                      inline-flex
-                      hover:bg-tmHoverOrange
-                    "
+                    class="border border-transparent bg-tmOrange rounded-md text-white items-center ml-3 px-3.5 py-2.5 text-sm font-medium inline-flex hover:bg-tmHoverOrange"
                     @click="deleteEntity(entity)"
                   >
                     <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="24" height="24">
@@ -134,21 +78,7 @@
           <div class="flow-root px-2 py-3 bg-gray-50 text-center">
             <button
               type="button"
-              class="
-                inline-flex
-                items-center
-                px-4
-                py-2
-                border border-transparent
-                text-sm
-                font-medium
-                rounded-md
-                shadow-sm
-                text-white
-                bg-tmOrange
-                hover:bg-tmHoverOrange
-                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tmFocusOrange
-              "
+              class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-tmOrange hover:bg-tmHoverOrange focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tmFocusOrange"
               @click="loadMore"
             >
               Load More

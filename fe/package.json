@@ -10,7 +10,8 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "start": "vue-cli-service serve",
-    "docker:start": "vue-cli-service serve --port 4200"
+    "docker:start": "vue-cli-service serve --port 4200",
+    "clear": "rm -R -f node_modules dist src/openapi package-lock.json"
   },
   "dependencies": {
     "@headlessui/vue": "^1.4.2",

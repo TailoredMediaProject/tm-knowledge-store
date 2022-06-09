@@ -11,17 +11,7 @@
                 v-model="label"
                 name="label"
                 id="label"
-                class="
-                  px-2
-                  py-2
-                  shadow-sm
-                  focus:ring-indigo-500 focus:border-indigo-500
-                  block
-                  w-full
-                  sm:text-sm
-                  border border-tmOrange
-                  rounded-md
-                "
+                class="px-2 py-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-tmOrange rounded-md"
                 placeholder="Label"
                 autofocus="autofocus"
               />
@@ -37,17 +27,7 @@
                 v-model="description"
                 name="description"
                 id="description"
-                class="
-                  px-2
-                  py-2
-                  shadow-sm
-                  focus:ring-indigo-500 focus:border-indigo-500
-                  block
-                  w-full
-                  sm:text-sm
-                  border border-tmOrange
-                  rounded-md
-                "
+                class="px-2 py-2 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-tmOrange rounded-md"
                 placeholder="Description"
               />
             </div>
@@ -58,21 +38,7 @@
             <ListboxLabel class="block text-sm font-medium text-gray-700"> Entity Type </ListboxLabel>
             <div class="mt-1 relative">
               <ListboxButton
-                class="
-                  bg-white
-                  relative
-                  w-full
-                  border border-tmOrange
-                  rounded-md
-                  shadow-sm
-                  pl-3
-                  pr-10
-                  py-2
-                  text-left
-                  cursor-default
-                  focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500
-                  sm:text-sm
-                "
+                class="bg-white relative w-full border border-tmOrange rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               >
                 <span class="block truncate">{{ selected }}</span>
                 <span class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
@@ -82,22 +48,7 @@
 
               <transition leave-active-class="transition ease-in duration-100" leave-from-class="opacity-100" leave-to-class="opacity-0">
                 <ListboxOptions
-                  class="
-                    absolute
-                    z-10
-                    mt-1
-                    w-full
-                    bg-white
-                    shadow-lg
-                    max-h-60
-                    rounded-md
-                    py-1
-                    text-base
-                    ring-1 ring-black ring-opacity-5
-                    overflow-visible
-                    focus:outline-none
-                    sm:text-sm
-                  "
+                  class="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-visible focus:outline-none sm:text-sm"
                 >
                   <ListboxOption
                     as="template"
@@ -131,43 +82,14 @@
         <button
           type="button"
           @click="cancel"
-          class="
-            inline-flex
-            justify-center
-            py-2
-            px-4
-            border border-transparent
-            shadow-sm
-            text-sm
-            font-medium
-            rounded-md
-            text-white
-            bg-tmOrange
-            hover:bg-tmHoverOrange
-            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tmFocusOrange
-            mr-2
-          "
+          class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-tmOrange hover:bg-tmHoverOrange focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tmFocusOrange mr-2"
         >
           Cancel
         </button>
         <button
           type="button"
           @click="createEntity"
-          class="
-            inline-flex
-            justify-center
-            py-2
-            px-4
-            border border-transparent
-            shadow-sm
-            text-sm
-            font-medium
-            rounded-md
-            text-white
-            bg-tmOrange
-            hover:bg-tmHoverOrange
-            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tmFocusOrange
-          "
+          class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-tmOrange hover:bg-tmHoverOrange focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-tmFocusOrange"
         >
           Save
         </button>
