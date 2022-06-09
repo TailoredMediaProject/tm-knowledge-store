@@ -167,18 +167,18 @@ export class UtilService {
   });
 
   public static readonly entityDbo2Dto = (dbo: Entity): EntityDTO => ({
-    id: dbo._id.toHexString(),
+    id: typeof dbo._id === 'string' ? dbo._id : dbo._id.toHexString(),
     vocabulary: dbo.vocabulary.toHexString(),
     // @ts-ignore
     type: dbo?.type?.toUpperCase(),
     label: dbo.label,
     description: dbo.description,
-    created: dbo.created.toISOString(),
-    lastModified: dbo.lastModified.toISOString(),
+    created: typeof dbo.created === 'string' ? dbo.created : dbo.created.toISOString(),
+    lastModified: typeof dbo.lastModified === 'string' ? dbo.lastModified : dbo.lastModified.toISOString(),
     externalResources: dbo.externalResources,
     sameAs: dbo.sameAs,
     data: dbo.data,
-    canonicalLink: UtilService.createCanonicalLink(dbo._id.toHexString())
+    canonicalLink: UtilService.createCanonicalLink(typeof dbo._id === 'string' ? dbo._id : dbo._id.toHexString())
   });
 
   public static readonly createCanonicalLink = (id: string): string => `https://${HOST}/kb/${id}`;

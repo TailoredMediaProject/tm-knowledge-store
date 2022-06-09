@@ -20,3 +20,5 @@ export const PROPERTY_MAPPING_CONFIG = {
     }
   }
 };
+export const DB_COLLECTION_VOCABULARIES = 'vocabularies';
+export const DB_COLLECTION_ENTITIES = 'entities';

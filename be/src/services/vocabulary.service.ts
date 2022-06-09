@@ -3,14 +3,14 @@ import {Entity, Vocabulary} from '../models/dbo.models';
 import {instance as persistenceService} from './persistence.service';
 import ListQueryModel from '../models/list-query.model';
 import {ListingResult} from '../models/listing-result.model';
+import {DB_COLLECTION_VOCABULARIES, HEADER_IF_UNMODIFIED_SINCE} from '../models/constants';
 import {entityServiceInstance} from './entity.service';
 import {UtilService} from './util.service';
 import {ServiceError, ServiceErrorFactory} from '../models/service-error.model';
-import {HEADER_IF_UNMODIFIED_SINCE} from '../models/constants';
 
 export class VocabularyService {
   private static collection(): Collection {
-    return persistenceService.db().collection('vocabularies');
+    return persistenceService.db().collection(DB_COLLECTION_VOCABULARIES);
   }
 
   public static countCollectionItems(filter: Filter<Vocabulary>): Promise<number> {

@@ -7,10 +7,11 @@ import {ListingResult} from '../models/listing-result.model';
 import {TagType} from '../generated';
 import {UtilService} from './util.service';
 import {ServiceError, ServiceErrorFactory} from '../models/service-error.model';
+import {DB_COLLECTION_ENTITIES} from '../models/constants';
 
 export class EntityService {
   private static collection(): Collection {
-    return persistenceService.db().collection('entities');
+    return persistenceService.db().collection(DB_COLLECTION_ENTITIES);
   }
 
   private static countCollectionItems(filter: Filter<Entity>): Promise<number> {

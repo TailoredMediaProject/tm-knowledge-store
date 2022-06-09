@@ -7,6 +7,9 @@ import {entityServiceInstance} from './entity.service';
 import {vocabularyService} from './vocabulary.service';
 import {UtilService} from './util.service';
 import {Entity, Vocabulary} from '../models/dbo.models';
+import {instance as persistenceService} from './persistence.service';
+import {DB_COLLECTION_ENTITIES, DB_COLLECTION_VOCABULARIES} from '../models/constants';
+import {ObjectId} from 'mongodb';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const csvToJson = require('convert-csv-to-json');
 
@@ -23,7 +26,7 @@ class ConstantService {
   public readonly init = (): void => {
     this.initVocab()
       .then((vocab: Vocabulary): void => {
-        if(!!vocab) {
+        if (!!vocab) {
           this.initEntities(vocab);
         }
       })
@@ -37,12 +40,7 @@ class ConstantService {
           console.log(`${this.LOG_TAG} Vocab ${vocab._id.toHexString()} exits with ${vocab.entityCount} entities`);
           return Promise.resolve(undefined);
         } else {
-          console.log(`${this.LOG_TAG} New AA vocab will be created`);
-          return vocabularyService.createVocab({
-            slug: this.AUTOMATIC_ANALYSIS_VOCABULARY,
-            label: this.AUTOMATIC_ANALYSIS_VOCABULARY,
-            description: this.AUTOMATIC_ANALYSIS_VOCABULARY
-          } as Vocabulary);
+          return this.insertVocabWithId();
         }
       });
 
@@ -53,36 +51,27 @@ class ConstantService {
       this.loadEntries(vocab);
     }
   };
+
+  // @ts-ignore
+  private readonly readBackupFile = (): Entity[] => JSON.parse(fs.readFileSync(path.join(__dirname, this.AUTOMATIC_ANALYSIS_BACKUP)));
+
   private readonly loadEntries = (vocab: Vocabulary): void => {
-    // @ts-ignore
-    const entities: Entity[] = JSON.parse(fs.readFileSync(path.join(__dirname, this.AUTOMATIC_ANALYSIS_BACKUP)));
-    let created = false;
+    const entities: Entity[] = this.readBackupFile();
+    const collection = persistenceService.db().collection(DB_COLLECTION_ENTITIES);
 
     Promise.all(
-      entities.map((e: Entity) =>
-        entityServiceInstance.getEntityWithoutVocab(e._id)
-          .then(() => undefined) // Entity exists on DB, do nothing
-          .catch((err) => {
-            console.log(err);
-            return e;
-          }) // Entity not found, so create it
-      )
-    ).then((nonExistingEntities: Entity []) => {
-      nonExistingEntities.filter(e => !!e)
-        .forEach((nE: Entity): void => {
-          nE.vocabulary = vocab._id;
-          entityServiceInstance.createEntity(nE, true)
-            .then((): void => {created = true;})
-            .catch(console.error);
-        });
-    })
-      .catch(console.error);
+      entities.map((e: Entity) => {
+        e.vocabulary = vocab._id;
+        // @ts-ignore
+        e.created = new Date(e.created);
+        // @ts-ignore
+        e.lastModified = new Date(e.lastModified);
 
-    if(created) {
-      console.log(`${this.LOG_TAG} Backup exists, AA entities were restored`);
-    } else {
-      console.log(`${this.LOG_TAG} Backup exists, no AA entities were changed nor restored`);
-    }
+        return collection.insertOne(e)
+          .catch(console.error);
+      })
+    ).then(() => console.log(`${this.LOG_TAG} Backup exists, AA entities were restored`))
+      .catch(console.error);
   };
 
   private readonly createEntries = (vocab: Vocabulary): void => {
@@ -103,7 +92,8 @@ class ConstantService {
       }));
 
     Promise.all(entries.map((aam: AutomaticAnalysisModel) =>
-      entityServiceInstance.createEntity(UtilService.aam2EntityDbo(aam, vocab._id)))).then((savedEntities: Entity[]): void => {
+      entityServiceInstance.createEntity(UtilService.aam2EntityDbo(aam, vocab._id)))
+    ).then((savedEntities: Entity[]): void => {
       // Save backup
       fs.writeFileSync(path.join(__dirname, this.AUTOMATIC_ANALYSIS_BACKUP), JSON.stringify(savedEntities, null, 2));
       // Save id / link list
@@ -123,6 +113,40 @@ class ConstantService {
     } catch (e) {
       return false;
     }
+  };
+
+  private readonly insertVocabWithId = (): Promise<Vocabulary> => {
+    console.log(`${this.LOG_TAG} New AA vocab will be created`);
+
+    const vocab: Vocabulary = {
+      created: new Date(),
+      lastModified: new Date(),
+      slug: this.AUTOMATIC_ANALYSIS_VOCABULARY,
+      label: this.AUTOMATIC_ANALYSIS_VOCABULARY,
+      description: this.AUTOMATIC_ANALYSIS_VOCABULARY
+    } as Vocabulary;
+
+    if (!this.backupFileNonExistent()) {
+      let entities: Entity[] = this.readBackupFile();
+      vocab._id = entities.find((e: Entity): boolean => ObjectId.isValid(e?.vocabulary))?.vocabulary;
+      entities = undefined;
+
+      if (!!vocab._id) {
+        vocab._id = new ObjectId(vocab._id);
+      }
+    }
+
+    const collection = persistenceService.db().collection(DB_COLLECTION_VOCABULARIES);
+
+    return collection.insertOne(vocab)
+      .then((result) => {
+        // @ts-ignore
+        if (result.insertedId.toHexString() === vocab._id.toHexString()) {
+          return vocab;
+        } else {
+          console.error(`${this.LOG_TAG} Could not create AA vocab ${vocab._id.toHexString()}`);
+        }
+      });
   };
 }
 
