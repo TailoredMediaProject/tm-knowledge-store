@@ -1,11 +1,11 @@
-import { shallowMount } from "@vue/test-utils";
-import Home from "@/views/Home.vue";
+import {shallowMount} from '@vue/test-utils';
+import Home from '@/views/Home.vue';
 
-describe("Home.vue", () => {
-  it("renders props.msg when passed", () => {
-    const msg = "";
+describe('Home.vue', () => {
+  it('renders props.msg when passed', () => {
+    const msg = '';
     const wrapper = shallowMount(Home, {
-      props: { msg },
+      props: {msg}
     });
     expect(wrapper.text()).toMatch(msg);
   });

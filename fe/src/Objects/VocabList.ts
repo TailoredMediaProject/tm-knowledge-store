@@ -12,5 +12,5 @@ export const extractVocabList = (object: any): VocabList => {
     totalItems: object.totalItems
   };
   const vocabs: Vocabulary[] = object.items;
-  return { pageable, vocabs };
+  return {pageable, vocabs};
 };

@@ -12,5 +12,5 @@ export const extractEntityList = (object: any): EntityList => {
     rows: object.rows
   };
   const entities: Entity[] = object.items;
-  return { pageable, entities };
+  return {pageable, entities};
 };

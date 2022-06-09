@@ -4,11 +4,7 @@
       <div class="flex items-center">
         <div class="flex-shrink-0">
           <router-link to="/">
-            <img
-                src="@/assets/Tailored_Media_Logo_Final.png"
-                alt="Tailored Media Logo"
-                class="d-inline-block align-text-top max-h-10"
-            />
+            <img src="@/assets/Tailored_Media_Logo_Final.png" alt="Tailored Media Logo" class="d-inline-block align-text-top max-h-10" />
           </router-link>
         </div>
       </div>

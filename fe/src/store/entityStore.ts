@@ -13,7 +13,7 @@ export const entityStore: Module<any, any> = {
   state: () => ({
     entities: new Map<string, Entity>(),
     entity: undefined,
-    pageable: <Pageable> { offset: 0, totalItems: 0, rows: 0 },
+    pageable: <Pageable>{offset: 0, totalItems: 0, rows: 0},
     searchText: '',
     vocabId: '',
     type: ''
@@ -55,7 +55,7 @@ export const entityStore: Module<any, any> = {
         });
       }
     },
-    GETSPECIFICENTITY(state, payload: { vocabID: string; objectID: string }) {
+    GETSPECIFICENTITY(state, payload: {vocabID: string; objectID: string}) {
       entityService.getEntity(payload.vocabID, payload.objectID).then((entity) => {
         if (entity) {
           state.entities.set(entity.id, entity);
@@ -112,14 +112,14 @@ export const entityStore: Module<any, any> = {
         ...payload.entity
       };
     },
-    UPDATEENTITY(state, payload: { entity: Entity }) {
+    UPDATEENTITY(state, payload: {entity: Entity}) {
       entityService.updateEntity(payload.entity).then((entity) => {
         if (entity?.id) {
           state.entities.set(entity.id, entity);
         }
       });
     },
-    DELETEENTITY(state, payload: { entity: Entity }) {
+    DELETEENTITY(state, payload: {entity: Entity}) {
       entityService.deleteEntity(payload.entity).then((entity) => {
         if (entity) {
           state.entities.delete(entity.id);
@@ -129,36 +129,35 @@ export const entityStore: Module<any, any> = {
     CLEAR(state) {
       state.entities.clear();
       state.entity = undefined;
-      state.pageable = { offset: 0, totalItems: 0, rows: 0 };
+      state.pageable = {offset: 0, totalItems: 0, rows: 0};
       state.searchText = '';
       state.vocabId = '';
       state.type = '';
-
     }
   },
   actions: {
-    loadEntityList({ commit }, payload) {
+    loadEntityList({commit}, payload) {
       commit('LOADENTITYLIST', payload);
     },
-    loadNextPage({ commit }) {
+    loadNextPage({commit}) {
       commit('LOADNEXTENTITYPAGE');
     },
-    getEntity({ commit }, payload) {
+    getEntity({commit}, payload) {
       commit('GETSPECIFICENTITY', payload);
     },
-    createEntity({ commit }, payload) {
+    createEntity({commit}, payload) {
       commit('CREATEENTITY', payload);
     },
-    editEntity({ commit }, payload) {
+    editEntity({commit}, payload) {
       commit('EDITENTITY', payload);
     },
-    updateEntity({ commit }, payload) {
+    updateEntity({commit}, payload) {
       commit('UPDATEENTITY', payload);
     },
-    deleteEntity({ commit }, payload) {
+    deleteEntity({commit}, payload) {
       commit('DELETEENTITY', payload);
     },
-    clear({ commit }) {
+    clear({commit}) {
       commit('CLEAR');
     }
   },
