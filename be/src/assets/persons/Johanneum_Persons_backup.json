@@ -1,0 +1,1514 @@
+[
+  {
+    "_id": "62a3422762302f17a0896fc7",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Alexander van der Bellen",
+    "description": null,
+    "created": "2022-06-10T13:07:51.685Z",
+    "lastModified": "2022-06-10T13:07:51.685Z",
+    "externalResources": [
+      "AA-ID: 9b275d9c-04a6-4c7b-97a3-8db7d32e046b"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fc8",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Alfons Haider",
+    "description": null,
+    "created": "2022-06-10T13:07:51.692Z",
+    "lastModified": "2022-06-10T13:07:51.692Z",
+    "externalResources": [
+      "AA-ID: ff2cf4c4-0115-4a3a-92d9-7780748fcc6d"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fc9",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Andreas Schieder",
+    "description": null,
+    "created": "2022-06-10T13:07:51.692Z",
+    "lastModified": "2022-06-10T13:07:51.692Z",
+    "externalResources": [
+      "AA-ID: ea5e6991-0399-4752-99c8-1525e0f7c472"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fca",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Angela Merkel",
+    "description": null,
+    "created": "2022-06-10T13:07:51.697Z",
+    "lastModified": "2022-06-10T13:07:51.697Z",
+    "externalResources": [
+      "AA-ID: 53700d68-6114-4741-a94b-24ae175b0808"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fcb",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Anja Plaschg",
+    "description": null,
+    "created": "2022-06-10T13:07:51.698Z",
+    "lastModified": "2022-06-10T13:07:51.698Z",
+    "externalResources": [
+      "AA-ID: 18919e0e-70c2-4965-9c26-743aff882d47"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fcc",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Anna Veith",
+    "description": null,
+    "created": "2022-06-10T13:07:51.699Z",
+    "lastModified": "2022-06-10T13:07:51.699Z",
+    "externalResources": [
+      "AA-ID: 2cd0dcfe-a292-4667-8b78-b3e832203b85"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fcd",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Barack Obama",
+    "description": null,
+    "created": "2022-06-10T13:07:51.704Z",
+    "lastModified": "2022-06-10T13:07:51.704Z",
+    "externalResources": [
+      "AA-ID: 04a1a98c-4bbb-4e28-b432-fb88c6c84916"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fce",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Beate Hartinger-Klein",
+    "description": null,
+    "created": "2022-06-10T13:07:51.705Z",
+    "lastModified": "2022-06-10T13:07:51.705Z",
+    "externalResources": [
+      "AA-ID: 3af3a002-e028-4a93-892d-d655e00519ed"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fcf",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Birgit Hebein",
+    "description": null,
+    "created": "2022-06-10T13:07:51.706Z",
+    "lastModified": "2022-06-10T13:07:51.706Z",
+    "externalResources": [
+      "AA-ID: 94103f36-977f-4e0b-892c-298b5ce591c1"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fd0",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Boris Johnson",
+    "description": null,
+    "created": "2022-06-10T13:07:51.706Z",
+    "lastModified": "2022-06-10T13:07:51.706Z",
+    "externalResources": [
+      "AA-ID: 9bea84a1-9f56-4151-938c-400783e71f3b"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fd1",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Brigitte Bierlein",
+    "description": null,
+    "created": "2022-06-10T13:07:51.713Z",
+    "lastModified": "2022-06-10T13:07:51.713Z",
+    "externalResources": [
+      "AA-ID: 70c09065-2350-46ae-9b52-7d9e01094e04"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fd2",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Christiane von Poelnitz",
+    "description": null,
+    "created": "2022-06-10T13:07:51.715Z",
+    "lastModified": "2022-06-10T13:07:51.715Z",
+    "externalResources": [
+      "AA-ID: 8fc5dc09-0ccd-4c83-a8dc-fc9f2f441ad8"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fd3",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Christian Kern",
+    "description": null,
+    "created": "2022-06-10T13:07:51.716Z",
+    "lastModified": "2022-06-10T13:07:51.716Z",
+    "externalResources": [
+      "AA-ID: fedadbb2-5f26-4770-8e06-2b2db7ddc9a6"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fd4",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Christian Pilnacek",
+    "description": null,
+    "created": "2022-06-10T13:07:51.717Z",
+    "lastModified": "2022-06-10T13:07:51.717Z",
+    "externalResources": [
+      "AA-ID: 46eb4a7c-bdd1-43ef-91dd-4d74d4fcd31a"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fd5",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Conchita Wurst",
+    "description": null,
+    "created": "2022-06-10T13:07:51.718Z",
+    "lastModified": "2022-06-10T13:07:51.718Z",
+    "externalResources": [
+      "AA-ID: 457071cd-82fe-4125-bb99-624d1aba3c9b"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fd6",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Cornelius Obonya",
+    "description": null,
+    "created": "2022-06-10T13:07:51.724Z",
+    "lastModified": "2022-06-10T13:07:51.724Z",
+    "externalResources": [
+      "AA-ID: 4785ce56-7d90-48b1-b6ae-5daed0262235"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fd7",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "David Ellensohn",
+    "description": null,
+    "created": "2022-06-10T13:07:51.724Z",
+    "lastModified": "2022-06-10T13:07:51.724Z",
+    "externalResources": [
+      "AA-ID: dae237c8-341a-48ca-b5be-d560059fe1a1"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fd8",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "David Hasselhoff",
+    "description": null,
+    "created": "2022-06-10T13:07:51.725Z",
+    "lastModified": "2022-06-10T13:07:51.725Z",
+    "externalResources": [
+      "AA-ID: e85f563e-8674-4a45-8761-b066ed2e913f"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fda",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Donald Trump",
+    "description": null,
+    "created": "2022-06-10T13:07:51.726Z",
+    "lastModified": "2022-06-10T13:07:51.726Z",
+    "externalResources": [
+      "AA-ID: 03f56bb5-7ac5-4e67-b050-9f4c3134c133"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fd9",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Donald Tusk",
+    "description": null,
+    "created": "2022-06-10T13:07:51.725Z",
+    "lastModified": "2022-06-10T13:07:51.725Z",
+    "externalResources": [
+      "AA-ID: 50d3ef78-3b3a-4368-a65b-33e48093f1b2"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fdb",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Doris Bures",
+    "description": null,
+    "created": "2022-06-10T13:07:51.726Z",
+    "lastModified": "2022-06-10T13:07:51.726Z",
+    "externalResources": [
+      "AA-ID: 4476ce0e-7bf0-4926-9649-6b5f8a84ccb8"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fdc",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Elisabeth Koestinger",
+    "description": null,
+    "created": "2022-06-10T13:07:51.727Z",
+    "lastModified": "2022-06-10T13:07:51.727Z",
+    "externalResources": [
+      "AA-ID: b5aad38e-7873-49f8-a302-95b9bd0470ba"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fdd",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Emmanuel Macron",
+    "description": null,
+    "created": "2022-06-10T13:07:51.734Z",
+    "lastModified": "2022-06-10T13:07:51.734Z",
+    "externalResources": [
+      "AA-ID: ea6f5d04-4100-4f87-b37b-22e2a29731bf"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fde",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Ernst Strasser",
+    "description": null,
+    "created": "2022-06-10T13:07:51.735Z",
+    "lastModified": "2022-06-10T13:07:51.735Z",
+    "externalResources": [
+      "AA-ID: 5b00039a-aa99-4bb6-8e47-a9983d260144"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fdf",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Erwin Proell",
+    "description": null,
+    "created": "2022-06-10T13:07:51.736Z",
+    "lastModified": "2022-06-10T13:07:51.736Z",
+    "externalResources": [
+      "AA-ID: b68c5d67-1c98-4aba-83d6-1d65523195e8"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fe0",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Eva Glawischnig",
+    "description": null,
+    "created": "2022-06-10T13:07:51.736Z",
+    "lastModified": "2022-06-10T13:07:51.736Z",
+    "externalResources": [
+      "AA-ID: 784f3bdb-4c8a-421d-95f6-da94448cb3a0"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fe1",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Frank-Walter Steinmeier",
+    "description": null,
+    "created": "2022-06-10T13:07:51.737Z",
+    "lastModified": "2022-06-10T13:07:51.737Z",
+    "externalResources": [
+      "AA-ID: 87413a00-b21f-4f58-8b54-c5b29e11465d"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fe2",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Gabriele Heinisch-Hosek",
+    "description": null,
+    "created": "2022-06-10T13:07:51.737Z",
+    "lastModified": "2022-06-10T13:07:51.737Z",
+    "externalResources": [
+      "AA-ID: 0ec9e51a-98cf-4864-9df2-27f31b40a366"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fe3",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Gerhard Haderer",
+    "description": null,
+    "created": "2022-06-10T13:07:51.738Z",
+    "lastModified": "2022-06-10T13:07:51.738Z",
+    "externalResources": [
+      "AA-ID: 725bd6a5-a240-4096-9456-2f0b28e423a0"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fe4",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Gregor Bloeb",
+    "description": null,
+    "created": "2022-06-10T13:07:51.739Z",
+    "lastModified": "2022-06-10T13:07:51.739Z",
+    "externalResources": [
+      "AA-ID: f1bc85c6-2c6c-4cd2-9353-a2e3c5b743e3"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fe5",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Greta Thunberg",
+    "description": null,
+    "created": "2022-06-10T13:07:51.783Z",
+    "lastModified": "2022-06-10T13:07:51.783Z",
+    "externalResources": [
+      "AA-ID: 5461cbdd-760a-4508-8d53-2c3fd119a439"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fe6",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Hans Joerg Schelling",
+    "description": null,
+    "created": "2022-06-10T13:07:51.783Z",
+    "lastModified": "2022-06-10T13:07:51.783Z",
+    "externalResources": [
+      "AA-ID: 01962321-282f-4ff5-bdfd-f33c1d3275d4"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fe7",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Hans Niessl",
+    "description": null,
+    "created": "2022-06-10T13:07:51.784Z",
+    "lastModified": "2022-06-10T13:07:51.784Z",
+    "externalResources": [
+      "AA-ID: a7b462e0-b8b7-495c-a611-0f37f2a510a7"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fe8",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Hans Peter Doskozil",
+    "description": null,
+    "created": "2022-06-10T13:07:51.784Z",
+    "lastModified": "2022-06-10T13:07:51.784Z",
+    "externalResources": [
+      "AA-ID: bb984526-c732-4525-b398-ea96b3645f1c"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fe9",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Harald Gloeoeckler",
+    "description": null,
+    "created": "2022-06-10T13:07:51.785Z",
+    "lastModified": "2022-06-10T13:07:51.785Z",
+    "externalResources": [
+      "AA-ID: 3a268e11-f067-4143-8ded-5f019b4e0fef"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896feb",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Hartwig Loeger",
+    "description": null,
+    "created": "2022-06-10T13:07:51.786Z",
+    "lastModified": "2022-06-10T13:07:51.786Z",
+    "externalResources": [
+      "AA-ID: dc612021-2743-45c8-b519-bfc891d28c15"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fea",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Hassan Rohani",
+    "description": null,
+    "created": "2022-06-10T13:07:51.786Z",
+    "lastModified": "2022-06-10T13:07:51.786Z",
+    "externalResources": [
+      "AA-ID: 56cb327a-46b4-4ce2-b0d2-2ae697a3c624"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fec",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Heinz-Christian Strache",
+    "description": null,
+    "created": "2022-06-10T13:07:51.787Z",
+    "lastModified": "2022-06-10T13:07:51.787Z",
+    "externalResources": [
+      "AA-ID: c68f98f8-523b-488a-bcde-7ccbcfe318b1"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fed",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Heinz Fassmann",
+    "description": null,
+    "created": "2022-06-10T13:07:51.788Z",
+    "lastModified": "2022-06-10T13:07:51.788Z",
+    "externalResources": [
+      "AA-ID: 38f53b7b-ca7a-41e5-9c31-df7d5bcfb800"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fee",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Heinz Fischer",
+    "description": null,
+    "created": "2022-06-10T13:07:51.795Z",
+    "lastModified": "2022-06-10T13:07:51.795Z",
+    "externalResources": [
+      "AA-ID: f68b9f5b-67a7-4415-9101-c4bf32e4e37d"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fef",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Hermann Nitsch",
+    "description": null,
+    "created": "2022-06-10T13:07:51.796Z",
+    "lastModified": "2022-06-10T13:07:51.796Z",
+    "externalResources": [
+      "AA-ID: 8bce49fc-e3ad-420c-aff4-43b6310f8975"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896ff0",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Hermann Schuetzenhoefer",
+    "description": null,
+    "created": "2022-06-10T13:07:51.797Z",
+    "lastModified": "2022-06-10T13:07:51.797Z",
+    "externalResources": [
+      "AA-ID: 4380dc42-1c77-4e6f-9072-c63edda34c64"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896ff1",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Hilde Dalik",
+    "description": null,
+    "created": "2022-06-10T13:07:51.797Z",
+    "lastModified": "2022-06-10T13:07:51.797Z",
+    "externalResources": [
+      "AA-ID: 57446f07-4439-43f8-b571-241804fd5699"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896ff3",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Horst Seehofer",
+    "description": null,
+    "created": "2022-06-10T13:07:51.798Z",
+    "lastModified": "2022-06-10T13:07:51.798Z",
+    "externalResources": [
+      "AA-ID: d21da45a-1b45-44e1-af15-4df6a9899540"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896ff2",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Jakob Poeltl",
+    "description": null,
+    "created": "2022-06-10T13:07:51.798Z",
+    "lastModified": "2022-06-10T13:07:51.798Z",
+    "externalResources": [
+      "AA-ID: 5deb22c4-e909-4957-b3c2-df790704e5e6"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896ff5",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Jean-Claude Juncker",
+    "description": null,
+    "created": "2022-06-10T13:07:51.800Z",
+    "lastModified": "2022-06-10T13:07:51.800Z",
+    "externalResources": [
+      "AA-ID: c0accf70-4264-442a-b671-626cccb00f69"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896ff4",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Joerg Leichtfried",
+    "description": null,
+    "created": "2022-06-10T13:07:51.799Z",
+    "lastModified": "2022-06-10T13:07:51.799Z",
+    "externalResources": [
+      "AA-ID: 037a1514-9298-4c0d-8cb0-13849841f24b"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896ff6",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Johanna Mikl-Leitner",
+    "description": null,
+    "created": "2022-06-10T13:07:51.804Z",
+    "lastModified": "2022-06-10T13:07:51.804Z",
+    "externalResources": [
+      "AA-ID: 633a70e5-1a1d-4b56-9d45-c1b9f5bb33bb"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896ff7",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Johann Gudenus",
+    "description": null,
+    "created": "2022-06-10T13:07:51.805Z",
+    "lastModified": "2022-06-10T13:07:51.805Z",
+    "externalResources": [
+      "AA-ID: 151c7645-af92-48b6-9a75-1bb540dc811d"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896ff8",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Karl-Heinz Grasser",
+    "description": null,
+    "created": "2022-06-10T13:07:51.814Z",
+    "lastModified": "2022-06-10T13:07:51.814Z",
+    "externalResources": [
+      "AA-ID: 1787bc41-303f-45c6-b9c5-b5b6809d06c2"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896ff9",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Klaus Eberhartinger",
+    "description": null,
+    "created": "2022-06-10T13:07:51.815Z",
+    "lastModified": "2022-06-10T13:07:51.815Z",
+    "externalResources": [
+      "AA-ID: 92be119b-1e3a-4de5-8c2b-8e49a2a536dd"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896ffb",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Lewis Hamilton",
+    "description": null,
+    "created": "2022-06-10T13:07:51.816Z",
+    "lastModified": "2022-06-10T13:07:51.816Z",
+    "externalResources": [
+      "AA-ID: 37504ece-6490-478c-8baa-c814a1ae65b7"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896ffa",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Manuela Zinsberger",
+    "description": null,
+    "created": "2022-06-10T13:07:51.815Z",
+    "lastModified": "2022-06-10T13:07:51.815Z",
+    "externalResources": [
+      "AA-ID: f61c8bee-2884-4c22-9f18-a0f4608f3dec"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896ffd",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Marcel Hirscher",
+    "description": null,
+    "created": "2022-06-10T13:07:51.817Z",
+    "lastModified": "2022-06-10T13:07:51.817Z",
+    "externalResources": [
+      "AA-ID: 3f97b9e8-4e0a-450e-ad9f-2039bfd987e0"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896ffc",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Marcel Koller",
+    "description": null,
+    "created": "2022-06-10T13:07:51.816Z",
+    "lastModified": "2022-06-10T13:07:51.816Z",
+    "externalResources": [
+      "AA-ID: d0bdd6ef-5ac1-4fa4-abec-335397b4e0a7"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896ffe",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Margit Fischer",
+    "description": null,
+    "created": "2022-06-10T13:07:51.818Z",
+    "lastModified": "2022-06-10T13:07:51.818Z",
+    "externalResources": [
+      "AA-ID: 38ee5aa6-4690-4f4e-a961-a1c74f234975"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0896fff",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Marianne Schuetzenhoefer",
+    "description": null,
+    "created": "2022-06-10T13:07:51.818Z",
+    "lastModified": "2022-06-10T13:07:51.818Z",
+    "externalResources": [
+      "AA-ID: 705d196b-2884-4ff2-b498-dd6a5687cffe"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897000",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Maria Vassilakou",
+    "description": null,
+    "created": "2022-06-10T13:07:51.819Z",
+    "lastModified": "2022-06-10T13:07:51.819Z",
+    "externalResources": [
+      "AA-ID: 28b39e9b-67e3-4db0-bb6d-b74e8e672ec7"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897001",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Markus Wallner",
+    "description": null,
+    "created": "2022-06-10T13:07:51.820Z",
+    "lastModified": "2022-06-10T13:07:51.820Z",
+    "externalResources": [
+      "AA-ID: 29178dc0-35d4-413a-8c96-553898685ba7"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897002",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Martin Schulz",
+    "description": null,
+    "created": "2022-06-10T13:07:51.821Z",
+    "lastModified": "2022-06-10T13:07:51.821Z",
+    "externalResources": [
+      "AA-ID: 61e23967-24f7-4263-902b-2a59cc30a4e2"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897003",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Matthias Strolz",
+    "description": null,
+    "created": "2022-06-10T13:07:51.830Z",
+    "lastModified": "2022-06-10T13:07:51.830Z",
+    "externalResources": [
+      "AA-ID: 8e369de9-847c-4cd1-8550-5441f69e8ffd"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897004",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Mavie Hoerbiger",
+    "description": null,
+    "created": "2022-06-10T13:07:51.831Z",
+    "lastModified": "2022-06-10T13:07:51.831Z",
+    "externalResources": [
+      "AA-ID: 463f9dfe-5c7d-4342-b71f-bf34af29d66b"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897005",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Michael Haeupl",
+    "description": null,
+    "created": "2022-06-10T13:07:51.832Z",
+    "lastModified": "2022-06-10T13:07:51.832Z",
+    "externalResources": [
+      "AA-ID: e05176e6-2e44-4a84-b785-092d6d34a492"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897006",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Michael Ludwig",
+    "description": null,
+    "created": "2022-06-10T13:07:51.833Z",
+    "lastModified": "2022-06-10T13:07:51.833Z",
+    "externalResources": [
+      "AA-ID: da61c65e-44de-4309-b411-1057faff28f4"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897007",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Michael Ostrowski",
+    "description": null,
+    "created": "2022-06-10T13:07:51.833Z",
+    "lastModified": "2022-06-10T13:07:51.833Z",
+    "externalResources": [
+      "AA-ID: 1e4ca6ba-3f1c-4fc4-8f53-cd7a8cdadbd7"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897008",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Michael Spindelegger",
+    "description": null,
+    "created": "2022-06-10T13:07:51.834Z",
+    "lastModified": "2022-06-10T13:07:51.834Z",
+    "externalResources": [
+      "AA-ID: 2f44f7c8-c340-45e7-9c89-40b7e03a16af"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897009",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Mikaela Shiffrin",
+    "description": null,
+    "created": "2022-06-10T13:07:51.835Z",
+    "lastModified": "2022-06-10T13:07:51.835Z",
+    "externalResources": [
+      "AA-ID: 55535566-0fba-452e-863e-918410f5c647"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a089700a",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Mirjam Weichselbraun",
+    "description": null,
+    "created": "2022-06-10T13:07:51.836Z",
+    "lastModified": "2022-06-10T13:07:51.836Z",
+    "externalResources": [
+      "AA-ID: 9ebdf95d-1fef-4379-8761-33382c14875b"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a089700b",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Nicole Billa",
+    "description": null,
+    "created": "2022-06-10T13:07:51.837Z",
+    "lastModified": "2022-06-10T13:07:51.837Z",
+    "externalResources": [
+      "AA-ID: da0cba44-da68-465b-ad8e-9f2bafc1230a"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a089700c",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Nico Rosberg",
+    "description": null,
+    "created": "2022-06-10T13:07:51.837Z",
+    "lastModified": "2022-06-10T13:07:51.837Z",
+    "externalResources": [
+      "AA-ID: 65aea43e-6b55-4905-aba0-8e62c25d67bf"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a089700d",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Norbert Hofer",
+    "description": null,
+    "created": "2022-06-10T13:07:51.838Z",
+    "lastModified": "2022-06-10T13:07:51.838Z",
+    "externalResources": [
+      "AA-ID: 1d6b4ef2-f817-4181-9453-ae9bee187af4"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a089700e",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Pamela Rendi-Wagner",
+    "description": null,
+    "created": "2022-06-10T13:07:51.840Z",
+    "lastModified": "2022-06-10T13:07:51.840Z",
+    "externalResources": [
+      "AA-ID: 497edfd7-7c19-4241-9b64-6f6c9b06778f"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a089700f",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Peter Hochegger",
+    "description": null,
+    "created": "2022-06-10T13:07:51.849Z",
+    "lastModified": "2022-06-10T13:07:51.849Z",
+    "externalResources": [
+      "AA-ID: c960e7b7-9349-4b9b-975d-34e82ec38ce0"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897010",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Peter Kaiser",
+    "description": null,
+    "created": "2022-06-10T13:07:51.850Z",
+    "lastModified": "2022-06-10T13:07:51.850Z",
+    "externalResources": [
+      "AA-ID: 1583e1cd-3376-4a28-a0bd-94b105d6e202"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897011",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Peter Pilz",
+    "description": null,
+    "created": "2022-06-10T13:07:51.850Z",
+    "lastModified": "2022-06-10T13:07:51.850Z",
+    "externalResources": [
+      "AA-ID: 55f2bf94-2b03-4c1f-b26b-b289f88caf1e"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897012",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Peter Stoeger",
+    "description": null,
+    "created": "2022-06-10T13:07:51.851Z",
+    "lastModified": "2022-06-10T13:07:51.851Z",
+    "externalResources": [
+      "AA-ID: e3eced64-d9ab-4d21-97da-ca06efddb474"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897013",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Recep Tayyip Erdogan",
+    "description": null,
+    "created": "2022-06-10T13:07:51.852Z",
+    "lastModified": "2022-06-10T13:07:51.852Z",
+    "externalResources": [
+      "AA-ID: 88ead414-86e8-4287-aa31-89a312ea4a4f"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897014",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Reinhold Lopatka",
+    "description": null,
+    "created": "2022-06-10T13:07:51.853Z",
+    "lastModified": "2022-06-10T13:07:51.853Z",
+    "externalResources": [
+      "AA-ID: 937fa39a-cbf9-40c3-b276-f165fb96cbe2"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897015",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Reinhold Mitterlehner",
+    "description": null,
+    "created": "2022-06-10T13:07:51.853Z",
+    "lastModified": "2022-06-10T13:07:51.853Z",
+    "externalResources": [
+      "AA-ID: 93203102-892d-4fba-ab69-6c3ff6ed90be"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897016",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Robert van de Kerkhof",
+    "description": null,
+    "created": "2022-06-10T13:07:51.854Z",
+    "lastModified": "2022-06-10T13:07:51.854Z",
+    "externalResources": [
+      "AA-ID: 27e9733f-9907-49a3-8922-1e93aa392a62"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897017",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Rudolf Hundstorfer",
+    "description": null,
+    "created": "2022-06-10T13:07:51.855Z",
+    "lastModified": "2022-06-10T13:07:51.855Z",
+    "externalResources": [
+      "AA-ID: e310758b-bfe6-4119-886b-dcd383cff437"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897018",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Sabine Oberhauser",
+    "description": null,
+    "created": "2022-06-10T13:07:51.856Z",
+    "lastModified": "2022-06-10T13:07:51.856Z",
+    "externalResources": [
+      "AA-ID: f8a0a233-e56b-4ca7-880e-8ba2deb4f130"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a089701a",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Sebastian Kurz",
+    "description": null,
+    "created": "2022-06-10T13:07:51.857Z",
+    "lastModified": "2022-06-10T13:07:51.857Z",
+    "externalResources": [
+      "AA-ID: 45abbbc5-b897-44e2-bfd9-2f3ca1bd054e"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897019",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Shinzo Abe",
+    "description": null,
+    "created": "2022-06-10T13:07:51.856Z",
+    "lastModified": "2022-06-10T13:07:51.856Z",
+    "externalResources": [
+      "AA-ID: 87cd33bd-6c1c-42a8-b29c-fc5112b6d7d1"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a089701b",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Sigmar Gabriel",
+    "description": null,
+    "created": "2022-06-10T13:07:51.858Z",
+    "lastModified": "2022-06-10T13:07:51.858Z",
+    "externalResources": [
+      "AA-ID: 20b71dc4-81ef-42eb-9d6e-44481341efdd"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a089701c",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Sigrid Maurer",
+    "description": null,
+    "created": "2022-06-10T13:07:51.868Z",
+    "lastModified": "2022-06-10T13:07:51.868Z",
+    "externalResources": [
+      "AA-ID: 28d7cdde-e67b-40e8-ab6f-d481b8e5a364"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a089701d",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Stefanie Reinsperger",
+    "description": null,
+    "created": "2022-06-10T13:07:51.870Z",
+    "lastModified": "2022-06-10T13:07:51.870Z",
+    "externalResources": [
+      "AA-ID: e4601dd4-cf04-4727-8a00-1f8abd0f963f"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a089701e",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Stefan Posch",
+    "description": null,
+    "created": "2022-06-10T13:07:51.871Z",
+    "lastModified": "2022-06-10T13:07:51.871Z",
+    "externalResources": [
+      "AA-ID: fcc6fdf3-e1a1-4bae-8605-5e54073ffefe"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a089701f",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Theresa May",
+    "description": null,
+    "created": "2022-06-10T13:07:51.872Z",
+    "lastModified": "2022-06-10T13:07:51.872Z",
+    "externalResources": [
+      "AA-ID: 8e9f7c08-3be0-4919-88a4-3f8b8e80d56a"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897020",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Tobias Moretti",
+    "description": null,
+    "created": "2022-06-10T13:07:51.873Z",
+    "lastModified": "2022-06-10T13:07:51.873Z",
+    "externalResources": [
+      "AA-ID: 60e9109f-f549-4adf-9884-b3ca7ddb1ebd"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897021",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Ulrike Lunacek",
+    "description": null,
+    "created": "2022-06-10T13:07:51.875Z",
+    "lastModified": "2022-06-10T13:07:51.875Z",
+    "externalResources": [
+      "AA-ID: 89a56460-a6f7-4ced-8e64-a70e59f746c7"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897022",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Viktor Orban",
+    "description": null,
+    "created": "2022-06-10T13:07:51.876Z",
+    "lastModified": "2022-06-10T13:07:51.876Z",
+    "externalResources": [
+      "AA-ID: cce65a0d-36ce-4aa9-9f19-f291c7253f78"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897023",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Walter Meischberger",
+    "description": null,
+    "created": "2022-06-10T13:07:51.877Z",
+    "lastModified": "2022-06-10T13:07:51.877Z",
+    "externalResources": [
+      "AA-ID: 55262649-566c-4c0f-9e8f-4e3755f5fb55"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897024",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Werner Faymann",
+    "description": null,
+    "created": "2022-06-10T13:07:51.878Z",
+    "lastModified": "2022-06-10T13:07:51.878Z",
+    "externalResources": [
+      "AA-ID: 08c05e39-8004-4784-965d-8b8760a7f355"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897025",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Werner Kogler",
+    "description": null,
+    "created": "2022-06-10T13:07:51.878Z",
+    "lastModified": "2022-06-10T13:07:51.878Z",
+    "externalResources": [
+      "AA-ID: 3520eb75-76e3-41d0-ab05-3dddc0cfa579"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897026",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Wilfried Haslauer",
+    "description": null,
+    "created": "2022-06-10T13:07:51.880Z",
+    "lastModified": "2022-06-10T13:07:51.880Z",
+    "externalResources": [
+      "AA-ID: ba592c84-acc2-4b70-8bb7-02d88b11c9e0"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897027",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Wladimir Putin",
+    "description": null,
+    "created": "2022-06-10T13:07:51.881Z",
+    "lastModified": "2022-06-10T13:07:51.881Z",
+    "externalResources": [
+      "AA-ID: ec06a84d-e415-40bd-91b8-63bd42d04bd1"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897028",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Wolfgang Brandstetter",
+    "description": null,
+    "created": "2022-06-10T13:07:51.882Z",
+    "lastModified": "2022-06-10T13:07:51.882Z",
+    "externalResources": [
+      "AA-ID: 76e5b479-78f2-43ab-a2b4-0f03e9aec31d"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897029",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Wolfgang Katzian",
+    "description": null,
+    "created": "2022-06-10T13:07:51.883Z",
+    "lastModified": "2022-06-10T13:07:51.883Z",
+    "externalResources": [
+      "AA-ID: 84d9fa6c-6f4c-4eac-b3bf-35c2f2967d01"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a089702a",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Wolfgang Sobotka",
+    "description": null,
+    "created": "2022-06-10T13:07:51.894Z",
+    "lastModified": "2022-06-10T13:07:51.894Z",
+    "externalResources": [
+      "AA-ID: 3b9d246e-3316-4fe5-a885-67e9d4817cb9"
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a089702b",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Andrae Rupprechter",
+    "description": null,
+    "created": "2022-06-10T13:07:51.895Z",
+    "lastModified": "2022-06-10T13:07:51.895Z",
+    "externalResources": [
+      "AA-ID: "
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a089702c",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Franz Fischler",
+    "description": null,
+    "created": "2022-06-10T13:07:51.895Z",
+    "lastModified": "2022-06-10T13:07:51.895Z",
+    "externalResources": [
+      "AA-ID: "
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a089702d",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Guenter Haiden",
+    "description": null,
+    "created": "2022-06-10T13:07:51.896Z",
+    "lastModified": "2022-06-10T13:07:51.896Z",
+    "externalResources": [
+      "AA-ID: "
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a089702e",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Josef Proell",
+    "description": null,
+    "created": "2022-06-10T13:07:51.897Z",
+    "lastModified": "2022-06-10T13:07:51.897Z",
+    "externalResources": [
+      "AA-ID: "
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a089702f",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Josef Riegler",
+    "description": null,
+    "created": "2022-06-10T13:07:51.898Z",
+    "lastModified": "2022-06-10T13:07:51.898Z",
+    "externalResources": [
+      "AA-ID: "
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897032",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Karl Schleinzer",
+    "description": null,
+    "created": "2022-06-10T13:07:51.900Z",
+    "lastModified": "2022-06-10T13:07:51.900Z",
+    "externalResources": [
+      "AA-ID: "
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897031",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Nikolaus Berlakovich",
+    "description": null,
+    "created": "2022-06-10T13:07:51.899Z",
+    "lastModified": "2022-06-10T13:07:51.899Z",
+    "externalResources": [
+      "AA-ID: "
+    ],
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a3422762302f17a0897030",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "PERSON",
+    "label": "Oskar Weihs",
+    "description": null,
+    "created": "2022-06-10T13:07:51.899Z",
+    "lastModified": "2022-06-10T13:07:51.899Z",
+    "externalResources": [
+      "AA-ID: "
+    ],
+    "sameAs": null,
+    "data": null
+  }
+]

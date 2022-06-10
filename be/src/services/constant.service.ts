@@ -28,7 +28,6 @@ const csvToJson = require('convert-csv-to-json');
  * upload it to DB, else: read assets/CSV, insert it into DB, create backup.json.*/
 class ConstantService {
   private readonly LOG_TAG = 'Automatic Analysis:';
-  private readonly entityCollection = persistenceService.db().collection(DB_COLLECTION_ENTITIES);
 
   public readonly init = (): void => {
     this.initVocab()
@@ -72,8 +71,9 @@ class ConstantService {
 
   private readonly loadBackup = (vocab: Vocabulary, pathFilename: string): void => {
     const entities: Entity[] = this.readBackupFile(pathFilename);
+    const entityCollection = persistenceService.db().collection(DB_COLLECTION_ENTITIES);
 
-    this.entityCollection.insertMany(entities.map((e: Entity) => {
+    entityCollection.insertMany(entities.map((e: Entity) => {
       e.vocabulary = vocab._id;
       // @ts-ignore
       e.created = new Date(e.created);
@@ -165,9 +165,8 @@ class ConstantService {
     } as Vocabulary;
 
     if (!this.backupFileNonExistent(AUTOMATIC_ANALYSIS_SHOT_CLASSES_BACKUP)) {
-      let entities: Entity[] = this.readBackupFile(AUTOMATIC_ANALYSIS_SHOT_CLASSES_BACKUP);
-      vocab._id = entities.find((e: Entity): boolean => ObjectId.isValid(e?.vocabulary))?.vocabulary;
-      entities = undefined;
+      vocab._id = this.readBackupFile(AUTOMATIC_ANALYSIS_SHOT_CLASSES_BACKUP)
+        .find((e: Entity): boolean => ObjectId.isValid(e?.vocabulary))?.vocabulary;
 
       if (!!vocab._id) {
         vocab._id = new ObjectId(vocab._id);
