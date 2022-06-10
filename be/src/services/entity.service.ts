@@ -299,12 +299,14 @@ export class EntityService {
           return {
             // @ts-ignore
             options: ServiceErrorFactory.invalidQueryValue('Invalid Parameter of type \'type\'!'),
+            // @ts-ignore
             filter: ServiceErrorFactory.invalidQueryValue('Invalid Parameter of type \'type\'!')
           };
         }
         /* eslint-enable */
       }
       if (!!query?.text) {
+        // @ts-ignore
         filter.$or = [
           {
             label: {
