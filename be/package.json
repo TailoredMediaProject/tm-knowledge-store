@@ -15,7 +15,7 @@
     "generate:build": "npm run generate && npm run build",
     "generate:build:start": "npm run generate && npm run build && npm run start",
     "build:start": "npm run build && npm run start",
-    "package": "npm run generate:build && copy-node-modules . ./dist && mkdir -p ./dist/assets && cp src/assets/*.csv ./dist/assets && cp src/assets/*.json ./dist/assets"
+    "package": "npm run generate:build && copy-node-modules . ./dist && mkdir -p ./dist/assets && cp -r src/assets ./dist"
   },
   "repository": {
     "type": "git",
