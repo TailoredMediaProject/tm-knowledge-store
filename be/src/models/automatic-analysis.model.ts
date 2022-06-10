@@ -5,3 +5,8 @@ export interface AutomaticAnalysisModel {
   tagTree: string;
   canonicalLink: URL;
 }
+
+export interface AutomaticAnalysisPerson {
+  person: string;
+  uuid: string;
+}

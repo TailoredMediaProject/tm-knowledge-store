@@ -2,13 +2,16 @@
 /* eslint-disable no-undef */
 import path = require('path');
 import fs = require('fs');
-import {AutomaticAnalysisModel} from '../models/automatic-analysis.model';
+import {AutomaticAnalysisModel, AutomaticAnalysisPerson} from '../models/automatic-analysis.model';
 import {entityServiceInstance} from './entity.service';
 import {vocabularyService} from './vocabulary.service';
 import {UtilService} from './util.service';
 import {Entity, Vocabulary} from '../models/dbo.models';
 import {instance as persistenceService} from './persistence.service';
 import {
+  AUTOMATIC_ANALYSIS_PERSONS_BACKUP,
+  AUTOMATIC_ANALYSIS_PERSONS_FILE,
+  AUTOMATIC_ANALYSIS_PERSONS_ID_LIST,
   AUTOMATIC_ANALYSIS_SHOT_CLASSES_BACKUP,
   AUTOMATIC_ANALYSIS_SHOT_CLASSES_FILE,
   AUTOMATIC_ANALYSIS_SHOT_CLASSES_ID_LIST,
@@ -25,12 +28,14 @@ const csvToJson = require('convert-csv-to-json');
  * upload it to DB, else: read assets/CSV, insert it into DB, create backup.json.*/
 class ConstantService {
   private readonly LOG_TAG = 'Automatic Analysis:';
+  private readonly entityCollection = persistenceService.db().collection(DB_COLLECTION_ENTITIES);
 
   public readonly init = (): void => {
     this.initVocab()
       .then((vocab: Vocabulary): void => {
         if (!!vocab) {
-          this.initEntities(vocab);
+          this.initEntities(vocab, AUTOMATIC_ANALYSIS_SHOT_CLASSES_BACKUP);
+          this.initEntities(vocab, AUTOMATIC_ANALYSIS_PERSONS_BACKUP);
         }
       })
       .catch(console.error);
@@ -47,38 +52,40 @@ class ConstantService {
         }
       });
 
-  private readonly initEntities = (vocab: Vocabulary): void => {
-    if (this.backupFileNonExistent()) {
-      this.createEntries(vocab);
+  private readonly initEntities = (vocab: Vocabulary, pathFilename: string): void => {
+    if (this.backupFileNonExistent(pathFilename)) {
+      if(pathFilename === AUTOMATIC_ANALYSIS_SHOT_CLASSES_BACKUP) {
+        this.createShotClasses(vocab);
+      } else if(pathFilename === AUTOMATIC_ANALYSIS_PERSONS_BACKUP) {
+        this.createPersons(vocab);
+      } else {
+        console.error(`${this.LOG_TAG} Unknown backup path and file ${pathFilename}`);
+      }
     } else {
-      this.loadEntries(vocab);
+      this.loadBackup(vocab, pathFilename);
     }
   };
 
-  private readonly readBackupFile = (): Entity[] =>
-  // @ts-ignore
-    JSON.parse(fs.readFileSync(path.join(__dirname, AUTOMATIC_ANALYSIS_SHOT_CLASSES_BACKUP)));
+  private readonly readBackupFile = (pathFilename: string): Entity[] =>
+    // @ts-ignore
+    JSON.parse(fs.readFileSync(path.join(__dirname, pathFilename)));
 
-  private readonly loadEntries = (vocab: Vocabulary): void => {
-    const entities: Entity[] = this.readBackupFile();
-    const collection = persistenceService.db().collection(DB_COLLECTION_ENTITIES);
+  private readonly loadBackup = (vocab: Vocabulary, pathFilename: string): void => {
+    const entities: Entity[] = this.readBackupFile(pathFilename);
 
-    Promise.all(
-      entities.map((e: Entity) => {
-        e.vocabulary = vocab._id;
-        // @ts-ignore
-        e.created = new Date(e.created);
-        // @ts-ignore
-        e.lastModified = new Date(e.lastModified);
+    this.entityCollection.insertMany(entities.map((e: Entity) => {
+      e.vocabulary = vocab._id;
+      // @ts-ignore
+      e.created = new Date(e.created);
+      // @ts-ignore
+      e.lastModified = new Date(e.lastModified);
 
-        return collection.insertOne(e)
-          .catch(console.error);
-      })
-    ).then(() => console.log(`${this.LOG_TAG} Backup exists, AA entities were restored`))
+      return e;
+    })).then(() => console.log(`${this.LOG_TAG} Backup exists, AA ${pathFilename} entities were restored`))
       .catch(console.error);
   };
 
-  private readonly createEntries = (vocab: Vocabulary): void => {
+  private readonly createShotClasses = (vocab: Vocabulary): void => {
     const entries: AutomaticAnalysisModel[] = csvToJson
       .fieldDelimiter(';')
       .getJsonFromCsv(path.join(__dirname, AUTOMATIC_ANALYSIS_SHOT_CLASSES_FILE))
@@ -111,9 +118,36 @@ class ConstantService {
       .catch(console.error);
   };
 
-  private readonly backupFileNonExistent = (): boolean => {
+  private readonly createPersons = (vocab: Vocabulary): void => {
+    const entries: AutomaticAnalysisPerson[] = csvToJson
+      .fieldDelimiter(';')
+      .getJsonFromCsv(path.join(__dirname, AUTOMATIC_ANALYSIS_PERSONS_FILE))
+      .map((rawElement: unknown): AutomaticAnalysisPerson => ({
+        // @ts-ignore
+        person: rawElement['Personen'],
+        // @ts-ignore
+        uuid: rawElement['UUID']
+      }));
+
+    Promise.all(entries.map((aam: AutomaticAnalysisPerson) =>
+      entityServiceInstance.createEntity(UtilService.aamPerson2EntityDbo(aam, vocab._id)))
+    ).then((savedEntities: Entity[]): void => {
+      // Save backup
+      fs.writeFileSync(path.join(__dirname, AUTOMATIC_ANALYSIS_PERSONS_BACKUP), JSON.stringify(savedEntities, null, 2));
+      // Save id / link list
+      fs.writeFileSync(path.join(__dirname, AUTOMATIC_ANALYSIS_PERSONS_ID_LIST), JSON.stringify(
+        savedEntities.map((e: Entity) => ({
+          label: e.externalResources[0].replaceAll('AA-ID: ', ''),
+          canonicalLink: UtilService.createCanonicalLink(e?._id?.toHexString())
+        })), null, 2));
+      console.log(`${this.LOG_TAG} Generated backup and ID list successfully`);
+    })
+      .catch(console.error);
+  };
+
+  private readonly backupFileNonExistent = (pathFilename: string): boolean => {
     try {
-      return !fs.existsSync(path.join(__dirname, AUTOMATIC_ANALYSIS_SHOT_CLASSES_BACKUP));
+      return !fs.existsSync(path.join(__dirname, pathFilename));
     } catch (e) {
       return false;
     }
@@ -130,8 +164,8 @@ class ConstantService {
       description: AUTOMATIC_ANALYSIS_SHOT_CLASSES_VOCABULARY
     } as Vocabulary;
 
-    if (!this.backupFileNonExistent()) {
-      let entities: Entity[] = this.readBackupFile();
+    if (!this.backupFileNonExistent(AUTOMATIC_ANALYSIS_SHOT_CLASSES_BACKUP)) {
+      let entities: Entity[] = this.readBackupFile(AUTOMATIC_ANALYSIS_SHOT_CLASSES_BACKUP);
       vocab._id = entities.find((e: Entity): boolean => ObjectId.isValid(e?.vocabulary))?.vocabulary;
       entities = undefined;
 

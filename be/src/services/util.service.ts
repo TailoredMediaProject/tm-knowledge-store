@@ -9,7 +9,8 @@ import {HEADER_ACCEPT, HEADER_IF_UNMODIFIED_SINCE, HOST, MIME_TYPE_TURTLE} from 
 import {vocabularyService} from './vocabulary.service';
 import {entityServiceInstance} from './entity.service';
 import {ListingResult} from '../models/listing-result.model';
-import {AutomaticAnalysisModel} from '../models/automatic-analysis.model';
+import {AutomaticAnalysisModel, AutomaticAnalysisPerson} from '../models/automatic-analysis.model';
+import {TagType} from '../generated';
 
 export class UtilService {
   public static readonly checkQueryParams = (allowed: string[], query: unknown): boolean =>
@@ -162,6 +163,21 @@ export class UtilService {
     created: undefined,
     lastModified: undefined,
     externalResources: !!aam?.eId ? [aam?.eId] : undefined,
+    sameAs: undefined,
+    data: undefined
+  });
+
+  public static readonly aamPerson2EntityDbo = (aam: AutomaticAnalysisPerson, vocabulary: ObjectId): Entity => ({
+    /* eslint-disable */
+    _id: undefined,
+    vocabulary,
+    /* eslint-enable */
+    type: TagType.PERSON,
+    label: aam?.person,
+    description: undefined,
+    created: undefined,
+    lastModified: undefined,
+    externalResources: [`AA-ID: ${aam.uuid}`],
     sameAs: undefined,
     data: undefined
   });

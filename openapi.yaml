@@ -226,6 +226,7 @@ components:
         - OBJECT
         - SPEECH2TEXT
         - SHOTTYPE
+        - LOGO
     Vocabulary:
       description: A vocabulary in the TailoredMedia Knowledge Store
       type: object
