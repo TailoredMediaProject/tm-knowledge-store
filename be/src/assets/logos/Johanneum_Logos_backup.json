@@ -1,0 +1,86 @@
+[
+  {
+    "_id": "62a34c38fb70f6ec86e0c3e1",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "LOGO",
+    "label": "Agrana",
+    "description": null,
+    "created": "2022-06-10T13:50:48.704Z",
+    "lastModified": "2022-06-10T13:50:48.704Z",
+    "externalResources": null,
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a34c38fb70f6ec86e0c3e2",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "LOGO",
+    "label": "AMA",
+    "description": null,
+    "created": "2022-06-10T13:50:48.708Z",
+    "lastModified": "2022-06-10T13:50:48.708Z",
+    "externalResources": null,
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a34c38fb70f6ec86e0c3e3",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "LOGO",
+    "label": "Fairtrade",
+    "description": null,
+    "created": "2022-06-10T13:50:48.709Z",
+    "lastModified": "2022-06-10T13:50:48.709Z",
+    "externalResources": null,
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a34c38fb70f6ec86e0c3e4",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "LOGO",
+    "label": "Gentechnikfrei",
+    "description": null,
+    "created": "2022-06-10T13:50:48.715Z",
+    "lastModified": "2022-06-10T13:50:48.715Z",
+    "externalResources": null,
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a34c38fb70f6ec86e0c3e5",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "LOGO",
+    "label": "OEVP",
+    "description": null,
+    "created": "2022-06-10T13:50:48.716Z",
+    "lastModified": "2022-06-10T13:50:48.716Z",
+    "externalResources": null,
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a34c38fb70f6ec86e0c3e6",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "LOGO",
+    "label": "Raiffeisen",
+    "description": null,
+    "created": "2022-06-10T13:50:48.716Z",
+    "lastModified": "2022-06-10T13:50:48.716Z",
+    "externalResources": null,
+    "sameAs": null,
+    "data": null
+  },
+  {
+    "_id": "62a34c38fb70f6ec86e0c3e7",
+    "vocabulary": "627cdfe78b62be12608e490e",
+    "type": "LOGO",
+    "label": "Waldviertler Karpfen",
+    "description": null,
+    "created": "2022-06-10T13:50:48.721Z",
+    "lastModified": "2022-06-10T13:50:48.721Z",
+    "externalResources": null,
+    "sameAs": null,
+    "data": null
+  }
+]

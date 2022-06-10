@@ -2,13 +2,16 @@
 /* eslint-disable no-undef */
 import path = require('path');
 import fs = require('fs');
-import {AutomaticAnalysisModel, AutomaticAnalysisPerson} from '../models/automatic-analysis.model';
+import {AutomaticAnalysisLogos, AutomaticAnalysisModel, AutomaticAnalysisPerson} from '../models/automatic-analysis.model';
 import {entityServiceInstance} from './entity.service';
 import {vocabularyService} from './vocabulary.service';
 import {UtilService} from './util.service';
 import {Entity, Vocabulary} from '../models/dbo.models';
 import {instance as persistenceService} from './persistence.service';
 import {
+  AUTOMATIC_ANALYSIS_LOGOS_BACKUP,
+  AUTOMATIC_ANALYSIS_LOGOS_FILE,
+  AUTOMATIC_ANALYSIS_LOGOS_ID_LIST,
   AUTOMATIC_ANALYSIS_PERSONS_BACKUP,
   AUTOMATIC_ANALYSIS_PERSONS_FILE,
   AUTOMATIC_ANALYSIS_PERSONS_ID_LIST,
@@ -35,6 +38,7 @@ class ConstantService {
         if (!!vocab) {
           this.initEntities(vocab, AUTOMATIC_ANALYSIS_SHOT_CLASSES_BACKUP);
           this.initEntities(vocab, AUTOMATIC_ANALYSIS_PERSONS_BACKUP);
+          this.initEntities(vocab, AUTOMATIC_ANALYSIS_LOGOS_BACKUP);
         }
       })
       .catch(console.error);
@@ -57,7 +61,10 @@ class ConstantService {
         this.createShotClasses(vocab);
       } else if(pathFilename === AUTOMATIC_ANALYSIS_PERSONS_BACKUP) {
         this.createPersons(vocab);
-      } else {
+      } else if(pathFilename === AUTOMATIC_ANALYSIS_LOGOS_BACKUP) {
+        this.createLogos(vocab);
+      }
+      else {
         console.error(`${this.LOG_TAG} Unknown backup path and file ${pathFilename}`);
       }
     } else {
@@ -113,7 +120,7 @@ class ConstantService {
           label: e.externalResources[0],
           canonicalLink: UtilService.createCanonicalLink(e?._id?.toHexString())
         })), null, 2));
-      console.log(`${this.LOG_TAG} Generated backup and ID list successfully`);
+      console.log(`${this.LOG_TAG} Generated backup and ID list of shot classes successfully`);
     })
       .catch(console.error);
   };
@@ -140,7 +147,32 @@ class ConstantService {
           label: e.externalResources[0].replaceAll('AA-ID: ', ''),
           canonicalLink: UtilService.createCanonicalLink(e?._id?.toHexString())
         })), null, 2));
-      console.log(`${this.LOG_TAG} Generated backup and ID list successfully`);
+      console.log(`${this.LOG_TAG} Generated backup and ID list of persons successfully`);
+    })
+      .catch(console.error);
+  };
+
+  private readonly createLogos = (vocab: Vocabulary): void => {
+    const entries: AutomaticAnalysisLogos[] = csvToJson
+      .fieldDelimiter(';')
+      .getJsonFromCsv(path.join(__dirname, AUTOMATIC_ANALYSIS_LOGOS_FILE))
+      .map((rawElement: unknown): AutomaticAnalysisLogos => ({
+        // @ts-ignore
+        label: rawElement['Logos'],
+      }));
+
+    Promise.all(entries.map((aam: AutomaticAnalysisLogos) =>
+      entityServiceInstance.createEntity(UtilService.aamLogo2EntityDbo(aam, vocab._id)))
+    ).then((savedEntities: Entity[]): void => {
+      // Save backup
+      fs.writeFileSync(path.join(__dirname, AUTOMATIC_ANALYSIS_LOGOS_BACKUP), JSON.stringify(savedEntities, null, 2));
+      // Save id / link list
+      fs.writeFileSync(path.join(__dirname, AUTOMATIC_ANALYSIS_LOGOS_ID_LIST), JSON.stringify(
+        savedEntities.map((e: Entity) => ({
+          label: e.label,
+          canonicalLink: UtilService.createCanonicalLink(e?._id?.toHexString())
+        })), null, 2));
+      console.log(`${this.LOG_TAG} Generated backup and ID list of logos successfully`);
     })
       .catch(console.error);
   };

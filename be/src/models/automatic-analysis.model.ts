@@ -10,3 +10,7 @@ export interface AutomaticAnalysisPerson {
   person: string;
   uuid: string;
 }
+
+export interface AutomaticAnalysisLogos {
+  label: string;
+}
