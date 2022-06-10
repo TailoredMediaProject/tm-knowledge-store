@@ -22,3 +22,8 @@ export const PROPERTY_MAPPING_CONFIG = {
 };
 export const DB_COLLECTION_VOCABULARIES = 'vocabularies';
 export const DB_COLLECTION_ENTITIES = 'entities';
+export const AUTOMATIC_ANALYSIS_SHOT_CLASSES_VOCABULARY = 'automatic-analysis';
+const AA_SHOT_CLASSES_BASE = '../assets/shot-classes/Johanneum_Shot-Classes_';
+export const AUTOMATIC_ANALYSIS_SHOT_CLASSES_FILE = `${AA_SHOT_CLASSES_BASE}mapped_v2.csv`;
+export const AUTOMATIC_ANALYSIS_SHOT_CLASSES_BACKUP = `${AA_SHOT_CLASSES_BASE}backup.json`;
+export const AUTOMATIC_ANALYSIS_SHOT_CLASSES_ID_LIST = `${AA_SHOT_CLASSES_BASE}Id_List.json`;

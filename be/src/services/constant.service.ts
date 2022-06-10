@@ -8,7 +8,14 @@ import {vocabularyService} from './vocabulary.service';
 import {UtilService} from './util.service';
 import {Entity, Vocabulary} from '../models/dbo.models';
 import {instance as persistenceService} from './persistence.service';
-import {DB_COLLECTION_ENTITIES, DB_COLLECTION_VOCABULARIES} from '../models/constants';
+import {
+  AUTOMATIC_ANALYSIS_SHOT_CLASSES_BACKUP,
+  AUTOMATIC_ANALYSIS_SHOT_CLASSES_FILE,
+  AUTOMATIC_ANALYSIS_SHOT_CLASSES_ID_LIST,
+  AUTOMATIC_ANALYSIS_SHOT_CLASSES_VOCABULARY,
+  DB_COLLECTION_ENTITIES,
+  DB_COLLECTION_VOCABULARIES
+} from '../models/constants';
 import {ObjectId} from 'mongodb';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const csvToJson = require('convert-csv-to-json');
@@ -17,10 +24,6 @@ const csvToJson = require('convert-csv-to-json');
  * See if automatic analysis (AA) vocab exists on DB, if so: do nothing, else: check if backup.json file of AA voacab exists. If so:
  * upload it to DB, else: read assets/CSV, insert it into DB, create backup.json.*/
 class ConstantService {
-  private readonly AUTOMATIC_ANALYSIS_FILE = '../assets/Johanneum_Shot-Classes_mapped_v2.csv';
-  private readonly AUTOMATIC_ANALYSIS_VOCABULARY = 'automatic-analysis';
-  private readonly AUTOMATIC_ANALYSIS_BACKUP = '../assets/Johanneum_Shot-Classes_backup.json';
-  private readonly AUTOMATIC_ANALYSIS_ID_LIST = '../assets/Johanneum_Shot-Classes_Id_List.json';
   private readonly LOG_TAG = 'Automatic Analysis:';
 
   public readonly init = (): void => {
@@ -34,7 +37,7 @@ class ConstantService {
   };
 
   private readonly initVocab = (): Promise<Vocabulary> =>
-    vocabularyService.getVocabularyWithSlug(this.AUTOMATIC_ANALYSIS_VOCABULARY)
+    vocabularyService.getVocabularyWithSlug(AUTOMATIC_ANALYSIS_SHOT_CLASSES_VOCABULARY)
       .then((vocab: Vocabulary): Promise<Vocabulary> => {
         if (!!vocab && vocab?.entityCount > 0) {
           console.log(`${this.LOG_TAG} Vocab ${vocab._id.toHexString()} exits with ${vocab.entityCount} entities`);
@@ -52,8 +55,9 @@ class ConstantService {
     }
   };
 
+  private readonly readBackupFile = (): Entity[] =>
   // @ts-ignore
-  private readonly readBackupFile = (): Entity[] => JSON.parse(fs.readFileSync(path.join(__dirname, this.AUTOMATIC_ANALYSIS_BACKUP)));
+    JSON.parse(fs.readFileSync(path.join(__dirname, AUTOMATIC_ANALYSIS_SHOT_CLASSES_BACKUP)));
 
   private readonly loadEntries = (vocab: Vocabulary): void => {
     const entities: Entity[] = this.readBackupFile();
@@ -77,7 +81,7 @@ class ConstantService {
   private readonly createEntries = (vocab: Vocabulary): void => {
     const entries: AutomaticAnalysisModel[] = csvToJson
       .fieldDelimiter(';')
-      .getJsonFromCsv(path.join(__dirname, this.AUTOMATIC_ANALYSIS_FILE))
+      .getJsonFromCsv(path.join(__dirname, AUTOMATIC_ANALYSIS_SHOT_CLASSES_FILE))
       .map((rawElement: unknown): AutomaticAnalysisModel => ({
         // @ts-ignore
         eId: rawElement['ExternalID(Johenneum)'],
@@ -95,9 +99,9 @@ class ConstantService {
       entityServiceInstance.createEntity(UtilService.aam2EntityDbo(aam, vocab._id)))
     ).then((savedEntities: Entity[]): void => {
       // Save backup
-      fs.writeFileSync(path.join(__dirname, this.AUTOMATIC_ANALYSIS_BACKUP), JSON.stringify(savedEntities, null, 2));
+      fs.writeFileSync(path.join(__dirname, AUTOMATIC_ANALYSIS_SHOT_CLASSES_BACKUP), JSON.stringify(savedEntities, null, 2));
       // Save id / link list
-      fs.writeFileSync(path.join(__dirname, this.AUTOMATIC_ANALYSIS_ID_LIST), JSON.stringify(
+      fs.writeFileSync(path.join(__dirname, AUTOMATIC_ANALYSIS_SHOT_CLASSES_ID_LIST), JSON.stringify(
         savedEntities.map((e: Entity) => ({
           label: e.externalResources[0],
           canonicalLink: UtilService.createCanonicalLink(e?._id?.toHexString())
@@ -109,7 +113,7 @@ class ConstantService {
 
   private readonly backupFileNonExistent = (): boolean => {
     try {
-      return !fs.existsSync(path.join(__dirname, this.AUTOMATIC_ANALYSIS_BACKUP));
+      return !fs.existsSync(path.join(__dirname, AUTOMATIC_ANALYSIS_SHOT_CLASSES_BACKUP));
     } catch (e) {
       return false;
     }
@@ -121,9 +125,9 @@ class ConstantService {
     const vocab: Vocabulary = {
       created: new Date(),
       lastModified: new Date(),
-      slug: this.AUTOMATIC_ANALYSIS_VOCABULARY,
-      label: this.AUTOMATIC_ANALYSIS_VOCABULARY,
-      description: this.AUTOMATIC_ANALYSIS_VOCABULARY
+      slug: AUTOMATIC_ANALYSIS_SHOT_CLASSES_VOCABULARY,
+      label: AUTOMATIC_ANALYSIS_SHOT_CLASSES_VOCABULARY,
+      description: AUTOMATIC_ANALYSIS_SHOT_CLASSES_VOCABULARY
     } as Vocabulary;
 
     if (!this.backupFileNonExistent()) {
