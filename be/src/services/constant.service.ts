@@ -81,7 +81,8 @@ class ConstantService {
     const entityCollection = persistenceService.db().collection(DB_COLLECTION_ENTITIES);
 
     entityCollection.insertMany(entities.map((e: Entity) => {
-      e.vocabulary = vocab._id;
+      e._id = new ObjectId(e._id);
+      e.vocabulary = new ObjectId(vocab._id);
       // @ts-ignore
       e.created = new Date(e.created);
       // @ts-ignore
@@ -110,7 +111,7 @@ class ConstantService {
       }));
 
     Promise.all(entries.map((aam: AutomaticAnalysisModel) =>
-      entityServiceInstance.createEntity(UtilService.aam2EntityDbo(aam, vocab._id)))
+      entityServiceInstance.createEntity(UtilService.aam2EntityDbo(aam, new ObjectId(vocab._id))))
     ).then((savedEntities: Entity[]): void => {
       // Save backup
       fs.writeFileSync(path.join(__dirname, AUTOMATIC_ANALYSIS_SHOT_CLASSES_BACKUP), JSON.stringify(savedEntities, null, 2));
@@ -137,7 +138,7 @@ class ConstantService {
       }));
 
     Promise.all(entries.map((aam: AutomaticAnalysisPerson) =>
-      entityServiceInstance.createEntity(UtilService.aamPerson2EntityDbo(aam, vocab._id)))
+      entityServiceInstance.createEntity(UtilService.aamPerson2EntityDbo(aam, new ObjectId(vocab._id))))
     ).then((savedEntities: Entity[]): void => {
       // Save backup
       fs.writeFileSync(path.join(__dirname, AUTOMATIC_ANALYSIS_PERSONS_BACKUP), JSON.stringify(savedEntities, null, 2));
@@ -162,7 +163,7 @@ class ConstantService {
       }));
 
     Promise.all(entries.map((aam: AutomaticAnalysisLogos) =>
-      entityServiceInstance.createEntity(UtilService.aamLogo2EntityDbo(aam, vocab._id)))
+      entityServiceInstance.createEntity(UtilService.aamLogo2EntityDbo(aam, new ObjectId(vocab._id))))
     ).then((savedEntities: Entity[]): void => {
       // Save backup
       fs.writeFileSync(path.join(__dirname, AUTOMATIC_ANALYSIS_LOGOS_BACKUP), JSON.stringify(savedEntities, null, 2));
