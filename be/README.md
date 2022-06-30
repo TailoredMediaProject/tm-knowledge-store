@@ -48,3 +48,12 @@ npm run generate
 ```shell
 docker exec -it <container_id_or_name> mongo # mongo mongo works as the container name is mongo
 ```
+
+## Mongo
+
+```shell
+show dbs # show all DBs
+use <db-name>
+show collections
+
+```

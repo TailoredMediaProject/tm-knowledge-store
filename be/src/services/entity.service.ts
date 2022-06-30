@@ -37,11 +37,11 @@ export class EntityService {
   }
 
   public getEntity(vocabID: string | ObjectId, entityID: string | ObjectId): Promise<Entity> {
-    return vocabularyService.getVocabular(vocabID).then(() =>
+    return vocabularyService.getVocabular(vocabID).then((v: Vocabulary) =>
       EntityService.collection()
         .findOne({
-          _id: new ObjectId(entityID),
-          vocabulary: new ObjectId(vocabID)
+          _id: entityID,
+          vocabulary: v._id
         })
         // @ts-ignore
         .then((result) => {
@@ -57,7 +57,7 @@ export class EntityService {
     // @ts-ignore
     return (
       EntityService.collection()
-        .findOne({_id: new ObjectId(entityID)})
+        .findOne({_id: entityID})
         // @ts-ignore
         .then((result: Document<WithId<Entity>>) => {
           if (!!result?._id) {

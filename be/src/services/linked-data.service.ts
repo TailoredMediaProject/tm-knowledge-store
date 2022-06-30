@@ -14,11 +14,12 @@ class LinkedDataService {
     const store: Store = $rdf.graph();
     const base = $rdf.Namespace(`https://${HOST}/kb/`);
     const prefix = $rdf.Namespace(PROPERTY_MAPPING_CONFIG.entity.prefixUrl);
+    const id = typeof e._id === 'string' ? e._id : e._id.toHexString();
 
     const mapping = PROPERTY_MAPPING_CONFIG.entity.properties;
     Object.keys(mapping).forEach((key: string) => {
       // @ts-ignore
-      store.add(base(`${e._id.toHexString()}`), prefix(`${mapping[key]}`), `${e[key]}`);
+      store.add(base(`${id}`), prefix(`${mapping[key]}`), `${e[key]}`);
     });
 
     let rdf: string = undefined;
