@@ -28,7 +28,7 @@ export class EntityService {
       EntityService.collection()
         .insertOne({
           ...entity,
-          _id: useId ? entity?._id : undefined,
+          _id: useId ? new ObjectId(entity?._id) : undefined,
           created: new Date(),
           lastModified: new Date()
         })
@@ -40,7 +40,7 @@ export class EntityService {
     return vocabularyService.getVocabular(vocabID).then((v: Vocabulary) =>
       EntityService.collection()
         .findOne({
-          _id: entityID,
+          _id: new ObjectId(entityID),
           vocabulary: v._id
         })
         // @ts-ignore
@@ -57,7 +57,7 @@ export class EntityService {
     // @ts-ignore
     return (
       EntityService.collection()
-        .findOne({_id: entityID})
+        .findOne({_id: new ObjectId(entityID)})
         // @ts-ignore
         .then((result: Document<WithId<Entity>>) => {
           if (!!result?._id) {
@@ -100,7 +100,7 @@ export class EntityService {
 
       if (!!$set && Object.keys($set).length > 0) {
         const filter: Filter<Entity> = {
-          _id: entity._id,
+          _id: new ObjectId(entity._id),
           lastModified: {
             // eslint-disable-rows-line @typescript-eslint/no-unsafe-argument
             $eq: dbEntity.lastModified

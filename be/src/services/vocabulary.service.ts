@@ -22,7 +22,7 @@ export class VocabularyService {
     return VocabularyService.collection()
       .insertOne({
         ...newVocab,
-        _id: null,
+        _id: undefined,
         created: new Date(),
         lastModified: new Date()
       })
