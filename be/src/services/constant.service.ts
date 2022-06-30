@@ -144,7 +144,7 @@ class ConstantService {
       // Save id / link list
       fs.writeFileSync(path.join(__dirname, AUTOMATIC_ANALYSIS_PERSONS_ID_LIST), JSON.stringify(
         savedEntities.map((e: Entity) => ({
-          label: e.externalResources[0].replaceAll('AA-ID: ', ''),
+          label: e.externalResources[0].replace('AA-ID: ', ''),
           canonicalLink: UtilService.createCanonicalLink(e?._id?.toHexString())
         })), null, 2));
       console.log(`${this.LOG_TAG} Generated backup and ID list of persons successfully`);
