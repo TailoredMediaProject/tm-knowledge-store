@@ -5112,7 +5112,7 @@
   {
     "_id": "627ce62afe496f8b93655c1c",
     "vocabulary": "627cdfe78b62be12608e490e",
-    "type": "SHOTTYPE",
+    "type": "INDOOR_OUTDOOR",
     "label": "Drinnen",
     "description": "Atmosphare/Stimmung / Bildaufbau / Innen",
     "created": "2022-05-12T10:49:14.327Z",
@@ -5126,7 +5126,7 @@
   {
     "_id": "627ce62afe496f8b93655c1d",
     "vocabulary": "627cdfe78b62be12608e490e",
-    "type": "SHOTTYPE",
+    "type": "INDOOR_OUTDOOR",
     "label": "Draußen",
     "description": "Atmosphare/Stimmung / Bildaufbau / Aussen",
     "created": "2022-05-12T10:49:14.328Z",
@@ -5140,7 +5140,7 @@
   {
     "_id": "627ce62afe496f8b93655c1f",
     "vocabulary": "627cdfe78b62be12608e490e",
-    "type": "SHOTTYPE",
+    "type": "INDOOR_OUTDOOR",
     "label": "Draußen (Natur)",
     "description": "Atmosphare/Stimmung / Bildaufbau / Aussen",
     "created": "2022-05-12T10:49:14.329Z",
@@ -5154,7 +5154,7 @@
   {
     "_id": "627ce62afe496f8b93655c1e",
     "vocabulary": "627cdfe78b62be12608e490e",
-    "type": "SHOTTYPE",
+    "type": "SEASON",
     "label": "Frühling",
     "description": "Atmosphare/Stimmung / Bildaufbau / Jahreszeit",
     "created": "2022-05-12T10:49:14.328Z",
@@ -5168,7 +5168,7 @@
   {
     "_id": "627ce62afe496f8b93655c20",
     "vocabulary": "627cdfe78b62be12608e490e",
-    "type": "SHOTTYPE",
+    "type": "SEASON",
     "label": "Sommer",
     "description": "Atmosphare/Stimmung / Bildaufbau / Jahreszeit",
     "created": "2022-05-12T10:49:14.329Z",
@@ -5182,7 +5182,7 @@
   {
     "_id": "627ce62afe496f8b93655c22",
     "vocabulary": "627cdfe78b62be12608e490e",
-    "type": "SHOTTYPE",
+    "type": "SEASON",
     "label": "Herbst",
     "description": "Atmosphare/Stimmung / Bildaufbau / Jahreszeit",
     "created": "2022-05-12T10:49:14.330Z",
@@ -5196,7 +5196,7 @@
   {
     "_id": "627ce62afe496f8b93655c21",
     "vocabulary": "627cdfe78b62be12608e490e",
-    "type": "SHOTTYPE",
+    "type": "SEASON",
     "label": "Winter",
     "description": "Atmosphare/Stimmung / Bildaufbau / Jahreszeit",
     "created": "2022-05-12T10:49:14.329Z",
@@ -5210,7 +5210,7 @@
   {
     "_id": "627ce62afe496f8b93655c23",
     "vocabulary": "627cdfe78b62be12608e490e",
-    "type": "SHOTTYPE",
+    "type": "DAYTIME",
     "label": "Nacht",
     "description": "Atmosphare/Stimmung / Bildaufbau / Tageszeit",
     "created": "2022-05-12T10:49:14.330Z",
@@ -5224,7 +5224,7 @@
   {
     "_id": "627ce62afe496f8b93655c24",
     "vocabulary": "627cdfe78b62be12608e490e",
-    "type": "SHOTTYPE",
+    "type": "DAYTIME",
     "label": "Dämmerung",
     "description": "Atmosphare/Stimmung / Bildaufbau / Tageszeit",
     "created": "2022-05-12T10:49:14.331Z",
@@ -5238,7 +5238,7 @@
   {
     "_id": "627ce62afe496f8b93655c25",
     "vocabulary": "627cdfe78b62be12608e490e",
-    "type": "SHOTTYPE",
+    "type": "DAYTIME",
     "label": "Sonnenaufgang",
     "description": "Atmosphare/Stimmung / Bildaufbau / Tageszeit",
     "created": "2022-05-12T10:49:14.331Z",
@@ -5252,7 +5252,7 @@
   {
     "_id": "627ce62afe496f8b93655c26",
     "vocabulary": "627cdfe78b62be12608e490e",
-    "type": "SHOTTYPE",
+    "type": "DAYTIME",
     "label": "Tag",
     "description": "Atmosphare/Stimmung / Bildaufbau / Tageszeit",
     "created": "2022-05-12T10:49:14.332Z",
@@ -5266,7 +5266,7 @@
   {
     "_id": "627ce62afe496f8b93655c27",
     "vocabulary": "627cdfe78b62be12608e490e",
-    "type": "SHOTTYPE",
+    "type": "DAYTIME",
     "label": "Sonnenuntergang",
     "description": "Atmosphare/Stimmung / Bildaufbau / Tageszeit",
     "created": "2022-05-12T10:49:14.333Z",
@@ -5406,7 +5406,7 @@
   {
     "_id": "627ce62afe496f8b93655c31",
     "vocabulary": "627cdfe78b62be12608e490e",
-    "type": "SHOTTYPE",
+    "type": "BUSTLE",
     "label": "unbevölkert",
     "description": "Atmosphare/Stimmung / Bildaufbau / Bildaufbau",
     "created": "2022-05-12T10:49:14.347Z",
@@ -5420,7 +5420,7 @@
   {
     "_id": "627ce62afe496f8b93655c32",
     "vocabulary": "627cdfe78b62be12608e490e",
-    "type": "SHOTTYPE",
+    "type": "BUSTLE",
     "label": "Wenig Menschen",
     "description": "Atmosphare/Stimmung / Bildaufbau / Bildaufbau",
     "created": "2022-05-12T10:49:14.347Z",
@@ -5434,7 +5434,7 @@
   {
     "_id": "627ce62afe496f8b93655c33",
     "vocabulary": "627cdfe78b62be12608e490e",
-    "type": "SHOTTYPE",
+    "type": "BUSTLE",
     "label": "Wenig Fahrzeuge",
     "description": "Atmosphare/Stimmung / Bildaufbau / Bildaufbau",
     "created": "2022-05-12T10:49:14.348Z",
@@ -5448,7 +5448,7 @@
   {
     "_id": "627ce62afe496f8b93655c34",
     "vocabulary": "627cdfe78b62be12608e490e",
-    "type": "SHOTTYPE",
+    "type": "BUSTLE",
     "label": "Großansicht",
     "description": "Atmosphare/Stimmung / Bildaufbau / Bildaufbau",
     "created": "2022-05-12T10:49:14.349Z",
@@ -5462,7 +5462,7 @@
   {
     "_id": "627ce62afe496f8b93655c35",
     "vocabulary": "627cdfe78b62be12608e490e",
-    "type": "SHOTTYPE",
+    "type": "BUSTLE",
     "label": "Mittel",
     "description": "Atmosphare/Stimmung / Bildaufbau / Bildaufbau",
     "created": "2022-05-12T10:49:14.349Z",
@@ -5476,7 +5476,7 @@
   {
     "_id": "627ce62afe496f8b93655c36",
     "vocabulary": "627cdfe78b62be12608e490e",
-    "type": "SHOTTYPE",
+    "type": "BUSTLE",
     "label": "Bevölkert",
     "description": "Atmosphare/Stimmung / Bildaufbau / Bildaufbau",
     "created": "2022-05-12T10:49:14.349Z",

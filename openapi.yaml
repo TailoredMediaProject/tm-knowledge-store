@@ -226,6 +226,11 @@ components:
         - OBJECT
         - SPEECH2TEXT
         - SHOTTYPE
+        - SEASON
+        - PLACE
+        - DAYTIME
+        - BUSTLE
+        - INDOOR_OUTDOOR
         - LOGO
     Vocabulary:
       description: A vocabulary in the TailoredMedia Knowledge Store
