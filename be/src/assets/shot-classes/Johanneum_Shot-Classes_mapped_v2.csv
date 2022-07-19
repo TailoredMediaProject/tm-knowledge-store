@@ -385,12 +385,12 @@ medium_full;Mittel (Ganz);ShotType;Atmosphare/Stimmung / Bildaufbau / Einstellun
 full_shot;Ganze Aufnahme;ShotType;Atmosphare/Stimmung / Bildaufbau / Einstellung;
 long;Lang;ShotType;Atmosphare/Stimmung / Bildaufbau / Einstellung;
 extreme_long;Exrem Lang;ShotType;Atmosphare/Stimmung / Bildaufbau / Einstellung;
-unpopulated	;unbevölkert;Bustle;Atmosphare/Stimmung / Bildaufbau / Bildaufbau;
-few_people ;Wenig Menschen;Bustle;Atmosphare/Stimmung / Bildaufbau / Bildaufbau;
-few_vehicles ;Wenig Fahrzeuge;Bustle;Atmosphare/Stimmung / Bildaufbau / Bildaufbau;
-few_large;Großansicht;Bustle;Atmosphare/Stimmung / Bildaufbau / Bildaufbau;
-medium;Mittel;Bustle;Atmosphare/Stimmung / Bildaufbau / Bildaufbau;
-populated;Bevölkert;Bustle;Atmosphare/Stimmung / Bildaufbau / Bildaufbau;
+unpopulated	;unbevölkert;ShotType;Atmosphare/Stimmung / Bildaufbau / Bildaufbau;
+few_people ;Wenig Menschen;ShotType;Atmosphare/Stimmung / Bildaufbau / Bildaufbau;
+few_vehicles ;Wenig Fahrzeuge;ShotType;Atmosphare/Stimmung / Bildaufbau / Bildaufbau;
+few_large;Großansicht;ShotType;Atmosphare/Stimmung / Bildaufbau / Bildaufbau;
+medium;Mittel;ShotType;Atmosphare/Stimmung / Bildaufbau / Bildaufbau;
+populated;Bevölkert;ShotType;Atmosphare/Stimmung / Bildaufbau / Bildaufbau;
 person;Person;Object;Bezeichnung / Objekt;
 bicycle;Fahrrad;Object;Bezeichnung / Objekt;
 car;Auto;Object;Bezeichnung / Objekt;
