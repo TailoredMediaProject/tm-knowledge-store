@@ -5112,7 +5112,7 @@
   {
     "_id": "627ce62afe496f8b93655c1c",
     "vocabulary": "627cdfe78b62be12608e490e",
-    "type": "INDOOR/OUTDOOR",
+    "type": "SHOTTYPE",
     "label": "Drinnen",
     "description": "Atmosphare/Stimmung / Bildaufbau / Innen",
     "created": "2022-05-12T10:49:14.327Z",
@@ -5126,7 +5126,7 @@
   {
     "_id": "627ce62afe496f8b93655c1d",
     "vocabulary": "627cdfe78b62be12608e490e",
-    "type": "INDOOR/OUTDOOR",
+    "type": "SHOTTYPE",
     "label": "Draußen",
     "description": "Atmosphare/Stimmung / Bildaufbau / Aussen",
     "created": "2022-05-12T10:49:14.328Z",
@@ -5140,7 +5140,7 @@
   {
     "_id": "627ce62afe496f8b93655c1f",
     "vocabulary": "627cdfe78b62be12608e490e",
-    "type": "INDOOR/OUTDOOR",
+    "type": "SHOTTYPE",
     "label": "Draußen (Natur)",
     "description": "Atmosphare/Stimmung / Bildaufbau / Aussen",
     "created": "2022-05-12T10:49:14.329Z",
